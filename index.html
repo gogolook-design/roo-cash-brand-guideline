@@ -1,0 +1,2674 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roo.Cash 2026 品牌指南 · Issue 01</title>
+<link rel="stylesheet" href="styles/colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
+  --font-serif: 'Fraunces', 'Noto Serif TC', serif;
+  --hair: rgba(17, 40, 88, 0.12);
+  --hair-strong: rgba(17, 40, 88, 0.22);
+  --paper: #FBFAF6;
+  --paper-2: #F4F2EB;
+  --ink: #112858;
+  --ink-soft: rgba(17, 40, 88, 0.62);
+  --ink-quiet: rgba(17, 40, 88, 0.42);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { font-feature-settings: "tnum" 1, "lnum" 1, "ss01" 1; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+body {
+  font-family: var(--font-cjk);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--nroo-green-100); color: var(--ink); }
+
+/* Reusable */
+.mono { font-family: var(--font-mono); font-weight: 400; letter-spacing: 0.02em; }
+.serif-display { font-family: var(--font-serif); font-weight: 600; }
+.uc { text-transform: uppercase; letter-spacing: 0.18em; }
+
+/* ─── SCROLL PROGRESS ─── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 2px;
+  width: 0%;
+  background: var(--nroo-green-100);
+  z-index: 100;
+  transition: width 0.1s ease-out;
+}
+
+/* ─── HEADER ─── */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(251, 250, 246, 0.88);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--hair);
+  height: 64px;
+  display: flex; align-items: center;
+}
+.site-header .inner {
+  max-width: 1320px; margin: 0 auto;
+  width: 100%; padding: 0 32px;
+  display: flex; align-items: center; gap: 32px;
+}
+.site-header .brand img { height: 22px; }
+.site-header .issue-tag {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  padding-left: 16px;
+  border-left: 1px solid var(--hair);
+  margin-left: 4px;
+  letter-spacing: 0.05em;
+}
+.site-header nav {
+  display: flex; gap: 0;
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.site-header nav a {
+  padding: 8px 12px;
+  color: var(--ink-soft);
+  transition: color .2s ease-out;
+  position: relative;
+}
+.site-header nav a:hover { color: var(--ink); }
+.site-header nav a .num {
+  color: var(--ink-quiet);
+  margin-right: 4px;
+  font-weight: 400;
+}
+.site-header nav a:hover .num { color: var(--nroo-green-120); }
+.site-header .header-cta {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 8px 14px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  border-radius: 0;
+  margin-left: 8px;
+  transition: background .2s ease-out, color .2s ease-out;
+}
+.site-header .header-cta:hover { background: var(--ink); color: var(--paper); }
+
+/* ─── SHELL ─── */
+.shell {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--paper);
+  border-bottom: 1px solid var(--hair);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--hair) 1px, transparent 0);
+  background-size: 32px 32px;
+  background-position: 0 0;
+  opacity: 0.6;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 60% at 80% 30%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 80% 30%, black 0%, transparent 70%);
+}
+.hero-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 96px 32px 120px;
+  position: relative; z-index: 1;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 24px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.08em;
+  margin-bottom: 56px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--hair);
+}
+.hero-meta .dot {
+  width: 6px; height: 6px;
+  background: var(--nroo-green-100);
+  border-radius: 50%;
+  display: inline-block;
+}
+.hero-meta .sep { color: var(--ink-quiet); opacity: 0.5; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 80px;
+  align-items: end;
+}
+.hero-headline {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+}
+.hero-headline em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+.hero-headline .accent {
+  font-style: normal;
+  position: relative;
+  display: inline-block;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.hero-headline .accent::after {
+  content: '';
+  position: absolute;
+  left: -2px; right: -2px;
+  bottom: 8px;
+  height: 14px;
+  background: var(--nroo-green-100);
+  z-index: -1;
+  opacity: 0.7;
+}
+.hero-lede {
+  margin-top: 36px;
+  font-size: 17px; line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 520px;
+}
+.hero-lede strong { color: var(--ink); font-weight: 700; }
+.hero-lede .num {
+  font-family: var(--font-mono);
+  color: var(--nroo-orange-120);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* Hero TOC */
+.hero-toc {
+  border-top: 1px solid var(--ink);
+  padding-top: 16px;
+}
+.hero-toc-label {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.hero-toc ol {
+  list-style: none;
+  margin-top: 12px;
+}
+.hero-toc li {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hair);
+  align-items: baseline;
+  transition: padding 0.2s ease-out, color 0.2s ease-out;
+}
+.hero-toc li:last-child { border-bottom: none; }
+.hero-toc li a {
+  display: contents;
+}
+.hero-toc li:hover {
+  padding-left: 8px;
+}
+.hero-toc li:hover .toc-num {
+  color: var(--nroo-green-120);
+}
+.hero-toc li:hover .toc-title {
+  color: var(--ink);
+}
+.toc-num {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.04em;
+  transition: color .2s;
+}
+.toc-title {
+  font-family: var(--font-cjk);
+  font-size: 14px; font-weight: 500;
+  color: var(--ink-soft);
+  transition: color .2s;
+}
+.toc-tag {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--ink-quiet);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ─── STAT BAND (replaces stat-strip) ─── */
+.stat-band {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper);
+}
+.stat-band-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: auto repeat(4, 1fr);
+  gap: 0;
+  align-items: center;
+}
+.stat-band-label {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding-right: 32px;
+  margin-right: 32px;
+  border-right: 1px solid var(--hair);
+}
+.stat-band-cell {
+  padding: 0 24px;
+  border-right: 1px solid var(--hair);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.stat-band-cell:last-child { border-right: none; }
+.stat-band-num {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.stat-band-num.orange { color: var(--nroo-orange-120); }
+.stat-band-cap {
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-family: var(--font-cjk);
+}
+
+/* ─── CHAPTER DIVIDER ─── */
+.chapter-divider {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px;
+  padding: 56px 32px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--hair);
+}
+.chapter-divider .rule {
+  flex: 1;
+  height: 1px;
+  background: var(--hair);
+  max-width: 300px;
+}
+.chapter-divider .glyph {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--nroo-green-120);
+}
+
+/* ─── CHAPTERS ─── */
+section.chapter {
+  background: var(--paper);
+  border-bottom: 1px solid var(--hair);
+}
+section.chapter.alt { background: var(--paper-2); }
+.chapter-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 100px 32px 120px;
+  display: grid;
+  grid-template-columns: minmax(0, 200px) minmax(0, 1fr);
+  gap: 56px;
+}
+.chapter-folio {
+  position: relative;
+  display: flex; flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.chapter-folio .num {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: 120px;
+  line-height: 0.85;
+  color: var(--ink);
+  letter-spacing: -0.06em;
+}
+.chapter-folio .num .slash {
+  color: var(--nroo-green-120);
+  font-weight: 400;
+}
+.chapter-folio .meta {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--hair);
+  padding-top: 12px;
+  width: 100%;
+}
+.chapter-folio.sticky-folio {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.chapter-body {
+  min-width: 0;
+}
+.chapter-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--nroo-green-120);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.chapter-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(36px, 4.4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 12px;
+  max-width: 18ch;
+}
+.chapter-title em { font-style: italic; font-weight: 300; color: var(--ink-soft); }
+.chapter-deck {
+  font-size: 17px; line-height: 1.75;
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin-top: 24px;
+}
+.chapter-deck strong { color: var(--ink); font-weight: 700; }
+.chapter-deck p + p { margin-top: 16px; }
+.chapter-deck .num {
+  font-family: var(--font-mono);
+  color: var(--nroo-orange-120);
+  font-weight: 700;
+}
+
+.section-rule {
+  height: 1px; background: var(--ink);
+  margin: 48px 0 32px;
+}
+.section-rule.green { background: var(--nroo-green-100); height: 2px; }
+.section-rule.thin { background: var(--hair); }
+
+.subhead {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  text-transform: uppercase; letter-spacing: 0.16em;
+  display: flex; align-items: baseline; gap: 12px;
+  margin: 56px 0 20px;
+}
+.subhead .dash { width: 24px; height: 1px; background: var(--ink-quiet); }
+.subhead.h-section {
+  margin-top: 64px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+}
+
+/* ─── SPECIMEN TILE (the brand element of this design) ─── */
+.tile-grid { display: grid; gap: 0; }
+.tile-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+.tile-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.tile-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.tile-grid > * {
+  border-right: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+}
+.tile-grid > *:nth-child(2n).cols-2-last,
+.tile-grid.cols-2 > *:nth-child(2n) { border-right: none; }
+.tile-grid.cols-3 > *:nth-child(3n) { border-right: none; }
+.tile-grid.cols-4 > *:nth-child(4n) { border-right: none; }
+.tile-grid.with-frame {
+  border-top: 1px solid var(--hair);
+  border-left: 1px solid var(--hair);
+}
+
+.tile {
+  background: transparent;
+  padding: 28px 24px 20px;
+  display: flex; flex-direction: column;
+  min-height: 200px;
+  position: relative;
+  transition: background 0.2s ease-out;
+}
+.tile:hover { background: rgba(255, 255, 255, 0.5); }
+section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
+.tile-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.tile-head .id { color: var(--nroo-green-120); }
+.tile-title {
+  font-family: var(--font-cjk);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.tile-body {
+  font-size: 14px; line-height: 1.75;
+  color: var(--ink-soft);
+}
+.tile-foot {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--hair);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.08em;
+  display: flex; justify-content: space-between; gap: 12px;
+  text-transform: uppercase;
+}
+.tile-foot .author { display: flex; align-items: center; gap: 6px; }
+.tile-foot .avatar {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+/* ─── LISTS ─── */
+.list-rule {
+  border-top: 1px solid var(--hair);
+  margin-top: 32px;
+}
+.list-rule .row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--hair);
+  align-items: start;
+}
+.list-rule .row .num {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 1;
+  color: var(--nroo-orange-120);
+  letter-spacing: -0.02em;
+}
+.list-rule .row h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.list-rule .row h3 .ja {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--ink-quiet);
+  margin-left: 12px;
+  vertical-align: middle;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.list-rule .row p {
+  font-size: 16px; line-height: 1.85;
+  color: var(--ink-soft);
+  max-width: 720px;
+}
+
+/* ─── PULL QUOTE / PROMISE ─── */
+.pullquote {
+  margin: 48px 0;
+  padding: 48px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.pullquote .mark {
+  font-family: var(--font-serif);
+  font-size: 80px; line-height: 0.7;
+  color: var(--nroo-green-120);
+  font-weight: 400;
+  font-style: italic;
+}
+.pullquote q {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  display: block;
+  quotes: none;
+}
+.pullquote q::before, .pullquote q::after { content: ''; }
+.pullquote .attribution {
+  margin-top: 20px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  text-transform: uppercase; letter-spacing: 0.12em;
+}
+
+/* ─── PROMISE BLOCK (rebuilt) ─── */
+.promise-block {
+  background: var(--ink);
+  color: var(--paper);
+  margin: 48px 0;
+  padding: 56px 48px;
+  position: relative;
+}
+.promise-block::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; width: 56px; height: 1px;
+  background: var(--nroo-green-100);
+}
+.promise-block .promise-meta {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 24px;
+}
+.promise-block .promise-meta .accent { color: var(--nroo-green-100); }
+.promise-block .promise-h {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
+}
+.promise-block .promise-h em { font-style: italic; color: var(--nroo-green-100); }
+.promise-block .promise-sub {
+  font-size: 15px; color: rgba(255,255,255,0.62);
+  max-width: 600px; line-height: 1.85;
+}
+
+/* ─── DO / DONT (rebuilt: editorial column pair) ─── */
+.dodont {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--hair);
+  margin: 32px 0;
+}
+.dodont > div {
+  padding: 28px;
+}
+.dodont .col-do { border-right: 1px solid var(--hair); }
+.dodont .col-head {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--hair);
+  display: flex; align-items: center; gap: 8px;
+}
+.col-do .col-head { color: var(--nroo-green-120); }
+.col-dont .col-head { color: var(--nroo-orange-120); }
+.dodont .item {
+  font-size: 14px; line-height: 1.75;
+  padding: 10px 0 10px 22px;
+  position: relative;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--hair);
+}
+.dodont .item:last-child { border-bottom: none; }
+.col-do .item::before {
+  content: '+';
+  position: absolute; left: 0; top: 12px;
+  font-family: var(--font-mono); font-weight: 500;
+  color: var(--nroo-green-120);
+}
+.col-dont .item::before {
+  content: '×';
+  position: absolute; left: 0; top: 12px;
+  font-family: var(--font-mono); font-weight: 500;
+  color: var(--nroo-orange-120);
+}
+
+/* ─── PALETTE MOSAIC ─── */
+.palette-mosaic {
+  display: grid;
+  grid-template-columns: 4fr 3fr 2fr;
+  grid-template-rows: 220px 140px;
+  gap: 0;
+  border: 1px solid var(--hair);
+  margin: 32px 0;
+}
+.palette-cell {
+  padding: 20px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  font-family: var(--font-mono);
+  border-right: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.palette-cell:last-child { border-right: none; }
+.palette-cell.navy {
+  grid-row: span 2;
+  background: var(--ink); color: var(--paper);
+}
+.palette-cell.cream {
+  background: var(--paper); color: var(--ink);
+  border: 1px solid var(--hair);
+  border-top: 0; border-right: 0;
+}
+.palette-cell.green {
+  background: var(--nroo-green-100); color: var(--ink);
+}
+.palette-cell.orange {
+  background: var(--nroo-orange-120); color: var(--paper);
+}
+.palette-cell .pc-id {
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  opacity: 0.7;
+}
+.palette-cell .pc-name {
+  font-family: var(--font-serif);
+  font-weight: 600; font-size: 22px;
+  letter-spacing: -0.01em;
+  margin-top: 8px;
+  font-feature-settings: "ss01" 1;
+}
+.palette-cell .pc-hex {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.palette-cell .pc-share {
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  opacity: 0.7;
+}
+.palette-cell .pc-use {
+  font-family: var(--font-cjk);
+  font-size: 12px; font-weight: 500;
+  margin-top: 8px;
+  line-height: 1.5;
+  font-feature-settings: normal;
+}
+
+/* ─── TYPE SPECIMEN ─── */
+.specimen {
+  border: 1px solid var(--hair);
+  background: var(--paper);
+}
+.specimen-row {
+  display: grid;
+  grid-template-columns: 200px 1fr 220px;
+  gap: 0;
+  border-bottom: 1px solid var(--hair);
+  padding: 32px;
+  align-items: baseline;
+}
+.specimen-row:last-child { border-bottom: none; }
+.specimen-row .label {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.specimen-row .label .name {
+  display: block;
+  font-family: var(--font-cjk);
+  font-size: 16px; font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 6px;
+}
+.specimen-row .demo {
+  color: var(--ink);
+}
+.specimen-row .meta {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--ink-quiet); line-height: 1.7;
+  letter-spacing: 0.04em;
+}
+
+.glyph-feature {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 56px 32px;
+  margin: 32px 0;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 56px;
+  align-items: center;
+  background: var(--paper-2);
+}
+.glyph-feature .glyph {
+  font-family: var(--font-cjk);
+  font-weight: 700;
+  font-size: 240px;
+  line-height: 0.85;
+  color: var(--ink);
+  letter-spacing: -0.04em;
+}
+.glyph-feature .glyph-meta {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.glyph-feature .gm-row {
+  display: flex; gap: 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hair);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  align-items: baseline;
+}
+.glyph-feature .gm-row .gm-key {
+  color: var(--ink-quiet);
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  width: 80px;
+  flex-shrink: 0;
+}
+.glyph-feature .gm-row .gm-val { color: var(--ink); font-size: 13px; }
+
+/* ─── DATA VIZ (FT-style) ─── */
+.viz-frame {
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 32px;
+}
+.viz-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 16px; border-bottom: 1px solid var(--hair);
+  margin-bottom: 24px;
+  gap: 16px;
+}
+.viz-head h3 {
+  font-family: var(--font-serif); font-weight: 600; font-size: 22px;
+  color: var(--ink); letter-spacing: -0.01em;
+}
+.viz-head .meta {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet); letter-spacing: 0.04em;
+  text-align: right;
+}
+.viz-bar-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 80px;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--hair);
+}
+.viz-bar-row:last-child { border-bottom: none; }
+.viz-bar-row .name {
+  font-family: var(--font-cjk); font-size: 14px; font-weight: 500;
+  color: var(--ink);
+}
+.viz-bar-row .bar-track {
+  height: 12px; background: rgba(17, 40, 88, 0.06);
+  position: relative;
+}
+.viz-bar-row .bar-fill {
+  height: 100%; background: var(--ink);
+  position: relative;
+}
+.viz-bar-row .bar-fill.highlight {
+  background: var(--nroo-orange-120);
+}
+.viz-bar-row .bar-fill.highlight::after {
+  content: '★ 最低';
+  position: absolute;
+  right: -4px; top: 50%;
+  transform: translate(100%, -50%);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--nroo-orange-120);
+  white-space: nowrap;
+  margin-left: 8px;
+  padding-left: 8px;
+}
+.viz-bar-row .num {
+  font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+  color: var(--ink);
+  text-align: right;
+}
+.viz-bar-row .num.highlight { color: var(--nroo-orange-120); font-weight: 700; }
+.viz-source {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--hair);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.04em;
+  font-style: italic;
+}
+
+/* ─── BIG NUMBER CALLOUT ─── */
+.bignum {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: end;
+  padding: 32px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  margin: 32px 0;
+}
+.bignum .figure {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: clamp(80px, 12vw, 168px);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--nroo-orange-120);
+}
+.bignum .figure .small { font-size: 0.4em; color: var(--ink-soft); }
+.bignum .caption {
+  padding-bottom: 16px;
+}
+.bignum .caption .lbl {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+.bignum .caption .desc {
+  font-family: var(--font-serif);
+  font-weight: 400; font-style: italic;
+  font-size: 22px; line-height: 1.35;
+  color: var(--ink);
+}
+
+/* ─── MASCOT GALLERY ─── */
+.mascot-gallery {
+  border: 1px solid var(--hair);
+  background: var(--paper);
+  margin: 32px 0;
+}
+.mascot-meta {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--hair);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.mascot-meta .v { color: var(--nroo-orange-120); }
+.mascot-poses {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+}
+.pose-tile {
+  border-right: 1px solid var(--hair);
+  padding: 32px 24px 20px;
+  display: flex; flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  background:
+    linear-gradient(var(--paper), var(--paper)),
+    repeating-linear-gradient(0deg, transparent, transparent 23px, var(--hair) 23px, var(--hair) 24px);
+  background-blend-mode: normal;
+}
+.pose-tile {
+  background: var(--paper);
+  background-image:
+    linear-gradient(to right, var(--hair) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hair) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: center;
+}
+.pose-tile:last-child { border-right: none; }
+.pose-tile svg {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 20px;
+}
+.pose-tile .pose-id {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pose-tile .pose-name {
+  font-family: var(--font-cjk); font-weight: 700; font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.pose-tile .pose-desc {
+  font-size: 12px; line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* ─── ICON GRID ─── */
+.icon-grid-frame {
+  border: 1px solid var(--hair);
+  background: var(--paper);
+  margin: 32px 0;
+}
+.icon-grid-frame .icon-meta {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--hair);
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.icons {
+  display: grid; grid-template-columns: repeat(8, 1fr);
+}
+.icon-cell {
+  aspect-ratio: 1;
+  border-right: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  transition: background .2s;
+}
+.icon-cell:hover { background: var(--paper-2); }
+.icon-cell:nth-child(8n) { border-right: none; }
+.icon-cell:nth-last-child(-n+8) { border-bottom: none; }
+.icon-cell svg { stroke: var(--ink); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ─── LOGO BLOCKS ─── */
+.logo-frame {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--hair);
+}
+.logo-frame > div {
+  padding: 56px 32px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-right: 1px solid var(--hair);
+  position: relative;
+  min-height: 200px;
+}
+.logo-frame > div:last-child { border-right: none; }
+.logo-frame > div.dark-bg { background: var(--ink); }
+.logo-frame img { max-height: 36px; margin-bottom: 24px; }
+.logo-frame .logo-meta {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.logo-frame .dark-bg .logo-meta { color: rgba(255,255,255,0.5); }
+
+/* ─── APP MOCKS ─── */
+.mock-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--hair);
+  margin: 32px 0;
+}
+.mock {
+  border-right: 1px solid var(--hair);
+}
+.mock:last-child { border-right: none; }
+.mock-frame-head {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--hair);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  display: flex; justify-content: space-between;
+}
+.mock-frame-head .id { color: var(--nroo-green-120); }
+.mock-canvas {
+  padding: 32px 24px;
+  min-height: 220px;
+  font-family: var(--font-cjk);
+}
+.mock-canvas.navy { background: var(--ink); color: var(--paper); }
+.mock-canvas.paper { background: var(--paper-2); color: var(--ink); }
+.mock-canvas .mock-h {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: 22px; line-height: 1.25; letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.mock-canvas .mock-h em { font-style: italic; color: var(--nroo-green-100); }
+.mock-canvas .mock-h .num { font-family: var(--font-mono); color: var(--nroo-orange-120); font-weight: 700; }
+.mock-canvas .mock-body {
+  font-size: 13px; line-height: 1.75;
+  opacity: 0.75;
+  margin-bottom: 16px;
+}
+.mock-canvas .mock-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 6px 12px;
+  background: var(--nroo-green-100); color: var(--ink);
+  border: 1px solid var(--nroo-green-100);
+}
+.mock-canvas .mock-bignum {
+  font-family: var(--font-mono); font-weight: 300;
+  font-size: 64px; line-height: 0.9;
+  color: var(--nroo-orange-120);
+  letter-spacing: -0.03em;
+  margin: 16px 0 8px;
+}
+.mock-canvas .mock-cap {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-quiet);
+}
+
+/* ─── CALLOUT ─── */
+.callout {
+  border-left: 2px solid var(--nroo-green-120);
+  padding: 16px 0 16px 24px;
+  margin: 32px 0;
+  font-family: var(--font-serif);
+  font-weight: 400; font-style: italic;
+  font-size: 18px; line-height: 1.6;
+  color: var(--ink);
+  max-width: 760px;
+}
+.callout strong { font-family: var(--font-cjk); font-style: normal; font-weight: 700; }
+
+/* ─── TAGS ─── */
+.tag-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 24px 0;
+}
+.tag {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 6px 12px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+/* ─── FOOTER ─── */
+.colophon {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 80px 32px 48px;
+  position: relative;
+}
+.colophon::before {
+  content: ''; position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 1px;
+  background: var(--nroo-green-100);
+}
+.colophon-inner {
+  max-width: 1320px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+}
+.colophon img { height: 28px; margin-bottom: 28px; }
+.colophon p {
+  font-size: 13px; line-height: 1.85;
+  color: rgba(255,255,255,0.55);
+  max-width: 360px;
+}
+.colophon h5 {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--nroo-green-100);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.16);
+}
+.colophon ul { list-style: none; }
+.colophon ul li {
+  font-size: 13px; line-height: 1.95;
+  color: rgba(255,255,255,0.7);
+  display: flex; gap: 10px;
+  align-items: baseline;
+}
+.colophon ul li .marker {
+  font-family: var(--font-mono); font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.colophon-meta {
+  max-width: 1320px; margin: 64px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.16);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.06em;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1080px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 56px; }
+  .stat-band-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .stat-band-label { display: none; }
+  .stat-band-cell { border-right: none; padding: 0; }
+  .chapter-inner { grid-template-columns: 1fr; gap: 32px; }
+  .chapter-folio { flex-direction: row; align-items: baseline; gap: 20px; }
+  .chapter-folio.sticky-folio { position: static; }
+  .chapter-folio .num { font-size: 64px; }
+  .chapter-folio .meta { border-top: none; padding-top: 0; width: auto; }
+  .glyph-feature { grid-template-columns: 1fr; gap: 32px; padding: 40px 24px; }
+  .glyph-feature .glyph { font-size: 160px; }
+  .specimen-row { grid-template-columns: 1fr; gap: 12px; }
+  .colophon-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .palette-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px; }
+  .palette-cell.navy { grid-row: span 2; }
+}
+@media (max-width: 720px) {
+  .site-header nav { display: none; }
+  .site-header .issue-tag { display: none; }
+  .hero-inner { padding: 64px 24px 80px; }
+  .chapter-inner { padding: 64px 24px 80px; }
+  .tile-grid.cols-2, .tile-grid.cols-3, .tile-grid.cols-4 { grid-template-columns: 1fr; }
+  .tile-grid > * { border-right: none !important; }
+  .dodont { grid-template-columns: 1fr; }
+  .dodont .col-do { border-right: none; border-bottom: 1px solid var(--hair); }
+  .mascot-poses { grid-template-columns: 1fr 1fr; }
+  .pose-tile:nth-child(2n) { border-right: none; }
+  .icons { grid-template-columns: repeat(4, 1fr); }
+  .icon-cell:nth-child(8n) { border-right: 1px solid var(--hair); }
+  .icon-cell:nth-child(4n) { border-right: none; }
+  .mock-grid { grid-template-columns: 1fr; }
+  .mock { border-right: none; border-bottom: 1px solid var(--hair); }
+  .colophon-inner { grid-template-columns: 1fr; }
+  .stat-band-inner { grid-template-columns: 1fr 1fr; }
+  .pullquote { grid-template-columns: 1fr; gap: 16px; }
+  .bignum { grid-template-columns: 1fr; gap: 16px; }
+  .list-rule .row { grid-template-columns: 1fr; gap: 8px; }
+  .logo-frame { grid-template-columns: 1fr; }
+  .logo-frame > div { border-right: none; border-bottom: 1px solid var(--hair); }
+}
+
+/* Print */
+@media print {
+  .site-header, .progress-bar { display: none; }
+  body { background: white; }
+  section.chapter, .hero { page-break-inside: avoid; }
+  .colophon { background: white; color: black; }
+  .colophon p, .colophon ul li, .colophon-meta { color: #444; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── PASSWORD GATE ─── -->
+<style>
+.gate {
+  position: fixed; inset: 0;
+  background: var(--paper);
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px;
+  background-image:
+    radial-gradient(circle at 1px 1px, var(--hair) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+.gate.unlocked { display: none; }
+.gate-card {
+  width: 100%; max-width: 440px;
+  background: #fff;
+  border: 1px solid var(--ink);
+  padding: 0;
+}
+.gate-meta {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--hair);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.gate-meta .dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--nroo-green-100);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.gate-body { padding: 40px 36px 36px; text-align: center; }
+.gate-mascot { margin: 0 auto 24px; display: block; }
+.gate-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--nroo-green-120);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.gate-h {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.gate-h em { font-style: italic; color: var(--ink-soft); }
+.gate-sub {
+  font-family: var(--font-cjk);
+  font-size: 14px; line-height: 1.75;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  max-width: 320px;
+  margin-left: auto; margin-right: auto;
+}
+.gate-form { display: flex; flex-direction: column; gap: 12px; }
+.gate-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--hair-strong);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 16px; font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.08em;
+  text-align: center;
+  outline: none;
+  transition: border-color .2s, background .2s;
+}
+.gate-input:focus { border-color: var(--ink); background: #fff; }
+.gate-input.error {
+  border-color: var(--nroo-orange-120);
+  animation: shake 0.32s ease-out;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+.gate-submit {
+  width: 100%;
+  padding: 14px 16px;
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s;
+}
+.gate-submit:hover { background: var(--nroo-green-120); }
+.gate-error {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--nroo-orange-120);
+  letter-spacing: 0.04em;
+  height: 16px;
+  margin-top: 4px;
+}
+.gate-foot {
+  padding: 14px 20px;
+  border-top: 1px solid var(--hair);
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.gate-foot a { color: var(--nroo-green-120); }
+</style>
+
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="gate-meta">
+      <span><span class="dot"></span>RESTRICTED · 內部預覽</span>
+      <span>v1.0</span>
+    </div>
+    <div class="gate-body">
+      <svg class="gate-mascot" width="72" height="84" viewBox="0 0 120 140" fill="none">
+        <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
+        <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
+        <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
+        <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+        <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+        <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
+        <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+        <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+        <path d="M60 38 Q66 40 68 46" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="55" cy="36" r="1.8" fill="#112858"/>
+        <circle cx="69" cy="46" r="1.5" fill="#112858"/>
+      </svg>
+      <div class="gate-eyebrow">— Brand Guideline · Issue 01</div>
+      <h1 class="gate-h">先<em>對個</em> 暗號。</h1>
+      <p class="gate-sub">這是 Roo.Cash 2026 品牌指南的內部預覽。請輸入存取密碼。</p>
+      <form class="gate-form" id="gateForm" autocomplete="off">
+        <input type="password" class="gate-input" id="gateInput" placeholder="••••" autofocus aria-label="Password">
+        <div class="gate-error" id="gateError"></div>
+        <button type="submit" class="gate-submit">Enter ↵</button>
+      </form>
+    </div>
+    <div class="gate-foot">
+      <span>ROO.CASH · 袋鼠金融</span>
+      <span>2026 · INTERNAL</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const gate = document.getElementById('gate');
+  const form = document.getElementById('gateForm');
+  const input = document.getElementById('gateInput');
+  const errorEl = document.getElementById('gateError');
+  const VALID = ['1234', 'roocash2026'];
+  const KEY = 'roocash-gate-2026';
+
+  if (sessionStorage.getItem(KEY) === '1') {
+    gate.classList.add('unlocked');
+    document.body.style.overflow = '';
+  } else {
+    document.body.style.overflow = 'hidden';
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = input.value.trim().toLowerCase();
+    if (VALID.includes(val)) {
+      sessionStorage.setItem(KEY, '1');
+      gate.classList.add('unlocked');
+      document.body.style.overflow = '';
+      errorEl.textContent = '';
+    } else {
+      errorEl.textContent = '密碼不對，再試試。';
+      input.classList.add('error');
+      input.value = '';
+      setTimeout(() => input.classList.remove('error'), 320);
+    }
+  });
+})();
+</script>
+
+<div class="progress-bar" id="progress"></div>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header">
+  <div class="inner">
+    <a href="#top" class="brand"><img src="assets/logos/roo-cash-horizontal-dark.png" alt="Roo.Cash"></a>
+    <span class="issue-tag">Issue 01 / Spring 2026 / v1.0</span>
+    <nav>
+      <a href="#ch01"><span class="num">01</span>故事</a>
+      <a href="#ch02"><span class="num">02</span>定位</a>
+      <a href="#ch03"><span class="num">03</span>受眾</a>
+      <a href="#ch04"><span class="num">04</span>人格</a>
+      <a href="#ch05"><span class="num">05</span>語調</a>
+      <a href="#ch06"><span class="num">06</span>標誌</a>
+      <a href="#ch07"><span class="num">07</span>色字</a>
+      <a href="#ch08"><span class="num">08</span>圖像</a>
+      <a href="#ch09"><span class="num">09</span>視覺</a>
+      <a href="#ch10"><span class="num">10</span>應用</a>
+    </nav>
+    <a href="#ch10" class="header-cta">Download ↓</a>
+  </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span class="dot"></span>
+      <span>ROO.CASH BRAND GUIDELINE</span>
+      <span class="sep">／</span>
+      <span>2026 REBRAND · ISSUE 01</span>
+      <span class="sep">／</span>
+      <span>INTERNAL DRAFT · 繁體中文</span>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-headline">
+          每一筆<br/>
+          金錢決定，<br/>
+          都值得一個<br/>
+          <span class="accent">懂你的</span> <em>夥伴</em>。
+        </h1>
+        <p class="hero-lede">
+          這份指南整理了 Roo.Cash 在 2026 年所有對外溝通的方式——從一句話的口吻，到一張卡片的邊角。我們已經陪伴 <span class="num">120,000+</span> 位使用者媒合最適合自己的方案。希望這份共識，能讓我們繼續把這件事做得更好。
+        </p>
+      </div>
+
+      <aside class="hero-toc">
+        <div class="hero-toc-label">— Table of Contents</div>
+        <ol>
+          <li><a href="#ch01"><span class="toc-num">01.</span><span class="toc-title">品牌故事</span><span class="toc-tag">Story</span></a></li>
+          <li><a href="#ch02"><span class="toc-num">02.</span><span class="toc-title">使命 · 定位 · 服務</span><span class="toc-tag">Position</span></a></li>
+          <li><a href="#ch03"><span class="toc-num">03.</span><span class="toc-title">受眾與核心價值</span><span class="toc-tag">Audience</span></a></li>
+          <li><a href="#ch04"><span class="toc-num">04.</span><span class="toc-title">品牌人格</span><span class="toc-tag">Persona</span></a></li>
+          <li><a href="#ch05"><span class="toc-num">05.</span><span class="toc-title">語調與文案</span><span class="toc-tag">Voice</span></a></li>
+          <li><a href="#ch06"><span class="toc-num">06.</span><span class="toc-title">標誌系統</span><span class="toc-tag">Logo</span></a></li>
+          <li><a href="#ch07"><span class="toc-num">07.</span><span class="toc-title">色彩與字體</span><span class="toc-tag">Type</span></a></li>
+          <li><a href="#ch08"><span class="toc-num">08.</span><span class="toc-title">圖標 · 吉祥物 · 插畫</span><span class="toc-tag">Icon</span></a></li>
+          <li><a href="#ch09"><span class="toc-num">09.</span><span class="toc-title">視覺語言</span><span class="toc-tag">Visual</span></a></li>
+          <li><a href="#ch10"><span class="toc-num">10.</span><span class="toc-title">應用與素材庫</span><span class="toc-tag">Assets</span></a></li>
+        </ol>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STAT BAND ─── -->
+<section class="stat-band">
+  <div class="stat-band-inner">
+    <div class="stat-band-label">
+      The numbers,<br/>as of Q1 2026
+    </div>
+    <div class="stat-band-cell">
+      <div class="stat-band-num orange">120,000<span style="font-size:0.5em;">+</span></div>
+      <div class="stat-band-cap">已媒合使用者人次</div>
+    </div>
+    <div class="stat-band-cell">
+      <div class="stat-band-num">180<span style="font-size:0.5em;">+</span></div>
+      <div class="stat-band-cap">合作銀行與卡片數</div>
+    </div>
+    <div class="stat-band-cell">
+      <div class="stat-band-num orange">2.05<span style="font-size:0.5em;">%</span></div>
+      <div class="stat-band-cap">個貸最低年利率</div>
+    </div>
+    <div class="stat-band-cell">
+      <div class="stat-band-num orange">5<span style="font-size:0.5em;"> 分鐘</span></div>
+      <div class="stat-band-cap">最快核貸時間</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 01 BRAND STORY ─── -->
+<section class="chapter" id="ch01">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">01<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Brand Story · 品牌故事</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter One</div>
+      <h2 class="chapter-title">你的錢，<em>值得一個</em> 懂你的夥伴。</h2>
+      <div class="chapter-deck">
+        <p>每一個金錢決定都有重量——該辦哪張信用卡、現在該不該進場投資、突然需要一筆錢該怎麼辦。大多數平台丟給你一張比較表，然後說「自己看吧」。</p>
+        <p><strong>Roo.Cash 不一樣，Roo.Cash 坐在你旁邊。</strong>我們是一個以 AI 驅動的理財夥伴，理解你目前的財務狀況、學習你在乎的事情，然後引導你做出適合<strong>你生活</strong>的決定——而不是套用一個通用的公式。</p>
+        <p>不管你是 26 歲正在挑第一張信用卡，還是 45 歲正在規劃房貸轉貸，Roo.Cash 都在你所在的地方，用清晰、沉穩、自信的方式與你同行。</p>
+      </div>
+
+      <div class="callout"><strong>袋鼠的意象。</strong>袋鼠把最珍貴的東西放在育兒袋裡，貼近身體保護著，同時用有力、穩健的步伐向前躍進。Roo.Cash 也是如此——守護你的財務安全感，陪伴它成長，幫助你跳得比一個人更遠。</div>
+
+      <div class="subhead h-section"><span class="dash"></span>敘事弧 / Narrative Arc</div>
+
+      <div class="tile-grid cols-3 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">ARC.01</span><span>起 · Beginning</span></div>
+          <div class="tile-title">困惑 → 發現</div>
+          <p class="tile-body">「我不知道該從哪裡開始。」使用者帶著問題進來——可能是焦慮、可能是茫然。我們先聽，不急著給答案。</p>
+          <div class="tile-foot"><span class="author"><span class="avatar">RC</span>Brand Team</span><span>Q1 2026</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">ARC.02</span><span>承 · Middle</span></div>
+          <div class="tile-title">清晰 → 自信</div>
+          <p class="tile-body">「Roo.Cash 幫我看清楚了。」我們把選項攤開、把利弊說明白，讓使用者自己看見哪一個方案真的適合。</p>
+          <div class="tile-foot"><span class="author"><span class="avatar">RC</span>Brand Team</span><span>Q1 2026</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">ARC.03</span><span>合 · End</span></div>
+          <div class="tile-title">自信 → 成長</div>
+          <p class="tile-body">「現在我做每個決定都很有信心。」不是一次性的服務，而是繼續陪伴：下一張卡、下一筆貸款、下一個目標。</p>
+          <div class="tile-foot"><span class="author"><span class="avatar">RC</span>Brand Team</span><span>Q1 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>02 / 10</span>
+  <span class="glyph">§</span>
+  <span>Mission · Position · Service</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 02 MISSION ─── -->
+<section class="chapter alt" id="ch02">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">02<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Mission · 使命 · 定位 · 服務</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Two</div>
+      <h2 class="chapter-title">我們在做什麼，<em>又為什麼</em> 要做。</h2>
+      <div class="chapter-deck">
+        <p>Roo.Cash 是 Gogolook（也就是 Whoscall 背後的那個團隊）旗下的個人理財媒合服務。我們把信用卡、個人貸款、保險、儲蓄與信用建立等產品，整合在一個地方，讓使用者用最少的力氣，找到真正適合自己的方案。</p>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>四個基本問題的答案</div>
+
+      <div class="tile-grid cols-2 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">M.01</span><span>Mission · 使命</span></div>
+          <div class="tile-title">讓每一個人，都能安心地做金錢決定</div>
+          <p class="tile-body">金融資訊不該是門檻，更不該是焦慮的來源。我們的存在，是為了把複雜的金融商品，翻譯成一個普通人也能輕鬆判斷的選擇。</p>
+          <div class="tile-foot"><span>WHY · 為什麼</span><span>Q1 2026</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">P.01</span><span>Position · 定位</span></div>
+          <div class="tile-title">你的 AI 理財夥伴</div>
+          <p class="tile-body">不是比較引擎，不是金融資訊網站，更不是理財網紅。我們是「那個剛好很懂錢的好朋友」——以 AI 為基礎，但本質是一段能長期相處的關係。</p>
+          <div class="tile-foot"><span>WHO · 我們是</span><span>Q1 2026</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">D.01</span><span>Differentiator · 差異</span></div>
+          <div class="tile-title">從工具，變成夥伴</div>
+          <p class="tile-body">過去的 Roo.Cash 是「Smart with ease」——聰明的比較工具。現在的 Roo.Cash，把 AI 的智慧用在一件更深的事：<strong>讓你感到被理解、被支持</strong>。</p>
+          <div class="tile-foot"><span>HOW · 怎麼做</span><span>Q1 2026</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">W.01</span><span>What we do · 服務</span></div>
+          <div class="tile-title">四條核心產品線</div>
+          <p class="tile-body">信用卡比較與申辦 · 個人貸款媒合 · 保險方案推薦 · 儲蓄與信用建立工具。每一條，背後都是同一個邏輯：把對的產品，連結到對的人。</p>
+          <div class="tile-foot"><span>WHAT · 做什麼</span><span>Q1 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>03 / 10</span>
+  <span class="glyph">§</span>
+  <span>Audience &amp; Core Values</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 03 AUDIENCE & VALUES ─── -->
+<section class="chapter" id="ch03">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">03<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Audience · 受眾 · 核心價值</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Three</div>
+      <h2 class="chapter-title">我們在跟誰說話，<em>又站在</em> 什麼位置上。</h2>
+      <div class="chapter-deck">
+        <p>Roo.Cash 不只服務「會理財的人」，也服務「想開始但不知道怎麼開始的人」。台灣大多數人不缺金融商品，缺的是一個能在關鍵時刻，給自己一個清楚答案的夥伴。</p>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>四種使用者輪廓</div>
+
+      <div class="tile-grid cols-4 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">P.01</span><span>25–35 歲</span></div>
+          <div class="tile-title">剛起步的年輕族</div>
+          <p class="tile-body">第一張信用卡、第一筆投資。需要被引導，但討厭被說教。</p>
+          <div class="tile-foot"><span>VOICE</span><span>口語、共鳴</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">P.02</span><span>35–50 歲</span></div>
+          <div class="tile-title">正在規劃的中堅族</div>
+          <p class="tile-body">房貸、家庭、退休規劃。重視效率、數據與時間，不要寒暄。</p>
+          <div class="tile-foot"><span>VOICE</span><span>高效、數據</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">P.03</span><span>不分年齡</span></div>
+          <div class="tile-title">有急用的需求族</div>
+          <p class="tile-body">臨時需要一筆錢。重視速度與信任，希望被同理而不是被推銷。</p>
+          <div class="tile-foot"><span>VOICE</span><span>直接、同理</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">P.04</span><span>B2B</span></div>
+          <div class="tile-title">金融合作夥伴</div>
+          <p class="tile-body">銀行、保險公司、信用卡發卡機構。看重精準媒合與品牌信任。</p>
+          <div class="tile-foot"><span>VOICE</span><span>自信、夥伴</span></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>四個核心信念 / Core Values</div>
+
+      <div class="list-rule">
+        <div class="row">
+          <div class="num">01</div>
+          <div>
+            <h3>安心 <span class="ja">Peace of mind</span></h3>
+            <p>每一個功能、每一個推薦、每一句話，都應該降低理財焦慮，而非放大它。我們不會製造急迫感來衝點擊——我們創造清晰感來建立信任。如果有人帶著對金錢的壓力來到 Roo.Cash，離開時應該感到更平靜、更清楚。</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="num">02</div>
+          <div>
+            <h3>懂你 <span class="ja">Understanding</span></h3>
+            <p>AI 不只是處理數據——它在傾聽。我們先了解你的處境、你的目標、你的舒適範圍，然後才給出任何建議。個人化不是一個功能，它是整個基礎。不管是第一次投資的新手，還是經驗豐富的投資人，都值得被真正看見。</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="num">03</div>
+          <div>
+            <h3>誠實 <span class="ja">Honesty</span></h3>
+            <p>我們推薦對你最好的方案，而不是佣金最高的那個。當沒有適合你的產品時，我們直說。當一張卡有隱藏費用時，我們標出來。信任是我們唯一真正的資產，所以我們會全力守護它。</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="num">04</div>
+          <div>
+            <h3>陪伴 <span class="ja">Companionship</span></h3>
+            <p>從你的第一張信用卡，到孩子的教育基金，Roo.Cash 和你一起成長。理財不是一次性的決定，它是一段持續的旅程。其他平台是交易型的，Roo.Cash 是關係型的。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>04 / 10</span>
+  <span class="glyph">§</span>
+  <span>Brand Personality</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 04 PERSONALITY ─── -->
+<section class="chapter alt" id="ch04">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">04<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Personality · 品牌人格</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Four</div>
+      <h2 class="chapter-title">Roo.Cash <em>是一個</em> 什麼樣的「人」。</h2>
+      <div class="chapter-deck">
+        <p>不是銀行櫃員、不是機器人理專、也不是理財網紅。<strong>Roo.Cash 是那個剛好很懂錢的好朋友——</strong>就是那種你半夜猶豫要不要辦信貸時，會傳訊息問他的人，而他總能回你一個清楚、沉穩、真正有用的建議。</p>
+      </div>
+
+      <div class="pullquote">
+        <span class="mark">"</span>
+        <div>
+          <q>就像身邊有一個很懂理財的好朋友，每個決定都不再只靠自己。</q>
+          <div class="attribution">— Brand Promise · 品牌承諾</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>人格四向 / Four Dimensions</div>
+
+      <div class="tile-grid cols-4 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">D.01</span><span>原型</span></div>
+          <div class="tile-title">智慧型夥伴</div>
+          <p class="tile-body">有智慧但從不居高臨下。引導但不強推。知道什麼時候該說話，什麼時候該傾聽。</p>
+          <div class="tile-foot"><span>ARCHETYPE</span><span>The Sage</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">D.02</span><span>能量</span></div>
+          <div class="tile-title">沉穩的自信</div>
+          <p class="tile-body">穩定、不急躁、永遠有時間給你。談錢，不需要讓人有壓力。</p>
+          <div class="tile-foot"><span>ENERGY</span><span>Calm</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">D.03</span><span>智識</span></div>
+          <div class="tile-title">聰明但不費力</div>
+          <p class="tile-body">需要深入時展現深度，但從不炫耀。那種讓事情變簡單的聰明。</p>
+          <div class="tile-foot"><span>INTELLECT</span><span>Effortless</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">D.04</span><span>溫度</span></div>
+          <div class="tile-title">真實的陪伴</div>
+          <p class="tile-body">有同理心但不感傷。理解每一個理財問題背後，都是一個真實的人生。</p>
+          <div class="tile-foot"><span>WARMTH</span><span>Genuine</span></div>
+        </div>
+      </div>
+
+      <div class="tag-row">
+        <span class="tag">洞察</span>
+        <span class="tag">踏實</span>
+        <span class="tag">靈活</span>
+        <span class="tag">可信</span>
+        <span class="tag">賦能於人</span>
+        <span class="tag">溫暖</span>
+      </div>
+
+      <div class="promise-block">
+        <div class="promise-meta"><span class="accent">●</span> BRAND PROMISE — 品牌承諾</div>
+        <div class="promise-h">Roo.Cash 讓你的每一個金錢決定，<em>都做得更安心。</em></div>
+        <div class="promise-sub">這句話，是我們對每一位使用者的承諾，也是我們衡量每一個產品決定的尺。如果一個功能做完，使用者沒有變得更安心，那這個功能就不應該上線。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>05 / 10</span>
+  <span class="glyph">§</span>
+  <span>Voice &amp; Copywriting</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 05 VOICE ─── -->
+<section class="chapter" id="ch05">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">05<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Voice · 語調 · 文案</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Five</div>
+      <h2 class="chapter-title">Roo.Cash <em>怎麼</em> 說話。</h2>
+      <div class="chapter-deck">
+        <p>語調應該像一個沉穩、有見識的朋友，從不對你說教。<strong>溫暖但不裝可愛。聰明但不冷冰冰。專業但不生硬。</strong></p>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>五個語調原則 / Five Principles</div>
+
+      <div class="tile-grid cols-3 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">V.01</span><span>Clarity</span></div>
+          <div class="tile-title">清楚 · 從不複雜化</div>
+          <p class="tile-body">用日常語言溝通。如果某個概念需要專業術語，解釋一次就好，然後繼續。永遠不要用複雜來顯得專業。</p>
+          <div class="tile-foot"><span>RULE</span><span>1 of 5</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">V.02</span><span>Calm</span></div>
+          <div class="tile-title">沉穩 · 從不製造急迫感</div>
+          <p class="tile-body">不用倒數計時器、不喊「限時優惠！」。理財決定值得被尊重，值得有喘息的空間。</p>
+          <div class="tile-foot"><span>RULE</span><span>2 of 5</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">V.03</span><span>Honest</span></div>
+          <div class="tile-title">誠實 · 從不迴避</div>
+          <p class="tile-body">直接說明利弊。「這張卡回饋很好，但年費 $2,000——以下是什麼情況下它划得來。」</p>
+          <div class="tile-foot"><span>RULE</span><span>3 of 5</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">V.04</span><span>Personal</span></div>
+          <div class="tile-title">貼心 · 從不套公式</div>
+          <p class="tile-body">對個人說話。「根據你的消費習慣⋯⋯」而不是「大多數人會⋯⋯」。</p>
+          <div class="tile-foot"><span>RULE</span><span>4 of 5</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">V.05</span><span>Encouraging</span></div>
+          <div class="tile-title">鼓勵 · 從不居高臨下</div>
+          <p class="tile-body">肯定進步但不過度誇獎。「你已經還完 40% 了——照這個速度，三月就能清償。」</p>
+          <div class="tile-foot"><span>RULE</span><span>5 of 5</span></div>
+        </div>
+        <div class="tile" style="background: var(--ink); color: var(--paper);">
+          <div class="tile-head" style="color: rgba(255,255,255,0.5);"><span class="id" style="color: var(--nroo-green-100);">V.SUM</span><span>記住</span></div>
+          <div class="tile-title" style="color: var(--paper); font-family: var(--font-serif); font-weight: 400; font-style: italic; font-size: 22px;">「會講話的人，<br/>是會傾聽的人。」</div>
+          <p class="tile-body" style="color: rgba(255,255,255,0.6);">這五個原則，本質上都是一件事：先聽，再說。</p>
+          <div class="tile-foot" style="border-top-color: rgba(255,255,255,0.16); color: rgba(255,255,255,0.4);"><span>SUMMARY</span><span>Voice 五</span></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>依受眾調整語調 / By Audience</div>
+
+      <div class="tile-grid cols-4 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.01</span><span>25–35</span></div>
+          <div class="tile-title">口語化 · 有共鳴</div>
+          <p class="tile-body">像一個比你早幾年搞懂理財的朋友。<br/><br/><em style="font-family: var(--font-serif); color: var(--ink);">「第一次投資？這是我們會跟朋友說的建議。」</em></p>
+          <div class="tile-foot"><span>YOUNG</span><span>SAMPLE</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.02</span><span>35–50</span></div>
+          <div class="tile-title">高效 · 數據導向</div>
+          <p class="tile-body">尊重他們的時間，直接給洞察。<br/><br/><em style="font-family: var(--font-serif); color: var(--ink);">「你的投資組合配置 vs. 風險屬性——這是差距所在。」</em></p>
+          <div class="tile-foot"><span>MID</span><span>SAMPLE</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.03</span><span>急用</span></div>
+          <div class="tile-title">直接 · 同理心</div>
+          <p class="tile-body">省略寒暄，直奔解決方案。<br/><br/><em style="font-family: var(--font-serif); color: var(--ink);">「這裡有 3 個方案，按核准速度排序。我們一起找最適合的。」</em></p>
+          <div class="tile-foot"><span>URGENT</span><span>SAMPLE</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.04</span><span>B2B</span></div>
+          <div class="tile-title">自信 · 夥伴關係</div>
+          <p class="tile-body">用他們的語言溝通。<br/><br/><em style="font-family: var(--font-serif); color: var(--ink);">「我們的 AI 媒合轉換率，比同業平均高出 23%。」</em></p>
+          <div class="tile-foot"><span>B2B</span><span>SAMPLE</span></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>會說 vs. 絕不會說</div>
+
+      <div class="dodont">
+        <div class="col-do">
+          <div class="col-head"><span>+</span> ROO.CASH 會說</div>
+          <div class="item">「你目前的信用卡組合，每月大概少拿了 $800 回饋。想看看怎麼調整嗎？」</div>
+          <div class="item">「這兩個方案各有優缺點，讓我幫你拆解。」</div>
+          <div class="item">「急用錢的時候，最重要的是看清楚利率跟還款條件。我幫你整理好了。」</div>
+          <div class="item">「你可以先告訴我目前在用哪幾張卡，我幫你比較最划算的。」</div>
+          <div class="item">「這週你進步了 3%，離你想要的生活又更近一步。」</div>
+        </div>
+        <div class="col-dont">
+          <div class="col-head"><span>×</span> ROO.CASH 絕不會說</div>
+          <div class="item">「限時優惠！最強神卡不辦就虧大了！」</div>
+          <div class="item">「只要三步驟，你也能成為理財達人！」</div>
+          <div class="item">「加入我們，打造你的被動收入人生！」</div>
+          <div class="item">「目前無法找到符合條件的方案。」（冰冷的死胡同）</div>
+          <div class="item">「快來看網友都怎麼存錢的 🔥」</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>文案的小規矩</div>
+
+      <div class="tile-grid cols-2 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">C.01</span><span>具體 ＞ 模糊</span></div>
+          <div class="tile-title">數字勝過形容詞</div>
+          <p class="tile-body">寫「年利率最低 <span class="mono" style="color: var(--nroo-orange-120); font-weight:700;">2.05%</span> 起」，不寫「超低利率」。寫「最快 <span class="mono" style="color: var(--nroo-orange-120); font-weight:700;">5 分鐘</span>核貸」，不寫「快速申貸」。</p>
+          <div class="tile-foot"><span>RULE</span><span>Concrete</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">C.02</span><span>動詞 ＞ 名詞</span></div>
+          <div class="tile-title">CTA 簡短、命令式</div>
+          <p class="tile-body">立即申請 · 試算 · 查看全部 · 追蹤 · 比較 · 了解更多。不要寫「立即開始您的理財之旅」這種長句。</p>
+          <div class="tile-foot"><span>RULE</span><span>Verb-led</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">C.03</span><span>標點</span></div>
+          <div class="tile-title">中文全形 · 英文半形</div>
+          <p class="tile-body">中文句子裡是「，。：、！？「」（）」；英文獨立段落才用 <span class="mono">,. ()</span>。小數位數從不省略：寫 2.05%，不寫 2.5%。</p>
+          <div class="tile-foot"><span>RULE</span><span>Punctuation</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">C.04</span><span>稱謂</span></div>
+          <div class="tile-title">叫對方「你」</div>
+          <p class="tile-body">用「你」（informal），不用「您」。Roo.Cash 是朋友，不是金融顧問。指自己時用「Roo.Cash」或「我們」，「我們」用得很節制。</p>
+          <div class="tile-foot"><span>RULE</span><span>Pronoun</span></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>不准用的字。</strong>賦能、閉環、打造、全方位、一站式、極致體驗、智能（用「聰明」或「AI」）、用戶（用「你」或「使用者」）。這些是 deck 用語，不是真人會講的話。
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>06 / 10</span>
+  <span class="glyph">§</span>
+  <span>Logo &amp; Co-Branding</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 06 LOGO ─── -->
+<section class="chapter alt" id="ch06">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">06<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Logo System · 標誌系統</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Six</div>
+      <h2 class="chapter-title">Logo <em>是</em> 袋鼠站姿與字標的<em>組合</em>。</h2>
+      <div class="chapter-deck">
+        <p>袋鼠主體是品牌，字標說明我們是誰。<strong>Logo 的留白比 Logo 本身還重要</strong>——別讓它擠在邊角。</p>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Primary Lockups</div>
+
+      <div class="logo-frame">
+        <div>
+          <img src="assets/logos/roo-cash-horizontal-dark.png" alt="Roo.Cash 深色版">
+          <div class="logo-meta">PRIMARY · ON CREAM / WHITE</div>
+        </div>
+        <div class="dark-bg">
+          <img src="assets/logos/roo-cash-horizontal-white.png" alt="Roo.Cash 白色版">
+          <div class="logo-meta">REVERSE · ON NAVY / DARK</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Usage Rules · 使用規矩</div>
+
+      <div class="dodont">
+        <div class="col-do">
+          <div class="col-head"><span>+</span> 可以這樣做</div>
+          <div class="item">最小尺寸：橫式不小於 <span class="mono" style="font-weight:700;">96px</span> 寬。再小，字標讀不出來。</div>
+          <div class="item">安全留白：以袋鼠 logomark 高度的 <span class="mono" style="font-weight:700;">50%</span> 為基準，四周都留出來。</div>
+          <div class="item">合作 logo 並列：用 <span class="mono" style="font-weight:700;">1px</span> navy 分隔線，兩側留白等距。</div>
+          <div class="item">放在攝影背景上：選對比夠的區域，必要時加 navy 50% 半透明蒙版。</div>
+        </div>
+        <div class="col-dont">
+          <div class="col-head"><span>×</span> 絕對不要</div>
+          <div class="item">換顏色：別把袋鼠塗成 orange，也別漸層化。</div>
+          <div class="item">變形或旋轉：不要拉長、不要傾斜、不要彎曲。</div>
+          <div class="item">加陰影或 3D：扁平就是扁平，不要立體化。</div>
+          <div class="item">把袋鼠拆出來當吉祥物：袋鼠在 Logo 裡是 Logo，不是裝飾物。</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Co-Branding · 共同合作</div>
+
+      <div class="tile-grid cols-3 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">CB.01</span><span>母品牌</span></div>
+          <div class="tile-title">Roo.Cash × Gogolook</div>
+          <p class="tile-body">對外提到母品牌時使用。Roo.Cash 在前，Gogolook 在後，中間以 1px navy 分隔線分開。</p>
+          <div class="tile-foot"><span>PARENT</span><span>Use Often</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">CB.02</span><span>金融夥伴</span></div>
+          <div class="tile-title">Roo.Cash × Bank</div>
+          <p class="tile-body">與銀行合作活動時使用。等比例縮放，視覺重量相當，不偏向任何一方。</p>
+          <div class="tile-foot"><span>PARTNER</span><span>Equal</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">CB.03</span><span>Feature Logo</span></div>
+          <div class="tile-title">Roo Points · Roo Gift</div>
+          <p class="tile-body">子產品專屬標誌。沿用主標誌的字標骨架，後加產品名，永遠不獨立於 Roo.Cash 之外存在。</p>
+          <div class="tile-foot"><span>FEATURE</span><span>Sub-brand</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>07 / 10</span>
+  <span class="glyph">§</span>
+  <span>Color &amp; Typography</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 07 COLOR & TYPE ─── -->
+<section class="chapter" id="ch07">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">07<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Color &amp; Type · 色彩 · 字體</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Seven</div>
+      <h2 class="chapter-title">三色一底，<em>一打開</em> 就被認出來。</h2>
+      <div class="chapter-deck">
+        <p>Navy 是 Roo.Cash 的骨架，Green 是行動，Orange 留給數字，Cream 是大家呼吸的空間。<strong>不要再加第五個顏色。</strong>真的需要的時候，先回來看這一頁。</p>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Palette · 使用比例</div>
+
+      <div class="palette-mosaic">
+        <div class="palette-cell navy">
+          <div>
+            <div class="pc-id">PRIMARY · 01</div>
+            <div class="pc-name">Navy</div>
+          </div>
+          <div>
+            <div class="pc-use">主文字 · Logo · 深色背景<br/>H1 / H2 標題</div>
+            <div style="display:flex; justify-content:space-between; margin-top:12px;">
+              <div class="pc-hex">#112858</div>
+              <div class="pc-share">≈ 45%</div>
+            </div>
+          </div>
+        </div>
+        <div class="palette-cell green">
+          <div>
+            <div class="pc-id">ACTION · 02</div>
+            <div class="pc-name">Green</div>
+          </div>
+          <div>
+            <div class="pc-use">所有主要 CTA<br/>Hover → #14A571</div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px;">
+              <div class="pc-hex">#00E0A0</div>
+              <div class="pc-share">≈ 12%</div>
+            </div>
+          </div>
+        </div>
+        <div class="palette-cell orange">
+          <div>
+            <div class="pc-id">ACCENT · 03</div>
+            <div class="pc-name">Orange</div>
+          </div>
+          <div>
+            <div class="pc-use">數字 · 利率 · 凸顯</div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px;">
+              <div class="pc-hex">#D84421</div>
+              <div class="pc-share">≈ 5%</div>
+            </div>
+          </div>
+        </div>
+        <div class="palette-cell cream" style="grid-column: span 2;">
+          <div>
+            <div class="pc-id">CANVAS · 04</div>
+            <div class="pc-name">Cream</div>
+          </div>
+          <div>
+            <div class="pc-use">頁面底色 · 呼吸的空間。純白（#FFFFFF）只留給卡片內容。</div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px;">
+              <div class="pc-hex">#F8F8F8 / #FBFAF6</div>
+              <div class="pc-share">≈ 38%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>數字的 Orange 規矩。</strong>整段文字都是 navy 的時候，數字用 orange 一個字、一個字地凸顯：<span style="font-family:var(--font-serif); color: var(--ink);">「已幫 <span class="mono" style="color: var(--nroo-orange-120); font-weight: 700;">120,000+</span> 位用戶媒合最佳方案」</span>——文字 navy，數字 orange。整塊變色就過頭了。
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Glyph Feature · 主字體實演</div>
+
+      <div class="glyph-feature">
+        <div class="glyph">袋</div>
+        <div class="glyph-meta">
+          <div class="gm-row"><div class="gm-key">Family</div><div class="gm-val">Noto Sans TC</div></div>
+          <div class="gm-row"><div class="gm-key">Weight</div><div class="gm-val">Bold · 700</div></div>
+          <div class="gm-row"><div class="gm-key">Size</div><div class="gm-val">240px · -0.04em</div></div>
+          <div class="gm-row"><div class="gm-key">Use</div><div class="gm-val">所有中文 Heading 與 Body</div></div>
+          <div class="gm-row"><div class="gm-key">Stack</div><div class="gm-val">Noto Sans TC, PingFang TC</div></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Type Stack · 字體層級</div>
+
+      <div class="specimen">
+        <div class="specimen-row">
+          <div class="label">FAM.01<span class="name">Noto Sans TC</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-weight: 700; font-size: 32px; color: var(--ink);">袋鼠金融，陪你做每一個決定。</div>
+          <div class="meta">PRIMARY · CJK<br/>400 / 500 / 700<br/>Local TTF · Variable</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">FAM.02<span class="name">Roboto Condensed</span></div>
+          <div class="demo" style="font-family: var(--font-mono); font-weight: 300; font-size: 56px; color: var(--nroo-orange-120); letter-spacing: -0.02em;">2.05% · 120,000+</div>
+          <div class="meta">NUMERIC<br/>300 Light<br/>Google Fonts</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">FAM.03<span class="name">JetBrains Mono</span></div>
+          <div class="demo" style="font-family: var(--font-mono); font-weight: 500; font-size: 22px; color: var(--ink); letter-spacing: 0.04em;">— Chapter 07 / Color &amp; Type</div>
+          <div class="meta">MICRO-LABEL · UI<br/>400 / 500 / 700<br/>Eyebrow · Folio · Mono</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">FAM.04<span class="name">Fraunces Display</span></div>
+          <div class="demo" style="font-family: var(--font-serif); font-weight: 400; font-style: italic; font-size: 32px; color: var(--ink); letter-spacing: -0.01em;">a partner who knows you</div>
+          <div class="meta">DISPLAY (EN) · ITALIC<br/>400 / 600<br/>For headlines &amp; pull quotes</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">FAM.05<span class="name">PingFang TC</span></div>
+          <div class="demo" style="font-family: 'PingFang TC', sans-serif; font-weight: 400; font-size: 22px; color: var(--ink-soft);">系統備援字體 · 不主動指定</div>
+          <div class="meta">FALLBACK · APPLE<br/>System default<br/>Auto-loaded on iOS / macOS</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Scale · 行高 1.75 是品牌指紋</div>
+
+      <div class="specimen">
+        <div class="specimen-row">
+          <div class="label">SC.H1<span class="name">64px / 100%</span></div>
+          <div class="demo" style="font-family: var(--font-serif); font-size: 48px; font-weight: 400; color: var(--ink); line-height: 1; letter-spacing: -0.02em;">找到最適合你的方案</div>
+          <div class="meta">頁面唯一主標<br/>每個畫面只有一個</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">SC.H2<span class="name">40px / 100%</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-size: 32px; font-weight: 700; color: var(--ink); line-height: 1.1;">每月還款大概是這樣</div>
+          <div class="meta">section 標題</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">SC.B1<span class="name">16px / 1.75</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-size: 16px; font-weight: 400; color: var(--ink); line-height: 1.75;">這是 Roo.Cash 的標準內文。1.75 行高給中文字段呼吸的空間，這是我們最重要的視覺指紋之一，請保留。</div>
+          <div class="meta">所有正文段落<br/>28 / 16 ＝ 1.75</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">SC.C1<span class="name">12px / 18px</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-size: 14px; font-weight: 400; color: var(--ink-quiet);">※ 每月還款金額只是試算，實際以銀行核定為準。</div>
+          <div class="meta">附註 · disclaimer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>08 / 10</span>
+  <span class="glyph">§</span>
+  <span>Iconography · Mascot · Illustration</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 08 ICON · MASCOT · ILLUSTRATION ─── -->
+<section class="chapter alt" id="ch08">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">08<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Icon · Mascot · Illustration</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Eight</div>
+      <h2 class="chapter-title">圖像分三層：<em>功能</em> · <em>情緒</em> · <em>故事</em>。</h2>
+      <div class="chapter-deck">
+        <p><strong>圖標</strong>負責功能、<strong>吉祥物 Roo</strong>負責情緒、<strong>插畫</strong>負責說故事。三者風格上必須是同一家人——一樣的線條、一樣的圓角、一樣不裝可愛。</p>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Iconography · 24×24 outline · stroke 1.5</div>
+
+      <div class="icon-grid-frame">
+        <div class="icon-meta">
+          <span>ICON · OUTLINE · 24px</span>
+          <span>Stroke 1.5–1.75 · Round caps</span>
+        </div>
+        <div class="icons">
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><line x1="3" y1="11" x2="21" y2="11"/></svg></div>
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r=".5" fill="currentColor"/></svg></div>
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div>
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></div>
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></div>
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Mascot Roo · 吉祥物</div>
+
+      <p style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-quiet); letter-spacing: 0.04em; margin: 16px 0;">— v1 placeholder direction · final art TBD by illustrator</p>
+
+      <div class="mascot-gallery">
+        <div class="mascot-meta">
+          <span>MASCOT · 4 CANONICAL POSES</span>
+          <span class="v">▲ V1 · Geometric Draft</span>
+        </div>
+        <div class="mascot-poses">
+          <div class="pose-tile">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
+              <!-- tail -->
+              <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <!-- body -->
+              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
+              <!-- pouch -->
+              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
+              <!-- legs -->
+              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <!-- head -->
+              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
+              <!-- ears -->
+              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <!-- snout -->
+              <path d="M60 38 Q66 40 68 46" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <!-- eye -->
+              <circle cx="55" cy="36" r="1.8" fill="#112858"/>
+              <!-- nose -->
+              <circle cx="69" cy="46" r="1.5" fill="#112858"/>
+            </svg>
+            <div class="pose-id">POSE.01</div>
+            <div class="pose-name">Idle · 待機</div>
+            <div class="pose-desc">預設站姿。歡迎、空狀態、404。</div>
+          </div>
+          <div class="pose-tile">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
+              <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
+              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
+              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
+              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <path d="M60 38 Q66 40 68 46" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <circle cx="55" cy="36" r="1.8" fill="#112858"/>
+              <circle cx="69" cy="46" r="1.5" fill="#112858"/>
+              <!-- pointing arm -->
+              <path d="M88 78 L114 60" stroke="#112858" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+              <circle cx="114" cy="60" r="3.5" fill="#D84421"/>
+              <circle cx="114" cy="60" r="6" stroke="#D84421" stroke-width="1" fill="none" opacity="0.4"/>
+            </svg>
+            <div class="pose-id">POSE.02</div>
+            <div class="pose-name">Pointing · 引導</div>
+            <div class="pose-desc">指向重點。tooltip、教學、新功能。</div>
+          </div>
+          <div class="pose-tile">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
+              <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
+              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
+              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <path d="M60 14 Q42 14 42 34 Q42 50 60 52 Q78 50 78 34 Q78 14 60 14 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
+              <path d="M48 18 Q42 4 50 0 Q53 8 52 18" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <path d="M72 18 Q78 4 70 0 Q67 8 68 18" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <!-- happy eyes (curves) -->
+              <path d="M50 32 Q53 28 56 32" stroke="#112858" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M64 32 Q67 28 70 32" stroke="#112858" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <!-- big smile -->
+              <path d="M52 42 Q60 50 68 42" stroke="#112858" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <!-- raised arms -->
+              <path d="M30 70 L18 50" stroke="#112858" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+              <path d="M90 70 L102 50" stroke="#112858" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+              <!-- celebration sparks -->
+              <path d="M14 42 L18 50 L22 42" stroke="#D84421" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <path d="M98 42 L102 50 L106 42" stroke="#D84421" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <circle cx="14" cy="38" r="1.5" fill="#D84421"/>
+              <circle cx="106" cy="38" r="1.5" fill="#D84421"/>
+            </svg>
+            <div class="pose-id">POSE.03</div>
+            <div class="pose-name">Cheering · 慶祝</div>
+            <div class="pose-desc">完成目標、還款進度、成功時刻。</div>
+          </div>
+          <div class="pose-tile">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
+              <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
+              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
+              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
+              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <path d="M60 38 Q66 40 68 46" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <circle cx="55" cy="36" r="1.8" fill="#112858"/>
+              <!-- thinking mouth (small line) -->
+              <path d="M62 47 L70 47" stroke="#112858" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+              <!-- thought bubble -->
+              <circle cx="96" cy="22" r="14" stroke="#112858" stroke-width="1.6" fill="#FBFAF6" stroke-dasharray="3 3"/>
+              <text x="96" y="27" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#D84421" font-weight="700">?</text>
+              <circle cx="84" cy="38" r="2" stroke="#112858" stroke-width="1" fill="#FBFAF6"/>
+              <circle cx="80" cy="44" r="1" stroke="#112858" stroke-width="1" fill="#FBFAF6"/>
+            </svg>
+            <div class="pose-id">POSE.04</div>
+            <div class="pose-name">Thinking · 推薦中</div>
+            <div class="pose-desc">AI 計算、媒合中、載入推薦結果。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dodont">
+        <div class="col-do">
+          <div class="col-head"><span>+</span> Roo 可以這樣用</div>
+          <div class="item">空狀態、首次體驗、教學提示。</div>
+          <div class="item">完成里程碑時的慶祝動畫（小幅，250ms 內）。</div>
+          <div class="item">最小尺寸 48px，最大不超過 240px。</div>
+          <div class="item">永遠在 cream 或白色背景上。深色背景時，外輪廓改為白色。</div>
+        </div>
+        <div class="col-dont">
+          <div class="col-head"><span>×</span> Roo 絕對不</div>
+          <div class="item">旋轉超過 15°、被拉長、被壓扁。</div>
+          <div class="item">在功能性 UI 裡取代圖標（icon 跟 mascot 是兩件事）。</div>
+          <div class="item">變成 emoji 風（眼睛變愛心、貼貼紙）。</div>
+          <div class="item">疊在攝影或複雜背景上，沒有 cream 底襯。</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Illustration · 插畫</div>
+      <div class="callout">
+        插畫只在說故事的時候出現——空狀態、活動頁、教學流程。<strong>單線 navy 線稿</strong>為主，必要時 green 作為單色強調，不用漸層、不用陰影、不用三色以上。情境取材自台灣日常：機車、便當、夜市、發票、捷運悠遊卡——<strong>不要矽谷感的男女握手插圖。</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>09 / 10</span>
+  <span class="glyph">§</span>
+  <span>Photo · Data · Infographic · KV · Motion</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 09 VISUAL LANGUAGE ─── -->
+<section class="chapter" id="ch09">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">09<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Visual Language · 視覺語言</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Nine</div>
+      <h2 class="chapter-title">會動的、會講話的，<em>都要</em> 克制。</h2>
+      <div class="chapter-deck">
+        <p>這一章是把所有「會動的、會講話的」視覺元素，整理成一套可以反覆使用的工具。<strong>核心原則只有一句：克制。</strong>這是一個金融產品，使用者要的是清楚，不是炫技。</p>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Photography · 攝影</div>
+
+      <div class="tile-grid cols-2 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">PH.01</span><span>用法</span></div>
+          <div class="tile-title">產品實拍 · 無濾鏡</div>
+          <p class="tile-body">信用卡卡面、銀行 logo 都用真實品牌色，無濾鏡、無 B&W、無冷暖調。卡面放在白底上，邊緣有 4–6px 圓角。</p>
+          <div class="tile-foot"><span>RULE</span><span>Faithful</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">PH.02</span><span>禁用</span></div>
+          <div class="tile-title">不要用大頭照當背景</div>
+          <p class="tile-body">不用「微笑亞洲女性看著手機」這類 stock photo。攝影只當被框起來的卡片內容物，不當底圖。</p>
+          <div class="tile-foot"><span>RULE</span><span>No Stock</span></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Data Visualization · 資料圖表</div>
+
+      <div class="viz-frame">
+        <div class="viz-head">
+          <h3>各家銀行年利率比較</h3>
+          <div class="meta">FIG.01 · ANNUAL RATE<br/>Source: Roo.Cash, Q1 2026</div>
+        </div>
+        <div class="viz-bar-row">
+          <div class="name">A 銀行</div>
+          <div class="bar-track"><div class="bar-fill highlight" style="width: 35%;"></div></div>
+          <div class="num highlight">2.05%</div>
+        </div>
+        <div class="viz-bar-row">
+          <div class="name">B 銀行</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 50%;"></div></div>
+          <div class="num">2.88%</div>
+        </div>
+        <div class="viz-bar-row">
+          <div class="name">C 銀行</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 65%;"></div></div>
+          <div class="num">3.42%</div>
+        </div>
+        <div class="viz-bar-row">
+          <div class="name">D 銀行</div>
+          <div class="bar-track"><div class="bar-fill" style="width: 80%;"></div></div>
+          <div class="num">4.15%</div>
+        </div>
+        <div class="viz-source">※ 最低利率以 orange 凸顯，其餘維持 navy/grey。資料來源：Roo.Cash 媒合資料庫，更新於 2026-Q1。</div>
+      </div>
+
+      <div class="bignum">
+        <div class="figure">23<span class="small">%</span></div>
+        <div class="caption">
+          <div class="lbl">FIG.02 · CONVERSION LIFT</div>
+          <div class="desc">我們的 AI 媒合轉換率，<br/>比同業平均高出 23 個百分點。</div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>圖表規矩：一張圖只有一個重點。</strong>用 orange 標出「最划算」「最快」「最低」。其餘資料維持 navy 或 grey。每張圖都要有 ※ 開頭的小字說明資料來源與時間。軸線：1px navy。背景格線：盡量不畫；如果一定要，用 grey-20。圖例：放圖標題下方，不要塞圖內。
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Key Visual · 主視覺結構</div>
+
+      <div class="tile-grid cols-3 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">KV.01</span><span>結構</span></div>
+          <div class="tile-title">navy 上半 + cream 下半</div>
+          <p class="tile-body">主標題、Roo 吉祥物在 navy 上半。CTA 與支持文字落在 cream 下半。經典的 hero 結構。</p>
+          <div class="tile-foot"><span>HERO</span><span>Classic</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">KV.02</span><span>結構</span></div>
+          <div class="tile-title">cream 全幅 + 大數字</div>
+          <p class="tile-body">整版 cream 底，中央放一個 orange 巨大數字（num-xl，100px+），下方一句 navy 標題。年度活動、白皮書封面。</p>
+          <div class="tile-foot"><span>EDITORIAL</span><span>Bignum</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">KV.03</span><span>結構</span></div>
+          <div class="tile-title">並排兩欄敘事</div>
+          <p class="tile-body">左欄文字、右欄產品卡片或 Roo 吉祥物。常見於 landing page 與 email 頭。比例 1.2 : 1。</p>
+          <div class="tile-foot"><span>LANDING</span><span>2-Col</span></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Motion · 動態</div>
+
+      <div class="dodont">
+        <div class="col-do">
+          <div class="col-head"><span>+</span> 可以這樣動</div>
+          <div class="item">淡入與小幅位移，200–250ms，ease-out。</div>
+          <div class="item">CTA hover：green 加深成 #14A571。</div>
+          <div class="item">Card hover：陰影加深一級，不浮起。</div>
+          <div class="item">Roo cheering 的小幅彈一下，250ms 內。</div>
+        </div>
+        <div class="col-dont">
+          <div class="col-head"><span>×</span> 絕對不要這些</div>
+          <div class="item">parallax 視差捲動。</div>
+          <div class="item">全螢幕影片背景。</div>
+          <div class="item">Hero 自動輪播。</div>
+          <div class="item">Spring 彈跳、彈性、撒花慶祝。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-divider">
+  <span class="rule"></span>
+  <span>10 / 10</span>
+  <span class="glyph">§</span>
+  <span>Brand Applications &amp; Assets</span>
+  <span class="rule"></span>
+</div>
+
+<!-- ─── 10 APPLICATIONS ─── -->
+<section class="chapter alt" id="ch10">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">10<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
+      <div class="meta">Applications &amp; Assets · 應用</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">— Chapter Ten</div>
+      <h2 class="chapter-title">從一張卡片<em>到</em> 一張海報，<em>這樣放就對。</em></h2>
+      <div class="chapter-deck">
+        <p>把前面九章的規矩整合起來，看看實際應用在常見的觸點上會是什麼樣子。<strong>這裡示範的是基本款，照這個邏輯往外延伸都可以。</strong></p>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Application Specimens</div>
+
+      <div class="mock-grid">
+        <div class="mock">
+          <div class="mock-frame-head"><span class="id">SPEC.01</span><span>App Hero</span></div>
+          <div class="mock-canvas navy">
+            <div class="mock-h">找到最適合你的<br/>信用卡 &amp; 個人貸款</div>
+            <div class="mock-body">已幫 <span class="num">120,000+</span> 位用戶媒合最佳方案。</div>
+            <span class="mock-cta">立即比較 →</span>
+          </div>
+        </div>
+        <div class="mock">
+          <div class="mock-frame-head"><span class="id">SPEC.02</span><span>EDM</span></div>
+          <div class="mock-canvas paper">
+            <div class="mock-h">這個月，你<br/>少拿了 <span class="num">$800</span> 回饋。</div>
+            <div class="mock-body">我們看了一下你的消費習慣，幫你選了三張更划算的卡。要不要看看？</div>
+            <span class="mock-cta">看看推薦 →</span>
+          </div>
+        </div>
+        <div class="mock">
+          <div class="mock-frame-head"><span class="id">SPEC.03</span><span>Social</span></div>
+          <div class="mock-canvas paper">
+            <div class="mock-body">利率被悄悄調整，你發現了嗎？這個月有 5 家銀行更新了個貸條件。</div>
+            <div class="mock-bignum">2.05%</div>
+            <div class="mock-cap">本月最低年利率</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>By Surface · 各觸點規矩</div>
+
+      <div class="tile-grid cols-3 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">S.01</span><span>App / Web</span></div>
+          <div class="tile-title">產品介面</div>
+          <p class="tile-body">Header 72–80px，mobile bottom-tab 56px。最大內容寬 1200–1280px。Section 之間 desktop 120px / mobile 60–80px。CTA 用 primary green，radius 16。</p>
+          <div class="tile-foot"><span>SURFACE</span><span>Product</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">S.02</span><span>Email</span></div>
+          <div class="tile-title">標題行有名字</div>
+          <p class="tile-body">主旨「Hi {name}，這個月幫你算了一下」勝過「最新優惠通知」。Email 內最多一個 CTA。文末留白比文字更重要。</p>
+          <div class="tile-foot"><span>SURFACE</span><span>EDM</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">S.03</span><span>Social · Ads</span></div>
+          <div class="tile-title">大數字 + 一句話</div>
+          <p class="tile-body">「2.05%」配「本月最低年利率」配「立即比較」。9:16 直幅與 1:1 方版兩種比例優先，FB 1.91:1 為次。</p>
+          <div class="tile-foot"><span>SURFACE</span><span>Social</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">S.04</span><span>Event</span></div>
+          <div class="tile-title">navy 主視覺 + 大數字</div>
+          <p class="tile-body">展場、實體傳單。整版 navy 配 cream，唯一強調色是 orange 數字。Logo 一律放右下，留白以 logomark 高度的 50% 為準。</p>
+          <div class="tile-foot"><span>SURFACE</span><span>Offline</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">S.05</span><span>B2B</span></div>
+          <div class="tile-title">數據先行的簡報</div>
+          <p class="tile-body">對銀行夥伴提案時，封面就是一個 num-xl 的轉換率數字。「我們的 AI 媒合轉換率比同業平均高出 23%」勝過「我們提供精準媒合服務」。</p>
+          <div class="tile-foot"><span>SURFACE</span><span>Pitch</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">S.06</span><span>Internal</span></div>
+          <div class="tile-title">提案 / 文件 / 簡報</div>
+          <p class="tile-body">Word / Slide / Notion 都用同一個 token：navy heading、cream 底、orange 數字。對外與對內的視覺語言一致，是品牌力最便宜的累積方式。</p>
+          <div class="tile-foot"><span>SURFACE</span><span>Doc</span></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Assets Library · 素材庫</div>
+
+      <div class="tile-grid cols-3 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.01</span><span>下載</span></div>
+          <div class="tile-title">Logo 套組</div>
+          <p class="tile-body">橫式（深色版／白色版）· Logomark 單獨袋鼠 · Roo.Cash × Gogolook 共同版。PNG / SVG / AI 三種格式。</p>
+          <div class="tile-foot"><span>ZIP · 4.2MB</span><span>↓ Download</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.02</span><span>下載</span></div>
+          <div class="tile-title">字體</div>
+          <p class="tile-body">Noto Sans TC（variable，本地檔案）· Roboto Condensed（Google Fonts CDN）· IBM Plex Sans（Google Fonts CDN）· JetBrains Mono。</p>
+          <div class="tile-foot"><span>TTF · 1.8MB</span><span>↓ Download</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.03</span><span>下載</span></div>
+          <div class="tile-title">色彩 Token</div>
+          <p class="tile-body"><span class="mono">colors_and_type.css</span> · Figma Library · Sketch palette · iOS / Android XML。</p>
+          <div class="tile-foot"><span>CSS · 5KB</span><span>↓ Download</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.04</span><span>下載</span></div>
+          <div class="tile-title">圖標庫</div>
+          <p class="tile-body">24×24 SVG outline · 1.5–1.75px stroke · navy / green 兩個變體。生產用請從 Figma <span class="mono">/Icons</span> 取真實檔案。</p>
+          <div class="tile-foot"><span>SVG · 320KB</span><span>↓ Download</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.05</span><span>下載</span></div>
+          <div class="tile-title">吉祥物 Roo</div>
+          <p class="tile-body">四個基本姿勢（idle / pointing / cheering / thinking）· SVG 與 Lottie 兩種版本。</p>
+          <div class="tile-foot"><span>SVG + JSON</span><span>↓ Download</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">A.06</span><span>下載</span></div>
+          <div class="tile-title">模板</div>
+          <p class="tile-body">App / EDM / 社群（IG 9:16, FB 1:1）· Slide deck（內部與對外兩版）· 活動主視覺。Figma + Keynote + Google Slides。</p>
+          <div class="tile-foot"><span>FIG · KEY</span><span>↓ Download</span></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>有疑問？</strong>品牌相關問題請聯絡 Brand Team（Slack <span class="mono">#brand-roocash</span>）。要使用 Logo 在公開場合請先送審，不確定的話寄一封信給我們，比事後撤稿快很多。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COLOPHON ─── -->
+<footer class="colophon">
+  <div class="colophon-inner">
+    <div>
+      <img src="assets/logos/roo-cash-horizontal-white.png" alt="Roo.Cash">
+      <p>Roo.Cash 袋鼠金融，是 Gogolook 旗下的個人理財媒合服務。我們把信用卡、個人貸款、保險、儲蓄與信用建立等產品，整合在一個地方，幫助你做出更安心的金錢決定。</p>
+    </div>
+    <div>
+      <h5>Foundation</h5>
+      <ul>
+        <li><span class="marker">01.</span>品牌故事</li>
+        <li><span class="marker">02.</span>使命定位</li>
+        <li><span class="marker">03.</span>受眾與價值</li>
+        <li><span class="marker">04.</span>品牌人格</li>
+        <li><span class="marker">05.</span>語調文案</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Visual</h5>
+      <ul>
+        <li><span class="marker">06.</span>標誌系統</li>
+        <li><span class="marker">07.</span>色彩字體</li>
+        <li><span class="marker">08.</span>圖像系統</li>
+        <li><span class="marker">09.</span>視覺語言</li>
+        <li><span class="marker">10.</span>應用素材</li>
+      </ul>
+    </div>
+    <div>
+      <h5>Colophon</h5>
+      <ul>
+        <li><span class="marker">SET</span>Noto Sans TC</li>
+        <li><span class="marker">DSP</span>Fraunces Italic</li>
+        <li><span class="marker">NUM</span>Roboto Condensed</li>
+        <li><span class="marker">UI</span>JetBrains Mono</li>
+        <li><span class="marker">PRINT</span>於 2026 春季</li>
+      </ul>
+    </div>
+  </div>
+  <div class="colophon-meta">
+    <span>ROO.CASH · 2026 BRAND GUIDELINE · ISSUE 01 · V1 DRAFT</span>
+    <span>內部使用 · 對外引用前請聯絡 Brand Team · #brand-roocash</span>
+  </div>
+</footer>
+
+<script>
+// Scroll progress bar
+(function() {
+  const bar = document.getElementById('progress');
+  const update = () => {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+    bar.style.width = (scrolled * 100) + '%';
+  };
+  document.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+
+</body>
+</html>
