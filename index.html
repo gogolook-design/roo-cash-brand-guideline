@@ -7,11 +7,12 @@
 <link rel="stylesheet" href="styles/colors_and_type.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', monospace;
-  --font-serif: 'Fraunces', 'Noto Serif TC', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  --font-serif: 'Newsreader', 'Noto Serif TC', 'Songti TC', serif;
+  --font-serif-cjk: 'Noto Serif TC', 'Songti TC', 'Source Han Serif TC', serif;
   --hair: rgba(17, 40, 88, 0.12);
   --hair-strong: rgba(17, 40, 88, 0.22);
   --paper: #FBFAF6;
@@ -169,17 +170,19 @@ a { color: inherit; text-decoration: none; }
   align-items: end;
 }
 .hero-headline {
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-family: var(--font-serif-cjk);
+  font-weight: 500;
   font-size: clamp(48px, 7vw, 88px);
-  line-height: 1.02;
-  letter-spacing: -0.025em;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
   color: var(--ink);
 }
 .hero-headline em {
+  font-family: var(--font-serif);
   font-style: italic;
   font-weight: 300;
   color: var(--ink-soft);
+  font-feature-settings: "ss01" 1;
 }
 .hero-headline .accent {
   font-style: normal;
@@ -394,16 +397,16 @@ section.chapter.alt { background: var(--paper-2); }
   margin-bottom: 12px;
 }
 .chapter-title {
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-family: var(--font-serif-cjk);
+  font-weight: 500;
   font-size: clamp(36px, 4.4vw, 56px);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   color: var(--ink);
   margin-bottom: 12px;
-  max-width: 18ch;
+  max-width: 20ch;
 }
-.chapter-title em { font-style: italic; font-weight: 300; color: var(--ink-soft); }
+.chapter-title em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--ink-soft); }
 .chapter-deck {
   font-size: 17px; line-height: 1.75;
   color: var(--ink-soft);
@@ -532,13 +535,13 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   letter-spacing: -0.02em;
 }
 .list-rule .row h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif-cjk);
   font-weight: 600;
   font-size: 28px;
-  line-height: 1.2;
+  line-height: 1.3;
   color: var(--ink);
   margin-bottom: 12px;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 .list-rule .row h3 .ja {
   display: inline-block;
@@ -576,11 +579,11 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   font-style: italic;
 }
 .pullquote q {
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-family: var(--font-serif-cjk);
+  font-weight: 500;
   font-size: clamp(28px, 3vw, 40px);
-  line-height: 1.25;
-  letter-spacing: -0.015em;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   color: var(--ink);
   display: block;
   quotes: none;
@@ -615,13 +618,13 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 }
 .promise-block .promise-meta .accent { color: var(--nroo-green-100); }
 .promise-block .promise-h {
-  font-family: var(--font-serif); font-weight: 400;
+  font-family: var(--font-serif-cjk); font-weight: 500;
   font-size: clamp(28px, 3.4vw, 40px);
-  line-height: 1.2;
-  letter-spacing: -0.015em;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   margin-bottom: 16px;
 }
-.promise-block .promise-h em { font-style: italic; color: var(--nroo-green-100); }
+.promise-block .promise-h em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--nroo-green-100); }
 .promise-block .promise-sub {
   font-size: 15px; color: rgba(255,255,255,0.62);
   max-width: 600px; line-height: 1.85;
@@ -809,6 +812,113 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   flex-shrink: 0;
 }
 .glyph-feature .gm-row .gm-val { color: var(--ink); font-size: 13px; }
+
+/* ─── DUAL GLYPH (serif vs sans face comparison) ─── */
+.dual-glyph {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--hair);
+  margin: 24px 0;
+}
+.dual-cell {
+  padding: 0;
+  display: flex; flex-direction: column;
+  border-right: 1px solid var(--hair);
+}
+.dual-cell:last-child { border-right: none; }
+.dual-meta {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--hair);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.dual-meta .ll { color: var(--nroo-green-120); }
+.dual-glyph-char {
+  font-size: 280px;
+  line-height: 0.85;
+  text-align: center;
+  padding: 48px 0 56px;
+  color: var(--ink);
+  letter-spacing: -0.04em;
+  background:
+    linear-gradient(to right, var(--hair) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hair) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: center;
+  background-color: var(--paper);
+}
+.dual-glyph-char.serif { font-family: var(--font-serif-cjk); font-weight: 600; }
+.dual-glyph-char.sans { font-family: var(--font-cjk); font-weight: 700; }
+.dual-foot {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px 16px;
+  padding: 24px;
+  border-top: 1px solid var(--hair);
+  font-size: 13px;
+  font-family: var(--font-cjk);
+}
+.dual-foot .df-key {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  align-self: baseline;
+}
+.dual-foot .df-val {
+  font-size: 13px; color: var(--ink); font-weight: 500;
+  line-height: 1.6;
+}
+
+/* ─── ALTERNATIVES ─── */
+.alt-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--hair);
+  margin: 24px 0;
+}
+.alt-card {
+  padding: 24px;
+  border-right: 1px solid var(--hair);
+  display: flex; flex-direction: column; gap: 16px;
+}
+.alt-card:last-child { border-right: none; }
+.alt-tag {
+  align-self: flex-start;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  letter-spacing: 0.16em;
+  padding: 4px 10px;
+  text-transform: uppercase;
+}
+.alt-h {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--hair);
+}
+.alt-stack {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hair);
+  min-height: 100px;
+}
+.alt-desc {
+  font-size: 13px; line-height: 1.75;
+  color: var(--ink-soft);
+}
+.alt-desc strong { color: var(--ink); font-weight: 700; }
+@media (max-width: 1080px) {
+  .dual-glyph { grid-template-columns: 1fr; }
+  .dual-cell { border-right: none; border-bottom: 1px solid var(--hair); }
+  .dual-cell:last-child { border-bottom: none; }
+  .dual-glyph-char { font-size: 200px; padding: 32px 0; }
+  .alt-grid { grid-template-columns: 1fr; }
+  .alt-card { border-right: none; border-bottom: 1px solid var(--hair); }
+  .alt-card:last-child { border-bottom: none; }
+}
 
 /* ─── DATA VIZ (FT-style) ─── */
 .viz-frame {
@@ -1280,15 +1390,15 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   margin-bottom: 12px;
 }
 .gate-h {
-  font-family: var(--font-serif);
-  font-weight: 400;
+  font-family: var(--font-serif-cjk);
+  font-weight: 500;
   font-size: 32px;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   color: var(--ink);
   margin-bottom: 8px;
 }
-.gate-h em { font-style: italic; color: var(--ink-soft); }
+.gate-h em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--ink-soft); }
 .gate-sub {
   font-family: var(--font-cjk);
   font-size: 14px; line-height: 1.75;
@@ -2091,46 +2201,91 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
         <strong>數字的 Orange 規矩。</strong>整段文字都是 navy 的時候，數字用 orange 一個字、一個字地凸顯：<span style="font-family:var(--font-serif); color: var(--ink);">「已幫 <span class="mono" style="color: var(--nroo-orange-120); font-weight: 700;">120,000+</span> 位用戶媒合最佳方案」</span>——文字 navy，數字 orange。整塊變色就過頭了。
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Glyph Feature · 主字體實演</div>
+      <div class="subhead h-section"><span class="dash"></span>The Pairing · 雙主字體並置</div>
 
-      <div class="glyph-feature">
-        <div class="glyph">袋</div>
-        <div class="glyph-meta">
-          <div class="gm-row"><div class="gm-key">Family</div><div class="gm-val">Noto Sans TC</div></div>
-          <div class="gm-row"><div class="gm-key">Weight</div><div class="gm-val">Bold · 700</div></div>
-          <div class="gm-row"><div class="gm-key">Size</div><div class="gm-val">240px · -0.04em</div></div>
-          <div class="gm-row"><div class="gm-key">Use</div><div class="gm-val">所有中文 Heading 與 Body</div></div>
-          <div class="gm-row"><div class="gm-key">Stack</div><div class="gm-val">Noto Sans TC, PingFang TC</div></div>
+      <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
+        Roo.Cash 用兩套中文字體形成對話：<strong style="color: var(--ink);">思源宋體</strong>負責標題與引言，給人一份報導的份量；<strong style="color: var(--ink);">思源黑體（Noto Sans TC）</strong>負責內文與資料，把訊息清楚地傳出去。一個是聲音，另一個是內容。
+      </p>
+
+      <div class="dual-glyph">
+        <div class="dual-cell">
+          <div class="dual-meta">
+            <span>FACE.01 · DISPLAY</span>
+            <span class="ll">SERIF</span>
+          </div>
+          <div class="dual-glyph-char serif">袋</div>
+          <div class="dual-foot">
+            <div class="df-key">Family</div><div class="df-val">Noto Serif TC · 思源宋體</div>
+            <div class="df-key">Weight</div><div class="df-val">500 Medium · 600 Semibold</div>
+            <div class="df-key">Use</div><div class="df-val">標題 · 引言 · Pull Quote</div>
+            <div class="df-key">Voice</div><div class="df-val">沉穩、有重量、可信</div>
+          </div>
+        </div>
+        <div class="dual-cell">
+          <div class="dual-meta">
+            <span>FACE.02 · TEXT</span>
+            <span class="ll">SANS</span>
+          </div>
+          <div class="dual-glyph-char sans">袋</div>
+          <div class="dual-foot">
+            <div class="df-key">Family</div><div class="df-val">Noto Sans TC · 思源黑體</div>
+            <div class="df-key">Weight</div><div class="df-val">400 / 500 / 700</div>
+            <div class="df-key">Use</div><div class="df-val">內文 · UI · 卡片標題</div>
+            <div class="df-key">Voice</div><div class="df-val">清楚、不分心、好讀</div>
+          </div>
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Type Stack · 字體層級</div>
+      <div class="subhead h-section"><span class="dash"></span>Five Families · 完整字體層級</div>
 
       <div class="specimen">
         <div class="specimen-row">
-          <div class="label">FAM.01<span class="name">Noto Sans TC</span></div>
-          <div class="demo" style="font-family: var(--font-cjk); font-weight: 700; font-size: 32px; color: var(--ink);">袋鼠金融，陪你做每一個決定。</div>
-          <div class="meta">PRIMARY · CJK<br/>400 / 500 / 700<br/>Local TTF · Variable</div>
+          <div class="label">FAM.01<span class="name">Noto Serif TC</span></div>
+          <div class="demo" style="font-family: var(--font-serif-cjk); font-weight: 600; font-size: 38px; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em;">每一筆金錢決定，都值得一個夥伴。</div>
+          <div class="meta">DISPLAY · CJK SERIF<br/>500 / 600 / 700<br/>Hero · Chapter Titles · Pull Quotes</div>
         </div>
         <div class="specimen-row">
-          <div class="label">FAM.02<span class="name">Roboto Condensed</span></div>
-          <div class="demo" style="font-family: var(--font-mono); font-weight: 300; font-size: 56px; color: var(--nroo-orange-120); letter-spacing: -0.02em;">2.05% · 120,000+</div>
-          <div class="meta">NUMERIC<br/>300 Light<br/>Google Fonts</div>
+          <div class="label">FAM.02<span class="name">Noto Sans TC</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-weight: 700; font-size: 28px; color: var(--ink);">袋鼠金融，陪你做每一個決定。</div>
+          <div class="meta">PRIMARY · CJK SANS<br/>400 / 500 / 700<br/>所有內文 · UI · 卡片</div>
         </div>
         <div class="specimen-row">
-          <div class="label">FAM.03<span class="name">JetBrains Mono</span></div>
-          <div class="demo" style="font-family: var(--font-mono); font-weight: 500; font-size: 22px; color: var(--ink); letter-spacing: 0.04em;">— Chapter 07 / Color &amp; Type</div>
-          <div class="meta">MICRO-LABEL · UI<br/>400 / 500 / 700<br/>Eyebrow · Folio · Mono</div>
+          <div class="label">FAM.03<span class="name">Roboto Condensed</span></div>
+          <div class="demo" style="font-family: var(--font-numeric); font-weight: 300; font-size: 56px; color: var(--nroo-orange-120); letter-spacing: -0.02em; line-height: 1;">2.05% · 120,000+</div>
+          <div class="meta">NUMERIC<br/>300 Light<br/>大型數字 · 利率 · 統計</div>
         </div>
         <div class="specimen-row">
-          <div class="label">FAM.04<span class="name">Fraunces Display</span></div>
-          <div class="demo" style="font-family: var(--font-serif); font-weight: 400; font-style: italic; font-size: 32px; color: var(--ink); letter-spacing: -0.01em;">a partner who knows you</div>
-          <div class="meta">DISPLAY (EN) · ITALIC<br/>400 / 600<br/>For headlines &amp; pull quotes</div>
+          <div class="label">FAM.04<span class="name">Newsreader Italic</span></div>
+          <div class="demo" style="font-family: 'Newsreader', serif; font-weight: 400; font-style: italic; font-size: 32px; color: var(--ink); letter-spacing: -0.005em;">a partner who happens to know money.</div>
+          <div class="meta">DISPLAY · EN ITALIC<br/>300 / 400 / 500<br/>英文標題斜體 · Pull Quote</div>
         </div>
         <div class="specimen-row">
-          <div class="label">FAM.05<span class="name">PingFang TC</span></div>
-          <div class="demo" style="font-family: 'PingFang TC', sans-serif; font-weight: 400; font-size: 22px; color: var(--ink-soft);">系統備援字體 · 不主動指定</div>
-          <div class="meta">FALLBACK · APPLE<br/>System default<br/>Auto-loaded on iOS / macOS</div>
+          <div class="label">FAM.05<span class="name">IBM Plex Mono</span></div>
+          <div class="demo" style="font-family: var(--font-mono); font-weight: 500; font-size: 20px; color: var(--ink); letter-spacing: 0.02em;">— Chapter 07 / Color &amp; Type · v1.0</div>
+          <div class="meta">MICRO · UI LABEL<br/>400 / 500 / 600<br/>Eyebrow · Folio · ID · Tag</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Pairing Rules · 怎麼搭配</div>
+
+      <div class="tile-grid cols-3 with-frame">
+        <div class="tile">
+          <div class="tile-head"><span class="id">PR.01</span><span>標題層</span></div>
+          <div class="tile-title">中文宋體 + 英文 Italic</div>
+          <p class="tile-body">中文用 Noto Serif TC 500/600，英文片段用 Newsreader Italic。同一句裡，宋體穩住，斜體給節奏。</p>
+          <div class="tile-foot"><span>HEAD · 標題</span><span>SERIF + ITAL</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">PR.02</span><span>內文層</span></div>
+          <div class="tile-title">中文黑體 + 數字 Mono</div>
+          <p class="tile-body">內文用 Noto Sans TC 400，數字穿插用 Roboto Condensed 700 + orange 強調，黑體 + mono 是訊息層的標準。</p>
+          <div class="tile-foot"><span>BODY · 內文</span><span>SANS + NUM</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">PR.03</span><span>標籤層</span></div>
+          <div class="tile-title">Plex Mono · 全大寫</div>
+          <p class="tile-body">所有 micro-label、eyebrow、ID、folio 一律用 IBM Plex Mono 500，UPPERCASE，letter-spacing 0.12em。</p>
+          <div class="tile-foot"><span>LABEL · 標籤</span><span>MONO · UC</span></div>
         </div>
       </div>
 
@@ -2138,14 +2293,24 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 
       <div class="specimen">
         <div class="specimen-row">
-          <div class="label">SC.H1<span class="name">64px / 100%</span></div>
-          <div class="demo" style="font-family: var(--font-serif); font-size: 48px; font-weight: 400; color: var(--ink); line-height: 1; letter-spacing: -0.02em;">找到最適合你的方案</div>
-          <div class="meta">頁面唯一主標<br/>每個畫面只有一個</div>
+          <div class="label">SC.HERO<span class="name">88px / 1.04</span></div>
+          <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 56px; font-weight: 500; color: var(--ink); line-height: 1.04; letter-spacing: -0.015em;">懂你的夥伴</div>
+          <div class="meta">Hero 主標 · 唯一<br/>Noto Serif TC 500</div>
         </div>
         <div class="specimen-row">
-          <div class="label">SC.H2<span class="name">40px / 100%</span></div>
-          <div class="demo" style="font-family: var(--font-cjk); font-size: 32px; font-weight: 700; color: var(--ink); line-height: 1.1;">每月還款大概是這樣</div>
-          <div class="meta">section 標題</div>
+          <div class="label">SC.H1<span class="name">56px / 1.1</span></div>
+          <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 44px; font-weight: 500; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em;">找到最適合你的方案</div>
+          <div class="meta">章節主標<br/>Noto Serif TC 500</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">SC.H2<span class="name">28px / 1.3</span></div>
+          <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 26px; font-weight: 600; color: var(--ink); line-height: 1.3;">每月還款大概是這樣</div>
+          <div class="meta">section 副標<br/>Noto Serif TC 600</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">SC.H3<span class="name">18px / 1.4</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-size: 18px; font-weight: 700; color: var(--ink); line-height: 1.4;">熱門推薦方案</div>
+          <div class="meta">卡片標題<br/>Noto Sans TC 700</div>
         </div>
         <div class="specimen-row">
           <div class="label">SC.B1<span class="name">16px / 1.75</span></div>
@@ -2153,9 +2318,80 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
           <div class="meta">所有正文段落<br/>28 / 16 ＝ 1.75</div>
         </div>
         <div class="specimen-row">
+          <div class="label">SC.B2<span class="name">14px / 1.75</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-size: 14px; font-weight: 400; color: var(--ink-soft); line-height: 1.75;">次級內文，例如卡片描述、說明段落。比 B1 小一級，搭配 ink-soft 的字色，留給較不重要的訊息層。</div>
+          <div class="meta">次級內文<br/>Noto Sans TC 400</div>
+        </div>
+        <div class="specimen-row">
           <div class="label">SC.C1<span class="name">12px / 18px</span></div>
           <div class="demo" style="font-family: var(--font-cjk); font-size: 14px; font-weight: 400; color: var(--ink-quiet);">※ 每月還款金額只是試算，實際以銀行核定為準。</div>
-          <div class="meta">附註 · disclaimer</div>
+          <div class="meta">附註 · disclaimer<br/>Noto Sans TC 400</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">SC.LBL<span class="name">11px / 0.16em</span></div>
+          <div class="demo" style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--nroo-green-120); letter-spacing: 0.16em; text-transform: uppercase;">— Chapter Seven · Type</div>
+          <div class="meta">所有 micro-label<br/>IBM Plex Mono 500 · UPPERCASE</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">SC.NUM<span class="name">100px / 1</span></div>
+          <div class="demo" style="font-family: var(--font-numeric); font-size: 84px; font-weight: 300; color: var(--nroo-orange-120); letter-spacing: -0.04em; line-height: 1;">2.05<span style="font-size: 0.5em; color: var(--ink-soft);">%</span></div>
+          <div class="meta">大型數字<br/>Roboto Condensed 300</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Common Mistakes · 常見錯誤</div>
+
+      <div class="dodont">
+        <div class="col-do">
+          <div class="col-head"><span>+</span> 對的做法</div>
+          <div class="item">中文標題用宋體 500，給份量。</div>
+          <div class="item">中文內文用黑體 400，行高 1.75。</div>
+          <div class="item">數字穿插時換成 Roboto Condensed 並上 orange 色。</div>
+          <div class="item">英文片段用 Newsreader Italic 增添節奏。</div>
+          <div class="item">所有標籤、ID、eyebrow 用 IBM Plex Mono UPPERCASE。</div>
+        </div>
+        <div class="col-dont">
+          <div class="col-head"><span>×</span> 錯的做法</div>
+          <div class="item">中文標題用黑體 700——少了報導感的份量。</div>
+          <div class="item">中文內文用宋體——閱讀疲勞，宋體只用在標題層。</div>
+          <div class="item">數字維持中文字體——失去 mono 的清晰對齊。</div>
+          <div class="item">把整段中文用 italic——中文沒有真正的斜體，會變形。</div>
+          <div class="item">標籤用句子格式 (Title Case)——統一用 UPPERCASE。</div>
+        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Alternatives Considered · 其他考慮過的方向</div>
+
+      <div class="alt-grid">
+        <div class="alt-card">
+          <div class="alt-tag" style="background: var(--nroo-green-100); color: var(--ink);">CHOSEN · 採用</div>
+          <div class="alt-h">Editorial Publication</div>
+          <div class="alt-stack">
+            <div style="font-family: var(--font-serif-cjk); font-weight: 500; font-size: 22px; color: var(--ink); margin-bottom: 4px;">每一筆決定</div>
+            <div style="font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
+            <div style="font-family: var(--font-numeric); font-weight: 300; font-size: 24px; color: var(--nroo-orange-120); letter-spacing: -0.02em;">2.05%</div>
+          </div>
+          <p class="alt-desc">Noto Serif TC + Noto Sans TC + Newsreader Italic + Roboto Condensed + IBM Plex Mono.<br/><br/><strong>為什麼選這個：</strong>宋體給金融內容該有的份量，不會像黑體那麼工程感；Newsreader 比 Fraunces 更人性、不過時。整體像《報導者》、像 FT Magazine、像 Stripe 文件。</p>
+        </div>
+        <div class="alt-card">
+          <div class="alt-tag" style="background: var(--paper-2); color: var(--ink-quiet); border: 1px solid var(--hair);">PASSED · 否決</div>
+          <div class="alt-h">Modern Fintech</div>
+          <div class="alt-stack">
+            <div style="font-family: var(--font-cjk); font-weight: 700; font-size: 22px; color: var(--ink); margin-bottom: 4px;">每一筆決定</div>
+            <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 24px; color: var(--nroo-orange-120); letter-spacing: -0.02em;">2.05%</div>
+          </div>
+          <p class="alt-desc">Noto Sans TC + Fraunces Italic + JetBrains Mono.<br/><br/><strong>為什麼沒選：</strong>黑體 + JetBrains Mono 太工程師了；Fraunces 略帶 art-deco 復古，跟「沉穩可信」的金融感有衝突。像 Vercel、像 Linear——但 Roo.Cash 不是 SaaS。</p>
+        </div>
+        <div class="alt-card">
+          <div class="alt-tag" style="background: var(--paper-2); color: var(--ink-quiet); border: 1px solid var(--hair);">PASSED · 否決</div>
+          <div class="alt-h">Friendly Premium</div>
+          <div class="alt-stack">
+            <div style="font-family: 'Klee One', 'Yu Mincho', serif; font-weight: 600; font-size: 22px; color: var(--ink); margin-bottom: 4px;">每一筆決定</div>
+            <div style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
+            <div style="font-family: 'DM Mono', monospace; font-weight: 400; font-size: 24px; color: var(--nroo-orange-120); letter-spacing: -0.02em;">2.05%</div>
+          </div>
+          <p class="alt-desc">獅尾四季春 / GenSenRounded + Instrument Serif + DM Mono.<br/><br/><strong>為什麼沒選：</strong>圓角太友善，金融產品需要的信任感被磨掉了。「好朋友」不是「玩具」。Klee 適合教育、文創；不適合幫人做還款決定。</p>
         </div>
       </div>
     </div>
@@ -2642,11 +2878,11 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
     <div>
       <h5>Colophon</h5>
       <ul>
-        <li><span class="marker">SET</span>Noto Sans TC</li>
-        <li><span class="marker">DSP</span>Fraunces Italic</li>
+        <li><span class="marker">DSP</span>Noto Serif TC · 思源宋體</li>
+        <li><span class="marker">SET</span>Noto Sans TC · 思源黑體</li>
+        <li><span class="marker">EN</span>Newsreader Italic</li>
         <li><span class="marker">NUM</span>Roboto Condensed</li>
-        <li><span class="marker">UI</span>JetBrains Mono</li>
-        <li><span class="marker">PRINT</span>於 2026 春季</li>
+        <li><span class="marker">UI</span>IBM Plex Mono</li>
       </ul>
     </div>
   </div>

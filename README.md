@@ -39,7 +39,14 @@ MEMORY.md                        # project memory
 | Orange | `#D84421` | Numeric highlights only |
 | Cream | `#F8F8F8` / `#FBFAF6` | Page canvas |
 
-Type stack: Noto Sans TC (CJK), Roboto Condensed Light (numerics), JetBrains Mono (UI labels), Fraunces (English display italic).
+Type stack:
+- **Noto Serif TC (思源宋體)** — display: hero, chapter titles, pull quotes
+- **Noto Sans TC (思源黑體)** — body, UI, card titles
+- **Newsreader Italic** — English display italic
+- **Roboto Condensed Light** — large numerics
+- **IBM Plex Mono** — micro-labels, eyebrows, IDs, folios
+
+See chapter 07 of the guideline for the full type spec, pairing rules, and the alternatives that were considered.
 
 ## Issue / status
 
