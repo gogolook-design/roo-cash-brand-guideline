@@ -1380,8 +1380,8 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   border-radius: 50%;
   margin-right: 8px;
 }
-.gate-body { padding: 40px 36px 36px; text-align: center; }
-.gate-mascot { margin: 0 auto 24px; display: block; }
+.gate-body { padding: 40px 36px 36px; text-align: left; }
+.gate-mascot { margin: 0 0 24px; display: block; }
 .gate-eyebrow {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
   color: var(--nroo-green-120);
@@ -1405,7 +1405,6 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   color: var(--ink-soft);
   margin-bottom: 28px;
   max-width: 320px;
-  margin-left: auto; margin-right: auto;
 }
 .gate-form { display: flex; flex-direction: column; gap: 12px; }
 .gate-input {
@@ -1416,8 +1415,8 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   font-family: var(--font-mono);
   font-size: 16px; font-weight: 500;
   color: var(--ink);
-  letter-spacing: 0.08em;
-  text-align: center;
+  letter-spacing: 0.04em;
+  text-align: left;
   outline: none;
   transition: border-color .2s, background .2s;
 }
@@ -1489,7 +1488,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
       <h1 class="gate-h">先<em>對個</em> 暗號。</h1>
       <p class="gate-sub">這是 Roo.Cash 2026 品牌指南的內部預覽。請輸入存取密碼。</p>
       <form class="gate-form" id="gateForm" autocomplete="off">
-        <input type="password" class="gate-input" id="gateInput" placeholder="••••" autofocus aria-label="Password">
+        <input type="password" class="gate-input" id="gateInput" placeholder="輸入密碼" autofocus aria-label="Password">
         <div class="gate-error" id="gateError"></div>
         <button type="submit" class="gate-submit">Enter ↵</button>
       </form>
