@@ -40,10 +40,10 @@ MEMORY.md                        # project memory
 | Cream | `#F8F8F8` / `#FBFAF6` | Page canvas |
 
 Type stack:
-- **Noto Serif TC (思源宋體)** — display: hero, chapter titles, pull quotes
+- **LXGW WenKai TC (霞鶩文楷)** — display: hero, chapter titles, pull quotes. Open-source 楷書, gives "personal letter from a friend" tone.
 - **Noto Sans TC (思源黑體)** — body, UI, card titles
 - **Newsreader Italic** — English display italic
-- **Roboto Condensed Light** — large numerics
+- **Roboto Condensed Bold** — large numerics
 - **IBM Plex Mono** — micro-labels, eyebrows, IDs, folios
 
 See chapter 07 of the guideline for the full type spec, pairing rules, and the alternatives that were considered.

@@ -7,12 +7,13 @@
 <link rel="stylesheet" href="styles/colors_and_type.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.7.0/style.css">
 <style>
 :root {
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
-  --font-serif: 'Newsreader', 'Noto Serif TC', 'Songti TC', serif;
-  --font-serif-cjk: 'Noto Serif TC', 'Songti TC', 'Source Han Serif TC', serif;
+  --font-serif: 'Newsreader', 'LXGW WenKai TC', 'Songti TC', serif;
+  --font-serif-cjk: 'LXGW WenKai TC', 'Klee One', 'Songti TC', 'Kaiti TC', serif;
   --hair: rgba(17, 40, 88, 0.12);
   --hair-strong: rgba(17, 40, 88, 0.22);
   --paper: #FBFAF6;
@@ -58,6 +59,115 @@ a { color: inherit; text-decoration: none; }
   transition: width 0.1s ease-out;
 }
 
+/* ─── SIDE NAV ─── */
+:root { --sidenav-w: 240px; }
+
+@media (min-width: 1081px) {
+  body { padding-left: var(--sidenav-w); }
+}
+
+.side-nav {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidenav-w);
+  background: var(--paper);
+  border-right: 1px solid var(--hair);
+  z-index: 40;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.side-nav::-webkit-scrollbar { display: none; }
+
+.side-nav-head {
+  padding: 20px 24px 18px;
+  border-bottom: 1px solid var(--hair);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.side-nav-head img { height: 22px; align-self: flex-start; }
+.side-nav-head .meta {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.side-nav-head .meta .row { display: flex; justify-content: space-between; }
+.side-nav-head .meta .row .v { color: var(--ink); }
+
+.side-nav-label {
+  padding: 18px 24px 8px;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.side-nav-list { list-style: none; padding: 0; margin: 0; flex: 1; }
+.side-nav-list li { display: block; }
+.side-nav-list a {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  padding: 11px 24px 11px 28px;
+  position: relative;
+  color: var(--ink-soft);
+  border-left: 2px solid transparent;
+  transition: color .18s ease-out, background .18s ease-out, border-color .18s ease-out, padding-left .18s ease-out;
+}
+.side-nav-list a:hover {
+  color: var(--ink);
+  background: var(--paper-2);
+  padding-left: 32px;
+}
+.side-nav-list a .nm {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.04em;
+  transition: color .18s;
+}
+.side-nav-list a .ti {
+  font-family: var(--font-cjk); font-size: 13px; font-weight: 500;
+  line-height: 1.4;
+  transition: color .18s;
+}
+.side-nav-list a:hover .nm { color: var(--nroo-green-120); }
+
+.side-nav-list a.active {
+  color: var(--ink);
+  background: var(--paper-2);
+  border-left-color: var(--nroo-green-100);
+}
+.side-nav-list a.active .nm { color: var(--nroo-green-120); font-weight: 700; }
+.side-nav-list a.active .ti { color: var(--ink); font-weight: 700; font-family: var(--font-serif-cjk); }
+
+.side-nav-foot {
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--hair);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.side-nav-foot a.dl {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 12px;
+  background: var(--ink); color: var(--paper);
+  transition: background .2s;
+}
+.side-nav-foot a.dl:hover { background: var(--nroo-green-120); }
+.side-nav-foot .credit {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+@media (max-width: 1080px) {
+  .side-nav { display: none; }
+}
+
 /* ─── HEADER ─── */
 .site-header {
   position: sticky; top: 0; z-index: 50;
@@ -82,26 +192,24 @@ a { color: inherit; text-decoration: none; }
   margin-left: 4px;
   letter-spacing: 0.05em;
 }
-.site-header nav {
-  display: flex; gap: 0;
+.site-header .now-reading {
   margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: 11px; font-weight: 500;
-  letter-spacing: 0.05em;
-}
-.site-header nav a {
-  padding: 8px 12px;
-  color: var(--ink-soft);
-  transition: color .2s ease-out;
-  position: relative;
-}
-.site-header nav a:hover { color: var(--ink); }
-.site-header nav a .num {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
   color: var(--ink-quiet);
-  margin-right: 4px;
-  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex; align-items: baseline; gap: 12px;
 }
-.site-header nav a:hover .num { color: var(--nroo-green-120); }
+.site-header .now-reading .nr-num {
+  color: var(--nroo-green-120); font-weight: 700;
+}
+.site-header .now-reading .nr-label {
+  font-family: var(--font-cjk); text-transform: none; letter-spacing: 0;
+  color: var(--ink); font-weight: 500;
+}
+@media (min-width: 1081px) {
+  .site-header { display: none; }
+}
 .site-header .header-cta {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
   letter-spacing: 0.05em;
@@ -302,12 +410,12 @@ a { color: inherit; text-decoration: none; }
 }
 .stat-band-cell:last-child { border-right: none; }
 .stat-band-num {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 36px;
+  font-family: var(--font-numeric);
+  font-weight: 700;
+  font-size: 44px;
   line-height: 1;
   color: var(--ink);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 .stat-band-num.orange { color: var(--nroo-orange-120); }
 .stat-band-cap {
@@ -360,12 +468,12 @@ section.chapter.alt { background: var(--paper-2); }
   gap: 12px;
 }
 .chapter-folio .num {
-  font-family: var(--font-mono);
-  font-weight: 300;
-  font-size: 120px;
+  font-family: var(--font-numeric);
+  font-weight: 700;
+  font-size: 132px;
   line-height: 0.85;
   color: var(--ink);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.04em;
 }
 .chapter-folio .num .slash {
   color: var(--nroo-green-120);
@@ -1004,11 +1112,11 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   margin: 32px 0;
 }
 .bignum .figure {
-  font-family: var(--font-mono);
-  font-weight: 300;
-  font-size: clamp(80px, 12vw, 168px);
+  font-family: var(--font-numeric);
+  font-weight: 700;
+  font-size: clamp(80px, 12vw, 180px);
   line-height: 0.85;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   color: var(--nroo-orange-120);
 }
 .bignum .figure .small { font-size: 0.4em; color: var(--ink-soft); }
@@ -1194,7 +1302,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   border: 1px solid var(--nroo-green-100);
 }
 .mock-canvas .mock-bignum {
-  font-family: var(--font-mono); font-weight: 300;
+  font-family: var(--font-numeric); font-weight: 700;
   font-size: 64px; line-height: 0.9;
   color: var(--nroo-orange-120);
   letter-spacing: -0.03em;
@@ -1536,24 +1644,45 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 
 <div class="progress-bar" id="progress"></div>
 
-<!-- ─── HEADER ─── -->
+<!-- ─── SIDE NAV (desktop) ─── -->
+<aside class="side-nav" id="sideNav">
+  <div class="side-nav-head">
+    <a href="#top"><img src="assets/logos/roo-cash-horizontal-dark.png" alt="Roo.Cash"></a>
+    <div class="meta">
+      <div class="row"><span>Issue</span><span class="v">01</span></div>
+      <div class="row"><span>Edition</span><span class="v">Spring 2026</span></div>
+      <div class="row"><span>Version</span><span class="v">v1.0 · Draft</span></div>
+    </div>
+  </div>
+  <div class="side-nav-label">— Contents</div>
+  <ul class="side-nav-list" id="sideNavList">
+    <li><a href="#ch01" data-chapter="ch01"><span class="nm">01.</span><span class="ti">品牌故事</span></a></li>
+    <li><a href="#ch02" data-chapter="ch02"><span class="nm">02.</span><span class="ti">使命 · 定位 · 服務</span></a></li>
+    <li><a href="#ch03" data-chapter="ch03"><span class="nm">03.</span><span class="ti">受眾與核心價值</span></a></li>
+    <li><a href="#ch04" data-chapter="ch04"><span class="nm">04.</span><span class="ti">品牌人格</span></a></li>
+    <li><a href="#ch05" data-chapter="ch05"><span class="nm">05.</span><span class="ti">語調與文案</span></a></li>
+    <li><a href="#ch06" data-chapter="ch06"><span class="nm">06.</span><span class="ti">標誌系統</span></a></li>
+    <li><a href="#ch07" data-chapter="ch07"><span class="nm">07.</span><span class="ti">色彩與字體</span></a></li>
+    <li><a href="#ch08" data-chapter="ch08"><span class="nm">08.</span><span class="ti">圖像 · 吉祥物</span></a></li>
+    <li><a href="#ch09" data-chapter="ch09"><span class="nm">09.</span><span class="ti">視覺語言</span></a></li>
+    <li><a href="#ch10" data-chapter="ch10"><span class="nm">10.</span><span class="ti">應用與素材庫</span></a></li>
+  </ul>
+  <div class="side-nav-foot">
+    <a href="#ch10" class="dl">Download ↓</a>
+    <div class="credit">ROO.CASH · 袋鼠金融</div>
+  </div>
+</aside>
+
+<!-- ─── HEADER (mobile only) ─── -->
 <header class="site-header">
   <div class="inner">
     <a href="#top" class="brand"><img src="assets/logos/roo-cash-horizontal-dark.png" alt="Roo.Cash"></a>
-    <span class="issue-tag">Issue 01 / Spring 2026 / v1.0</span>
-    <nav>
-      <a href="#ch01"><span class="num">01</span>故事</a>
-      <a href="#ch02"><span class="num">02</span>定位</a>
-      <a href="#ch03"><span class="num">03</span>受眾</a>
-      <a href="#ch04"><span class="num">04</span>人格</a>
-      <a href="#ch05"><span class="num">05</span>語調</a>
-      <a href="#ch06"><span class="num">06</span>標誌</a>
-      <a href="#ch07"><span class="num">07</span>色字</a>
-      <a href="#ch08"><span class="num">08</span>圖像</a>
-      <a href="#ch09"><span class="num">09</span>視覺</a>
-      <a href="#ch10"><span class="num">10</span>應用</a>
-    </nav>
-    <a href="#ch10" class="header-cta">Download ↓</a>
+    <span class="issue-tag">Issue 01</span>
+    <div class="now-reading" id="nowReading">
+      <span class="nr-num">01</span>
+      <span class="nr-label">品牌故事</span>
+    </div>
+    <a href="#ch10" class="header-cta">↓</a>
   </div>
 </header>
 
@@ -2203,32 +2332,34 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
       <div class="subhead h-section"><span class="dash"></span>The Pairing · 雙主字體並置</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
-        Roo.Cash 用兩套中文字體形成對話：<strong style="color: var(--ink);">思源宋體</strong>負責標題與引言，給人一份報導的份量；<strong style="color: var(--ink);">思源黑體（Noto Sans TC）</strong>負責內文與資料，把訊息清楚地傳出去。一個是聲音，另一個是內容。
+        Roo.Cash 用兩套中文字體形成對話：<strong style="color: var(--ink);">霞鶩文楷 LXGW WenKai TC</strong>負責標題與引言，帶著手寫筆意，像朋友寫給你的信；<strong style="color: var(--ink);">思源黑體 Noto Sans TC</strong>負責內文與資料，把訊息清楚地傳出去。一個是聲音，另一個是內容。
       </p>
 
       <div class="dual-glyph">
         <div class="dual-cell">
           <div class="dual-meta">
             <span>FACE.01 · DISPLAY</span>
-            <span class="ll">SERIF</span>
+            <span class="ll">KAISHU 楷書</span>
           </div>
           <div class="dual-glyph-char serif">袋</div>
           <div class="dual-foot">
-            <div class="df-key">Family</div><div class="df-val">Noto Serif TC · 思源宋體</div>
-            <div class="df-key">Weight</div><div class="df-val">500 Medium · 600 Semibold</div>
+            <div class="df-key">Family</div><div class="df-val">LXGW WenKai TC · 霞鶩文楷</div>
+            <div class="df-key">Weight</div><div class="df-val">400 Regular · 700 Bold</div>
+            <div class="df-key">Source</div><div class="df-val">Open source · SIL OFL · GitHub</div>
             <div class="df-key">Use</div><div class="df-val">標題 · 引言 · Pull Quote</div>
-            <div class="df-key">Voice</div><div class="df-val">沉穩、有重量、可信</div>
+            <div class="df-key">Voice</div><div class="df-val">手寫筆意 · 像朋友的字</div>
           </div>
         </div>
         <div class="dual-cell">
           <div class="dual-meta">
             <span>FACE.02 · TEXT</span>
-            <span class="ll">SANS</span>
+            <span class="ll">SANS 黑體</span>
           </div>
           <div class="dual-glyph-char sans">袋</div>
           <div class="dual-foot">
             <div class="df-key">Family</div><div class="df-val">Noto Sans TC · 思源黑體</div>
             <div class="df-key">Weight</div><div class="df-val">400 / 500 / 700</div>
+            <div class="df-key">Source</div><div class="df-val">Open source · SIL OFL · Google Fonts</div>
             <div class="df-key">Use</div><div class="df-val">內文 · UI · 卡片標題</div>
             <div class="df-key">Voice</div><div class="df-val">清楚、不分心、好讀</div>
           </div>
@@ -2239,9 +2370,9 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 
       <div class="specimen">
         <div class="specimen-row">
-          <div class="label">FAM.01<span class="name">Noto Serif TC</span></div>
-          <div class="demo" style="font-family: var(--font-serif-cjk); font-weight: 600; font-size: 38px; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em;">每一筆金錢決定，都值得一個夥伴。</div>
-          <div class="meta">DISPLAY · CJK SERIF<br/>500 / 600 / 700<br/>Hero · Chapter Titles · Pull Quotes</div>
+          <div class="label">FAM.01<span class="name">LXGW WenKai TC</span></div>
+          <div class="demo" style="font-family: var(--font-serif-cjk); font-weight: 400; font-size: 38px; color: var(--ink); line-height: 1.3; letter-spacing: 0;">每一筆金錢決定，都值得一個夥伴。</div>
+          <div class="meta">DISPLAY · 楷書<br/>霞鶩文楷 · 400 / 700<br/>Hero · Chapter Titles · Pull Quotes</div>
         </div>
         <div class="specimen-row">
           <div class="label">FAM.02<span class="name">Noto Sans TC</span></div>
@@ -2250,8 +2381,8 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
         </div>
         <div class="specimen-row">
           <div class="label">FAM.03<span class="name">Roboto Condensed</span></div>
-          <div class="demo" style="font-family: var(--font-numeric); font-weight: 300; font-size: 56px; color: var(--nroo-orange-120); letter-spacing: -0.02em; line-height: 1;">2.05% · 120,000+</div>
-          <div class="meta">NUMERIC<br/>300 Light<br/>大型數字 · 利率 · 統計</div>
+          <div class="demo" style="font-family: var(--font-numeric); font-weight: 700; font-size: 56px; color: var(--nroo-orange-120); letter-spacing: -0.03em; line-height: 1;">2.05% · 120,000+</div>
+          <div class="meta">NUMERIC<br/>700 Bold<br/>大型數字 · 利率 · 統計</div>
         </div>
         <div class="specimen-row">
           <div class="label">FAM.04<span class="name">Newsreader Italic</span></div>
@@ -2271,7 +2402,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
         <div class="tile">
           <div class="tile-head"><span class="id">PR.01</span><span>標題層</span></div>
           <div class="tile-title">中文宋體 + 英文 Italic</div>
-          <p class="tile-body">中文用 Noto Serif TC 500/600，英文片段用 Newsreader Italic。同一句裡，宋體穩住，斜體給節奏。</p>
+          <p class="tile-body">中文用 LXGW WenKai TC 400/700，英文片段用 Newsreader Italic。同一句裡，楷書帶筆意，斜體給節奏。</p>
           <div class="tile-foot"><span>HEAD · 標題</span><span>SERIF + ITAL</span></div>
         </div>
         <div class="tile">
@@ -2294,17 +2425,17 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
         <div class="specimen-row">
           <div class="label">SC.HERO<span class="name">88px / 1.04</span></div>
           <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 56px; font-weight: 500; color: var(--ink); line-height: 1.04; letter-spacing: -0.015em;">懂你的夥伴</div>
-          <div class="meta">Hero 主標 · 唯一<br/>Noto Serif TC 500</div>
+          <div class="meta">Hero 主標 · 唯一<br/>LXGW WenKai TC 400</div>
         </div>
         <div class="specimen-row">
           <div class="label">SC.H1<span class="name">56px / 1.1</span></div>
           <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 44px; font-weight: 500; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em;">找到最適合你的方案</div>
-          <div class="meta">章節主標<br/>Noto Serif TC 500</div>
+          <div class="meta">章節主標<br/>LXGW WenKai TC 400</div>
         </div>
         <div class="specimen-row">
           <div class="label">SC.H2<span class="name">28px / 1.3</span></div>
           <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 26px; font-weight: 600; color: var(--ink); line-height: 1.3;">每月還款大概是這樣</div>
-          <div class="meta">section 副標<br/>Noto Serif TC 600</div>
+          <div class="meta">section 副標<br/>LXGW WenKai TC 700</div>
         </div>
         <div class="specimen-row">
           <div class="label">SC.H3<span class="name">18px / 1.4</span></div>
@@ -2333,8 +2464,8 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
         </div>
         <div class="specimen-row">
           <div class="label">SC.NUM<span class="name">100px / 1</span></div>
-          <div class="demo" style="font-family: var(--font-numeric); font-size: 84px; font-weight: 300; color: var(--nroo-orange-120); letter-spacing: -0.04em; line-height: 1;">2.05<span style="font-size: 0.5em; color: var(--ink-soft);">%</span></div>
-          <div class="meta">大型數字<br/>Roboto Condensed 300</div>
+          <div class="demo" style="font-family: var(--font-numeric); font-size: 96px; font-weight: 700; color: var(--nroo-orange-120); letter-spacing: -0.04em; line-height: 1;">2.05<span style="font-size: 0.5em; color: var(--ink-soft);">%</span></div>
+          <div class="meta">大型數字<br/>Roboto Condensed 700</div>
         </div>
       </div>
 
@@ -2368,9 +2499,9 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
           <div class="alt-stack">
             <div style="font-family: var(--font-serif-cjk); font-weight: 500; font-size: 22px; color: var(--ink); margin-bottom: 4px;">每一筆決定</div>
             <div style="font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
-            <div style="font-family: var(--font-numeric); font-weight: 300; font-size: 24px; color: var(--nroo-orange-120); letter-spacing: -0.02em;">2.05%</div>
+            <div style="font-family: var(--font-numeric); font-weight: 700; font-size: 28px; color: var(--nroo-orange-120); letter-spacing: -0.03em;">2.05%</div>
           </div>
-          <p class="alt-desc">Noto Serif TC + Noto Sans TC + Newsreader Italic + Roboto Condensed + IBM Plex Mono.<br/><br/><strong>為什麼選這個：</strong>宋體給金融內容該有的份量，不會像黑體那麼工程感；Newsreader 比 Fraunces 更人性、不過時。整體像《報導者》、像 FT Magazine、像 Stripe 文件。</p>
+          <p class="alt-desc">LXGW WenKai TC + Noto Sans TC + Newsreader Italic + Roboto Condensed Bold + IBM Plex Mono.<br/><br/><strong>為什麼選這個：</strong>楷書筆意讓金融內容有「朋友寫信給你」的溫度，不像宋體那麼正式、也不像黑體那麼工程。在台灣的金融服務裡幾乎沒人這樣用——這正是品牌記憶點。</p>
         </div>
         <div class="alt-card">
           <div class="alt-tag" style="background: var(--paper-2); color: var(--ink-quiet); border: 1px solid var(--hair);">PASSED · 否決</div>
@@ -2877,10 +3008,10 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
     <div>
       <h5>Colophon</h5>
       <ul>
-        <li><span class="marker">DSP</span>Noto Serif TC · 思源宋體</li>
+        <li><span class="marker">DSP</span>LXGW WenKai TC · 霞鶩文楷</li>
         <li><span class="marker">SET</span>Noto Sans TC · 思源黑體</li>
         <li><span class="marker">EN</span>Newsreader Italic</li>
-        <li><span class="marker">NUM</span>Roboto Condensed</li>
+        <li><span class="marker">NUM</span>Roboto Condensed Bold</li>
         <li><span class="marker">UI</span>IBM Plex Mono</li>
       </ul>
     </div>
@@ -2902,6 +3033,53 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   };
   document.addEventListener('scroll', update, { passive: true });
   update();
+})();
+
+// Side-nav active chapter tracker (IntersectionObserver)
+(function() {
+  const navLinks = document.querySelectorAll('#sideNavList a[data-chapter]');
+  const chapters = Array.from(navLinks).map(a => ({
+    id: a.dataset.chapter,
+    el: document.getElementById(a.dataset.chapter),
+    link: a,
+    title: a.querySelector('.ti').textContent,
+    num: a.querySelector('.nm').textContent.replace('.', '')
+  })).filter(c => c.el);
+
+  const nrNum = document.querySelector('.now-reading .nr-num');
+  const nrLabel = document.querySelector('.now-reading .nr-label');
+
+  const setActive = (id) => {
+    let activeChapter = null;
+    chapters.forEach(c => {
+      if (c.id === id) {
+        c.link.classList.add('active');
+        activeChapter = c;
+      } else {
+        c.link.classList.remove('active');
+      }
+    });
+    if (activeChapter && nrNum && nrLabel) {
+      nrNum.textContent = activeChapter.num;
+      nrLabel.textContent = activeChapter.title;
+    }
+  };
+
+  // Use scroll-position-based detection — pick the chapter whose top is closest to 30% viewport
+  const detect = () => {
+    const triggerY = window.innerHeight * 0.3;
+    let active = chapters[0];
+    for (const c of chapters) {
+      const rect = c.el.getBoundingClientRect();
+      if (rect.top <= triggerY) active = c;
+      else break;
+    }
+    setActive(active.id);
+  };
+
+  document.addEventListener('scroll', detect, { passive: true });
+  window.addEventListener('resize', detect, { passive: true });
+  detect();
 })();
 </script>
 
