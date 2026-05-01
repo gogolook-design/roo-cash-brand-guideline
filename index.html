@@ -1028,6 +1028,95 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   .alt-card:last-child { border-bottom: none; }
 }
 
+/* ─── MASCOT DIRECTIONS GRID ─── */
+.dir-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--hair);
+  margin: 24px 0;
+}
+.dir-tile {
+  border-right: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  padding: 0;
+  display: flex; flex-direction: column;
+  background: var(--paper);
+}
+.dir-tile:nth-child(3n) { border-right: none; }
+.dir-tile:nth-last-child(-n+3) { border-bottom: none; }
+.dir-id-row {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--hair);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.dir-id-row .nm { color: var(--nroo-green-120); font-weight: 700; }
+.dir-art {
+  background:
+    linear-gradient(to right, var(--hair) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hair) 1px, transparent 1px);
+  background-size: 16px 16px;
+  background-position: center;
+  background-color: var(--paper-2);
+  display: flex; align-items: center; justify-content: center;
+  padding: 36px 0;
+  min-height: 200px;
+  border-bottom: 1px solid var(--hair);
+}
+.dir-meta {
+  padding: 18px 20px 16px;
+}
+.dir-meta .name {
+  font-family: var(--font-serif-cjk);
+  font-weight: 700; font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.dir-meta .name .en {
+  font-family: 'Newsreader', serif;
+  font-style: italic; font-weight: 400;
+  font-size: 14px;
+  color: var(--ink-quiet);
+  margin-left: 8px;
+}
+.dir-meta .desc {
+  font-size: 13px; line-height: 1.7;
+  color: var(--ink-soft);
+}
+.dir-foot {
+  margin-top: auto;
+  padding: 12px 20px 14px;
+  border-top: 1px solid var(--hair);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--ink-quiet);
+  letter-spacing: 0.06em;
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.dir-foot .tg {
+  padding: 2px 8px;
+  border: 1px solid var(--hair-strong);
+  text-transform: uppercase;
+}
+.dir-foot .tg.pri {
+  background: var(--ink); color: var(--paper); border-color: var(--ink);
+}
+
+@media (max-width: 1080px) {
+  .dir-grid { grid-template-columns: 1fr 1fr; }
+  .dir-tile:nth-child(3n) { border-right: 1px solid var(--hair); }
+  .dir-tile:nth-child(2n) { border-right: none; }
+  .dir-tile:nth-last-child(-n+3) { border-bottom: 1px solid var(--hair); }
+  .dir-tile:nth-last-child(-n+2) { border-bottom: none; }
+}
+@media (max-width: 720px) {
+  .dir-grid { grid-template-columns: 1fr; }
+  .dir-tile:nth-child(2n) { border-right: none; }
+  .dir-tile { border-right: none !important; border-bottom: 1px solid var(--hair) !important; }
+  .dir-tile:last-child { border-bottom: none !important; }
+}
+
 /* ─── DATA VIZ (FT-style) ─── */
 .viz-frame {
   border: 1px solid var(--ink);
@@ -2570,6 +2659,198 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
       </div>
 
       <div class="subhead h-section"><span class="dash"></span>Mascot Roo · 吉祥物</div>
+
+      <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin: 16px 0 8px;">
+        袋鼠是 Roo.Cash 唯一的決定——不是熊、不是貓、不是抽象的方塊，就是一隻袋鼠。原因很簡單：袋鼠把最珍貴的東西放在育兒袋裡保護著，同時用穩健有力的步伐向前躍進。<strong style="color: var(--ink);">這就是我們對使用者財務安全感的承諾</strong>。
+      </p>
+      <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 20px;">
+        以下是六個視覺方向草案，每一種都有自己的個性。最終由插畫家定稿，但這些方向會幫助我們先決定<strong style="color: var(--ink);">「Roo 應該長什麼脾氣」</strong>。
+      </p>
+
+      <div class="subhead"><span class="dash"></span>Six Directions Explored · 六個方向</div>
+
+      <div class="dir-grid">
+        <!-- DIR.01 GEOMETRIC -->
+        <div class="dir-tile">
+          <div class="dir-id-row"><span><span class="nm">DIR.01</span> · GEOMETRIC</span><span>幾何</span></div>
+          <div class="dir-art">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <ellipse cx="60" cy="132" rx="32" ry="3.5" fill="#112858" opacity=".10"/>
+              <polygon points="46,8 52,28 42,28" fill="#FBFAF6" stroke="#112858" stroke-width="2.2" stroke-linejoin="round"/>
+              <polygon points="74,8 78,28 68,28" fill="#FBFAF6" stroke="#112858" stroke-width="2.2" stroke-linejoin="round"/>
+              <polygon points="42,28 78,28 76,58 44,58" fill="#FBFAF6" stroke="#112858" stroke-width="2.2" stroke-linejoin="round"/>
+              <polygon points="34,58 86,58 90,118 30,118" fill="#FBFAF6" stroke="#112858" stroke-width="2.2" stroke-linejoin="round"/>
+              <line x1="30" y1="100" x2="14" y2="76" stroke="#112858" stroke-width="2.4" stroke-linecap="square"/>
+              <rect x="48" y="78" width="24" height="22" fill="#00E0A0"/>
+              <rect x="34" y="118" width="16" height="14" fill="#FBFAF6" stroke="#112858" stroke-width="2.2"/>
+              <rect x="70" y="118" width="16" height="14" fill="#FBFAF6" stroke="#112858" stroke-width="2.2"/>
+              <rect x="52" y="38" width="3" height="3" fill="#112858"/>
+              <rect x="65" y="38" width="3" height="3" fill="#112858"/>
+              <line x1="56" y1="48" x2="62" y2="48" stroke="#112858" stroke-width="1.5" stroke-linecap="square"/>
+            </svg>
+          </div>
+          <div class="dir-meta">
+            <div class="name">幾何構成 <span class="en">Geometric</span></div>
+            <div class="desc">用三角、矩形、五邊形構成。冷靜、技術感、適合 UI 系統圖標化使用。</div>
+          </div>
+          <div class="dir-foot"><span class="tg">技術</span><span class="tg">理性</span></div>
+        </div>
+
+        <!-- DIR.02 PILLOW / SOFT ROUND -->
+        <div class="dir-tile">
+          <div class="dir-id-row"><span><span class="nm">DIR.02</span> · PILLOW</span><span>圓潤</span></div>
+          <div class="dir-art">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
+              <ellipse cx="46" cy="14" rx="6" ry="9" fill="#FBFAF6" stroke="#112858" stroke-width="2.4"/>
+              <ellipse cx="74" cy="14" rx="6" ry="9" fill="#FBFAF6" stroke="#112858" stroke-width="2.4"/>
+              <path d="M30 110 C20 90 22 60 38 44 C42 24 52 14 60 14 C68 14 78 24 82 44 C98 60 100 90 90 110 C90 124 75 130 60 130 C45 130 30 124 30 110 Z" fill="#FBFAF6" stroke="#112858" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M28 110 Q14 96 18 78" stroke="#112858" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+              <ellipse cx="60" cy="86" rx="20" ry="13" fill="#00E0A0"/>
+              <circle cx="51" cy="36" r="3" fill="#112858"/>
+              <circle cx="69" cy="36" r="3" fill="#112858"/>
+              <circle cx="52" cy="35" r="0.8" fill="#FBFAF6"/>
+              <circle cx="70" cy="35" r="0.8" fill="#FBFAF6"/>
+              <path d="M55 48 Q60 51 65 48" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="dir-meta">
+            <div class="name">圓潤鼓鼓 <span class="en">Pillow</span></div>
+            <div class="desc">全圓角、無稜線。親切、容易被擁抱。風險：太可愛、減損金融信任感。</div>
+          </div>
+          <div class="dir-foot"><span class="tg">親切</span><span class="tg">⚠ 太可愛</span></div>
+        </div>
+
+        <!-- DIR.03 LINE-ONLY EDITORIAL -->
+        <div class="dir-tile">
+          <div class="dir-id-row"><span><span class="nm">DIR.03</span> · LINE</span><span>純線稿</span></div>
+          <div class="dir-art">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <path d="M30 110 Q14 96 18 78" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M36 124 Q28 100 32 80 Q36 60 60 60 Q84 60 88 80 Q92 100 84 124" stroke="#112858" stroke-width="1.5" fill="none"/>
+              <path d="M40 124 Q38 132 46 132" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M80 124 Q82 132 74 132" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M44 60 Q44 36 60 36 Q76 36 76 60" stroke="#112858" stroke-width="1.5" fill="none"/>
+              <path d="M50 36 Q44 16 52 10" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M70 36 Q76 16 68 10" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <circle cx="55" cy="48" r="1.4" fill="#112858"/>
+              <path d="M48 86 Q60 96 72 86" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <circle cx="80" cy="86" r="3" fill="#00E0A0"/>
+            </svg>
+          </div>
+          <div class="dir-meta">
+            <div class="name">純線稿 <span class="en">Editorial Line</span></div>
+            <div class="desc">單線無填色，1.5px。極簡、文編感、像 New Yorker 插畫。配合楷書字體最和諧。</div>
+          </div>
+          <div class="dir-foot"><span class="tg pri">推薦</span><span class="tg">編輯</span><span class="tg">極簡</span></div>
+        </div>
+
+        <!-- DIR.04 BRUSHY / HAND-DRAWN -->
+        <div class="dir-tile">
+          <div class="dir-id-row"><span><span class="nm">DIR.04</span> · BRUSHY</span><span>手繪</span></div>
+          <div class="dir-art">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <defs>
+                <filter id="rough4" x="-10%" y="-10%" width="120%" height="120%">
+                  <feTurbulence baseFrequency="0.05" numOctaves="2" seed="3"/>
+                  <feDisplacementMap in="SourceGraphic" scale="1.8"/>
+                </filter>
+              </defs>
+              <g filter="url(#rough4)">
+                <ellipse cx="60" cy="132" rx="30" ry="4" fill="#112858" opacity=".15"/>
+                <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" fill="#FBFAF6" stroke="#112858" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M40 122 Q36 130 44 132" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="#FBFAF6"/>
+                <path d="M80 122 Q84 130 76 132" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="#FBFAF6"/>
+                <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" fill="#FBFAF6" stroke="#112858" stroke-width="3"/>
+                <path d="M48 22 Q42 8 50 4" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M72 22 Q78 8 70 4" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <ellipse cx="60" cy="80" rx="16" ry="10" fill="#00E0A0"/>
+                <circle cx="55" cy="36" r="2.4" fill="#112858"/>
+                <circle cx="69" cy="46" r="1.8" fill="#112858"/>
+              </g>
+            </svg>
+          </div>
+          <div class="dir-meta">
+            <div class="name">手繪筆觸 <span class="en">Brushy</span></div>
+            <div class="desc">不規則線條，模擬筆刷感。和 LXGW 楷書字體呼應「朋友寫信給你」的直覺。</div>
+          </div>
+          <div class="dir-foot"><span class="tg pri">推薦</span><span class="tg">手感</span><span class="tg">人味</span></div>
+        </div>
+
+        <!-- DIR.05 BLOCK / STAMP SILHOUETTE -->
+        <div class="dir-tile">
+          <div class="dir-id-row"><span><span class="nm">DIR.05</span> · STAMP</span><span>剪影</span></div>
+          <div class="dir-art">
+            <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
+              <ellipse cx="60" cy="132" rx="30" ry="4" fill="#112858" opacity=".10"/>
+              <path d="M48 14 Q44 4 50 0 L56 12 Z M72 14 Q76 4 70 0 L64 12 Z" fill="#112858"/>
+              <path d="M60 12 C72 12 78 22 78 32 C78 44 74 52 74 56 L86 56 C90 56 94 60 94 70 L94 110 C94 120 88 124 80 124 L80 132 L70 132 L70 124 L50 124 L50 132 L40 132 L40 124 C32 124 26 120 26 110 L26 70 C26 60 30 56 34 56 L46 56 C46 52 42 44 42 32 C42 22 48 12 60 12 Z M16 80 L24 92 L28 100 L22 90 L14 78 Z" fill="#112858"/>
+              <ellipse cx="60" cy="86" rx="14" ry="9" fill="#00E0A0"/>
+              <circle cx="54" cy="34" r="2" fill="#FBFAF6"/>
+            </svg>
+          </div>
+          <div class="dir-meta">
+            <div class="name">剪影印章 <span class="en">Stamp</span></div>
+            <div class="desc">純色填充剪影，pouch 是負空間綠色。印刷友好、強識別、像信任印章。</div>
+          </div>
+          <div class="dir-foot"><span class="tg">識別強</span><span class="tg">印刷友好</span></div>
+        </div>
+
+        <!-- DIR.06 PIXEL / 8-BIT -->
+        <div class="dir-tile">
+          <div class="dir-id-row"><span><span class="nm">DIR.06</span> · PIXEL</span><span>像素</span></div>
+          <div class="dir-art">
+            <svg width="120" height="140" viewBox="0 0 120 140" shape-rendering="crispEdges">
+              <ellipse cx="60" cy="132" rx="28" ry="3" fill="#112858" opacity=".12"/>
+              <!-- ears -->
+              <rect x="45" y="14" width="6" height="12" fill="#112858"/>
+              <rect x="69" y="14" width="6" height="12" fill="#112858"/>
+              <!-- head -->
+              <rect x="45" y="26" width="30" height="6" fill="#112858"/>
+              <rect x="42" y="32" width="36" height="6" fill="#112858"/>
+              <rect x="42" y="38" width="36" height="6" fill="#112858"/>
+              <rect x="42" y="44" width="36" height="6" fill="#112858"/>
+              <rect x="45" y="50" width="30" height="6" fill="#112858"/>
+              <!-- eyes (negative) -->
+              <rect x="51" y="38" width="3" height="3" fill="#FBFAF6"/>
+              <rect x="66" y="38" width="3" height="3" fill="#FBFAF6"/>
+              <!-- body -->
+              <rect x="36" y="56" width="48" height="6" fill="#112858"/>
+              <rect x="33" y="62" width="54" height="6" fill="#112858"/>
+              <rect x="33" y="68" width="54" height="6" fill="#112858"/>
+              <rect x="33" y="74" width="54" height="6" fill="#112858"/>
+              <rect x="33" y="80" width="54" height="6" fill="#112858"/>
+              <rect x="33" y="86" width="54" height="6" fill="#112858"/>
+              <rect x="36" y="92" width="48" height="6" fill="#112858"/>
+              <rect x="36" y="98" width="48" height="6" fill="#112858"/>
+              <rect x="39" y="104" width="42" height="6" fill="#112858"/>
+              <!-- pouch -->
+              <rect x="48" y="74" width="24" height="18" fill="#00E0A0"/>
+              <!-- legs -->
+              <rect x="33" y="110" width="15" height="6" fill="#112858"/>
+              <rect x="72" y="110" width="15" height="6" fill="#112858"/>
+              <rect x="33" y="116" width="15" height="6" fill="#112858"/>
+              <rect x="72" y="116" width="15" height="6" fill="#112858"/>
+              <!-- tail -->
+              <rect x="18" y="86" width="6" height="6" fill="#112858"/>
+              <rect x="12" y="80" width="6" height="6" fill="#112858"/>
+              <rect x="6" y="74" width="6" height="6" fill="#112858"/>
+            </svg>
+          </div>
+          <div class="dir-meta">
+            <div class="name">像素方塊 <span class="en">Pixel · 8-bit</span></div>
+            <div class="desc">8-bit 風格，每格 6px。在地化、年輕族群點頭。風險：金融保守族群難買單。</div>
+          </div>
+          <div class="dir-foot"><span class="tg">年輕</span><span class="tg">⚠ 不適合保守族</span></div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>方向收斂建議：</strong>DIR.03 純線稿 + DIR.04 手繪筆觸是最強的兩個方向。一個給 UI / 教學使用（線稿，乾淨），一個給情境敘事使用（手繪，有溫度）。兩者並存，依場景切換，比鎖定單一風格更靈活。剩下的 v1 IDLE / POINTING / CHEERING / THINKING 四姿勢，最終會以選定方向重繪。
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>v1 Pose Set · 四個基本姿勢</div>
 
       <p style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-quiet); letter-spacing: 0.04em; margin: 16px 0;">— v1 placeholder direction · final art TBD by illustrator</p>
 
