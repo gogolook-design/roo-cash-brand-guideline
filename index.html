@@ -12,15 +12,28 @@
 <style>
 :root {
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
-  --font-serif: 'Newsreader', 'LXGW WenKai TC', 'Songti TC', serif;
-  --font-serif-cjk: 'LXGW WenKai TC', 'Klee One', 'Songti TC', 'Kaiti TC', serif;
-  --hair: rgba(17, 40, 88, 0.12);
-  --hair-strong: rgba(17, 40, 88, 0.22);
-  --paper: #FBFAF6;
-  --paper-2: #F4F2EB;
-  --ink: #112858;
-  --ink-soft: rgba(17, 40, 88, 0.62);
-  --ink-quiet: rgba(17, 40, 88, 0.42);
+  --font-serif: 'Newsreader', serif;
+  --font-serif-cjk: 'LXGW WenKai TC', 'Songti TC', serif; /* used sparingly, only for warm callouts */
+  --hair: rgba(17, 40, 88, 0.10);
+  --hair-strong: rgba(17, 40, 88, 0.20);
+  --paper: #F8F7F2;
+  --paper-2: #EFEDE6;
+  --ink: #0A1530;
+  --ink-soft: rgba(10, 21, 48, 0.62);
+  --ink-quiet: rgba(10, 21, 48, 0.40);
+
+  /* dark surface tokens */
+  --void: #050816;
+  --void-2: #0A1530;
+  --void-line: rgba(255, 255, 255, 0.06);
+  --void-line-strong: rgba(255, 255, 255, 0.14);
+  --void-text: #E8ECF5;
+  --void-soft: rgba(232, 236, 245, 0.62);
+  --void-quiet: rgba(232, 236, 245, 0.40);
+
+  /* signature glows */
+  --glow-green: 0 0 24px rgba(0, 224, 160, 0.45), 0 0 1px rgba(0, 224, 160, 1);
+  --glow-orange: 0 0 28px rgba(216, 68, 33, 0.32);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -278,19 +291,21 @@ a { color: inherit; text-decoration: none; }
   align-items: end;
 }
 .hero-headline {
-  font-family: var(--font-serif-cjk);
-  font-weight: 500;
-  font-size: clamp(48px, 7vw, 88px);
-  line-height: 1.04;
-  letter-spacing: -0.015em;
-  color: var(--ink);
+  font-family: var(--font-cjk);
+  font-weight: 800;
+  font-size: clamp(56px, 8vw, 104px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  color: var(--void-text);
+  font-feature-settings: "tnum" 1;
 }
 .hero-headline em {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 300;
-  color: var(--ink-soft);
+  color: var(--nroo-green-100);
   font-feature-settings: "ss01" 1;
+  letter-spacing: -0.02em;
 }
 .hero-headline .accent {
   font-style: normal;
@@ -505,16 +520,24 @@ section.chapter.alt { background: var(--paper-2); }
   margin-bottom: 12px;
 }
 .chapter-title {
-  font-family: var(--font-serif-cjk);
-  font-weight: 500;
-  font-size: clamp(36px, 4.4vw, 56px);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-family: var(--font-cjk);
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
   color: var(--ink);
   margin-bottom: 12px;
-  max-width: 20ch;
+  max-width: 22ch;
 }
-.chapter-title em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--ink-soft); }
+.chapter-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--nroo-green-120);
+  letter-spacing: -0.02em;
+}
+section.chapter.dark .chapter-title { color: var(--void-text); }
+section.chapter.dark .chapter-title em { color: var(--nroo-green-100); }
 .chapter-deck {
   font-size: 17px; line-height: 1.75;
   color: var(--ink-soft);
@@ -1530,11 +1553,362 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   .logo-frame > div { border-right: none; border-bottom: 1px solid var(--hair); }
 }
 
+/* ─── DARK CHAPTER MODE ─── */
+section.chapter.dark {
+  background: var(--void);
+  color: var(--void-text);
+  border-bottom: 1px solid var(--void-line);
+  position: relative;
+  overflow: hidden;
+}
+section.chapter.dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(0, 224, 160, 0.08), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(216, 68, 33, 0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+section.chapter.dark .chapter-inner {
+  position: relative;
+  z-index: 1;
+}
+section.chapter.dark .chapter-eyebrow { color: var(--nroo-green-100); }
+section.chapter.dark .chapter-deck { color: var(--void-soft); }
+section.chapter.dark .chapter-deck strong { color: var(--void-text); }
+section.chapter.dark .chapter-folio .num { color: var(--void-text); }
+section.chapter.dark .chapter-folio .meta { color: var(--void-quiet); border-top-color: var(--void-line); }
+section.chapter.dark .subhead { color: var(--void-quiet); }
+section.chapter.dark .subhead .dash { background: var(--void-line-strong); }
+section.chapter.dark .subhead.h-section { border-bottom-color: var(--void-line-strong); }
+section.chapter.dark .tile-grid > * { border-color: var(--void-line); }
+section.chapter.dark .tile-grid.with-frame { border-color: var(--void-line); }
+section.chapter.dark .tile { background: rgba(255,255,255,0.02); }
+section.chapter.dark .tile:hover { background: rgba(255,255,255,0.04); }
+section.chapter.dark .tile-head { color: var(--void-quiet); }
+section.chapter.dark .tile-head .id { color: var(--nroo-green-100); }
+section.chapter.dark .tile-title { color: var(--void-text); }
+section.chapter.dark .tile-body { color: var(--void-soft); }
+section.chapter.dark .tile-foot { color: var(--void-quiet); border-top-color: var(--void-line); }
+section.chapter.dark .tile-foot .avatar { background: var(--nroo-green-100); color: var(--ink); }
+section.chapter.dark .callout {
+  border-left-color: var(--nroo-green-100);
+  color: var(--void-text);
+}
+section.chapter.dark .callout strong { color: var(--void-text); }
+section.chapter.dark .list-rule { border-top-color: var(--void-line); }
+section.chapter.dark .list-rule .row { border-bottom-color: var(--void-line); }
+section.chapter.dark .list-rule .row h3 { color: var(--void-text); }
+section.chapter.dark .list-rule .row p { color: var(--void-soft); }
+section.chapter.dark .pullquote { border-color: var(--void-line-strong); }
+section.chapter.dark .pullquote q { color: var(--void-text); }
+section.chapter.dark .pullquote .attribution { color: var(--void-quiet); }
+section.chapter.dark .promise-block { background: rgba(255, 255, 255, 0.02); border: 1px solid var(--void-line-strong); }
+section.chapter.dark .tag { background: rgba(255,255,255,0.06); color: var(--void-text); }
+section.chapter.dark .dodont { border-color: var(--void-line); }
+section.chapter.dark .dodont .col-do { border-right-color: var(--void-line); }
+section.chapter.dark .dodont .col-head { border-bottom-color: var(--void-line); }
+section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); color: var(--void-soft); }
+
+/* ─── HERO REBUILT — DARK ─── */
+.hero { background: var(--void); color: var(--void-text); border-bottom: 1px solid var(--void-line); }
+.hero::before {
+  background-image: radial-gradient(circle at 1px 1px, var(--void-line-strong) 1px, transparent 0);
+  opacity: 1;
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 60% at 100% 50%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 100% 50%, black 0%, transparent 70%);
+}
+.hero-meta { color: var(--void-quiet); border-bottom-color: var(--void-line); }
+.hero-meta .sep { color: var(--void-quiet); }
+.hero-headline .accent::after { background: var(--nroo-green-100); height: 12px; opacity: 0.85; box-shadow: var(--glow-green); }
+.hero-lede { color: var(--void-soft); }
+.hero-lede strong { color: var(--void-text); }
+.hero-toc { border-top-color: var(--void-line-strong); }
+.hero-toc-label { color: var(--void-quiet); }
+.hero-toc li { border-bottom-color: var(--void-line); }
+.hero-toc li:hover .toc-num { color: var(--nroo-green-100); }
+.hero-toc li:hover .toc-title { color: var(--void-text); }
+.toc-num { color: var(--void-quiet); }
+.toc-title { color: var(--void-soft); }
+.toc-tag { color: var(--void-quiet); }
+
+/* ─── KINETIC STAT BAND (dark) ─── */
+.stat-band { background: var(--void); border-color: var(--void-line-strong); position: relative; overflow: hidden; }
+.stat-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 50%, rgba(0, 224, 160, 0.06), transparent 60%);
+  pointer-events: none;
+}
+.stat-band-inner { position: relative; z-index: 1; padding: 40px 32px; }
+.stat-band-label { color: var(--void-quiet); border-right-color: var(--void-line); }
+.stat-band-cell { border-right-color: var(--void-line); }
+.stat-band-num { color: var(--void-text); }
+.stat-band-num.orange { color: var(--nroo-orange-120); text-shadow: var(--glow-orange); }
+.stat-band-num.green { color: var(--nroo-green-100); text-shadow: var(--glow-green); }
+.stat-band-cap { color: var(--void-soft); }
+.stat-band-pulse {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--nroo-green-100);
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: var(--glow-green);
+  animation: pulse 2s ease-in-out infinite;
+  vertical-align: middle;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ─── CTA GLOW ─── */
+.btn-glow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--nroo-green-100);
+  color: var(--ink);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border: 1px solid var(--nroo-green-100);
+  box-shadow: var(--glow-green);
+  transition: all .2s ease-out;
+  cursor: pointer;
+}
+.btn-glow:hover {
+  background: var(--nroo-green-120);
+  border-color: var(--nroo-green-120);
+  box-shadow: 0 0 36px rgba(0, 224, 160, 0.65), 0 0 1px var(--nroo-green-120);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent;
+  color: var(--void-text);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 22px;
+  border: 1px solid var(--void-line-strong);
+  transition: all .2s ease-out;
+  cursor: pointer;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--nroo-green-100); color: var(--nroo-green-100); }
+
+/* ─── PRODUCT MOCK CHROME (replaces brochure mocks) ─── */
+.product-mocks {
+  display: grid; grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+.pm-frame {
+  background: var(--void);
+  border: 1px solid var(--void-line-strong);
+  position: relative;
+  overflow: hidden;
+}
+.pm-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 30% at 50% 0%, rgba(0, 224, 160, 0.08), transparent 60%);
+  pointer-events: none;
+}
+.pm-frame.light {
+  background: #fff;
+  border-color: var(--hair-strong);
+}
+.pm-frame.light::before { display: none; }
+.pm-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--void-line);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: var(--void-quiet);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pm-frame.light .pm-bar { border-bottom-color: var(--hair); color: var(--ink-quiet); }
+.pm-bar .dots { display: flex; gap: 5px; }
+.pm-bar .dots span {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--void-line-strong);
+}
+.pm-frame.light .pm-bar .dots span { background: var(--hair-strong); }
+.pm-bar .url {
+  margin-left: auto; font-weight: 500;
+}
+.pm-body { padding: 20px; min-height: 240px; position: relative; z-index: 1; }
+.pm-frame:not(.light) .pm-body { color: var(--void-text); }
+
+/* Chat mock */
+.chat-line {
+  display: flex; gap: 10px;
+  margin-bottom: 14px;
+  align-items: flex-start;
+}
+.chat-line.user { flex-direction: row-reverse; }
+.chat-avatar {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--void-line-strong);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  color: var(--void-text);
+}
+.chat-line.user .chat-avatar { background: var(--nroo-green-100); color: var(--ink); }
+.chat-bubble {
+  flex: 1;
+  font-family: var(--font-cjk);
+  font-size: 13px; line-height: 1.7;
+  color: var(--void-text);
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--void-line);
+  border-radius: 4px 12px 12px 12px;
+  max-width: 88%;
+}
+.chat-line.user .chat-bubble {
+  background: rgba(0, 224, 160, 0.08);
+  border-color: rgba(0, 224, 160, 0.24);
+  border-radius: 12px 4px 12px 12px;
+  margin-left: auto;
+}
+.chat-bubble .num { color: var(--nroo-orange-120); font-family: var(--font-mono); font-weight: 700; }
+.chat-bubble .em { color: var(--nroo-green-100); font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; }
+
+/* Comparison mock */
+.cmp-row {
+  display: grid; grid-template-columns: 1fr 80px 80px;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dotted var(--void-line);
+  font-size: 12px;
+  align-items: center;
+}
+.cmp-row.head { border-bottom: 1px solid var(--void-line-strong); padding-bottom: 8px; font-family: var(--font-mono); font-size: 10px; color: var(--void-quiet); letter-spacing: 0.08em; text-transform: uppercase; }
+.cmp-row .nm { font-family: var(--font-cjk); color: var(--void-text); font-weight: 500; }
+.cmp-row .v { font-family: var(--font-mono); color: var(--void-text); font-weight: 500; text-align: right; }
+.cmp-row .v.high { color: var(--nroo-orange-120); font-weight: 700; }
+.cmp-row .v.win { color: var(--nroo-green-100); font-weight: 700; }
+.cmp-tag {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 9px; font-weight: 500;
+  padding: 2px 6px;
+  background: var(--nroo-green-100);
+  color: var(--ink);
+  letter-spacing: 0.08em;
+  margin-left: 6px;
+  text-transform: uppercase;
+}
+
+/* Recommendation card mock */
+.rec-h {
+  font-family: var(--font-cjk);
+  font-weight: 700; font-size: 16px;
+  color: var(--void-text);
+  margin-bottom: 8px;
+}
+.rec-bignum {
+  font-family: var(--font-numeric);
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--nroo-orange-120);
+  text-shadow: var(--glow-orange);
+  margin: 12px 0 4px;
+}
+.rec-bignum sup { font-size: 0.4em; opacity: 0.7; vertical-align: super; }
+.rec-cap {
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--void-quiet);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.rec-meter {
+  height: 4px;
+  background: var(--void-line);
+  margin: 16px 0;
+  position: relative;
+  overflow: hidden;
+}
+.rec-meter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 75%;
+  background: linear-gradient(90deg, var(--nroo-green-100) 0%, var(--nroo-green-100) 100%);
+  box-shadow: var(--glow-green);
+}
+.rec-meta-row {
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--void-quiet);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.rec-meta-row .v { color: var(--nroo-green-100); font-weight: 700; }
+
+/* ─── FLOATING MASCOT ─── */
+.float-roo {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 64px; height: 64px;
+  background: var(--ink);
+  border: 1px solid var(--void-line-strong);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 30;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.24), 0 0 0 4px rgba(0, 224, 160, 0.08);
+  transition: transform .2s ease-out;
+  cursor: pointer;
+}
+.float-roo:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.32), 0 0 0 6px rgba(0, 224, 160, 0.16);
+}
+.float-roo .pulse {
+  position: absolute;
+  top: -4px; right: -4px;
+  width: 12px; height: 12px;
+  background: var(--nroo-green-100);
+  border-radius: 50%;
+  border: 2px solid var(--ink);
+  box-shadow: var(--glow-green);
+  animation: pulse 2s ease-in-out infinite;
+}
+@media (max-width: 720px) {
+  .float-roo { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+  .product-mocks { grid-template-columns: 1fr; }
+}
+
+/* ─── SCROLL-IN ANIMATION ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.fade-up.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Print */
 @media print {
-  .site-header, .progress-bar { display: none; }
-  body { background: white; }
-  section.chapter, .hero { page-break-inside: avoid; }
+  .site-header, .progress-bar, .float-roo, .side-nav { display: none; }
+  body { background: white; padding-left: 0; }
+  section.chapter, .hero { page-break-inside: avoid; background: white !important; color: black !important; }
+  section.chapter.dark, .hero { color: black !important; }
   .colophon { background: white; color: black; }
   .colophon p, .colophon ul li, .colophon-meta { color: #444; }
 }
@@ -1779,25 +2153,30 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 <section class="hero" id="top">
   <div class="hero-inner">
     <div class="hero-meta">
-      <span class="dot"></span>
-      <span>ROO.CASH BRAND GUIDELINE</span>
+      <span class="stat-band-pulse"></span>
+      <span>ROO.CASH · BRAND GUIDELINE</span>
       <span class="sep">／</span>
-      <span>2026 REBRAND · ISSUE 01</span>
+      <span>2026 · ISSUE 01</span>
       <span class="sep">／</span>
-      <span>INTERNAL DRAFT · 繁體中文</span>
+      <span>v1.0 · DRAFT</span>
+      <span class="sep">／</span>
+      <span style="color: var(--nroo-green-100);">LIVE</span>
     </div>
 
     <div class="hero-grid">
       <div>
         <h1 class="hero-headline">
-          每一筆<br/>
-          金錢決定，<br/>
-          都值得一個<br/>
-          <span class="accent">懂你的</span> <em>夥伴</em>。
+          理財建議的<br/>
+          <em>下一個世代</em>，<br/>
+          住在你的口袋裡。
         </h1>
-        <p class="hero-lede">
-          這份指南整理了 Roo.Cash 在 2026 年所有對外溝通的方式——從一句話的口吻，到一張卡片的邊角。我們已經陪伴 <span class="num">120,000+</span> 位使用者媒合最適合自己的方案。希望這份共識，能讓我們繼續把這件事做得更好。
+        <p class="hero-lede" style="margin-top: 28px;">
+          Roo.Cash 是台灣第一個 AI 原生的個人理財夥伴。我們把銀行、信用卡、貸款、保險的選擇邏輯，重寫成一段你聽得懂的對話。<strong>已陪伴 <span class="num">120,000+</span> 位使用者，找到真正適合自己的方案。</strong>
         </p>
+        <div class="hero-actions" style="margin-top: 36px;">
+          <a href="#ch01" class="btn-glow">開始閱讀 →</a>
+          <a href="#ch10" class="btn-ghost">下載素材包</a>
+        </div>
       </div>
 
       <aside class="hero-toc">
@@ -1823,22 +2202,22 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 <section class="stat-band">
   <div class="stat-band-inner">
     <div class="stat-band-label">
-      The numbers,<br/>as of Q1 2026
+      <span class="stat-band-pulse"></span>LIVE INDEX<br/>Q1 2026
     </div>
     <div class="stat-band-cell">
-      <div class="stat-band-num orange">120,000<span style="font-size:0.5em;">+</span></div>
+      <div class="stat-band-num orange" data-count="120000" data-suffix="+">120,000+</div>
       <div class="stat-band-cap">已媒合使用者人次</div>
     </div>
     <div class="stat-band-cell">
-      <div class="stat-band-num">180<span style="font-size:0.5em;">+</span></div>
+      <div class="stat-band-num green" data-count="180" data-suffix="+">180+</div>
       <div class="stat-band-cap">合作銀行與卡片數</div>
     </div>
     <div class="stat-band-cell">
-      <div class="stat-band-num orange">2.05<span style="font-size:0.5em;">%</span></div>
+      <div class="stat-band-num orange" data-count="2.05" data-suffix="%" data-decimals="2">2.05%</div>
       <div class="stat-band-cap">個貸最低年利率</div>
     </div>
     <div class="stat-band-cell">
-      <div class="stat-band-num orange">5<span style="font-size:0.5em;"> 分鐘</span></div>
+      <div class="stat-band-num green" data-count="5" data-suffix=" min">5 min</div>
       <div class="stat-band-cap">最快核貸時間</div>
     </div>
   </div>
@@ -1897,7 +2276,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 </div>
 
 <!-- ─── 02 MISSION ─── -->
-<section class="chapter alt" id="ch02">
+<section class="chapter dark" id="ch02">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
       <div class="num">02<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
@@ -2038,7 +2417,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 </div>
 
 <!-- ─── 04 PERSONALITY ─── -->
-<section class="chapter alt" id="ch04">
+<section class="chapter dark" id="ch04">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
       <div class="num">04<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
@@ -2344,7 +2723,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 </div>
 
 <!-- ─── 07 COLOR & TYPE ─── -->
-<section class="chapter" id="ch07">
+<section class="chapter dark" id="ch07">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
       <div class="num">07<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
@@ -3002,7 +3381,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 </div>
 
 <!-- ─── 09 VISUAL LANGUAGE ─── -->
-<section class="chapter" id="ch09">
+<section class="chapter dark" id="ch09">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
       <div class="num">09<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">10</span></div>
@@ -3141,31 +3520,92 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
         <p>把前面九章的規矩整合起來，看看實際應用在常見的觸點上會是什麼樣子。<strong>這裡示範的是基本款，照這個邏輯往外延伸都可以。</strong></p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Application Specimens</div>
+      <div class="subhead h-section"><span class="dash"></span>Live Product Surfaces · 實際介面</div>
 
-      <div class="mock-grid">
-        <div class="mock">
-          <div class="mock-frame-head"><span class="id">SPEC.01</span><span>App Hero</span></div>
-          <div class="mock-canvas navy">
-            <div class="mock-h">找到最適合你的<br/>信用卡 &amp; 個人貸款</div>
-            <div class="mock-body">已幫 <span class="num">120,000+</span> 位用戶媒合最佳方案。</div>
-            <span class="mock-cta">立即比較 →</span>
+      <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
+        以下三個介面都是品牌規範實際運作起來的樣子。<strong style="color: var(--ink);">這不是行銷示意圖——這就是產品本身。</strong>
+      </p>
+
+      <div class="product-mocks">
+        <!-- AI Chat -->
+        <div class="pm-frame">
+          <div class="pm-bar">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="url">roo.cash / chat</span>
+          </div>
+          <div class="pm-body">
+            <div class="chat-line user">
+              <div class="chat-avatar">你</div>
+              <div class="chat-bubble">下個月想申辦個人信貸，<br/>有什麼建議嗎？</div>
+            </div>
+            <div class="chat-line">
+              <div class="chat-avatar" style="background: var(--nroo-green-100); color: var(--ink);">R</div>
+              <div class="chat-bubble">
+                根據你的信用紀錄與目前的負債比，我幫你過濾了 12 家銀行。<br/><br/>
+                最划算的是 <span class="em">A 銀行</span>，年利率最低 <span class="num">2.05%</span>，最快 <span class="num">5</span> 分鐘核貸。<br/><br/>
+                要我把核貸條件詳細列出來給你看嗎？
+              </div>
+            </div>
           </div>
         </div>
-        <div class="mock">
-          <div class="mock-frame-head"><span class="id">SPEC.02</span><span>EDM</span></div>
-          <div class="mock-canvas paper">
-            <div class="mock-h">這個月，你<br/>少拿了 <span class="num">$800</span> 回饋。</div>
-            <div class="mock-body">我們看了一下你的消費習慣，幫你選了三張更划算的卡。要不要看看？</div>
-            <span class="mock-cta">看看推薦 →</span>
+
+        <!-- Comparison table -->
+        <div class="pm-frame">
+          <div class="pm-bar">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="url">roo.cash / compare</span>
+          </div>
+          <div class="pm-body">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--void-quiet); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px;">— 個人貸款 · 即時比較</div>
+            <div class="cmp-row head">
+              <div>銀行</div><div>年利率</div><div>核貸</div>
+            </div>
+            <div class="cmp-row">
+              <div class="nm">A 銀行<span class="cmp-tag">最佳</span></div>
+              <div class="v win">2.05%</div>
+              <div class="v">5 min</div>
+            </div>
+            <div class="cmp-row">
+              <div class="nm">B 銀行</div>
+              <div class="v">2.88%</div>
+              <div class="v">15 min</div>
+            </div>
+            <div class="cmp-row">
+              <div class="nm">C 銀行</div>
+              <div class="v">3.42%</div>
+              <div class="v">1 hr</div>
+            </div>
+            <div class="cmp-row">
+              <div class="nm">D 銀行</div>
+              <div class="v">4.15%</div>
+              <div class="v">2 hr</div>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--void-quiet); letter-spacing: 0.04em; margin-top: 14px; font-style: italic;">
+              ※ 即時更新於 2026-04-30 14:23
+            </div>
           </div>
         </div>
-        <div class="mock">
-          <div class="mock-frame-head"><span class="id">SPEC.03</span><span>Social</span></div>
-          <div class="mock-canvas paper">
-            <div class="mock-body">利率被悄悄調整，你發現了嗎？這個月有 5 家銀行更新了個貸條件。</div>
-            <div class="mock-bignum">2.05%</div>
-            <div class="mock-cap">本月最低年利率</div>
+
+        <!-- Recommendation card -->
+        <div class="pm-frame">
+          <div class="pm-bar">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <span class="url">roo.cash / recommend</span>
+          </div>
+          <div class="pm-body">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--nroo-green-100); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 8px;">— 為你推薦 · 信心分數</div>
+            <div class="rec-h">A 銀行 個人信貸方案</div>
+            <div class="rec-bignum">94<sup>/100</sup></div>
+            <div class="rec-cap">— 適配指數 · 高度推薦</div>
+            <div class="rec-meter"></div>
+            <div class="rec-meta-row">
+              <span>年利率 <span class="v">2.05%</span></span>
+              <span>核貸 <span class="v">5 min</span></span>
+            </div>
+            <div style="margin-top: 20px; display: flex; gap: 8px;">
+              <a href="#" class="btn-glow" style="font-size: 10px; padding: 8px 14px;">立即申請</a>
+              <a href="#" class="btn-ghost" style="font-size: 10px; padding: 8px 14px;">看詳情</a>
+            </div>
           </div>
         </div>
       </div>
@@ -3258,6 +3698,24 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
     </div>
   </div>
 </section>
+
+<!-- ─── FLOATING ROO ─── -->
+<a href="#ch08" class="float-roo" id="floatRoo" aria-label="Jump to mascot chapter" title="Roo · 跟我聊聊">
+  <span class="pulse"></span>
+  <svg width="40" height="46" viewBox="0 0 120 140" fill="none" aria-hidden="true">
+    <ellipse cx="60" cy="132" rx="30" ry="3.5" fill="#000" opacity=".4"/>
+    <path d="M28 110 Q12 100 16 80" stroke="#E8ECF5" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+    <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#E8ECF5" stroke-width="2.4" fill="#0A1530" stroke-linejoin="round"/>
+    <ellipse cx="60" cy="80" rx="14" ry="9" fill="#00E0A0"/>
+    <path d="M40 122 Q36 130 44 132" stroke="#E8ECF5" stroke-width="2.4" stroke-linecap="round" fill="#0A1530"/>
+    <path d="M80 122 Q84 130 76 132" stroke="#E8ECF5" stroke-width="2.4" stroke-linecap="round" fill="#0A1530"/>
+    <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#E8ECF5" stroke-width="2.4" fill="#0A1530"/>
+    <path d="M48 22 Q42 8 50 4" stroke="#E8ECF5" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+    <path d="M72 22 Q78 8 70 4" stroke="#E8ECF5" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+    <circle cx="55" cy="36" r="2" fill="#E8ECF5"/>
+    <circle cx="69" cy="46" r="1.6" fill="#E8ECF5"/>
+  </svg>
+</a>
 
 <!-- ─── COLOPHON ─── -->
 <footer class="colophon">
@@ -3361,6 +3819,55 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   document.addEventListener('scroll', detect, { passive: true });
   window.addEventListener('resize', detect, { passive: true });
   detect();
+})();
+
+// Stat band count-up on scroll
+(function() {
+  const nums = document.querySelectorAll('.stat-band-num[data-count]');
+  if (!('IntersectionObserver' in window) || !nums.length) return;
+
+  const animate = (el) => {
+    const target = parseFloat(el.dataset.count);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1400;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      const v = target * eased;
+      const formatted = decimals ? v.toFixed(decimals) : Math.floor(v).toLocaleString('en-US');
+      el.textContent = formatted + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animate(e.target);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  nums.forEach(n => { n.textContent = '0'; obs.observe(n); });
+})();
+
+// Fade-up scroll-in
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  document.querySelectorAll('.chapter-title, .hero-headline, .pullquote, .promise-block, .product-mocks, .palette-mosaic').forEach(el => el.classList.add('fade-up'));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 })();
 </script>
 
