@@ -8,32 +8,57 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.7.0/style.css">
 <style>
 :root {
   --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
   --font-serif: 'Newsreader', serif;
-  --font-serif-cjk: 'LXGW WenKai TC', 'Songti TC', serif; /* used sparingly, only for warm callouts */
-  --hair: rgba(17, 40, 88, 0.10);
-  --hair-strong: rgba(17, 40, 88, 0.20);
-  --paper: #F8F7F2;
-  --paper-2: #EFEDE6;
-  --ink: #0A1530;
-  --ink-soft: rgba(10, 21, 48, 0.62);
-  --ink-quiet: rgba(10, 21, 48, 0.40);
+  --font-serif-cjk: var(--font-cjk); /* alias to Noto Sans TC — kaishu removed */
 
-  /* dark surface tokens */
-  --void: #050816;
-  --void-2: #0A1530;
-  --void-line: rgba(255, 255, 255, 0.06);
-  --void-line-strong: rgba(255, 255, 255, 0.14);
-  --void-text: #E8ECF5;
-  --void-soft: rgba(232, 236, 245, 0.62);
-  --void-quiet: rgba(232, 236, 245, 0.40);
+  /* ───────────────────────────────────────────
+     Future Finance Palette · Issue 02 (2026)
+     5 colors, intentional usage proportions
+     ─────────────────────────────────────────── */
+  --roo-night:   #021C26;  /* 01 · Primary  — surface, headlines */
+  --roo-blue:    #074058;  /* 02 · Primary  — depth, supporting surface */
+  --roo-water:   #25C9BA;  /* 03 · Secondary — action, AI, live */
+  --roo-sun:     #FF601A;  /* 04 · Secondary — numeric, energy */
+  --roo-frost:   #F2F6F8;  /* 05 · Primary  — cold canvas (replaces warm sand) */
+  --roo-frost-2: #E5EBEF;  /* 05 dark — alt cold canvas */
+  --roo-sand:    var(--roo-frost);   /* alias for legacy refs */
+  --roo-sand-2:  var(--roo-frost-2); /* alias */
+  --roo-water-d: #1AA396;  /* Water hover */
 
-  /* signature glows */
-  --glow-green: 0 0 24px rgba(0, 224, 160, 0.45), 0 0 1px rgba(0, 224, 160, 1);
-  --glow-orange: 0 0 28px rgba(216, 68, 33, 0.32);
+  /* Semantic ink tokens map to the new palette */
+  --ink:        var(--roo-night);
+  --ink-soft:   rgba(2, 28, 38, 0.62);
+  --ink-quiet:  rgba(2, 28, 38, 0.40);
+  --paper:      var(--roo-sand);
+  --paper-2:    var(--roo-sand-2);
+  --hair:       rgba(2, 28, 38, 0.12);
+  --hair-strong:rgba(2, 28, 38, 0.22);
+
+  /* Dark surface tokens */
+  --void:       var(--roo-night);
+  --void-2:     var(--roo-blue);
+  --void-line:        rgba(255, 255, 255, 0.06);
+  --void-line-strong: rgba(255, 255, 255, 0.16);
+  --void-text:        #F2F6F8;
+  --void-soft:        rgba(242, 246, 248, 0.62);
+  --void-quiet:       rgba(242, 246, 248, 0.40);
+
+  /* Override original design-system tokens to the new palette */
+  --nroo-blue-100:   var(--roo-night);
+  --nroo-blue-95:    var(--roo-blue);
+  --nroo-blue-120:   #011018;
+  --nroo-green-100:  var(--roo-water);
+  --nroo-green-120:  var(--roo-water-d);
+  --nroo-orange-120: var(--roo-sun);
+  --nroo-grey-10:    var(--roo-sand);
+  --nroo-grey-20:    var(--roo-sand-2);
+
+  /* Signature glows updated to new palette */
+  --glow-green:  0 0 24px rgba(37, 201, 186, 0.45), 0 0 1px rgba(37, 201, 186, 1);
+  --glow-orange: 0 0 28px rgba(255, 96, 26, 0.36);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1553,6 +1578,218 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   .logo-frame > div { border-right: none; border-bottom: 1px solid var(--hair); }
 }
 
+/* ─── FUTURE FINANCE PALETTE DISPLAY ─── */
+.ff-palette {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border: 1px solid var(--hair);
+  margin: 24px 0 0;
+  min-height: 420px;
+}
+.ff-col {
+  padding: 28px 24px 24px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.ff-meta {
+  display: flex; flex-direction: column; gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.ff-meta .ff-name {
+  font-family: var(--font-cjk);
+  font-weight: 700; font-size: 14px;
+  letter-spacing: 0;
+  margin-bottom: 6px;
+}
+.ff-meta .ff-rgb { opacity: 0.72; font-size: 11px; }
+.ff-meta .ff-hex { opacity: 0.72; font-size: 11px; }
+
+.ff-num {
+  font-family: var(--font-numeric);
+  font-weight: 700;
+  font-size: clamp(80px, 11vw, 160px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  margin-top: auto;
+  align-self: flex-start;
+}
+.ff-num .dot {
+  font-family: var(--font-numeric);
+  display: inline;
+}
+
+.ff-tones {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border-left: 1px solid var(--hair);
+  border-right: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  margin-bottom: 24px;
+}
+.ff-tone-cell {
+  height: 56px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.ff-tone-cell:last-child { border-right: none; }
+
+/* Primary / Secondary tier grid */
+.ff-tier-grid {
+  display: grid; grid-template-columns: 1.4fr 1fr;
+  gap: 0;
+  border: 1px solid var(--hair);
+  margin: 24px 0;
+}
+.ff-tier {
+  padding: 28px 28px 24px;
+  border-right: 1px solid var(--hair);
+  display: flex; flex-direction: column;
+  gap: 16px;
+}
+.ff-tier:last-child { border-right: none; }
+.ff-tier-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--hair);
+}
+.ff-tier-tag {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.ff-tier-pct {
+  font-family: var(--font-numeric);
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 0.85;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+.ff-tier-pct .pct {
+  font-size: 0.45em;
+  color: var(--ink-soft);
+  margin-left: 2px;
+}
+.ff-tier-desc {
+  font-family: var(--font-cjk);
+  font-size: 14px; line-height: 1.75;
+  color: var(--ink-soft);
+}
+.ff-tier-list {
+  margin-top: auto;
+  display: flex; flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--hair);
+}
+.ff-tier-row {
+  display: grid; grid-template-columns: 24px 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hair);
+}
+.ff-tier-row:last-child { border-bottom: none; }
+.ff-tier-row .sw {
+  width: 18px; height: 18px;
+  border-radius: 0;
+  display: inline-block;
+}
+.ff-tier-row .nm {
+  font-family: var(--font-cjk);
+  font-size: 14px; font-weight: 600;
+  color: var(--ink);
+}
+.ff-tier-row .hx {
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+.ff-tier-row .pc {
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  min-width: 40px;
+  text-align: right;
+}
+
+/* Distribution bar */
+.ff-bar {
+  display: flex;
+  height: 64px;
+  border: 1px solid var(--hair);
+  margin: 24px 0 12px;
+  position: relative;
+  overflow: hidden;
+}
+.ff-bar-seg {
+  display: flex; align-items: center; justify-content: flex-start;
+  padding: 0 16px;
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--void-text);
+  position: relative;
+  transition: flex .3s ease-out;
+}
+.ff-bar-seg::before {
+  content: attr(data-label);
+}
+.ff-bar-legend {
+  display: flex; flex-wrap: wrap; gap: 20px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+.ff-bar-legend span { display: flex; align-items: center; gap: 8px; }
+.ff-bar-legend .d {
+  width: 12px; height: 12px;
+  display: inline-block;
+}
+
+@media (max-width: 1080px) {
+  .ff-palette { grid-template-columns: repeat(2, 1fr); min-height: auto; }
+  .ff-col { min-height: 200px; padding: 20px; }
+  .ff-num { font-size: 80px; }
+  .ff-tones { grid-template-columns: repeat(5, 1fr); }
+  .ff-tone-cell { height: 36px; }
+  .ff-tier-grid { grid-template-columns: 1fr; }
+  .ff-tier { border-right: none; border-bottom: 1px solid var(--hair); }
+  .ff-tier:last-child { border-bottom: none; }
+  .ff-bar { height: 56px; }
+  .ff-bar-seg { padding: 0 8px; font-size: 10px; }
+  .ff-bar-seg::before { font-size: 0; }
+}
+
+/* When the palette is rendered inside a dark chapter (07 is dark), keep the palette legible */
+section.chapter.dark .ff-palette,
+section.chapter.dark .ff-tones,
+section.chapter.dark .ff-tier-grid,
+section.chapter.dark .ff-bar { border-color: var(--void-line-strong); }
+section.chapter.dark .ff-tier { border-right-color: var(--void-line); }
+section.chapter.dark .ff-tier-head { border-bottom-color: var(--void-line); }
+section.chapter.dark .ff-tier-tag { color: var(--void-text); }
+section.chapter.dark .ff-tier-pct { color: var(--void-text); }
+section.chapter.dark .ff-tier-pct .pct { color: var(--void-soft); }
+section.chapter.dark .ff-tier-desc { color: var(--void-soft); }
+section.chapter.dark .ff-tier-list { border-top-color: var(--void-line); }
+section.chapter.dark .ff-tier-row { border-bottom-color: var(--void-line); }
+section.chapter.dark .ff-tier-row .nm { color: var(--void-text); }
+section.chapter.dark .ff-tier-row .hx { color: var(--void-soft); }
+section.chapter.dark .ff-tier-row .pc { color: var(--void-text); }
+section.chapter.dark .ff-bar-legend { color: var(--void-soft); }
+
 /* ─── DARK CHAPTER MODE ─── */
 section.chapter.dark {
   background: var(--void);
@@ -2042,18 +2279,18 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
     </div>
     <div class="gate-body">
       <svg class="gate-mascot" width="72" height="84" viewBox="0 0 120 140" fill="none">
-        <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
-        <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-        <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
-        <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
-        <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-        <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-        <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
-        <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
-        <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
-        <path d="M60 38 Q66 40 68 46" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        <circle cx="55" cy="36" r="1.8" fill="#112858"/>
-        <circle cx="69" cy="46" r="1.5" fill="#112858"/>
+        <ellipse cx="60" cy="132" rx="34" ry="4" fill="#021C26" opacity=".10"/>
+        <path d="M28 110 Q12 100 16 80" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8" stroke-linejoin="round"/>
+        <ellipse cx="60" cy="92" rx="18" ry="11" fill="#25C9BA"/>
+        <path d="M40 122 Q36 130 44 132 L52 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+        <path d="M80 122 Q84 130 76 132 L68 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+        <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8"/>
+        <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
+        <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
+        <path d="M60 38 Q66 40 68 46" stroke="#021C26" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="55" cy="36" r="1.8" fill="#021C26"/>
+        <circle cx="69" cy="46" r="1.5" fill="#021C26"/>
       </svg>
       <div class="gate-eyebrow">— Brand Guideline · Issue 01</div>
       <h1 class="gate-h">先<em>對個</em> 暗號。</h1>
@@ -2731,102 +2968,177 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
     </aside>
     <div class="chapter-body">
       <div class="chapter-eyebrow">— Chapter Seven</div>
-      <h2 class="chapter-title">三色一底，<em>一打開</em> 就被認出來。</h2>
+      <h2 class="chapter-title">五個顏色，<em>一個</em> 未來金融的語言。</h2>
       <div class="chapter-deck">
-        <p>Navy 是 Roo.Cash 的骨架，Green 是行動，Orange 留給數字，Cream 是大家呼吸的空間。<strong>不要再加第五個顏色。</strong>真的需要的時候，先回來看這一頁。</p>
+        <p>Roo.Cash 2026 的色彩系統不是「三色加底」，而是<strong>五個有明確分工的顏色</strong>。每一個都有自己的故事——夜、藍、水、太陽、霜。Primary 撐起骨架，Secondary 帶來行動感與溫度。</p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Palette · 使用比例</div>
+      <div class="subhead h-section"><span class="dash"></span>The Palette · 五色完整呈現</div>
 
-      <div class="palette-mosaic">
-        <div class="palette-cell navy">
-          <div>
-            <div class="pc-id">PRIMARY · 01</div>
-            <div class="pc-name">Navy</div>
+      <div class="ff-palette">
+        <div class="ff-col" style="background: var(--roo-night); color: var(--void-text);">
+          <div class="ff-meta">
+            <div class="ff-name">Roo Night</div>
+            <div class="ff-rgb">RGB 02 / 28 / 38</div>
+            <div class="ff-hex">#021C26</div>
           </div>
-          <div>
-            <div class="pc-use">主文字 · Logo · 深色背景<br/>H1 / H2 標題</div>
-            <div style="display:flex; justify-content:space-between; margin-top:12px;">
-              <div class="pc-hex">#112858</div>
-              <div class="pc-share">≈ 45%</div>
+          <div class="ff-num">01<span class="dot">.</span></div>
+        </div>
+        <div class="ff-col" style="background: var(--roo-blue); color: var(--void-text);">
+          <div class="ff-meta">
+            <div class="ff-name">Roo Blue</div>
+            <div class="ff-rgb">RGB 07 / 64 / 88</div>
+            <div class="ff-hex">#074058</div>
+          </div>
+          <div class="ff-num">02<span class="dot">.</span></div>
+        </div>
+        <div class="ff-col" style="background: var(--roo-water); color: var(--ink);">
+          <div class="ff-meta">
+            <div class="ff-name">Roo Water</div>
+            <div class="ff-rgb">RGB 37 / 201 / 186</div>
+            <div class="ff-hex">#25C9BA</div>
+          </div>
+          <div class="ff-num">03<span class="dot">.</span></div>
+        </div>
+        <div class="ff-col" style="background: var(--roo-sun); color: #fff;">
+          <div class="ff-meta">
+            <div class="ff-name">Roo Sun</div>
+            <div class="ff-rgb">RGB 255 / 96 / 26</div>
+            <div class="ff-hex">#FF601A</div>
+          </div>
+          <div class="ff-num">04<span class="dot">.</span></div>
+        </div>
+        <div class="ff-col" style="background: var(--roo-frost); color: var(--ink); border-left: 1px solid var(--hair);">
+          <div class="ff-meta">
+            <div class="ff-name">Roo Frost</div>
+            <div class="ff-rgb">RGB 242 / 246 / 248</div>
+            <div class="ff-hex">#F2F6F8</div>
+          </div>
+          <div class="ff-num">05<span class="dot">.</span></div>
+        </div>
+      </div>
+
+      <div class="ff-tones">
+        <div class="ff-tone-cell" style="background: rgba(2, 28, 38, 0.55);"></div>
+        <div class="ff-tone-cell" style="background: rgba(7, 64, 88, 0.55);"></div>
+        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.55);"></div>
+        <div class="ff-tone-cell" style="background: rgba(255, 96, 26, 0.55);"></div>
+        <div class="ff-tone-cell" style="background: rgba(242, 246, 248, 0.55); border-left: 1px solid var(--hair);"></div>
+        <div class="ff-tone-cell" style="background: rgba(2, 28, 38, 0.30);"></div>
+        <div class="ff-tone-cell" style="background: rgba(7, 64, 88, 0.30);"></div>
+        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.30);"></div>
+        <div class="ff-tone-cell" style="background: rgba(255, 96, 26, 0.30);"></div>
+        <div class="ff-tone-cell" style="background: rgba(242, 246, 248, 0.30); border-left: 1px solid var(--hair);"></div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Primary &amp; Secondary · 主色與輔色</div>
+
+      <div class="ff-tier-grid">
+        <div class="ff-tier">
+          <div class="ff-tier-head">
+            <div class="ff-tier-tag">PRIMARY · 主色</div>
+            <div class="ff-tier-pct">73<span class="pct">%</span></div>
+          </div>
+          <p class="ff-tier-desc">三個主色撐起整個品牌的骨架——Night 是內容的肌理，Blue 是它的影子，Frost 是它呼吸的空氣。</p>
+          <div class="ff-tier-list">
+            <div class="ff-tier-row">
+              <span class="sw" style="background: var(--roo-night);"></span>
+              <span class="nm">Roo Night</span>
+              <span class="hx">#021C26</span>
+              <span class="pc">35%</span>
+            </div>
+            <div class="ff-tier-row">
+              <span class="sw" style="background: var(--roo-blue);"></span>
+              <span class="nm">Roo Blue</span>
+              <span class="hx">#074058</span>
+              <span class="pc">8%</span>
+            </div>
+            <div class="ff-tier-row">
+              <span class="sw" style="background: var(--roo-frost); border: 1px solid var(--hair);"></span>
+              <span class="nm">Roo Frost</span>
+              <span class="hx">#F2F6F8</span>
+              <span class="pc">30%</span>
             </div>
           </div>
         </div>
-        <div class="palette-cell green">
-          <div>
-            <div class="pc-id">ACTION · 02</div>
-            <div class="pc-name">Green</div>
+        <div class="ff-tier">
+          <div class="ff-tier-head">
+            <div class="ff-tier-tag" style="color: var(--roo-water);">SECONDARY · 輔色</div>
+            <div class="ff-tier-pct">27<span class="pct">%</span></div>
           </div>
-          <div>
-            <div class="pc-use">所有主要 CTA<br/>Hover → #14A571</div>
-            <div style="display:flex; justify-content:space-between; margin-top:8px;">
-              <div class="pc-hex">#00E0A0</div>
-              <div class="pc-share">≈ 12%</div>
+          <p class="ff-tier-desc">兩個輔色負責動作與感覺——Water 是 AI 的脈搏、是 CTA 的呼吸；Sun 是數字的能量、是利率上揚的信號。</p>
+          <div class="ff-tier-list">
+            <div class="ff-tier-row">
+              <span class="sw" style="background: var(--roo-water);"></span>
+              <span class="nm">Roo Water</span>
+              <span class="hx">#25C9BA</span>
+              <span class="pc">17%</span>
+            </div>
+            <div class="ff-tier-row">
+              <span class="sw" style="background: var(--roo-sun);"></span>
+              <span class="nm">Roo Sun</span>
+              <span class="hx">#FF601A</span>
+              <span class="pc">10%</span>
             </div>
           </div>
         </div>
-        <div class="palette-cell orange">
-          <div>
-            <div class="pc-id">ACCENT · 03</div>
-            <div class="pc-name">Orange</div>
-          </div>
-          <div>
-            <div class="pc-use">數字 · 利率 · 凸顯</div>
-            <div style="display:flex; justify-content:space-between; margin-top:8px;">
-              <div class="pc-hex">#D84421</div>
-              <div class="pc-share">≈ 5%</div>
-            </div>
-          </div>
-        </div>
-        <div class="palette-cell cream" style="grid-column: span 2;">
-          <div>
-            <div class="pc-id">CANVAS · 04</div>
-            <div class="pc-name">Cream</div>
-          </div>
-          <div>
-            <div class="pc-use">頁面底色 · 呼吸的空間。純白（#FFFFFF）只留給卡片內容。</div>
-            <div style="display:flex; justify-content:space-between; margin-top:8px;">
-              <div class="pc-hex">#F8F8F8 / #FBFAF6</div>
-              <div class="pc-share">≈ 38%</div>
-            </div>
-          </div>
-        </div>
+      </div>
+
+      <div class="subhead h-section"><span class="dash"></span>Usage Distribution · 使用比例帶</div>
+
+      <div class="ff-bar">
+        <div class="ff-bar-seg" style="flex: 35; background: var(--roo-night);" data-label="Night 35%"></div>
+        <div class="ff-bar-seg" style="flex: 30; background: var(--roo-frost); color: var(--ink); border-right: 1px solid var(--hair); border-left: 1px solid var(--hair);" data-label="Frost 30%"></div>
+        <div class="ff-bar-seg" style="flex: 17; background: var(--roo-water); color: var(--ink);" data-label="Water 17%"></div>
+        <div class="ff-bar-seg" style="flex: 10; background: var(--roo-sun);" data-label="Sun 10%"></div>
+        <div class="ff-bar-seg" style="flex: 8; background: var(--roo-blue);" data-label="Blue 8%"></div>
+      </div>
+      <div class="ff-bar-legend">
+        <span><span class="d" style="background: var(--roo-night);"></span>Night 35%</span>
+        <span><span class="d" style="background: var(--roo-frost); border: 1px solid var(--hair);"></span>Frost 30%</span>
+        <span><span class="d" style="background: var(--roo-water);"></span>Water 17%</span>
+        <span><span class="d" style="background: var(--roo-sun);"></span>Sun 10%</span>
+        <span><span class="d" style="background: var(--roo-blue);"></span>Blue 8%</span>
+      </div>
+
+      <div class="callout">
+        <strong>顏色的 Sun 規矩。</strong>整段文字都是 ink 的時候，數字用 Sun 一個字、一個字地凸顯：<span style="color: var(--ink);">「已幫 <span class="mono" style="color: var(--roo-sun); font-weight: 700;">120,000+</span> 位使用者媒合最佳方案」</span>——文字 Night，數字 Sun。整塊變色就過頭了。
       </div>
 
       <div class="callout">
         <strong>數字的 Orange 規矩。</strong>整段文字都是 navy 的時候，數字用 orange 一個字、一個字地凸顯：<span style="font-family:var(--font-serif); color: var(--ink);">「已幫 <span class="mono" style="color: var(--nroo-orange-120); font-weight: 700;">120,000+</span> 位用戶媒合最佳方案」</span>——文字 navy，數字 orange。整塊變色就過頭了。
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>The Pairing · 雙主字體並置</div>
+      <div class="subhead h-section"><span class="dash"></span>Type System · 字體系統</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
-        Roo.Cash 用兩套中文字體形成對話：<strong style="color: var(--ink);">霞鶩文楷 LXGW WenKai TC</strong>負責標題與引言，帶著手寫筆意，像朋友寫給你的信；<strong style="color: var(--ink);">思源黑體 Noto Sans TC</strong>負責內文與資料，把訊息清楚地傳出去。一個是聲音，另一個是內容。
+        Roo.Cash 的中文用單一字族——<strong style="color: var(--ink);">思源黑體 Noto Sans TC</strong>，靠重量（400 / 500 / 700 / 800 / 800）切出層級。簡單、清楚、好讀，跨平台無折損。<strong style="color: var(--ink);">英文用 Newsreader Italic</strong> 點綴節奏；<strong style="color: var(--ink);">數字用 Roboto Condensed Bold</strong>，標籤用 <strong style="color: var(--ink);">IBM Plex Mono</strong>。
       </p>
 
       <div class="dual-glyph">
         <div class="dual-cell">
           <div class="dual-meta">
-            <span>FACE.01 · DISPLAY</span>
-            <span class="ll">KAISHU 楷書</span>
+            <span>WEIGHT · 800 BOLD</span>
+            <span class="ll">DISPLAY 標題</span>
           </div>
           <div class="dual-glyph-char serif">袋</div>
           <div class="dual-foot">
-            <div class="df-key">Family</div><div class="df-val">LXGW WenKai TC · 霞鶩文楷</div>
-            <div class="df-key">Weight</div><div class="df-val">400 Regular · 700 Bold</div>
+            <div class="df-key">Family</div><div class="df-val">Noto Sans TC · 思源黑體</div>
+            <div class="df-key">Weight</div><div class="df-val">800 Bold · -0.04em letter-spacing</div>
             <div class="df-key">Source</div><div class="df-val">Open source · SIL OFL · GitHub</div>
             <div class="df-key">Use</div><div class="df-val">標題 · 引言 · Pull Quote</div>
-            <div class="df-key">Voice</div><div class="df-val">手寫筆意 · 像朋友的字</div>
+            <div class="df-key">Voice</div><div class="df-val">重量 800 + 緊縮字距 · 嚴謹但有力</div>
           </div>
         </div>
         <div class="dual-cell">
           <div class="dual-meta">
-            <span>FACE.02 · TEXT</span>
-            <span class="ll">SANS 黑體</span>
+            <span>WEIGHT · 400 REGULAR</span>
+            <span class="ll">BODY 內文</span>
           </div>
           <div class="dual-glyph-char sans">袋</div>
           <div class="dual-foot">
             <div class="df-key">Family</div><div class="df-val">Noto Sans TC · 思源黑體</div>
-            <div class="df-key">Weight</div><div class="df-val">400 / 500 / 700</div>
+            <div class="df-key">Weight</div><div class="df-val">400 / 500 / 700 / 800</div>
             <div class="df-key">Source</div><div class="df-val">Open source · SIL OFL · Google Fonts</div>
             <div class="df-key">Use</div><div class="df-val">內文 · UI · 卡片標題</div>
             <div class="df-key">Voice</div><div class="df-val">清楚、不分心、好讀</div>
@@ -2838,14 +3150,14 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
 
       <div class="specimen">
         <div class="specimen-row">
-          <div class="label">FAM.01<span class="name">LXGW WenKai TC</span></div>
+          <div class="label">FAM.01<span class="name">Noto Sans TC 800</span></div>
           <div class="demo" style="font-family: var(--font-serif-cjk); font-weight: 400; font-size: 38px; color: var(--ink); line-height: 1.3; letter-spacing: 0;">每一筆金錢決定，都值得一個夥伴。</div>
-          <div class="meta">DISPLAY · 楷書<br/>霞鶩文楷 · 400 / 700<br/>Hero · Chapter Titles · Pull Quotes</div>
+          <div class="meta">DISPLAY · 楷書<br/>思源黑體 · 400 / 700<br/>Hero · Chapter Titles · Pull Quotes</div>
         </div>
         <div class="specimen-row">
           <div class="label">FAM.02<span class="name">Noto Sans TC</span></div>
           <div class="demo" style="font-family: var(--font-cjk); font-weight: 700; font-size: 28px; color: var(--ink);">袋鼠金融，陪你做每一個決定。</div>
-          <div class="meta">PRIMARY · CJK SANS<br/>400 / 500 / 700<br/>所有內文 · UI · 卡片</div>
+          <div class="meta">PRIMARY · CJK SANS<br/>400 / 500 / 700 / 800<br/>所有內文 · UI · 卡片</div>
         </div>
         <div class="specimen-row">
           <div class="label">FAM.03<span class="name">Roboto Condensed</span></div>
@@ -2870,7 +3182,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
         <div class="tile">
           <div class="tile-head"><span class="id">PR.01</span><span>標題層</span></div>
           <div class="tile-title">中文宋體 + 英文 Italic</div>
-          <p class="tile-body">中文用 LXGW WenKai TC 400/700，英文片段用 Newsreader Italic。同一句裡，楷書帶筆意，斜體給節奏。</p>
+          <p class="tile-body">中文用 Noto Sans TC 700/800，英文片段用 Newsreader Italic。同一句裡，黑體穩重，斜體給節奏。</p>
           <div class="tile-foot"><span>HEAD · 標題</span><span>SERIF + ITAL</span></div>
         </div>
         <div class="tile">
@@ -2893,17 +3205,17 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
         <div class="specimen-row">
           <div class="label">SC.HERO<span class="name">88px / 1.04</span></div>
           <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 56px; font-weight: 500; color: var(--ink); line-height: 1.04; letter-spacing: -0.015em;">懂你的夥伴</div>
-          <div class="meta">Hero 主標 · 唯一<br/>LXGW WenKai TC 400</div>
+          <div class="meta">Hero 主標 · 唯一<br/>Noto Sans TC 800</div>
         </div>
         <div class="specimen-row">
           <div class="label">SC.H1<span class="name">56px / 1.1</span></div>
           <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 44px; font-weight: 500; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em;">找到最適合你的方案</div>
-          <div class="meta">章節主標<br/>LXGW WenKai TC 400</div>
+          <div class="meta">章節主標<br/>Noto Sans TC 800</div>
         </div>
         <div class="specimen-row">
           <div class="label">SC.H2<span class="name">28px / 1.3</span></div>
           <div class="demo" style="font-family: var(--font-serif-cjk); font-size: 26px; font-weight: 600; color: var(--ink); line-height: 1.3;">每月還款大概是這樣</div>
-          <div class="meta">section 副標<br/>LXGW WenKai TC 700</div>
+          <div class="meta">section 副標<br/>Noto Sans TC 800</div>
         </div>
         <div class="specimen-row">
           <div class="label">SC.H3<span class="name">18px / 1.4</span></div>
@@ -2969,7 +3281,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
             <div style="font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
             <div style="font-family: var(--font-numeric); font-weight: 700; font-size: 28px; color: var(--nroo-orange-120); letter-spacing: -0.03em;">2.05%</div>
           </div>
-          <p class="alt-desc">LXGW WenKai TC + Noto Sans TC + Newsreader Italic + Roboto Condensed Bold + IBM Plex Mono.<br/><br/><strong>為什麼選這個：</strong>楷書筆意讓金融內容有「朋友寫信給你」的溫度，不像宋體那麼正式、也不像黑體那麼工程。在台灣的金融服務裡幾乎沒人這樣用——這正是品牌記憶點。</p>
+          <p class="alt-desc">Noto Sans TC（重量 400/500/700/800）+ Newsreader Italic + Roboto Condensed Bold + IBM Plex Mono.<br/><br/><strong>為什麼選這個：</strong>單一字族黑體靠重量切層級，乾淨、跨平台無折損。重量 800 + 負字距是現在主流 cutting-edge fintech 的標準作法（Linear、Mercury、Robinhood），但用在中文上仍是少見——這就是辨識度。</p>
         </div>
         <div class="alt-card">
           <div class="alt-tag" style="background: var(--paper-2); color: var(--ink-quiet); border: 1px solid var(--hair);">PASSED · 否決</div>
@@ -3054,18 +3366,18 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="dir-id-row"><span><span class="nm">DIR.01</span> · GEOMETRIC</span><span>幾何</span></div>
           <div class="dir-art">
             <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-              <ellipse cx="60" cy="132" rx="32" ry="3.5" fill="#112858" opacity=".10"/>
-              <polygon points="46,8 52,28 42,28" fill="#FBFAF6" stroke="#112858" stroke-width="2.2" stroke-linejoin="round"/>
-              <polygon points="74,8 78,28 68,28" fill="#FBFAF6" stroke="#112858" stroke-width="2.2" stroke-linejoin="round"/>
-              <polygon points="42,28 78,28 76,58 44,58" fill="#FBFAF6" stroke="#112858" stroke-width="2.2" stroke-linejoin="round"/>
-              <polygon points="34,58 86,58 90,118 30,118" fill="#FBFAF6" stroke="#112858" stroke-width="2.2" stroke-linejoin="round"/>
-              <line x1="30" y1="100" x2="14" y2="76" stroke="#112858" stroke-width="2.4" stroke-linecap="square"/>
-              <rect x="48" y="78" width="24" height="22" fill="#00E0A0"/>
-              <rect x="34" y="118" width="16" height="14" fill="#FBFAF6" stroke="#112858" stroke-width="2.2"/>
-              <rect x="70" y="118" width="16" height="14" fill="#FBFAF6" stroke="#112858" stroke-width="2.2"/>
-              <rect x="52" y="38" width="3" height="3" fill="#112858"/>
-              <rect x="65" y="38" width="3" height="3" fill="#112858"/>
-              <line x1="56" y1="48" x2="62" y2="48" stroke="#112858" stroke-width="1.5" stroke-linecap="square"/>
+              <ellipse cx="60" cy="132" rx="32" ry="3.5" fill="#021C26" opacity=".10"/>
+              <polygon points="46,8 52,28 42,28" fill="#F2F6F8" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round"/>
+              <polygon points="74,8 78,28 68,28" fill="#F2F6F8" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round"/>
+              <polygon points="42,28 78,28 76,58 44,58" fill="#F2F6F8" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round"/>
+              <polygon points="34,58 86,58 90,118 30,118" fill="#F2F6F8" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round"/>
+              <line x1="30" y1="100" x2="14" y2="76" stroke="#021C26" stroke-width="2.4" stroke-linecap="square"/>
+              <rect x="48" y="78" width="24" height="22" fill="#25C9BA"/>
+              <rect x="34" y="118" width="16" height="14" fill="#F2F6F8" stroke="#021C26" stroke-width="2.2"/>
+              <rect x="70" y="118" width="16" height="14" fill="#F2F6F8" stroke="#021C26" stroke-width="2.2"/>
+              <rect x="52" y="38" width="3" height="3" fill="#021C26"/>
+              <rect x="65" y="38" width="3" height="3" fill="#021C26"/>
+              <line x1="56" y1="48" x2="62" y2="48" stroke="#021C26" stroke-width="1.5" stroke-linecap="square"/>
             </svg>
           </div>
           <div class="dir-meta">
@@ -3080,17 +3392,17 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="dir-id-row"><span><span class="nm">DIR.02</span> · PILLOW</span><span>圓潤</span></div>
           <div class="dir-art">
             <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
-              <ellipse cx="46" cy="14" rx="6" ry="9" fill="#FBFAF6" stroke="#112858" stroke-width="2.4"/>
-              <ellipse cx="74" cy="14" rx="6" ry="9" fill="#FBFAF6" stroke="#112858" stroke-width="2.4"/>
-              <path d="M30 110 C20 90 22 60 38 44 C42 24 52 14 60 14 C68 14 78 24 82 44 C98 60 100 90 90 110 C90 124 75 130 60 130 C45 130 30 124 30 110 Z" fill="#FBFAF6" stroke="#112858" stroke-width="2.4" stroke-linejoin="round"/>
-              <path d="M28 110 Q14 96 18 78" stroke="#112858" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-              <ellipse cx="60" cy="86" rx="20" ry="13" fill="#00E0A0"/>
-              <circle cx="51" cy="36" r="3" fill="#112858"/>
-              <circle cx="69" cy="36" r="3" fill="#112858"/>
-              <circle cx="52" cy="35" r="0.8" fill="#FBFAF6"/>
-              <circle cx="70" cy="35" r="0.8" fill="#FBFAF6"/>
-              <path d="M55 48 Q60 51 65 48" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#021C26" opacity=".10"/>
+              <ellipse cx="46" cy="14" rx="6" ry="9" fill="#F2F6F8" stroke="#021C26" stroke-width="2.4"/>
+              <ellipse cx="74" cy="14" rx="6" ry="9" fill="#F2F6F8" stroke="#021C26" stroke-width="2.4"/>
+              <path d="M30 110 C20 90 22 60 38 44 C42 24 52 14 60 14 C68 14 78 24 82 44 C98 60 100 90 90 110 C90 124 75 130 60 130 C45 130 30 124 30 110 Z" fill="#F2F6F8" stroke="#021C26" stroke-width="2.4" stroke-linejoin="round"/>
+              <path d="M28 110 Q14 96 18 78" stroke="#021C26" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+              <ellipse cx="60" cy="86" rx="20" ry="13" fill="#25C9BA"/>
+              <circle cx="51" cy="36" r="3" fill="#021C26"/>
+              <circle cx="69" cy="36" r="3" fill="#021C26"/>
+              <circle cx="52" cy="35" r="0.8" fill="#F2F6F8"/>
+              <circle cx="70" cy="35" r="0.8" fill="#F2F6F8"/>
+              <path d="M55 48 Q60 51 65 48" stroke="#021C26" stroke-width="1.8" stroke-linecap="round" fill="none"/>
             </svg>
           </div>
           <div class="dir-meta">
@@ -3105,16 +3417,16 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="dir-id-row"><span><span class="nm">DIR.03</span> · LINE</span><span>純線稿</span></div>
           <div class="dir-art">
             <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-              <path d="M30 110 Q14 96 18 78" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              <path d="M36 124 Q28 100 32 80 Q36 60 60 60 Q84 60 88 80 Q92 100 84 124" stroke="#112858" stroke-width="1.5" fill="none"/>
-              <path d="M40 124 Q38 132 46 132" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              <path d="M80 124 Q82 132 74 132" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              <path d="M44 60 Q44 36 60 36 Q76 36 76 60" stroke="#112858" stroke-width="1.5" fill="none"/>
-              <path d="M50 36 Q44 16 52 10" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              <path d="M70 36 Q76 16 68 10" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              <circle cx="55" cy="48" r="1.4" fill="#112858"/>
-              <path d="M48 86 Q60 96 72 86" stroke="#112858" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-              <circle cx="80" cy="86" r="3" fill="#00E0A0"/>
+              <path d="M30 110 Q14 96 18 78" stroke="#021C26" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M36 124 Q28 100 32 80 Q36 60 60 60 Q84 60 88 80 Q92 100 84 124" stroke="#021C26" stroke-width="1.5" fill="none"/>
+              <path d="M40 124 Q38 132 46 132" stroke="#021C26" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M80 124 Q82 132 74 132" stroke="#021C26" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M44 60 Q44 36 60 36 Q76 36 76 60" stroke="#021C26" stroke-width="1.5" fill="none"/>
+              <path d="M50 36 Q44 16 52 10" stroke="#021C26" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <path d="M70 36 Q76 16 68 10" stroke="#021C26" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <circle cx="55" cy="48" r="1.4" fill="#021C26"/>
+              <path d="M48 86 Q60 96 72 86" stroke="#021C26" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <circle cx="80" cy="86" r="3" fill="#25C9BA"/>
             </svg>
           </div>
           <div class="dir-meta">
@@ -3136,23 +3448,23 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
                 </filter>
               </defs>
               <g filter="url(#rough4)">
-                <ellipse cx="60" cy="132" rx="30" ry="4" fill="#112858" opacity=".15"/>
-                <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="none"/>
-                <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" fill="#FBFAF6" stroke="#112858" stroke-width="3" stroke-linejoin="round"/>
-                <path d="M40 122 Q36 130 44 132" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="#FBFAF6"/>
-                <path d="M80 122 Q84 130 76 132" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="#FBFAF6"/>
-                <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" fill="#FBFAF6" stroke="#112858" stroke-width="3"/>
-                <path d="M48 22 Q42 8 50 4" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="none"/>
-                <path d="M72 22 Q78 8 70 4" stroke="#112858" stroke-width="3" stroke-linecap="round" fill="none"/>
-                <ellipse cx="60" cy="80" rx="16" ry="10" fill="#00E0A0"/>
-                <circle cx="55" cy="36" r="2.4" fill="#112858"/>
-                <circle cx="69" cy="46" r="1.8" fill="#112858"/>
+                <ellipse cx="60" cy="132" rx="30" ry="4" fill="#021C26" opacity=".15"/>
+                <path d="M28 110 Q12 100 16 80" stroke="#021C26" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" fill="#F2F6F8" stroke="#021C26" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M40 122 Q36 130 44 132" stroke="#021C26" stroke-width="3" stroke-linecap="round" fill="#F2F6F8"/>
+                <path d="M80 122 Q84 130 76 132" stroke="#021C26" stroke-width="3" stroke-linecap="round" fill="#F2F6F8"/>
+                <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" fill="#F2F6F8" stroke="#021C26" stroke-width="3"/>
+                <path d="M48 22 Q42 8 50 4" stroke="#021C26" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <path d="M72 22 Q78 8 70 4" stroke="#021C26" stroke-width="3" stroke-linecap="round" fill="none"/>
+                <ellipse cx="60" cy="80" rx="16" ry="10" fill="#25C9BA"/>
+                <circle cx="55" cy="36" r="2.4" fill="#021C26"/>
+                <circle cx="69" cy="46" r="1.8" fill="#021C26"/>
               </g>
             </svg>
           </div>
           <div class="dir-meta">
             <div class="name">手繪筆觸 <span class="en">Brushy</span></div>
-            <div class="desc">不規則線條，模擬筆刷感。和 LXGW 楷書字體呼應「朋友寫信給你」的直覺。</div>
+            <div class="desc">不規則線條，模擬筆刷感。提供與精準介面之間的「人味」對比，是品牌唯一的手感入口。</div>
           </div>
           <div class="dir-foot"><span class="tg pri">推薦</span><span class="tg">手感</span><span class="tg">人味</span></div>
         </div>
@@ -3162,11 +3474,11 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="dir-id-row"><span><span class="nm">DIR.05</span> · STAMP</span><span>剪影</span></div>
           <div class="dir-art">
             <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-              <ellipse cx="60" cy="132" rx="30" ry="4" fill="#112858" opacity=".10"/>
-              <path d="M48 14 Q44 4 50 0 L56 12 Z M72 14 Q76 4 70 0 L64 12 Z" fill="#112858"/>
-              <path d="M60 12 C72 12 78 22 78 32 C78 44 74 52 74 56 L86 56 C90 56 94 60 94 70 L94 110 C94 120 88 124 80 124 L80 132 L70 132 L70 124 L50 124 L50 132 L40 132 L40 124 C32 124 26 120 26 110 L26 70 C26 60 30 56 34 56 L46 56 C46 52 42 44 42 32 C42 22 48 12 60 12 Z M16 80 L24 92 L28 100 L22 90 L14 78 Z" fill="#112858"/>
-              <ellipse cx="60" cy="86" rx="14" ry="9" fill="#00E0A0"/>
-              <circle cx="54" cy="34" r="2" fill="#FBFAF6"/>
+              <ellipse cx="60" cy="132" rx="30" ry="4" fill="#021C26" opacity=".10"/>
+              <path d="M48 14 Q44 4 50 0 L56 12 Z M72 14 Q76 4 70 0 L64 12 Z" fill="#021C26"/>
+              <path d="M60 12 C72 12 78 22 78 32 C78 44 74 52 74 56 L86 56 C90 56 94 60 94 70 L94 110 C94 120 88 124 80 124 L80 132 L70 132 L70 124 L50 124 L50 132 L40 132 L40 124 C32 124 26 120 26 110 L26 70 C26 60 30 56 34 56 L46 56 C46 52 42 44 42 32 C42 22 48 12 60 12 Z M16 80 L24 92 L28 100 L22 90 L14 78 Z" fill="#021C26"/>
+              <ellipse cx="60" cy="86" rx="14" ry="9" fill="#25C9BA"/>
+              <circle cx="54" cy="34" r="2" fill="#F2F6F8"/>
             </svg>
           </div>
           <div class="dir-meta">
@@ -3181,40 +3493,40 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="dir-id-row"><span><span class="nm">DIR.06</span> · PIXEL</span><span>像素</span></div>
           <div class="dir-art">
             <svg width="120" height="140" viewBox="0 0 120 140" shape-rendering="crispEdges">
-              <ellipse cx="60" cy="132" rx="28" ry="3" fill="#112858" opacity=".12"/>
+              <ellipse cx="60" cy="132" rx="28" ry="3" fill="#021C26" opacity=".12"/>
               <!-- ears -->
-              <rect x="45" y="14" width="6" height="12" fill="#112858"/>
-              <rect x="69" y="14" width="6" height="12" fill="#112858"/>
+              <rect x="45" y="14" width="6" height="12" fill="#021C26"/>
+              <rect x="69" y="14" width="6" height="12" fill="#021C26"/>
               <!-- head -->
-              <rect x="45" y="26" width="30" height="6" fill="#112858"/>
-              <rect x="42" y="32" width="36" height="6" fill="#112858"/>
-              <rect x="42" y="38" width="36" height="6" fill="#112858"/>
-              <rect x="42" y="44" width="36" height="6" fill="#112858"/>
-              <rect x="45" y="50" width="30" height="6" fill="#112858"/>
+              <rect x="45" y="26" width="30" height="6" fill="#021C26"/>
+              <rect x="42" y="32" width="36" height="6" fill="#021C26"/>
+              <rect x="42" y="38" width="36" height="6" fill="#021C26"/>
+              <rect x="42" y="44" width="36" height="6" fill="#021C26"/>
+              <rect x="45" y="50" width="30" height="6" fill="#021C26"/>
               <!-- eyes (negative) -->
-              <rect x="51" y="38" width="3" height="3" fill="#FBFAF6"/>
-              <rect x="66" y="38" width="3" height="3" fill="#FBFAF6"/>
+              <rect x="51" y="38" width="3" height="3" fill="#F2F6F8"/>
+              <rect x="66" y="38" width="3" height="3" fill="#F2F6F8"/>
               <!-- body -->
-              <rect x="36" y="56" width="48" height="6" fill="#112858"/>
-              <rect x="33" y="62" width="54" height="6" fill="#112858"/>
-              <rect x="33" y="68" width="54" height="6" fill="#112858"/>
-              <rect x="33" y="74" width="54" height="6" fill="#112858"/>
-              <rect x="33" y="80" width="54" height="6" fill="#112858"/>
-              <rect x="33" y="86" width="54" height="6" fill="#112858"/>
-              <rect x="36" y="92" width="48" height="6" fill="#112858"/>
-              <rect x="36" y="98" width="48" height="6" fill="#112858"/>
-              <rect x="39" y="104" width="42" height="6" fill="#112858"/>
+              <rect x="36" y="56" width="48" height="6" fill="#021C26"/>
+              <rect x="33" y="62" width="54" height="6" fill="#021C26"/>
+              <rect x="33" y="68" width="54" height="6" fill="#021C26"/>
+              <rect x="33" y="74" width="54" height="6" fill="#021C26"/>
+              <rect x="33" y="80" width="54" height="6" fill="#021C26"/>
+              <rect x="33" y="86" width="54" height="6" fill="#021C26"/>
+              <rect x="36" y="92" width="48" height="6" fill="#021C26"/>
+              <rect x="36" y="98" width="48" height="6" fill="#021C26"/>
+              <rect x="39" y="104" width="42" height="6" fill="#021C26"/>
               <!-- pouch -->
-              <rect x="48" y="74" width="24" height="18" fill="#00E0A0"/>
+              <rect x="48" y="74" width="24" height="18" fill="#25C9BA"/>
               <!-- legs -->
-              <rect x="33" y="110" width="15" height="6" fill="#112858"/>
-              <rect x="72" y="110" width="15" height="6" fill="#112858"/>
-              <rect x="33" y="116" width="15" height="6" fill="#112858"/>
-              <rect x="72" y="116" width="15" height="6" fill="#112858"/>
+              <rect x="33" y="110" width="15" height="6" fill="#021C26"/>
+              <rect x="72" y="110" width="15" height="6" fill="#021C26"/>
+              <rect x="33" y="116" width="15" height="6" fill="#021C26"/>
+              <rect x="72" y="116" width="15" height="6" fill="#021C26"/>
               <!-- tail -->
-              <rect x="18" y="86" width="6" height="6" fill="#112858"/>
-              <rect x="12" y="80" width="6" height="6" fill="#112858"/>
-              <rect x="6" y="74" width="6" height="6" fill="#112858"/>
+              <rect x="18" y="86" width="6" height="6" fill="#021C26"/>
+              <rect x="12" y="80" width="6" height="6" fill="#021C26"/>
+              <rect x="6" y="74" width="6" height="6" fill="#021C26"/>
             </svg>
           </div>
           <div class="dir-meta">
@@ -3241,27 +3553,27 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
         <div class="mascot-poses">
           <div class="pose-tile">
             <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#021C26" opacity=".10"/>
               <!-- tail -->
-              <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M28 110 Q12 100 16 80" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="none"/>
               <!-- body -->
-              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
+              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8" stroke-linejoin="round"/>
               <!-- pouch -->
-              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
+              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#25C9BA"/>
               <!-- legs -->
-              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
+              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
               <!-- head -->
-              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
+              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8"/>
               <!-- ears -->
-              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
-              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
+              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
               <!-- snout -->
-              <path d="M60 38 Q66 40 68 46" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <path d="M60 38 Q66 40 68 46" stroke="#021C26" stroke-width="1.8" stroke-linecap="round" fill="none"/>
               <!-- eye -->
-              <circle cx="55" cy="36" r="1.8" fill="#112858"/>
+              <circle cx="55" cy="36" r="1.8" fill="#021C26"/>
               <!-- nose -->
-              <circle cx="69" cy="46" r="1.5" fill="#112858"/>
+              <circle cx="69" cy="46" r="1.5" fill="#021C26"/>
             </svg>
             <div class="pose-id">POSE.01</div>
             <div class="pose-name">Idle · 待機</div>
@@ -3269,22 +3581,22 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           </div>
           <div class="pose-tile">
             <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
-              <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
-              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
-              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
-              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
-              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
-              <path d="M60 38 Q66 40 68 46" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-              <circle cx="55" cy="36" r="1.8" fill="#112858"/>
-              <circle cx="69" cy="46" r="1.5" fill="#112858"/>
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#021C26" opacity=".10"/>
+              <path d="M28 110 Q12 100 16 80" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8" stroke-linejoin="round"/>
+              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#25C9BA"/>
+              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8"/>
+              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
+              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
+              <path d="M60 38 Q66 40 68 46" stroke="#021C26" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <circle cx="55" cy="36" r="1.8" fill="#021C26"/>
+              <circle cx="69" cy="46" r="1.5" fill="#021C26"/>
               <!-- pointing arm -->
-              <path d="M88 78 L114 60" stroke="#112858" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-              <circle cx="114" cy="60" r="3.5" fill="#D84421"/>
-              <circle cx="114" cy="60" r="6" stroke="#D84421" stroke-width="1" fill="none" opacity="0.4"/>
+              <path d="M88 78 L114 60" stroke="#021C26" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+              <circle cx="114" cy="60" r="3.5" fill="#FF601A"/>
+              <circle cx="114" cy="60" r="6" stroke="#FF601A" stroke-width="1" fill="none" opacity="0.4"/>
             </svg>
             <div class="pose-id">POSE.02</div>
             <div class="pose-name">Pointing · 引導</div>
@@ -3292,28 +3604,28 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           </div>
           <div class="pose-tile">
             <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
-              <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
-              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
-              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-              <path d="M60 14 Q42 14 42 34 Q42 50 60 52 Q78 50 78 34 Q78 14 60 14 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
-              <path d="M48 18 Q42 4 50 0 Q53 8 52 18" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
-              <path d="M72 18 Q78 4 70 0 Q67 8 68 18" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#021C26" opacity=".10"/>
+              <path d="M28 110 Q12 100 16 80" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8" stroke-linejoin="round"/>
+              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#25C9BA"/>
+              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+              <path d="M60 14 Q42 14 42 34 Q42 50 60 52 Q78 50 78 34 Q78 14 60 14 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8"/>
+              <path d="M48 18 Q42 4 50 0 Q53 8 52 18" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
+              <path d="M72 18 Q78 4 70 0 Q67 8 68 18" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
               <!-- happy eyes (curves) -->
-              <path d="M50 32 Q53 28 56 32" stroke="#112858" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <path d="M64 32 Q67 28 70 32" stroke="#112858" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M50 32 Q53 28 56 32" stroke="#021C26" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M64 32 Q67 28 70 32" stroke="#021C26" stroke-width="2" stroke-linecap="round" fill="none"/>
               <!-- big smile -->
-              <path d="M52 42 Q60 50 68 42" stroke="#112858" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <path d="M52 42 Q60 50 68 42" stroke="#021C26" stroke-width="2" stroke-linecap="round" fill="none"/>
               <!-- raised arms -->
-              <path d="M30 70 L18 50" stroke="#112858" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-              <path d="M90 70 L102 50" stroke="#112858" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+              <path d="M30 70 L18 50" stroke="#021C26" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+              <path d="M90 70 L102 50" stroke="#021C26" stroke-width="2.6" stroke-linecap="round" fill="none"/>
               <!-- celebration sparks -->
-              <path d="M14 42 L18 50 L22 42" stroke="#D84421" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-              <path d="M98 42 L102 50 L106 42" stroke="#D84421" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-              <circle cx="14" cy="38" r="1.5" fill="#D84421"/>
-              <circle cx="106" cy="38" r="1.5" fill="#D84421"/>
+              <path d="M14 42 L18 50 L22 42" stroke="#FF601A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <path d="M98 42 L102 50 L106 42" stroke="#FF601A" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <circle cx="14" cy="38" r="1.5" fill="#FF601A"/>
+              <circle cx="106" cy="38" r="1.5" fill="#FF601A"/>
             </svg>
             <div class="pose-id">POSE.03</div>
             <div class="pose-name">Cheering · 慶祝</div>
@@ -3321,24 +3633,24 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           </div>
           <div class="pose-tile">
             <svg width="120" height="140" viewBox="0 0 120 140" fill="none">
-              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#112858" opacity=".10"/>
-              <path d="M28 110 Q12 100 16 80" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6" stroke-linejoin="round"/>
-              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#00E0A0"/>
-              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#112858" stroke-width="2.2" stroke-linecap="round" fill="#FBFAF6"/>
-              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#112858" stroke-width="2.2" fill="#FBFAF6"/>
-              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
-              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#112858" stroke-width="2.2" stroke-linejoin="round" fill="#FBFAF6"/>
-              <path d="M60 38 Q66 40 68 46" stroke="#112858" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-              <circle cx="55" cy="36" r="1.8" fill="#112858"/>
+              <ellipse cx="60" cy="132" rx="34" ry="4" fill="#021C26" opacity=".10"/>
+              <path d="M28 110 Q12 100 16 80" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+              <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8" stroke-linejoin="round"/>
+              <ellipse cx="60" cy="92" rx="18" ry="11" fill="#25C9BA"/>
+              <path d="M40 122 Q36 130 44 132 L52 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+              <path d="M80 122 Q84 130 76 132 L68 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
+              <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8"/>
+              <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
+              <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
+              <path d="M60 38 Q66 40 68 46" stroke="#021C26" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <circle cx="55" cy="36" r="1.8" fill="#021C26"/>
               <!-- thinking mouth (small line) -->
-              <path d="M62 47 L70 47" stroke="#112858" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+              <path d="M62 47 L70 47" stroke="#021C26" stroke-width="1.6" stroke-linecap="round" fill="none"/>
               <!-- thought bubble -->
-              <circle cx="96" cy="22" r="14" stroke="#112858" stroke-width="1.6" fill="#FBFAF6" stroke-dasharray="3 3"/>
-              <text x="96" y="27" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#D84421" font-weight="700">?</text>
-              <circle cx="84" cy="38" r="2" stroke="#112858" stroke-width="1" fill="#FBFAF6"/>
-              <circle cx="80" cy="44" r="1" stroke="#112858" stroke-width="1" fill="#FBFAF6"/>
+              <circle cx="96" cy="22" r="14" stroke="#021C26" stroke-width="1.6" fill="#F2F6F8" stroke-dasharray="3 3"/>
+              <text x="96" y="27" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#FF601A" font-weight="700">?</text>
+              <circle cx="84" cy="38" r="2" stroke="#021C26" stroke-width="1" fill="#F2F6F8"/>
+              <circle cx="80" cy="44" r="1" stroke="#021C26" stroke-width="1" fill="#F2F6F8"/>
             </svg>
             <div class="pose-id">POSE.04</div>
             <div class="pose-name">Thinking · 推薦中</div>
@@ -3706,7 +4018,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
     <ellipse cx="60" cy="132" rx="30" ry="3.5" fill="#000" opacity=".4"/>
     <path d="M28 110 Q12 100 16 80" stroke="#E8ECF5" stroke-width="2.4" stroke-linecap="round" fill="none"/>
     <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#E8ECF5" stroke-width="2.4" fill="#0A1530" stroke-linejoin="round"/>
-    <ellipse cx="60" cy="80" rx="14" ry="9" fill="#00E0A0"/>
+    <ellipse cx="60" cy="80" rx="14" ry="9" fill="#25C9BA"/>
     <path d="M40 122 Q36 130 44 132" stroke="#E8ECF5" stroke-width="2.4" stroke-linecap="round" fill="#0A1530"/>
     <path d="M80 122 Q84 130 76 132" stroke="#E8ECF5" stroke-width="2.4" stroke-linecap="round" fill="#0A1530"/>
     <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#E8ECF5" stroke-width="2.4" fill="#0A1530"/>
@@ -3747,7 +4059,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
     <div>
       <h5>Colophon</h5>
       <ul>
-        <li><span class="marker">DSP</span>LXGW WenKai TC · 霞鶩文楷</li>
+        <li><span class="marker">DSP</span>Noto Sans TC · 思源黑體</li>
         <li><span class="marker">SET</span>Noto Sans TC · 思源黑體</li>
         <li><span class="marker">EN</span>Newsreader Italic</li>
         <li><span class="marker">NUM</span>Roboto Condensed Bold</li>
