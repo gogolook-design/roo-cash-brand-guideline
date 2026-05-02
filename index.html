@@ -7,12 +7,14 @@
 <link rel="stylesheet" href="styles/colors_and_type.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500;1,6..72,600&family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
-  --font-serif: 'Newsreader', serif;
-  --font-serif-cjk: var(--font-cjk); /* alias to Noto Sans TC — kaishu removed */
+  /* Type system simplified to two faces: Noto Sans TC + Roboto Condensed */
+  --font-mono: 'Roboto Condensed', ui-monospace, sans-serif;     /* labels (Regular) */
+  --font-numeric: 'Roboto Condensed', sans-serif;                /* numbers (Bold) */
+  --font-serif: var(--font-cjk);    /* alias — italic display now uses Noto Sans Thin */
+  --font-serif-cjk: var(--font-cjk);
 
   /* ───────────────────────────────────────────
      Future Finance Palette · Issue 02 (2026)
@@ -325,11 +327,10 @@ a { color: inherit; text-decoration: none; }
   font-feature-settings: "tnum" 1;
 }
 .hero-headline em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 300;
+  font-family: var(--font-cjk);
+  font-style: normal;
+  font-weight: 200;
   color: var(--nroo-green-100);
-  font-feature-settings: "ss01" 1;
   letter-spacing: -0.02em;
 }
 .hero-headline .accent {
@@ -555,9 +556,9 @@ section.chapter.alt { background: var(--paper-2); }
   max-width: 22ch;
 }
 .chapter-title em {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 300;
+  font-family: var(--font-cjk);
+  font-style: normal;
+  font-weight: 200;
   color: var(--nroo-green-120);
   letter-spacing: -0.02em;
 }
@@ -780,7 +781,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   letter-spacing: -0.01em;
   margin-bottom: 16px;
 }
-.promise-block .promise-h em { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--nroo-green-100); }
+.promise-block .promise-h em { font-family: var(--font-cjk); font-weight: 200; font-weight: 400; color: var(--nroo-green-100); }
 .promise-block .promise-sub {
   font-size: 15px; color: rgba(255,255,255,0.62);
   max-width: 600px; line-height: 1.85;
@@ -1123,8 +1124,8 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   margin-bottom: 4px;
 }
 .dir-meta .name .en {
-  font-family: 'Newsreader', serif;
-  font-style: italic; font-weight: 400;
+  font-family: var(--font-cjk);
+  font-style: normal; font-weight: 200;
   font-size: 14px;
   color: var(--ink-quiet);
   margin-left: 8px;
@@ -2019,7 +2020,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
   margin-left: auto;
 }
 .chat-bubble .num { color: var(--nroo-orange-120); font-family: var(--font-mono); font-weight: 700; }
-.chat-bubble .em { color: var(--nroo-green-100); font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; }
+.chat-bubble .em { color: var(--nroo-green-100); font-family: var(--font-cjk); font-style: normal; font-weight: 200; }
 
 /* Comparison mock */
 .cmp-row {
@@ -2206,7 +2207,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
   color: var(--ink);
   margin-bottom: 8px;
 }
-.gate-h em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--ink-soft); }
+.gate-h em { font-family: var(--font-cjk); font-weight: 200; font-weight: 300; color: var(--ink-soft); }
 .gate-sub {
   font-family: var(--font-cjk);
   font-size: 14px; line-height: 1.75;
@@ -3019,16 +3020,24 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
       </div>
 
       <div class="ff-tones">
-        <div class="ff-tone-cell" style="background: rgba(2, 28, 38, 0.55);"></div>
-        <div class="ff-tone-cell" style="background: rgba(7, 64, 88, 0.55);"></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.55);"></div>
-        <div class="ff-tone-cell" style="background: rgba(255, 96, 26, 0.55);"></div>
-        <div class="ff-tone-cell" style="background: rgba(242, 246, 248, 0.55); border-left: 1px solid var(--hair);"></div>
-        <div class="ff-tone-cell" style="background: rgba(2, 28, 38, 0.30);"></div>
-        <div class="ff-tone-cell" style="background: rgba(7, 64, 88, 0.30);"></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.30);"></div>
-        <div class="ff-tone-cell" style="background: rgba(255, 96, 26, 0.30);"></div>
-        <div class="ff-tone-cell" style="background: rgba(242, 246, 248, 0.30); border-left: 1px solid var(--hair);"></div>
+        <!-- Row 1: 80 step -->
+        <div class="ff-tone-cell" style="background: #1A3742; color: #F2F6F8;"><span class="t-lbl">N–80</span><span class="t-hex">#1A3742</span></div>
+        <div class="ff-tone-cell" style="background: #265872; color: #F2F6F8;"><span class="t-lbl">B–80</span><span class="t-hex">#265872</span></div>
+        <div class="ff-tone-cell" style="background: #4FD3C6; color: #021C26;"><span class="t-lbl">W–80</span><span class="t-hex">#4FD3C6</span></div>
+        <div class="ff-tone-cell" style="background: #FF7E45; color: #FFFFFF;"><span class="t-lbl">S–80</span><span class="t-hex">#FF7E45</span></div>
+        <div class="ff-tone-cell" style="background: #DCE3E7; color: #021C26;"><span class="t-lbl">F–80</span><span class="t-hex">#DCE3E7</span></div>
+        <!-- Row 2: 60 step -->
+        <div class="ff-tone-cell" style="background: #36525D; color: #F2F6F8;"><span class="t-lbl">N–60</span><span class="t-hex">#36525D</span></div>
+        <div class="ff-tone-cell" style="background: #467289; color: #F2F6F8;"><span class="t-lbl">B–60</span><span class="t-hex">#467289</span></div>
+        <div class="ff-tone-cell" style="background: #7DDDD3; color: #021C26;"><span class="t-lbl">W–60</span><span class="t-hex">#7DDDD3</span></div>
+        <div class="ff-tone-cell" style="background: #FF9970; color: #021C26;"><span class="t-lbl">S–60</span><span class="t-hex">#FF9970</span></div>
+        <div class="ff-tone-cell" style="background: #C5D0D5; color: #021C26;"><span class="t-lbl">F–60</span><span class="t-hex">#C5D0D5</span></div>
+        <!-- Row 3: 40 step -->
+        <div class="ff-tone-cell" style="background: #6A7C84; color: #F2F6F8;"><span class="t-lbl">N–40</span><span class="t-hex">#6A7C84</span></div>
+        <div class="ff-tone-cell" style="background: #84A1B0; color: #021C26;"><span class="t-lbl">B–40</span><span class="t-hex">#84A1B0</span></div>
+        <div class="ff-tone-cell" style="background: #B5EAE3; color: #021C26;"><span class="t-lbl">W–40</span><span class="t-hex">#B5EAE3</span></div>
+        <div class="ff-tone-cell" style="background: #FFB89B; color: #021C26;"><span class="t-lbl">S–40</span><span class="t-hex">#FFB89B</span></div>
+        <div class="ff-tone-cell" style="background: #ABB8BD; color: #021C26;"><span class="t-lbl">F–40</span><span class="t-hex">#ABB8BD</span></div>
       </div>
 
       <div class="subhead h-section"><span class="dash"></span>Primary &amp; Secondary · 主色與輔色</div>
@@ -3112,7 +3121,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
       <div class="subhead h-section"><span class="dash"></span>Type System · 字體系統</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
-        Roo.Cash 的中文用單一字族——<strong style="color: var(--ink);">思源黑體 Noto Sans TC</strong>，靠重量（400 / 500 / 700 / 800 / 800）切出層級。簡單、清楚、好讀，跨平台無折損。<strong style="color: var(--ink);">英文用 Newsreader Italic</strong> 點綴節奏；<strong style="color: var(--ink);">數字用 Roboto Condensed Bold</strong>，標籤用 <strong style="color: var(--ink);">IBM Plex Mono</strong>。
+        Roo.Cash 的中文用單一字族——<strong style="color: var(--ink);">思源黑體 Noto Sans TC</strong>，靠重量（400 / 500 / 700 / 800 / 800）切出層級。簡單、清楚、好讀，跨平台無折損。<strong style="color: var(--ink);">英文用 Noto Sans TC Thin</strong> 點綴節奏；<strong style="color: var(--ink);">數字用 Roboto Condensed Bold</strong>，標籤用 <strong style="color: var(--ink);">Roboto Condensed</strong>。
       </p>
 
       <div class="dual-glyph">
@@ -3165,12 +3174,12 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="meta">NUMERIC<br/>700 Bold<br/>大型數字 · 利率 · 統計</div>
         </div>
         <div class="specimen-row">
-          <div class="label">FAM.04<span class="name">Newsreader Italic</span></div>
-          <div class="demo" style="font-family: 'Newsreader', serif; font-weight: 400; font-style: italic; font-size: 32px; color: var(--ink); letter-spacing: -0.005em;">a partner who happens to know money.</div>
+          <div class="label">FAM.04<span class="name">Noto Sans TC Thin</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-weight: 400; font-style: italic; font-size: 32px; color: var(--ink); letter-spacing: -0.005em;">a partner who happens to know money.</div>
           <div class="meta">DISPLAY · EN ITALIC<br/>300 / 400 / 500<br/>英文標題斜體 · Pull Quote</div>
         </div>
         <div class="specimen-row">
-          <div class="label">FAM.05<span class="name">IBM Plex Mono</span></div>
+          <div class="label">FAM.05<span class="name">Roboto Condensed</span></div>
           <div class="demo" style="font-family: var(--font-mono); font-weight: 500; font-size: 20px; color: var(--ink); letter-spacing: 0.02em;">— Chapter 07 / Color &amp; Type · v1.0</div>
           <div class="meta">MICRO · UI LABEL<br/>400 / 500 / 600<br/>Eyebrow · Folio · ID · Tag</div>
         </div>
@@ -3182,7 +3191,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
         <div class="tile">
           <div class="tile-head"><span class="id">PR.01</span><span>標題層</span></div>
           <div class="tile-title">中文宋體 + 英文 Italic</div>
-          <p class="tile-body">中文用 Noto Sans TC 700/800，英文片段用 Newsreader Italic。同一句裡，黑體穩重，斜體給節奏。</p>
+          <p class="tile-body">中文用 Noto Sans TC 700/800，英文片段用 Noto Sans TC Thin。同一句裡，黑體穩重，斜體給節奏。</p>
           <div class="tile-foot"><span>HEAD · 標題</span><span>SERIF + ITAL</span></div>
         </div>
         <div class="tile">
@@ -3194,7 +3203,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
         <div class="tile">
           <div class="tile-head"><span class="id">PR.03</span><span>標籤層</span></div>
           <div class="tile-title">Plex Mono · 全大寫</div>
-          <p class="tile-body">所有 micro-label、eyebrow、ID、folio 一律用 IBM Plex Mono 500，UPPERCASE，letter-spacing 0.12em。</p>
+          <p class="tile-body">所有 micro-label、eyebrow、ID、folio 一律用 Roboto Condensed 500，UPPERCASE，letter-spacing 0.12em。</p>
           <div class="tile-foot"><span>LABEL · 標籤</span><span>MONO · UC</span></div>
         </div>
       </div>
@@ -3240,7 +3249,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
         <div class="specimen-row">
           <div class="label">SC.LBL<span class="name">11px / 0.16em</span></div>
           <div class="demo" style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--nroo-green-120); letter-spacing: 0.16em; text-transform: uppercase;">— Chapter Seven · Type</div>
-          <div class="meta">所有 micro-label<br/>IBM Plex Mono 500 · UPPERCASE</div>
+          <div class="meta">所有 micro-label<br/>Roboto Condensed 500 · UPPERCASE</div>
         </div>
         <div class="specimen-row">
           <div class="label">SC.NUM<span class="name">100px / 1</span></div>
@@ -3257,8 +3266,8 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="item">中文標題用宋體 500，給份量。</div>
           <div class="item">中文內文用黑體 400，行高 1.75。</div>
           <div class="item">數字穿插時換成 Roboto Condensed 並上 orange 色。</div>
-          <div class="item">英文片段用 Newsreader Italic 增添節奏。</div>
-          <div class="item">所有標籤、ID、eyebrow 用 IBM Plex Mono UPPERCASE。</div>
+          <div class="item">英文片段用 Noto Sans TC Thin 增添節奏。</div>
+          <div class="item">所有標籤、ID、eyebrow 用 Roboto Condensed UPPERCASE。</div>
         </div>
         <div class="col-dont">
           <div class="col-head"><span>×</span> 錯的做法</div>
@@ -3278,17 +3287,17 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="alt-h">Editorial Publication</div>
           <div class="alt-stack">
             <div style="font-family: var(--font-serif-cjk); font-weight: 500; font-size: 22px; color: var(--ink); margin-bottom: 4px;">每一筆決定</div>
-            <div style="font-family: 'Newsreader', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
+            <div style="font-family: var(--font-cjk); font-style: normal; font-weight: 200; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
             <div style="font-family: var(--font-numeric); font-weight: 700; font-size: 28px; color: var(--nroo-orange-120); letter-spacing: -0.03em;">2.05%</div>
           </div>
-          <p class="alt-desc">Noto Sans TC（重量 400/500/700/800）+ Newsreader Italic + Roboto Condensed Bold + IBM Plex Mono.<br/><br/><strong>為什麼選這個：</strong>單一字族黑體靠重量切層級，乾淨、跨平台無折損。重量 800 + 負字距是現在主流 cutting-edge fintech 的標準作法（Linear、Mercury、Robinhood），但用在中文上仍是少見——這就是辨識度。</p>
+          <p class="alt-desc">Noto Sans TC（重量 400/500/700/800）+ Roboto Condensed Bold + Roboto Condensed.<br/><br/><strong>為什麼選這個：</strong>單一字族黑體靠重量切層級，乾淨、跨平台無折損。重量 800 + 負字距是現在主流 cutting-edge fintech 的標準作法（Linear、Mercury、Robinhood），但用在中文上仍是少見——這就是辨識度。</p>
         </div>
         <div class="alt-card">
           <div class="alt-tag" style="background: var(--paper-2); color: var(--ink-quiet); border: 1px solid var(--hair);">PASSED · 否決</div>
           <div class="alt-h">Modern Fintech</div>
           <div class="alt-stack">
             <div style="font-family: var(--font-cjk); font-weight: 700; font-size: 22px; color: var(--ink); margin-bottom: 4px;">每一筆決定</div>
-            <div style="font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
+            <div style="font-family: 'Fraunces', serif; font-style: normal; font-weight: 200; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
             <div style="font-family: 'JetBrains Mono', monospace; font-weight: 300; font-size: 24px; color: var(--nroo-orange-120); letter-spacing: -0.02em;">2.05%</div>
           </div>
           <p class="alt-desc">Noto Sans TC + Fraunces Italic + JetBrains Mono.<br/><br/><strong>為什麼沒選：</strong>黑體 + JetBrains Mono 太工程師了；Fraunces 略帶 art-deco 復古，跟「沉穩可信」的金融感有衝突。像 Vercel、像 Linear——但 Roo.Cash 不是 SaaS。</p>
@@ -3298,7 +3307,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           <div class="alt-h">Friendly Premium</div>
           <div class="alt-stack">
             <div style="font-family: 'Klee One', 'Yu Mincho', serif; font-weight: 600; font-size: 22px; color: var(--ink); margin-bottom: 4px;">每一筆決定</div>
-            <div style="font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
+            <div style="font-family: 'Instrument Serif', serif; font-style: normal; font-weight: 200; font-size: 18px; color: var(--ink-soft); margin-bottom: 4px;">a partner who knows you</div>
             <div style="font-family: 'DM Mono', monospace; font-weight: 400; font-size: 24px; color: var(--nroo-orange-120); letter-spacing: -0.02em;">2.05%</div>
           </div>
           <p class="alt-desc">獅尾四季春 / GenSenRounded + Instrument Serif + DM Mono.<br/><br/><strong>為什麼沒選：</strong>圓角太友善，金融產品需要的信任感被磨掉了。「好朋友」不是「玩具」。Klee 適合教育、文創；不適合幫人做還款決定。</p>
@@ -3975,7 +3984,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
         <div class="tile">
           <div class="tile-head"><span class="id">A.02</span><span>下載</span></div>
           <div class="tile-title">字體</div>
-          <p class="tile-body">Noto Sans TC（variable，本地檔案）· Roboto Condensed（Google Fonts CDN）· IBM Plex Sans（Google Fonts CDN）· JetBrains Mono。</p>
+          <p class="tile-body">Noto Sans TC（variable 100–900，本地檔案）· Roboto Condensed（300 / 400 / 700，Google Fonts CDN）。整套品牌字體只用兩種字族，跨平台無折損。</p>
           <div class="tile-foot"><span>TTF · 1.8MB</span><span>↓ Download</span></div>
         </div>
         <div class="tile">
@@ -4061,9 +4070,9 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
       <ul>
         <li><span class="marker">DSP</span>Noto Sans TC · 思源黑體</li>
         <li><span class="marker">SET</span>Noto Sans TC · 思源黑體</li>
-        <li><span class="marker">EN</span>Newsreader Italic</li>
+        
         <li><span class="marker">NUM</span>Roboto Condensed Bold</li>
-        <li><span class="marker">UI</span>IBM Plex Mono</li>
+        <li><span class="marker">UI</span>Roboto Condensed Regular</li>
       </ul>
     </div>
   </div>
