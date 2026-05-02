@@ -1792,6 +1792,18 @@ section.chapter.dark .ff-tier-row .pc { color: var(--void-text); }
 section.chapter.dark .ff-bar-legend { color: var(--void-soft); }
 
 /* ─── DARK CHAPTER MODE ─── */
+/* Scoped variable redefinitions: any var(--ink/--ink-soft/--paper/--hair) used
+   inside a dark chapter automatically resolves to its dark equivalent. */
+section.chapter.dark, .hero {
+  --ink:         var(--void-text);
+  --ink-soft:    var(--void-soft);
+  --ink-quiet:   var(--void-quiet);
+  --paper:       var(--void);
+  --paper-2:     var(--void-2);
+  --hair:        var(--void-line);
+  --hair-strong: var(--void-line-strong);
+  --nroo-blue-100: var(--void-text);
+}
 section.chapter.dark {
   background: var(--void);
   color: var(--void-text);
@@ -1849,6 +1861,70 @@ section.chapter.dark .dodont { border-color: var(--void-line); }
 section.chapter.dark .dodont .col-do { border-right-color: var(--void-line); }
 section.chapter.dark .dodont .col-head { border-bottom-color: var(--void-line); }
 section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); color: var(--void-soft); }
+
+/* Data viz on dark chapters */
+section.chapter.dark .viz-frame { background: rgba(255,255,255,0.02); border-color: var(--void-line-strong); }
+section.chapter.dark .viz-head { border-bottom-color: var(--void-line); }
+section.chapter.dark .viz-head h3 { color: var(--void-text); }
+section.chapter.dark .viz-head .meta { color: var(--void-quiet); }
+section.chapter.dark .viz-bar-row { border-bottom-color: var(--void-line); }
+section.chapter.dark .viz-bar-row .name { color: var(--void-text); }
+section.chapter.dark .viz-bar-row .num { color: var(--void-text); }
+section.chapter.dark .viz-bar-row .bar-track { background: rgba(255,255,255,0.10); }
+section.chapter.dark .viz-bar-row .bar-fill:not(.highlight) { background: var(--void-text); }
+section.chapter.dark .viz-source { border-top-color: var(--void-line); color: var(--void-quiet); }
+
+/* Bignum captions on dark chapters */
+section.chapter.dark .bignum { border-top-color: var(--void-line-strong); border-bottom-color: var(--void-line-strong); }
+section.chapter.dark .bignum .caption .lbl { color: var(--void-quiet); }
+section.chapter.dark .bignum .caption .desc { color: var(--void-text); }
+
+/* Specimen blocks on dark chapters (chapter 07 type spec) */
+section.chapter.dark .specimen { background: rgba(255,255,255,0.02); border-color: var(--void-line-strong); }
+section.chapter.dark .specimen-row { border-bottom-color: var(--void-line); }
+section.chapter.dark .specimen-row .label { color: var(--void-quiet); }
+section.chapter.dark .specimen-row .label .name { color: var(--void-text); }
+section.chapter.dark .specimen-row .meta { color: var(--void-quiet); }
+
+/* Glyph feature on dark chapters */
+section.chapter.dark .glyph-feature { background: rgba(255,255,255,0.03); border-top-color: var(--void-line-strong); border-bottom-color: var(--void-line-strong); }
+section.chapter.dark .glyph-feature .glyph { color: var(--void-text); }
+section.chapter.dark .glyph-feature .gm-row { border-bottom-color: var(--void-line); color: var(--void-soft); }
+section.chapter.dark .glyph-feature .gm-row .gm-key { color: var(--void-quiet); }
+section.chapter.dark .glyph-feature .gm-row .gm-val { color: var(--void-text); }
+
+/* Dual glyph (serif vs sans on chapter 07) */
+section.chapter.dark .dual-glyph { border-color: var(--void-line-strong); }
+section.chapter.dark .dual-cell { border-right-color: var(--void-line); }
+section.chapter.dark .dual-meta { border-bottom-color: var(--void-line); color: var(--void-quiet); }
+section.chapter.dark .dual-glyph-char {
+  background-color: rgba(255,255,255,0.02);
+  background-image:
+    linear-gradient(to right, var(--void-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--void-line) 1px, transparent 1px);
+  color: var(--void-text);
+}
+section.chapter.dark .dual-foot { border-top-color: var(--void-line); }
+section.chapter.dark .dual-foot .df-key { color: var(--void-quiet); }
+section.chapter.dark .dual-foot .df-val { color: var(--void-text); }
+
+/* Pairing rules / Alternatives panel on dark chapters */
+section.chapter.dark .alt-grid { border-color: var(--void-line-strong); }
+section.chapter.dark .alt-card { border-right-color: var(--void-line); border-bottom-color: var(--void-line); }
+section.chapter.dark .alt-h { border-bottom-color: var(--void-line); color: var(--void-quiet); }
+section.chapter.dark .alt-stack { border-bottom-color: var(--void-line); }
+section.chapter.dark .alt-desc { color: var(--void-soft); }
+section.chapter.dark .alt-desc strong { color: var(--void-text); }
+section.chapter.dark .alt-tag { background: rgba(255,255,255,0.06); color: var(--void-text); border-color: var(--void-line); }
+
+/* Subhead h3 sub-headlines on dark */
+section.chapter.dark h3 { color: var(--void-text); }
+
+/* Numeric span inside chapter-deck on dark — orange already adaptive, force visibility */
+section.chapter.dark .chapter-deck .num { color: var(--nroo-orange-120); }
+
+/* Inline em accents inside .alt-desc on dark */
+section.chapter.dark em { color: var(--nroo-water); }
 
 /* ─── HERO REBUILT — DARK ─── */
 .hero { background: var(--void); color: var(--void-text); border-bottom: 1px solid var(--void-line); }
@@ -2993,7 +3069,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           </div>
           <div class="ff-num">02<span class="dot">.</span></div>
         </div>
-        <div class="ff-col" style="background: var(--roo-water); color: var(--ink);">
+        <div class="ff-col" style="background: var(--roo-water); color: #021C26;">
           <div class="ff-meta">
             <div class="ff-name">Roo Water</div>
             <div class="ff-rgb">RGB 37 / 201 / 186</div>
@@ -3009,7 +3085,7 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
           </div>
           <div class="ff-num">04<span class="dot">.</span></div>
         </div>
-        <div class="ff-col" style="background: var(--roo-frost); color: var(--ink); border-left: 1px solid var(--hair);">
+        <div class="ff-col" style="background: var(--roo-frost); color: #021C26; border-left: 1px solid rgba(2,28,38,0.12);">
           <div class="ff-meta">
             <div class="ff-name">Roo Frost</div>
             <div class="ff-rgb">RGB 242 / 246 / 248</div>
@@ -3097,14 +3173,14 @@ section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); colo
 
       <div class="ff-bar">
         <div class="ff-bar-seg" style="flex: 35; background: var(--roo-night);" data-label="Night 35%"></div>
-        <div class="ff-bar-seg" style="flex: 30; background: var(--roo-frost); color: var(--ink); border-right: 1px solid var(--hair); border-left: 1px solid var(--hair);" data-label="Frost 30%"></div>
-        <div class="ff-bar-seg" style="flex: 17; background: var(--roo-water); color: var(--ink);" data-label="Water 17%"></div>
+        <div class="ff-bar-seg" style="flex: 30; background: var(--roo-frost); color: #021C26; border-right: 1px solid rgba(2,28,38,0.12); border-left: 1px solid rgba(2,28,38,0.12);" data-label="Frost 30%"></div>
+        <div class="ff-bar-seg" style="flex: 17; background: var(--roo-water); color: #021C26;" data-label="Water 17%"></div>
         <div class="ff-bar-seg" style="flex: 10; background: var(--roo-sun);" data-label="Sun 10%"></div>
         <div class="ff-bar-seg" style="flex: 8; background: var(--roo-blue);" data-label="Blue 8%"></div>
       </div>
       <div class="ff-bar-legend">
         <span><span class="d" style="background: var(--roo-night);"></span>Night 35%</span>
-        <span><span class="d" style="background: var(--roo-frost); border: 1px solid var(--hair);"></span>Frost 30%</span>
+        <span><span class="d" style="background: var(--roo-frost); border: 1px solid rgba(255,255,255,0.24);"></span>Frost 30%</span>
         <span><span class="d" style="background: var(--roo-water);"></span>Water 17%</span>
         <span><span class="d" style="background: var(--roo-sun);"></span>Sun 10%</span>
         <span><span class="d" style="background: var(--roo-blue);"></span>Blue 8%</span>
