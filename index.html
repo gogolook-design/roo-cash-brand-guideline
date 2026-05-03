@@ -319,19 +319,19 @@ a { color: inherit; text-decoration: none; }
 }
 .hero-headline {
   font-family: var(--font-cjk);
-  font-weight: 800;
+  font-weight: 200;
   font-size: clamp(56px, 8vw, 104px);
   line-height: 0.96;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   color: var(--void-text);
   font-feature-settings: "tnum" 1;
 }
 .hero-headline em {
   font-family: var(--font-cjk);
   font-style: normal;
-  font-weight: 200;
+  font-weight: 800;
   color: var(--nroo-green-100);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 .hero-headline .accent {
   font-style: normal;
@@ -547,10 +547,10 @@ section.chapter.alt { background: var(--paper-2); }
 }
 .chapter-title {
   font-family: var(--font-cjk);
-  font-weight: 800;
+  font-weight: 200;
   font-size: clamp(40px, 5vw, 68px);
-  line-height: 1.0;
-  letter-spacing: -0.04em;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--ink);
   margin-bottom: 12px;
   max-width: 22ch;
@@ -558,10 +558,11 @@ section.chapter.alt { background: var(--paper-2); }
 .chapter-title em {
   font-family: var(--font-cjk);
   font-style: normal;
-  font-weight: 200;
-  color: var(--nroo-green-120);
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  color: var(--nroo-water);
+  letter-spacing: -0.04em;
 }
+section.chapter.dark .chapter-title em { color: var(--roo-water); }
 section.chapter.dark .chapter-title { color: var(--void-text); }
 section.chapter.dark .chapter-title em { color: var(--nroo-green-100); }
 .chapter-deck {
@@ -775,13 +776,13 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 }
 .promise-block .promise-meta .accent { color: var(--nroo-green-100); }
 .promise-block .promise-h {
-  font-family: var(--font-serif-cjk); font-weight: 500;
+  font-family: var(--font-cjk); font-weight: 200;
   font-size: clamp(28px, 3.4vw, 40px);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
   margin-bottom: 16px;
 }
-.promise-block .promise-h em { font-family: var(--font-cjk); font-weight: 200; font-weight: 400; color: var(--nroo-green-100); }
+.promise-block .promise-h em { font-family: var(--font-cjk); font-style: normal; font-weight: 800; color: var(--nroo-green-100); letter-spacing: -0.04em; }
 .promise-block .promise-sub {
   font-size: 15px; color: rgba(255,255,255,0.62);
   max-width: 600px; line-height: 1.85;
@@ -1382,7 +1383,12 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 }
 .logo-frame > div:last-child { border-right: none; }
 .logo-frame > div.dark-bg { background: var(--ink); }
-.logo-frame img { max-height: 36px; margin-bottom: 24px; }
+.logo-frame img { max-height: 108px; margin-bottom: 32px; }
+.logo-frame > div { padding: 80px 32px; min-height: 280px; }
+@media (max-width: 720px) {
+  .logo-frame img { max-height: 64px; }
+  .logo-frame > div { padding: 48px 24px; min-height: 180px; }
+}
 .logo-frame .logo-meta {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
   color: var(--ink-quiet);
@@ -1613,7 +1619,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
 
 .ff-num {
   font-family: var(--font-numeric);
-  font-weight: 700;
+  font-weight: 300;
   font-size: clamp(80px, 11vw, 160px);
   line-height: 0.85;
   letter-spacing: -0.04em;
@@ -2234,82 +2240,128 @@ section.chapter.dark em { color: var(--nroo-water); }
 <style>
 .gate {
   position: fixed; inset: 0;
-  background: var(--paper);
+  background: var(--roo-night);
   z-index: 9999;
   display: flex; align-items: center; justify-content: center;
   padding: 32px;
+  overflow: hidden;
+}
+.gate::before {
+  content: '';
+  position: absolute; inset: 0;
   background-image:
-    radial-gradient(circle at 1px 1px, var(--hair) 1px, transparent 0);
-  background-size: 32px 32px;
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.gate::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 80% 20%, rgba(37, 201, 186, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 20% 90%, rgba(255, 96, 26, 0.06), transparent 65%);
+  pointer-events: none;
 }
 .gate.unlocked { display: none; }
 .gate-card {
-  width: 100%; max-width: 440px;
-  background: #fff;
-  border: 1px solid var(--ink);
+  position: relative;
+  width: 100%; max-width: 460px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   padding: 0;
+  z-index: 1;
 }
 .gate-meta {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--hair);
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
   display: flex; justify-content: space-between; align-items: baseline;
-  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  color: var(--ink-quiet);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+  color: rgba(242, 246, 248, 0.5);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .gate-meta .dot {
   display: inline-block;
   width: 6px; height: 6px;
-  background: var(--nroo-green-100);
+  background: var(--roo-water);
   border-radius: 50%;
   margin-right: 8px;
+  box-shadow: 0 0 12px rgba(37, 201, 186, 0.6);
+  animation: pulse 2s ease-in-out infinite;
 }
-.gate-body { padding: 40px 36px 36px; text-align: left; }
+.gate-body { padding: 40px 36px 32px; text-align: left; }
 .gate-mascot { margin: 0 0 24px; display: block; }
 .gate-eyebrow {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  color: var(--nroo-green-120);
+  color: var(--roo-water);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
-.gate-h {
-  font-family: var(--font-serif-cjk);
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  margin-bottom: 8px;
+.gate-headline {
+  font-family: var(--font-cjk);
+  font-weight: 200;
+  font-size: 28px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #F2F6F8;
+  margin-bottom: 16px;
 }
-.gate-h em { font-family: var(--font-cjk); font-weight: 200; font-weight: 300; color: var(--ink-soft); }
+.gate-headline em {
+  font-style: normal;
+  font-weight: 800;
+  color: var(--roo-water);
+  letter-spacing: -0.04em;
+}
 .gate-sub {
   font-family: var(--font-cjk);
-  font-size: 14px; line-height: 1.75;
-  color: var(--ink-soft);
+  font-size: 13px; line-height: 1.75;
+  color: rgba(242, 246, 248, 0.62);
   margin-bottom: 28px;
-  max-width: 320px;
+  max-width: 340px;
 }
 .gate-form { display: flex; flex-direction: column; gap: 12px; }
+.gate-input-wrap {
+  position: relative;
+  display: flex;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color .2s, background .2s;
+}
+.gate-input-wrap:focus-within {
+  border-color: var(--roo-water);
+  background: rgba(37, 201, 186, 0.04);
+  box-shadow: 0 0 0 1px var(--roo-water);
+}
+.gate-input-wrap.error {
+  border-color: var(--roo-sun);
+  background: rgba(255, 96, 26, 0.05);
+  box-shadow: 0 0 0 1px var(--roo-sun);
+  animation: shake 0.32s ease-out;
+}
+.gate-input-prefix {
+  font-family: var(--font-mono);
+  font-size: 12px; font-weight: 500;
+  color: rgba(242, 246, 248, 0.4);
+  letter-spacing: 0.08em;
+  padding: 14px 0 14px 16px;
+  text-transform: uppercase;
+  align-self: center;
+}
 .gate-input {
-  width: 100%;
+  flex: 1;
   padding: 14px 16px;
-  border: 1px solid var(--hair-strong);
-  background: var(--paper);
+  border: none;
+  background: transparent;
   font-family: var(--font-mono);
   font-size: 16px; font-weight: 500;
-  color: var(--ink);
+  color: #F2F6F8;
   letter-spacing: 0.04em;
   text-align: left;
   outline: none;
-  transition: border-color .2s, background .2s;
+  caret-color: var(--roo-water);
 }
-.gate-input:focus { border-color: var(--ink); background: #fff; }
-.gate-input.error {
-  border-color: var(--nroo-orange-120);
-  animation: shake 0.32s ease-out;
-}
+.gate-input::placeholder { color: rgba(242, 246, 248, 0.3); }
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-6px); }
@@ -2318,69 +2370,84 @@ section.chapter.dark em { color: var(--nroo-water); }
 .gate-submit {
   width: 100%;
   padding: 14px 16px;
-  background: var(--ink);
-  color: var(--paper);
-  border: none;
+  background: var(--roo-water);
+  color: var(--roo-night);
+  border: 1px solid var(--roo-water);
   font-family: var(--font-mono);
-  font-size: 12px; font-weight: 500;
+  font-size: 12px; font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background .2s;
+  transition: all .2s ease-out;
+  box-shadow: 0 0 24px rgba(37, 201, 186, 0.35), 0 0 1px var(--roo-water);
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px;
 }
-.gate-submit:hover { background: var(--nroo-green-120); }
+.gate-submit:hover {
+  background: var(--roo-water-d);
+  border-color: var(--roo-water-d);
+  box-shadow: 0 0 36px rgba(37, 201, 186, 0.55);
+  transform: translateY(-1px);
+}
+.gate-submit .arrow { font-size: 14px; transition: transform .2s; }
+.gate-submit:hover .arrow { transform: translateX(2px); }
 .gate-error {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  color: var(--nroo-orange-120);
+  color: var(--roo-sun);
   letter-spacing: 0.04em;
-  height: 16px;
+  min-height: 16px;
   margin-top: 4px;
+  display: flex; align-items: center; gap: 6px;
 }
+.gate-error::before { content: ''; }
+.gate-error:not(:empty)::before { content: '✕'; }
 .gate-foot {
   padding: 14px 20px;
-  border-top: 1px solid var(--hair);
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
   display: flex; justify-content: space-between;
   font-family: var(--font-mono); font-size: 10px; font-weight: 500;
-  color: var(--ink-quiet);
+  color: rgba(242, 246, 248, 0.4);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.gate-foot a { color: var(--nroo-green-120); }
+.gate-foot .v { color: var(--roo-water); }
 </style>
 
 <div class="gate" id="gate">
   <div class="gate-card">
     <div class="gate-meta">
       <span><span class="dot"></span>RESTRICTED · 內部預覽</span>
-      <span>v1.0</span>
+      <span>v1.0 · DRAFT</span>
     </div>
     <div class="gate-body">
       <svg class="gate-mascot" width="72" height="84" viewBox="0 0 120 140" fill="none">
-        <ellipse cx="60" cy="132" rx="34" ry="4" fill="#021C26" opacity=".10"/>
-        <path d="M28 110 Q12 100 16 80" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-        <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8" stroke-linejoin="round"/>
+        <ellipse cx="60" cy="132" rx="34" ry="4" fill="#000" opacity=".4"/>
+        <path d="M28 110 Q12 100 16 80" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#F2F6F8" stroke-width="2.2" fill="#021C26" stroke-linejoin="round"/>
         <ellipse cx="60" cy="92" rx="18" ry="11" fill="#25C9BA"/>
-        <path d="M40 122 Q36 130 44 132 L52 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
-        <path d="M80 122 Q84 130 76 132 L68 132" stroke="#021C26" stroke-width="2.2" stroke-linecap="round" fill="#F2F6F8"/>
-        <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#021C26" stroke-width="2.2" fill="#F2F6F8"/>
-        <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
-        <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#021C26" stroke-width="2.2" stroke-linejoin="round" fill="#F2F6F8"/>
-        <path d="M60 38 Q66 40 68 46" stroke="#021C26" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        <circle cx="55" cy="36" r="1.8" fill="#021C26"/>
-        <circle cx="69" cy="46" r="1.5" fill="#021C26"/>
+        <path d="M40 122 Q36 130 44 132 L52 132" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="#021C26"/>
+        <path d="M80 122 Q84 130 76 132 L68 132" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="#021C26"/>
+        <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#F2F6F8" stroke-width="2.2" fill="#021C26"/>
+        <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#F2F6F8" stroke-width="2.2" stroke-linejoin="round" fill="#021C26"/>
+        <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#F2F6F8" stroke-width="2.2" stroke-linejoin="round" fill="#021C26"/>
+        <path d="M60 38 Q66 40 68 46" stroke="#F2F6F8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <circle cx="55" cy="36" r="1.8" fill="#F2F6F8"/>
+        <circle cx="69" cy="46" r="1.5" fill="#F2F6F8"/>
       </svg>
       <div class="gate-eyebrow">— Brand Guideline · Issue 01</div>
-      <h1 class="gate-h">先<em>對個</em> 暗號。</h1>
       <p class="gate-sub">這是 Roo.Cash 2026 品牌指南的內部預覽。請輸入存取密碼。</p>
       <form class="gate-form" id="gateForm" autocomplete="off">
-        <input type="password" class="gate-input" id="gateInput" placeholder="輸入密碼" autofocus aria-label="Password">
+        <div class="gate-input-wrap" id="gateInputWrap">
+          <span class="gate-input-prefix">PWD</span>
+          <input type="password" class="gate-input" id="gateInput" placeholder="輸入密碼" autofocus aria-label="Password">
+        </div>
         <div class="gate-error" id="gateError"></div>
-        <button type="submit" class="gate-submit">Enter ↵</button>
+        <button type="submit" class="gate-submit">Enter <span class="arrow">→</span></button>
       </form>
     </div>
     <div class="gate-foot">
       <span>ROO.CASH · 袋鼠金融</span>
-      <span>2026 · INTERNAL</span>
+      <span class="v">2026 · INTERNAL</span>
     </div>
   </div>
 </div>
@@ -3121,7 +3188,7 @@ section.chapter.dark em { color: var(--nroo-water); }
             <div class="ff-rgb">RGB 02 / 28 / 38</div>
             <div class="ff-hex">#021C26</div>
           </div>
-          <div class="ff-num">01<span class="dot">.</span></div>
+          <div class="ff-num">01</div>
         </div>
         <div class="ff-col" style="background: var(--roo-blue); color: var(--void-text);">
           <div class="ff-meta">
@@ -3129,7 +3196,7 @@ section.chapter.dark em { color: var(--nroo-water); }
             <div class="ff-rgb">RGB 07 / 64 / 88</div>
             <div class="ff-hex">#074058</div>
           </div>
-          <div class="ff-num">02<span class="dot">.</span></div>
+          <div class="ff-num">02</div>
         </div>
         <div class="ff-col" style="background: var(--roo-water); color: #021C26;">
           <div class="ff-meta">
@@ -3137,7 +3204,7 @@ section.chapter.dark em { color: var(--nroo-water); }
             <div class="ff-rgb">RGB 37 / 201 / 186</div>
             <div class="ff-hex">#25C9BA</div>
           </div>
-          <div class="ff-num">03<span class="dot">.</span></div>
+          <div class="ff-num">03</div>
         </div>
         <div class="ff-col" style="background: var(--roo-sun); color: #fff;">
           <div class="ff-meta">
@@ -3145,7 +3212,7 @@ section.chapter.dark em { color: var(--nroo-water); }
             <div class="ff-rgb">RGB 255 / 96 / 26</div>
             <div class="ff-hex">#FF601A</div>
           </div>
-          <div class="ff-num">04<span class="dot">.</span></div>
+          <div class="ff-num">04</div>
         </div>
         <div class="ff-col" style="background: var(--roo-frost); color: #021C26; border-left: 1px solid rgba(2,28,38,0.12);">
           <div class="ff-meta">
@@ -3153,7 +3220,7 @@ section.chapter.dark em { color: var(--nroo-water); }
             <div class="ff-rgb">RGB 242 / 246 / 248</div>
             <div class="ff-hex">#F2F6F8</div>
           </div>
-          <div class="ff-num">05<span class="dot">.</span></div>
+          <div class="ff-num">05</div>
         </div>
       </div>
 
