@@ -1069,8 +1069,8 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
   background-position: center;
   background-color: var(--paper);
 }
-.dual-glyph-char.serif { font-family: var(--font-cjk); font-weight: 800; letter-spacing: -0.04em; }
-.dual-glyph-char.sans { font-family: var(--font-cjk); font-weight: 400; letter-spacing: 0; }
+.dual-glyph-char.serif { font-family: var(--font-cjk); font-weight: 200; letter-spacing: -0.03em; }
+.dual-glyph-char.sans { font-family: var(--font-cjk); font-weight: 800; letter-spacing: -0.04em; color: var(--roo-pulse); }
 .dual-foot {
   display: grid;
   grid-template-columns: 80px 1fr;
@@ -3564,60 +3564,73 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="subhead h-section">Type System · 字體系統</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
-        Roo.Cash 的中文用單一字族——<strong style="color: var(--ink);">思源黑體 Noto Sans TC</strong>，靠兩個重量切出層級：<strong style="color: var(--ink);">800 Bold</strong> 給標題、<strong style="color: var(--ink);">400 Regular</strong> 給內文。簡單、清楚、好讀，跨平台無折損。<strong style="color: var(--ink);">數字用 Roboto Condensed Bold</strong>，<strong style="color: var(--ink);">標籤用 Roboto Condensed Regular</strong>。
+        Roo.Cash 的中文用單一字族——<strong style="color: var(--ink);">思源黑體 Noto Sans TC</strong>。標題層用<strong style="color: var(--ink);">兩個極端的重量配對</strong>：<strong style="color: var(--ink);">200 Thin</strong> 是骨架（讓使用者先看到形狀），<strong style="color: var(--ink);">800 Bold + Pulse Teal</strong> 是被抓住的關鍵字。內文用 <strong style="color: var(--ink);">400 Regular</strong>。<strong style="color: var(--ink);">數字用 Roboto Condensed Bold</strong>，<strong style="color: var(--ink);">標籤用 Roboto Condensed Regular</strong>。
       </p>
 
       <div class="dual-glyph">
         <div class="dual-cell">
           <div class="dual-meta">
-            <span>WEIGHT · 800 BOLD</span>
-            <span class="ll">DISPLAY 標題</span>
+            <span>WEIGHT · 200 THIN</span>
+            <span class="ll">DISPLAY · 預設</span>
           </div>
           <div class="dual-glyph-char serif">袋</div>
           <div class="dual-foot">
             <div class="df-key">Family</div><div class="df-val">Noto Sans TC · 思源黑體</div>
-            <div class="df-key">Weight</div><div class="df-val">800 Bold · -0.04em letter-spacing</div>
-            <div class="df-key">Source</div><div class="df-val">Open source · SIL OFL · GitHub</div>
-            <div class="df-key">Use</div><div class="df-val">標題 · 引言 · Pull Quote</div>
-            <div class="df-key">Voice</div><div class="df-val">重量 800 + 緊縮字距 · 嚴謹但有力</div>
+            <div class="df-key">Weight</div><div class="df-val">200 Thin · -0.03em letter-spacing</div>
+            <div class="df-key">Source</div><div class="df-val">Open source · SIL OFL · Google Fonts</div>
+            <div class="df-key">Use</div><div class="df-val">Hero · 章節主標 · 標題的骨架</div>
+            <div class="df-key">Voice</div><div class="df-val">輕、靜、給呼吸 · 像沒說完的話</div>
           </div>
         </div>
         <div class="dual-cell">
           <div class="dual-meta">
-            <span>WEIGHT · 400 REGULAR</span>
-            <span class="ll">BODY 內文</span>
+            <span>WEIGHT · 800 BOLD</span>
+            <span class="ll">DISPLAY · 強調</span>
           </div>
           <div class="dual-glyph-char sans">袋</div>
           <div class="dual-foot">
             <div class="df-key">Family</div><div class="df-val">Noto Sans TC · 思源黑體</div>
-            <div class="df-key">Weight</div><div class="df-val">400 Regular</div>
+            <div class="df-key">Weight</div><div class="df-val">800 Bold · -0.04em letter-spacing</div>
             <div class="df-key">Source</div><div class="df-val">Open source · SIL OFL · Google Fonts</div>
-            <div class="df-key">Use</div><div class="df-val">內文 · UI · 卡片標題</div>
-            <div class="df-key">Voice</div><div class="df-val">重量 400 · 清楚、不分心、好讀</div>
+            <div class="df-key">Use</div><div class="df-val">標題裡的關鍵字 · 配 Pulse Teal</div>
+            <div class="df-key">Voice</div><div class="df-val">用最少的字 · 抓住眼睛</div>
           </div>
         </div>
       </div>
 
-      <div class="subhead h-section">Four Roles · 四個角色，兩個字族</div>
+      <div class="subhead h-section">Five Roles · 五個角色，兩個字族</div>
+
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
+        Display 標題用<strong style="color: var(--ink);">兩個重量配對</strong>：Thin 200 是骨架，Bold 800 + Pulse teal 是強調的字。讓使用者的眼睛先看到主訊息的形狀、再被有色的關鍵字拉住。內文與數字、標籤各有一個固定重量。</p>
 
       <div class="specimen">
         <div class="specimen-row">
-          <div class="label">ROLE.01<span class="name">Display 標題</span></div>
-          <div class="demo" style="font-family: var(--font-cjk); font-weight: 800; font-size: 44px; color: var(--ink); line-height: 1.0; letter-spacing: -0.04em;">每一筆金錢決定，都值得一個夥伴。</div>
-          <div class="meta">Noto Sans TC<br/>800 Bold · -0.04em<br/>Hero · 章節主標 · Pull Quote</div>
+          <div class="label">ROLE.01<span class="name">Display · 預設</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-weight: 200; font-size: 44px; color: var(--ink); line-height: 1.05; letter-spacing: -0.03em;">每一筆金錢決定都值得</div>
+          <div class="meta">Noto Sans TC<br/>200 Thin · -0.03em<br/>Hero · 章節主標 · 預設骨架</div>
         </div>
         <div class="specimen-row">
-          <div class="label">ROLE.02<span class="name">Body 內文</span></div>
+          <div class="label">ROLE.02<span class="name">Display · 強調</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-weight: 800; font-size: 44px; color: var(--roo-pulse-deep); line-height: 1.0; letter-spacing: -0.04em;">一個懂你的夥伴</div>
+          <div class="meta">Noto Sans TC<br/>800 Bold · Pulse Teal<br/>標題裡的關鍵字 · em 標註</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">ROLE.01+02<span class="name">配對範例</span></div>
+          <div class="demo" style="font-family: var(--font-cjk); font-weight: 200; font-size: 36px; color: var(--ink); line-height: 1.1; letter-spacing: -0.03em;">理財建議的<span style="font-weight: 800; color: var(--roo-pulse-deep); letter-spacing: -0.04em;">下一個世代</span>，住在你的口袋裡。</div>
+          <div class="meta">Thin + Bold 配對<br/>骨架 → 強調 → 結尾<br/>Hero · 章節 · Promise Block</div>
+        </div>
+        <div class="specimen-row">
+          <div class="label">ROLE.03<span class="name">Body 內文</span></div>
           <div class="demo" style="font-family: var(--font-cjk); font-weight: 400; font-size: 18px; color: var(--ink); line-height: 1.75;">這是 Roo.Cash 的標準內文。重量 400 規格給中文字段呼吸的空間，跨平台無折損，是所有訊息層的預設。</div>
           <div class="meta">Noto Sans TC<br/>400 Regular · 1.75 line-height<br/>所有內文 · UI · 卡片</div>
         </div>
         <div class="specimen-row">
-          <div class="label">ROLE.03<span class="name">Number 數字</span></div>
-          <div class="demo" style="font-family: var(--font-numeric); font-weight: 700; font-size: 56px; color: var(--nroo-orange-120); letter-spacing: -0.03em; line-height: 1;">2.05% · 120,000+</div>
+          <div class="label">ROLE.04<span class="name">Number 數字</span></div>
+          <div class="demo" style="font-family: var(--font-numeric); font-weight: 700; font-size: 56px; color: var(--roo-spark-deep); letter-spacing: -0.03em; line-height: 1;">2.05% · 120,000+</div>
           <div class="meta">Roboto Condensed<br/>700 Bold · -0.03em<br/>大型數字 · 利率 · 統計</div>
         </div>
         <div class="specimen-row">
-          <div class="label">ROLE.04<span class="name">Label 標籤</span></div>
+          <div class="label">ROLE.05<span class="name">Label 標籤</span></div>
           <div class="demo" style="font-family: var(--font-mono); font-weight: 400; font-size: 16px; color: var(--ink); letter-spacing: 0.08em; text-transform: uppercase;">Chapter 07 / Color &amp; Type · v1.0</div>
           <div class="meta">Roboto Condensed<br/>400 Regular · UPPERCASE<br/>Eyebrow · Folio · ID · Tag</div>
         </div>
