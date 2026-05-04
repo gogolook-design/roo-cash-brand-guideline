@@ -1713,8 +1713,28 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
 .ff-tone-cell {
   height: 56px;
   border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
 }
 .ff-tone-cell:last-child { border-right: none; }
+.ff-tone-cell .t-lbl {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.ff-tone-cell .t-hex {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  opacity: 0.65;
+}
 
 /* Primary / Secondary tier grid */
 .ff-tier-grid {
