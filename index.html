@@ -364,6 +364,10 @@ a { color: inherit; text-decoration: none; }
   gap: 80px;
   align-items: end;
 }
+.hero-grid.hero-grid-single {
+  grid-template-columns: 1fr;
+  max-width: 1100px;
+}
 .hero-headline {
   font-family: var(--font-cjk);
   font-weight: 200;
@@ -2802,7 +2806,7 @@ section.chapter.dark em { color: var(--nroo-water); }
       <span style="color: var(--nroo-green-100);">LIVE</span>
     </div>
 
-    <div class="hero-grid">
+    <div class="hero-grid hero-grid-single">
       <div>
         <h1 class="hero-headline">
           理財建議的<br/>
@@ -2817,22 +2821,6 @@ section.chapter.dark em { color: var(--nroo-water); }
           <a href="#ch10" class="btn-ghost">下載素材包</a>
         </div>
       </div>
-
-      <aside class="hero-toc">
-        <div class="hero-toc-label">— Table of Contents</div>
-        <ol>
-          <li><a href="#ch01"><span class="toc-num">01.</span><span class="toc-title">品牌故事</span><span class="toc-tag">Story</span></a></li>
-          <li><a href="#ch02"><span class="toc-num">02.</span><span class="toc-title">使命 · 定位 · 服務</span><span class="toc-tag">Position</span></a></li>
-          <li><a href="#ch03"><span class="toc-num">03.</span><span class="toc-title">受眾與核心價值</span><span class="toc-tag">Audience</span></a></li>
-          <li><a href="#ch04"><span class="toc-num">04.</span><span class="toc-title">品牌人格</span><span class="toc-tag">Persona</span></a></li>
-          <li><a href="#ch05"><span class="toc-num">05.</span><span class="toc-title">語調與文案</span><span class="toc-tag">Voice</span></a></li>
-          <li><a href="#ch06"><span class="toc-num">06.</span><span class="toc-title">標誌系統</span><span class="toc-tag">Logo</span></a></li>
-          <li><a href="#ch07"><span class="toc-num">07.</span><span class="toc-title">色彩與字體</span><span class="toc-tag">Type</span></a></li>
-          <li><a href="#ch08"><span class="toc-num">08.</span><span class="toc-title">圖標 · 吉祥物 · 插畫</span><span class="toc-tag">Icon</span></a></li>
-          <li><a href="#ch09"><span class="toc-num">09.</span><span class="toc-title">視覺語言</span><span class="toc-tag">Visual</span></a></li>
-          <li><a href="#ch10"><span class="toc-num">10.</span><span class="toc-title">應用與素材庫</span><span class="toc-tag">Assets</span></a></li>
-        </ol>
-      </aside>
     </div>
   </div>
 </section>
