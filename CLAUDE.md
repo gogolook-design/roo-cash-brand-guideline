@@ -40,10 +40,10 @@ directory, undo that change.
 
 | Token | Value | Used for |
 |---|---|---|
-| Navy `#112858` | `--nroo-blue-100` | Logo, primary text, dark surfaces, H1/H2 |
-| Green `#00E0A0` | `--nroo-green-100` | All primary CTAs. Hover → `#14A571` |
-| Orange `#D84421` | `--nroo-orange-120` | Numeric highlights only. Almost never a fill. |
-| Cream `#F8F8F8` | `--nroo-grey-10` | Page canvas. White is reserved for cards. |
+| Trust `#021C26` | `--nroo-blue-100` | Logo, primary text, dark surfaces, H1/H2 |
+| Pulse `#25C9BA` | `--nroo-green-100` | All primary CTAs. Hover → `#14A571` |
+| Spark `#FF601A` | `--nroo-orange-120` | Numeric highlights only. Almost never a fill. |
+| Clear `#F2F6F8` | `--nroo-grey-10` | Page canvas. White is reserved for cards. |
 
 **Do not introduce a 5th brand color.** The framework draft proposed mint `#4ECDC4` — explicitly
 rejected by the user; the live design system palette wins.

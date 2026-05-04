@@ -20,22 +20,22 @@
      Future Finance Palette · Issue 02 (2026)
      5 colors, intentional usage proportions
      ─────────────────────────────────────────── */
-  --roo-night:   #021C26;  /* 01 · Primary  — surface, headlines */
-  --roo-blue:    #074058;  /* 02 · Primary  — depth, supporting surface */
-  --roo-water:   #25C9BA;  /* 03 · Secondary — action, AI, live */
-  --roo-sun:     #FF601A;  /* 04 · Secondary — numeric, energy */
-  --roo-frost:   #F2F6F8;  /* 05 · Primary  — cold canvas (replaces warm sand) */
-  --roo-frost-2: #E5EBEF;  /* 05 dark — alt cold canvas */
-  --roo-sand:    var(--roo-frost);   /* alias for legacy refs */
-  --roo-sand-2:  var(--roo-frost-2); /* alias */
-  --roo-water-d:    #1AA396;  /* Water hover (still bright) */
-  --roo-water-deep: #0E6F66;  /* Water as small text on Frost — 5.4:1 AA */
-  --roo-sun-deep:   #B23A14;  /* Sun as small text on Frost — 5.0:1 AA */
+  --roo-trust:   #021C26;  /* 01 · Primary  — surface, headlines */
+  --roo-steady:    #074058;  /* 02 · Primary  — depth, supporting surface */
+  --roo-pulse:   #25C9BA;  /* 03 · Secondary — action, AI, live */
+  --roo-spark:     #FF601A;  /* 04 · Secondary — numeric, energy */
+  --roo-clear:   #F2F6F8;  /* 05 · Primary  — cold canvas (replaces warm sand) */
+  --roo-clear-2: #E5EBEF;  /* 05 dark — alt cold canvas */
+  --roo-sand:    var(--roo-clear);   /* alias for legacy refs */
+  --roo-sand-2:  var(--roo-clear-2); /* alias */
+  --roo-pulse-d:    #1AA396;  /* Water hover (still bright) */
+  --roo-pulse-deep: #0E6F66;  /* Water as small text on Frost — 5.4:1 AA */
+  --roo-spark-deep:   #B23A14;  /* Sun as small text on Frost — 5.0:1 AA */
 
   /* Semantic ink tokens map to the new palette */
   /* Alphas tuned for WCAG AA+ contrast on the Frost canvas:
      0.82 → ~9:1 (AAA for normal text), 0.62 → ~5:1 (AA Large) */
-  --ink:        var(--roo-night);
+  --ink:        var(--roo-trust);
   --ink-soft:   rgba(2, 28, 38, 0.82);   /* body, secondary copy */
   --ink-quiet:  rgba(2, 28, 38, 0.62);   /* tertiary, captions */
   --paper:      var(--roo-sand);
@@ -44,8 +44,8 @@
   --hair-strong:rgba(2, 28, 38, 0.22);
 
   /* Dark surface tokens */
-  --void:       var(--roo-night);
-  --void-2:     var(--roo-blue);
+  --void:       var(--roo-trust);
+  --void-2:     var(--roo-steady);
   --void-line:        rgba(255, 255, 255, 0.08);
   --void-line-strong: rgba(255, 255, 255, 0.18);
   --void-text:        #F2F6F8;
@@ -53,12 +53,12 @@
   --void-quiet:       rgba(242, 246, 248, 0.60);  /* tertiary on dark */
 
   /* Override original design-system tokens to the new palette */
-  --nroo-blue-100:   var(--roo-night);
-  --nroo-blue-95:    var(--roo-blue);
+  --nroo-blue-100:   var(--roo-trust);
+  --nroo-blue-95:    var(--roo-steady);
   --nroo-blue-120:   #011018;
-  --nroo-green-100:  var(--roo-water);
-  --nroo-green-120:  var(--roo-water-d);
-  --nroo-orange-120: var(--roo-sun);
+  --nroo-green-100:  var(--roo-pulse);
+  --nroo-green-120:  var(--roo-pulse-d);
+  --nroo-orange-120: var(--roo-spark);
   --nroo-grey-10:    var(--roo-sand);
   --nroo-grey-20:    var(--roo-sand-2);
 
@@ -92,13 +92,13 @@ a { color: inherit; text-decoration: none; }
 /* ─── A11Y · Focus visibility ─── */
 :focus { outline: none; }
 :focus-visible {
-  outline: 2px solid var(--roo-water);
+  outline: 2px solid var(--roo-pulse);
   outline-offset: 2px;
   border-radius: 2px;
 }
 .btn-glow:focus-visible,
 .gate-submit:focus-visible {
-  outline: 2px solid var(--roo-sun);
+  outline: 2px solid var(--roo-spark);
   outline-offset: 3px;
 }
 
@@ -107,8 +107,8 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   top: 0; left: 0;
   padding: 12px 18px;
-  background: var(--roo-night);
-  color: var(--roo-water);
+  background: var(--roo-trust);
+  color: var(--roo-pulse);
   font-family: var(--font-mono);
   font-size: 12px; font-weight: 600;
   letter-spacing: 0.12em;
@@ -219,14 +219,14 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.4;
   transition: color .18s;
 }
-.side-nav-list a:hover .nm { color: var(--roo-water-deep); }
+.side-nav-list a:hover .nm { color: var(--roo-pulse-deep); }
 
 .side-nav-list a.active {
   color: var(--ink);
   background: var(--paper-2);
   border-left-color: var(--nroo-green-100);
 }
-.side-nav-list a.active .nm { color: var(--roo-water-deep); font-weight: 700; }
+.side-nav-list a.active .nm { color: var(--roo-pulse-deep); font-weight: 700; }
 .side-nav-list a.active .ti { color: var(--ink); font-weight: 700; font-family: var(--font-serif-cjk); }
 
 .side-nav-foot {
@@ -537,7 +537,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-serif);
   font-size: 14px;
   font-style: italic;
-  color: var(--roo-water-deep);
+  color: var(--roo-pulse-deep);
 }
 
 /* ─── CHAPTERS ─── */
@@ -591,13 +591,13 @@ section.chapter.alt { background: var(--paper-2); }
 }
 .chapter-eyebrow {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  color: var(--roo-water-deep);  /* AA-compliant teal for small text on Frost */
+  color: var(--roo-pulse-deep);  /* AA-compliant teal for small text on Frost */
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 12px;
 }
 section.chapter.dark .chapter-eyebrow,
-.hero .chapter-eyebrow { color: var(--roo-water); }
+.hero .chapter-eyebrow { color: var(--roo-pulse); }
 .chapter-title {
   font-family: var(--font-cjk);
   font-weight: 200;
@@ -615,7 +615,7 @@ section.chapter.dark .chapter-eyebrow,
   color: var(--nroo-water);
   letter-spacing: -0.04em;
 }
-section.chapter.dark .chapter-title em { color: var(--roo-water); }
+section.chapter.dark .chapter-title em { color: var(--roo-pulse); }
 section.chapter.dark .chapter-title { color: var(--void-text); }
 section.chapter.dark .chapter-title em { color: var(--nroo-green-100); }
 .chapter-deck {
@@ -628,11 +628,11 @@ section.chapter.dark .chapter-title em { color: var(--nroo-green-100); }
 .chapter-deck p + p { margin-top: 16px; }
 .chapter-deck .num {
   font-family: var(--font-mono);
-  color: var(--roo-sun-deep);  /* AA-compliant Sun for inline numerics on Frost */
+  color: var(--roo-spark-deep);  /* AA-compliant Sun for inline numerics on Frost */
   font-weight: 700;
 }
 section.chapter.dark .chapter-deck .num,
-.hero .chapter-deck .num { color: var(--roo-sun); }
+.hero .chapter-deck .num { color: var(--roo-spark); }
 
 .section-rule {
   height: 1px; background: var(--ink);
@@ -692,7 +692,7 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.tile-head .id { color: var(--roo-water-deep); }
+.tile-head .id { color: var(--roo-pulse-deep); }
 .tile-title {
   font-family: var(--font-cjk);
   font-weight: 700;
@@ -744,10 +744,10 @@ section.chapter.alt .tile:hover { background: rgba(255, 255, 255, 0.6); }
   font-weight: 400;
   font-size: 36px;
   line-height: 1;
-  color: var(--roo-sun-deep);
+  color: var(--roo-spark-deep);
   letter-spacing: -0.02em;
 }
-section.chapter.dark .list-rule .row .num { color: var(--roo-sun); }
+section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
 .list-rule .row h3 {
   font-family: var(--font-serif-cjk);
   font-weight: 600;
@@ -864,8 +864,8 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-sun); }
   border-bottom: 1px solid var(--hair);
   display: flex; align-items: center; gap: 8px;
 }
-.col-do .col-head { color: var(--roo-water-deep); }
-.col-dont .col-head { color: var(--roo-sun-deep); }
+.col-do .col-head { color: var(--roo-pulse-deep); }
+.col-dont .col-head { color: var(--roo-spark-deep); }
 .dodont .item {
   font-size: 14px; line-height: 1.75;
   padding: 10px 0 10px 22px;
@@ -1158,7 +1158,7 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-sun); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.dir-id-row .nm { color: var(--roo-water-deep); font-weight: 700; }
+.dir-id-row .nm { color: var(--roo-pulse-deep); font-weight: 700; }
 .dir-art {
   background:
     linear-gradient(to right, var(--hair) 1px, transparent 1px),
@@ -1672,6 +1672,14 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-sun); }
 }
 .ff-meta .ff-rgb { opacity: 0.72; font-size: 11px; }
 .ff-meta .ff-hex { opacity: 0.72; font-size: 11px; }
+.ff-meta .ff-cn {
+  font-family: var(--font-cjk);
+  font-weight: 400;
+  font-size: 0.82em;
+  margin-left: 6px;
+  opacity: 0.7;
+  letter-spacing: 0;
+}
 
 .ff-num {
   font-family: var(--font-numeric);
@@ -1923,7 +1931,7 @@ section.chapter.dark .promise-block {
   color: var(--void-text);
 }
 section.chapter.dark .promise-block .promise-h { color: var(--void-text); }
-section.chapter.dark .promise-block .promise-h em { color: var(--roo-water); }
+section.chapter.dark .promise-block .promise-h em { color: var(--roo-pulse); }
 section.chapter.dark .promise-block .promise-sub { color: var(--void-soft); }
 section.chapter.dark .promise-block .promise-meta { color: var(--void-quiet); }
 section.chapter.dark .tag { background: rgba(255,255,255,0.06); color: var(--void-text); }
@@ -1931,8 +1939,8 @@ section.chapter.dark .dodont { border-color: var(--void-line); }
 section.chapter.dark .dodont .col-do { border-right-color: var(--void-line); }
 section.chapter.dark .dodont .col-head { border-bottom-color: var(--void-line); }
 section.chapter.dark .dodont .item { border-bottom-color: var(--void-line); color: var(--void-soft); }
-section.chapter.dark .col-do .col-head { color: var(--roo-water); }
-section.chapter.dark .col-dont .col-head { color: var(--roo-sun); }
+section.chapter.dark .col-do .col-head { color: var(--roo-pulse); }
+section.chapter.dark .col-dont .col-head { color: var(--roo-spark); }
 
 /* Data viz on dark chapters */
 section.chapter.dark .viz-frame { background: rgba(255,255,255,0.02); border-color: var(--void-line-strong); }
@@ -2303,7 +2311,7 @@ section.chapter.dark em { color: var(--nroo-water); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.motion-spec-head .id { color: var(--roo-water); font-weight: 700; }
+.motion-spec-head .id { color: var(--roo-pulse); font-weight: 700; }
 .motion-spec-stage {
   flex: 1;
   min-height: 200px;
@@ -2336,23 +2344,23 @@ section.chapter.dark em { color: var(--nroo-water); }
   cursor: pointer;
   transition: all 0.2s ease-out;
 }
-.motion-spec-replay:hover { background: var(--roo-water); color: var(--roo-night); border-color: var(--roo-water); }
+.motion-spec-replay:hover { background: var(--roo-pulse); color: var(--roo-trust); border-color: var(--roo-pulse); }
 
 /* SPEC.01 — CTA hover */
 .demo-cta {
   font-family: var(--font-mono); font-size: 13px; font-weight: 600;
   letter-spacing: 0.12em;
   padding: 14px 28px;
-  background: var(--roo-water); color: var(--roo-night);
-  border: 1px solid var(--roo-water);
+  background: var(--roo-pulse); color: var(--roo-trust);
+  border: 1px solid var(--roo-pulse);
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.22s ease-out;
   box-shadow: 0 0 12px rgba(37, 201, 186, 0.30);
 }
 .demo-cta:hover {
-  background: var(--roo-water-d);
-  border-color: var(--roo-water-d);
+  background: var(--roo-pulse-d);
+  border-color: var(--roo-pulse-d);
   box-shadow: 0 0 32px rgba(37, 201, 186, 0.65);
   transform: translateY(-1px);
 }
@@ -2370,7 +2378,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 }
 .demo-card:hover {
   background: rgba(255,255,255,0.08);
-  border-color: var(--roo-water);
+  border-color: var(--roo-pulse);
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   transform: translateY(-2px);
 }
@@ -2387,7 +2395,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 }
 .demo-pulse-dot {
   width: 12px; height: 12px;
-  background: var(--roo-water);
+  background: var(--roo-pulse);
   border-radius: 50%;
   box-shadow: 0 0 16px rgba(37, 201, 186, 0.6);
   position: relative;
@@ -2396,7 +2404,7 @@ section.chapter.dark em { color: var(--nroo-water); }
   content: '';
   position: absolute; inset: -8px;
   border-radius: 50%;
-  border: 1px solid var(--roo-water);
+  border: 1px solid var(--roo-pulse);
   animation: pulseRing 2s ease-out infinite;
 }
 @keyframes pulseRing {
@@ -2408,7 +2416,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 .demo-counter {
   font-family: var(--font-numeric); font-weight: 700;
   font-size: 64px;
-  color: var(--roo-sun);
+  color: var(--roo-spark);
   letter-spacing: -0.04em;
   line-height: 1;
 }
@@ -2433,7 +2441,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 }
 .demo-reveal em {
   font-style: normal;
-  color: var(--roo-water);
+  color: var(--roo-pulse);
   font-weight: 800;
 }
 .demo-reveal.playing {
@@ -2498,7 +2506,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 <style>
 .gate {
   position: fixed; inset: 0;
-  background: var(--roo-night);
+  background: var(--roo-trust);
   z-index: 9999;
   display: flex; align-items: center; justify-content: center;
   padding: 32px;
@@ -2541,7 +2549,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 .gate-meta .dot {
   display: inline-block;
   width: 6px; height: 6px;
-  background: var(--roo-water);
+  background: var(--roo-pulse);
   border-radius: 50%;
   margin-right: 8px;
   box-shadow: 0 0 12px rgba(37, 201, 186, 0.6);
@@ -2551,7 +2559,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 .gate-mascot { margin: 0 0 24px; display: block; }
 .gate-eyebrow {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  color: var(--roo-water);
+  color: var(--roo-pulse);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -2568,7 +2576,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 .gate-headline em {
   font-style: normal;
   font-weight: 800;
-  color: var(--roo-water);
+  color: var(--roo-pulse);
   letter-spacing: -0.04em;
 }
 .gate-sub {
@@ -2587,14 +2595,14 @@ section.chapter.dark em { color: var(--nroo-water); }
   transition: border-color .2s, background .2s;
 }
 .gate-input-wrap:focus-within {
-  border-color: var(--roo-water);
+  border-color: var(--roo-pulse);
   background: rgba(37, 201, 186, 0.04);
-  box-shadow: 0 0 0 1px var(--roo-water);
+  box-shadow: 0 0 0 1px var(--roo-pulse);
 }
 .gate-input-wrap.error {
-  border-color: var(--roo-sun);
+  border-color: var(--roo-spark);
   background: rgba(255, 96, 26, 0.05);
-  box-shadow: 0 0 0 1px var(--roo-sun);
+  box-shadow: 0 0 0 1px var(--roo-spark);
   animation: shake 0.32s ease-out;
 }
 .gate-input-prefix {
@@ -2617,7 +2625,7 @@ section.chapter.dark em { color: var(--nroo-water); }
   letter-spacing: 0.04em;
   text-align: left;
   outline: none;
-  caret-color: var(--roo-water);
+  caret-color: var(--roo-pulse);
 }
 .gate-input::placeholder { color: rgba(242, 246, 248, 0.3); }
 @keyframes shake {
@@ -2628,22 +2636,22 @@ section.chapter.dark em { color: var(--nroo-water); }
 .gate-submit {
   width: 100%;
   padding: 14px 16px;
-  background: var(--roo-water);
-  color: var(--roo-night);
-  border: 1px solid var(--roo-water);
+  background: var(--roo-pulse);
+  color: var(--roo-trust);
+  border: 1px solid var(--roo-pulse);
   font-family: var(--font-mono);
   font-size: 12px; font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   cursor: pointer;
   transition: all .2s ease-out;
-  box-shadow: 0 0 24px rgba(37, 201, 186, 0.35), 0 0 1px var(--roo-water);
+  box-shadow: 0 0 24px rgba(37, 201, 186, 0.35), 0 0 1px var(--roo-pulse);
   display: flex; align-items: center; justify-content: center;
   gap: 8px;
 }
 .gate-submit:hover {
-  background: var(--roo-water-d);
-  border-color: var(--roo-water-d);
+  background: var(--roo-pulse-d);
+  border-color: var(--roo-pulse-d);
   box-shadow: 0 0 36px rgba(37, 201, 186, 0.55);
   transform: translateY(-1px);
 }
@@ -2651,7 +2659,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 .gate-submit:hover .arrow { transform: translateX(2px); }
 .gate-error {
   font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  color: var(--roo-sun);
+  color: var(--roo-spark);
   letter-spacing: 0.04em;
   min-height: 16px;
   margin-top: 4px;
@@ -2668,7 +2676,7 @@ section.chapter.dark em { color: var(--nroo-water); }
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.gate-foot .v { color: var(--roo-water); }
+.gate-foot .v { color: var(--roo-pulse); }
 </style>
 
 <div class="gate" id="gate">
@@ -2692,7 +2700,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         <circle cx="55" cy="36" r="1.8" fill="#F2F6F8"/>
         <circle cx="69" cy="46" r="1.5" fill="#F2F6F8"/>
       </svg>
-      <div class="gate-eyebrow">— Brand Guideline · Issue 01</div>
+      <div class="gate-eyebrow">Brand Guideline · Issue 01</div>
       <p class="gate-sub">這是 Roo.Cash 2026 品牌指南的內部預覽。請輸入存取密碼。</p>
       <form class="gate-form" id="gateForm" autocomplete="off">
         <div class="gate-input-wrap" id="gateInputWrap">
@@ -2758,7 +2766,7 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="row"><span>Version</span><span class="v">v1.0 · Draft</span></div>
     </div>
   </div>
-  <div class="side-nav-label">— Contents</div>
+  <div class="side-nav-label">Contents</div>
   <ul class="side-nav-list" id="sideNavList">
     <li><a href="#ch01" data-chapter="ch01"><span class="nm">01.</span><span class="ti">品牌故事</span></a></li>
     <li><a href="#ch02" data-chapter="ch02"><span class="nm">02.</span><span class="ti">使命 · 定位 · 服務</span></a></li>
@@ -2858,7 +2866,7 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Brand Story · 品牌故事</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter One</div>
+      <div class="chapter-eyebrow">Chapter One</div>
       <h2 class="chapter-title">你的錢，<em>值得一個</em> 懂你的夥伴。</h2>
       <div class="chapter-deck">
         <p>每一個金錢決定都有重量——該辦哪張信用卡、現在該不該進場投資、突然需要一筆錢該怎麼辦。大多數平台丟給你一張比較表，然後說「自己看吧」。</p>
@@ -2868,7 +2876,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 
       <div class="callout"><strong>袋鼠的意象。</strong>袋鼠把最珍貴的東西放在育兒袋裡，貼近身體保護著，同時用有力、穩健的步伐向前躍進。Roo.Cash 也是如此——守護你的財務安全感，陪伴它成長，幫助你跳得比一個人更遠。</div>
 
-      <div class="subhead h-section"><span class="dash"></span>敘事弧 / Narrative Arc</div>
+      <div class="subhead h-section">敘事弧 / Narrative Arc</div>
 
       <div class="tile-grid cols-3 with-frame">
         <div class="tile">
@@ -2891,14 +2899,14 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Origin · 我們從哪裡來</div>
+      <div class="subhead h-section">Origin · 我們從哪裡來</div>
 
       <div class="chapter-deck" style="margin-top: 0;">
         <p>袋鼠金融 Roo.Cash（原名「貸鼠先生」）<strong>於 2020 年由 Gogolook（股票代碼：6902）推出</strong>。一開始，我們只是一個信貸比較工具——但很快發現，台灣使用者真正需要的不是「更多選項」，而是「更安心的選擇」。</p>
         <p>從那時起，我們陸續把信用卡、房貸、保險、數位帳戶、證券基金都整合進來，並在 2026 年正式進化為<strong>以 AI 為核心的個人理財夥伴</strong>。背後始終是同一件事：<strong>為普惠金融而生</strong>——讓金融資訊不再是門檻，讓每一個使用者，不論收入、年齡、背景，都能做出更安心的金錢決定。</p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Three Moments · 我們服務的三種時刻</div>
+      <div class="subhead h-section">Three Moments · 我們服務的三種時刻</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin: 0 0 24px;">
         Roo.Cash 不是只在你想理財的時候才出現。我們把使用者的金錢生活拆成三種時刻——每一種都需要不一樣的陪伴方式。
@@ -2925,7 +2933,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>The Trust We Inherit · 我們站在哪些信任的肩膀上</div>
+      <div class="subhead h-section">The Trust We Inherit · 我們站在哪些信任的肩膀上</div>
 
       <div class="chapter-deck" style="margin-top: 0;">
         <p>Roo.Cash 對信任有點偏執——這不是天生的，而是繼承來的。<strong>母公司 Gogolook（股票代碼：6902）成立於 2012 年</strong>，旗下的 <strong>Whoscall 全球累計超過 8,000 萬次下載</strong>，背後是東亞最大的 10 億筆號碼資料庫，以及超過十年的 AI 防詐技術累積。</p>
@@ -2964,13 +2972,13 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Mission · 使命 · 定位 · 服務</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Two</div>
+      <div class="chapter-eyebrow">Chapter Two</div>
       <h2 class="chapter-title">我們在做什麼，<em>又為什麼</em> 要做。</h2>
       <div class="chapter-deck">
         <p>Roo.Cash 是 Gogolook（也就是 Whoscall 背後的那個團隊）旗下的個人理財媒合服務。我們把信用卡、個人貸款、保險、儲蓄與信用建立等產品，整合在一個地方，讓使用者用最少的力氣，找到真正適合自己的方案。</p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>四個基本問題的答案</div>
+      <div class="subhead h-section">四個基本問題的答案</div>
 
       <div class="tile-grid cols-2 with-frame">
         <div class="tile">
@@ -3010,13 +3018,13 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Audience · 受眾 · 核心價值</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Three</div>
+      <div class="chapter-eyebrow">Chapter Three</div>
       <h2 class="chapter-title">我們在跟誰說話。</h2>
       <div class="chapter-deck">
         <p>Roo.Cash 不只服務「會理財的人」，也服務「想開始但不知道怎麼開始的人」。台灣大多數人不缺金融商品，缺的是一個能在關鍵時刻，給自己一個清楚答案的夥伴。</p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>四種使用者輪廓</div>
+      <div class="subhead h-section">四種使用者輪廓</div>
 
       <div class="tile-grid cols-4 with-frame">
         <div class="tile">
@@ -3045,7 +3053,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>四個核心信念 / Core Values</div>
+      <div class="subhead h-section">四個核心信念 / Core Values</div>
 
       <div class="list-rule">
         <div class="row">
@@ -3089,7 +3097,7 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Personality · 品牌人格</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Four</div>
+      <div class="chapter-eyebrow">Chapter Four</div>
       <h2 class="chapter-title">Roo.Cash <em>是一個</em> 什麼樣的「人」。</h2>
       <div class="chapter-deck">
         <p>不是銀行櫃員、不是機器人理專、也不是理財網紅。<strong>Roo.Cash 是那個剛好很懂錢的好朋友——</strong>就是那種你半夜猶豫要不要辦信貸時，會傳訊息問他的人，而他總能回你一個清楚、沉穩、真正有用的建議。</p>
@@ -3099,11 +3107,11 @@ section.chapter.dark em { color: var(--nroo-water); }
         <span class="mark">"</span>
         <div>
           <q>就像身邊有一個很懂理財的好朋友，每個決定都不再只靠自己。</q>
-          <div class="attribution">— Brand Promise · 品牌承諾</div>
+          <div class="attribution">Brand Promise · 品牌承諾</div>
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>人格四向 / Four Dimensions</div>
+      <div class="subhead h-section">人格四向 / Four Dimensions</div>
 
       <div class="tile-grid cols-4 with-frame">
         <div class="tile">
@@ -3158,13 +3166,13 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Voice · 語調 · 文案</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Five</div>
+      <div class="chapter-eyebrow">Chapter Five</div>
       <h2 class="chapter-title">Roo.Cash <em>怎麼</em> 說話。</h2>
       <div class="chapter-deck">
         <p>語調應該像一個沉穩、有見識的朋友，從不對你說教。<strong>溫暖但不裝可愛。聰明但不冷冰冰。專業但不生硬。</strong></p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>五個語調原則 / Five Principles</div>
+      <div class="subhead h-section">五個語調原則 / Five Principles</div>
 
       <div class="tile-grid cols-3 with-frame">
         <div class="tile">
@@ -3205,7 +3213,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>依受眾調整語調 / By Audience</div>
+      <div class="subhead h-section">依受眾調整語調 / By Audience</div>
 
       <div class="tile-grid cols-4 with-frame">
         <div class="tile">
@@ -3234,7 +3242,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>會說 vs. 絕不會說</div>
+      <div class="subhead h-section">會說 vs. 絕不會說</div>
 
       <div class="dodont">
         <div class="col-do">
@@ -3255,7 +3263,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>文案的小規矩</div>
+      <div class="subhead h-section">文案的小規矩</div>
 
       <div class="tile-grid cols-2 with-frame">
         <div class="tile">
@@ -3299,13 +3307,13 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Logo System · 標誌系統</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Six</div>
+      <div class="chapter-eyebrow">Chapter Six</div>
       <h2 class="chapter-title">Logo <em>是</em> 袋鼠站姿與字標的<em>組合</em>。</h2>
       <div class="chapter-deck">
         <p>袋鼠主體是品牌，字標說明我們是誰。<strong>Logo 的留白比 Logo 本身還重要</strong>——別讓它擠在邊角。</p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Primary Lockups</div>
+      <div class="subhead h-section">Primary Lockups</div>
 
       <div class="logo-frame">
         <div>
@@ -3318,7 +3326,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Usage Rules · 使用規矩</div>
+      <div class="subhead h-section">Usage Rules · 使用規矩</div>
 
       <div class="dodont">
         <div class="col-do">
@@ -3337,7 +3345,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Co-Branding · 共同合作</div>
+      <div class="subhead h-section">Co-Branding · 共同合作</div>
 
       <div class="tile-grid cols-3 with-frame">
         <div class="tile">
@@ -3371,50 +3379,50 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Color &amp; Type · 色彩 · 字體</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Seven</div>
-      <h2 class="chapter-title">五個顏色，<em>一個</em> 未來金融的語言。</h2>
+      <div class="chapter-eyebrow">Chapter Seven</div>
+      <h2 class="chapter-title">五個顏色，<em>一段</em> 從信任到清明的旅程。</h2>
       <div class="chapter-deck">
-        <p>Roo.Cash 2026 的色彩系統不是「三色加底」，而是<strong>五個有明確分工的顏色</strong>。每一個都有自己的故事——夜、藍、水、太陽、霜。Primary 撐起骨架，Secondary 帶來行動感與溫度。</p>
+        <p>Roo.Cash 2026 的色彩系統不是「三色加底」，而是<strong>五個有明確分工的顏色</strong>。每一個都有自己的故事，連起來就是一段使用者旅程：<strong>信任 → 沉穩 → 律動 → 火花 → 清明</strong>。Primary 撐起骨架，Secondary 帶來行動感與溫度。</p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>The Palette · 五色完整呈現</div>
+      <div class="subhead h-section">The Palette · 五色完整呈現</div>
 
       <div class="ff-palette">
-        <div class="ff-col" style="background: var(--roo-night); color: var(--void-text);">
+        <div class="ff-col" style="background: var(--roo-trust); color: var(--void-text);">
           <div class="ff-meta">
-            <div class="ff-name">Roo Night</div>
+            <div class="ff-name">Roo Trust <span class="ff-cn">信</span></div>
             <div class="ff-rgb">RGB 02 / 28 / 38</div>
             <div class="ff-hex">#021C26</div>
           </div>
           <div class="ff-num">01</div>
         </div>
-        <div class="ff-col" style="background: var(--roo-blue); color: var(--void-text);">
+        <div class="ff-col" style="background: var(--roo-steady); color: var(--void-text);">
           <div class="ff-meta">
-            <div class="ff-name">Roo Blue</div>
+            <div class="ff-name">Roo Steady <span class="ff-cn">穩</span></div>
             <div class="ff-rgb">RGB 07 / 64 / 88</div>
             <div class="ff-hex">#074058</div>
           </div>
           <div class="ff-num">02</div>
         </div>
-        <div class="ff-col" style="background: var(--roo-water); color: #021C26;">
+        <div class="ff-col" style="background: var(--roo-pulse); color: #021C26;">
           <div class="ff-meta">
-            <div class="ff-name">Roo Water</div>
+            <div class="ff-name">Roo Pulse <span class="ff-cn">動</span></div>
             <div class="ff-rgb">RGB 37 / 201 / 186</div>
             <div class="ff-hex">#25C9BA</div>
           </div>
           <div class="ff-num">03</div>
         </div>
-        <div class="ff-col" style="background: var(--roo-sun); color: #fff;">
+        <div class="ff-col" style="background: var(--roo-spark); color: #fff;">
           <div class="ff-meta">
-            <div class="ff-name">Roo Sun</div>
+            <div class="ff-name">Roo Spark <span class="ff-cn">火</span></div>
             <div class="ff-rgb">RGB 255 / 96 / 26</div>
             <div class="ff-hex">#FF601A</div>
           </div>
           <div class="ff-num">04</div>
         </div>
-        <div class="ff-col" style="background: var(--roo-frost); color: #021C26; border-left: 1px solid rgba(2,28,38,0.12);">
+        <div class="ff-col" style="background: var(--roo-clear); color: #021C26; border-left: 1px solid rgba(2,28,38,0.12);">
           <div class="ff-meta">
-            <div class="ff-name">Roo Frost</div>
+            <div class="ff-name">Roo Clear <span class="ff-cn">明</span></div>
             <div class="ff-rgb">RGB 242 / 246 / 248</div>
             <div class="ff-hex">#F2F6F8</div>
           </div>
@@ -3443,7 +3451,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         <div class="ff-tone-cell" style="background: #ABB8BD; color: #021C26;"><span class="t-lbl">F–40</span><span class="t-hex">#ABB8BD</span></div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Primary &amp; Secondary · 主色與輔色</div>
+      <div class="subhead h-section">Primary &amp; Secondary · 主色與輔色</div>
 
       <div class="ff-tier-grid">
         <div class="ff-tier">
@@ -3451,23 +3459,23 @@ section.chapter.dark em { color: var(--nroo-water); }
             <div class="ff-tier-tag">PRIMARY · 主色</div>
             <div class="ff-tier-pct">73<span class="pct">%</span></div>
           </div>
-          <p class="ff-tier-desc">三個主色撐起整個品牌的骨架——Night 是內容的肌理，Blue 是它的影子，Frost 是它呼吸的空氣。</p>
+          <p class="ff-tier-desc">三個主色撐起整個品牌的骨架——<strong>Trust 信</strong>是內容的肌理，<strong>Steady 穩</strong>是它的影子，<strong>Clear 明</strong>是它呼吸的空氣。</p>
           <div class="ff-tier-list">
             <div class="ff-tier-row">
-              <span class="sw" style="background: var(--roo-night);"></span>
-              <span class="nm">Roo Night</span>
+              <span class="sw" style="background: var(--roo-trust);"></span>
+              <span class="nm">Roo Trust <span style="color: var(--ink-quiet); font-weight: 400; margin-left: 4px;">信</span></span>
               <span class="hx">#021C26</span>
               <span class="pc">35%</span>
             </div>
             <div class="ff-tier-row">
-              <span class="sw" style="background: var(--roo-blue);"></span>
-              <span class="nm">Roo Blue</span>
+              <span class="sw" style="background: var(--roo-steady);"></span>
+              <span class="nm">Roo Steady <span style="color: var(--ink-quiet); font-weight: 400; margin-left: 4px;">穩</span></span>
               <span class="hx">#074058</span>
               <span class="pc">8%</span>
             </div>
             <div class="ff-tier-row">
-              <span class="sw" style="background: var(--roo-frost); border: 1px solid var(--hair);"></span>
-              <span class="nm">Roo Frost</span>
+              <span class="sw" style="background: var(--roo-clear); border: 1px solid var(--hair);"></span>
+              <span class="nm">Roo Clear <span style="color: var(--ink-quiet); font-weight: 400; margin-left: 4px;">明</span></span>
               <span class="hx">#F2F6F8</span>
               <span class="pc">30%</span>
             </div>
@@ -3475,20 +3483,20 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
         <div class="ff-tier">
           <div class="ff-tier-head">
-            <div class="ff-tier-tag" style="color: var(--roo-water);">SECONDARY · 輔色</div>
+            <div class="ff-tier-tag" style="color: var(--roo-pulse);">SECONDARY · 輔色</div>
             <div class="ff-tier-pct">27<span class="pct">%</span></div>
           </div>
-          <p class="ff-tier-desc">兩個輔色負責動作與感覺——Water 是 AI 的脈搏、是 CTA 的呼吸；Sun 是數字的能量、是利率上揚的信號。</p>
+          <p class="ff-tier-desc">兩個輔色負責動作與感覺——<strong>Pulse 動</strong>是 AI 的脈搏、是 CTA 的呼吸；<strong>Spark 火</strong>是數字的能量、是利率上揚的信號。</p>
           <div class="ff-tier-list">
             <div class="ff-tier-row">
-              <span class="sw" style="background: var(--roo-water);"></span>
-              <span class="nm">Roo Water</span>
+              <span class="sw" style="background: var(--roo-pulse);"></span>
+              <span class="nm">Roo Pulse <span style="color: var(--ink-quiet); font-weight: 400; margin-left: 4px;">動</span></span>
               <span class="hx">#25C9BA</span>
               <span class="pc">17%</span>
             </div>
             <div class="ff-tier-row">
-              <span class="sw" style="background: var(--roo-sun);"></span>
-              <span class="nm">Roo Sun</span>
+              <span class="sw" style="background: var(--roo-spark);"></span>
+              <span class="nm">Roo Spark <span style="color: var(--ink-quiet); font-weight: 400; margin-left: 4px;">火</span></span>
               <span class="hx">#FF601A</span>
               <span class="pc">10%</span>
             </div>
@@ -3496,32 +3504,32 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Usage Distribution · 使用比例帶</div>
+      <div class="subhead h-section">Usage Distribution · 使用比例帶</div>
 
       <div class="ff-bar">
-        <div class="ff-bar-seg" style="flex: 35; background: var(--roo-night);" data-label="Night 35%"></div>
-        <div class="ff-bar-seg" style="flex: 30; background: var(--roo-frost); color: #021C26; border-right: 1px solid rgba(2,28,38,0.12); border-left: 1px solid rgba(2,28,38,0.12);" data-label="Frost 30%"></div>
-        <div class="ff-bar-seg" style="flex: 17; background: var(--roo-water); color: #021C26;" data-label="Water 17%"></div>
-        <div class="ff-bar-seg" style="flex: 10; background: var(--roo-sun);" data-label="Sun 10%"></div>
-        <div class="ff-bar-seg" style="flex: 8; background: var(--roo-blue);" data-label="Blue 8%"></div>
+        <div class="ff-bar-seg" style="flex: 35; background: var(--roo-trust);" data-label="Trust 35%"></div>
+        <div class="ff-bar-seg" style="flex: 30; background: var(--roo-clear); color: #021C26; border-right: 1px solid rgba(2,28,38,0.12); border-left: 1px solid rgba(2,28,38,0.12);" data-label="Clear 30%"></div>
+        <div class="ff-bar-seg" style="flex: 17; background: var(--roo-pulse); color: #021C26;" data-label="Pulse 17%"></div>
+        <div class="ff-bar-seg" style="flex: 10; background: var(--roo-spark);" data-label="Spark 10%"></div>
+        <div class="ff-bar-seg" style="flex: 8; background: var(--roo-steady);" data-label="Steady 8%"></div>
       </div>
       <div class="ff-bar-legend">
-        <span><span class="d" style="background: var(--roo-night);"></span>Night 35%</span>
-        <span><span class="d" style="background: var(--roo-frost); border: 1px solid rgba(255,255,255,0.24);"></span>Frost 30%</span>
-        <span><span class="d" style="background: var(--roo-water);"></span>Water 17%</span>
-        <span><span class="d" style="background: var(--roo-sun);"></span>Sun 10%</span>
-        <span><span class="d" style="background: var(--roo-blue);"></span>Blue 8%</span>
+        <span><span class="d" style="background: var(--roo-trust);"></span>Trust 35%</span>
+        <span><span class="d" style="background: var(--roo-clear); border: 1px solid rgba(255,255,255,0.24);"></span>Clear 30%</span>
+        <span><span class="d" style="background: var(--roo-pulse);"></span>Pulse 17%</span>
+        <span><span class="d" style="background: var(--roo-spark);"></span>Spark 10%</span>
+        <span><span class="d" style="background: var(--roo-steady);"></span>Steady 8%</span>
       </div>
 
       <div class="callout">
-        <strong>顏色的 Sun 規矩。</strong>整段文字都是 ink 的時候，數字用 Sun 一個字、一個字地凸顯：<span style="color: var(--ink);">「已幫 <span class="mono" style="color: var(--roo-sun); font-weight: 700;">120,000+</span> 位使用者媒合最佳方案」</span>——文字 Night，數字 Sun。整塊變色就過頭了。
+        <strong>顏色的 Spark 規矩。</strong>整段文字都是 ink 的時候，數字用 Sun 一個字、一個字地凸顯：<span style="color: var(--ink);">「已幫 <span class="mono" style="color: var(--roo-spark); font-weight: 700;">120,000+</span> 位使用者媒合最佳方案」</span>——文字 Trust，數字 Spark。整塊變色就過頭了。
       </div>
 
       <div class="callout">
         <strong>數字的 Orange 規矩。</strong>整段文字都是 navy 的時候，數字用 orange 一個字、一個字地凸顯：<span style="font-family:var(--font-serif); color: var(--ink);">「已幫 <span class="mono" style="color: var(--nroo-orange-120); font-weight: 700;">120,000+</span> 位用戶媒合最佳方案」</span>——文字 navy，數字 orange。整塊變色就過頭了。
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Type System · 字體系統</div>
+      <div class="subhead h-section">Type System · 字體系統</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
         Roo.Cash 的中文用單一字族——<strong style="color: var(--ink);">思源黑體 Noto Sans TC</strong>，靠兩個重量切出層級：<strong style="color: var(--ink);">800 Bold</strong> 給標題、<strong style="color: var(--ink);">400 Regular</strong> 給內文。簡單、清楚、好讀，跨平台無折損。<strong style="color: var(--ink);">數字用 Roboto Condensed Bold</strong>，<strong style="color: var(--ink);">標籤用 Roboto Condensed Regular</strong>。
@@ -3558,7 +3566,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Four Roles · 四個角色，兩個字族</div>
+      <div class="subhead h-section">Four Roles · 四個角色，兩個字族</div>
 
       <div class="specimen">
         <div class="specimen-row">
@@ -3578,12 +3586,12 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
         <div class="specimen-row">
           <div class="label">ROLE.04<span class="name">Label 標籤</span></div>
-          <div class="demo" style="font-family: var(--font-mono); font-weight: 400; font-size: 16px; color: var(--ink); letter-spacing: 0.08em; text-transform: uppercase;">— Chapter 07 / Color &amp; Type · v1.0</div>
+          <div class="demo" style="font-family: var(--font-mono); font-weight: 400; font-size: 16px; color: var(--ink); letter-spacing: 0.08em; text-transform: uppercase;">Chapter 07 / Color &amp; Type · v1.0</div>
           <div class="meta">Roboto Condensed<br/>400 Regular · UPPERCASE<br/>Eyebrow · Folio · ID · Tag</div>
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Pairing Rules · 怎麼搭配</div>
+      <div class="subhead h-section">Pairing Rules · 怎麼搭配</div>
 
       <div class="tile-grid cols-3 with-frame">
         <div class="tile">
@@ -3606,7 +3614,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Scale · 行高 1.75 是品牌指紋</div>
+      <div class="subhead h-section">Scale · 行高 1.75 是品牌指紋</div>
 
       <div class="specimen">
         <div class="specimen-row">
@@ -3646,7 +3654,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
         <div class="specimen-row">
           <div class="label">SC.LBL<span class="name">11px / 0.16em</span></div>
-          <div class="demo" style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--nroo-green-120); letter-spacing: 0.16em; text-transform: uppercase;">— Chapter Seven · Type</div>
+          <div class="demo" style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--nroo-green-120); letter-spacing: 0.16em; text-transform: uppercase;">Chapter Seven · Type</div>
           <div class="meta">所有 micro-label<br/>Roboto Condensed 400 · UPPERCASE</div>
         </div>
         <div class="specimen-row">
@@ -3656,7 +3664,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Common Mistakes · 常見錯誤</div>
+      <div class="subhead h-section">Common Mistakes · 常見錯誤</div>
 
       <div class="dodont">
         <div class="col-do">
@@ -3677,7 +3685,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Alternatives Considered · 其他考慮過的方向</div>
+      <div class="subhead h-section">Alternatives Considered · 其他考慮過的方向</div>
 
       <div class="alt-grid">
         <div class="alt-card">
@@ -3723,13 +3731,13 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Icon · Mascot · Illustration</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Eight</div>
+      <div class="chapter-eyebrow">Chapter Eight</div>
       <h2 class="chapter-title">圖像分三層：<em>功能</em> · <em>情緒</em> · <em>故事</em>。</h2>
       <div class="chapter-deck">
         <p><strong>圖標</strong>負責功能、<strong>吉祥物 Roo</strong>負責情緒、<strong>插畫</strong>負責說故事。三者風格上必須是同一家人——一樣的線條、一樣的圓角、一樣不裝可愛。</p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Iconography · 24×24 outline · stroke 1.5</div>
+      <div class="subhead h-section">Iconography · 24×24 outline · stroke 1.5</div>
 
       <div class="icon-grid-frame">
         <div class="icon-meta">
@@ -3748,7 +3756,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Mascot Roo · 吉祥物</div>
+      <div class="subhead h-section">Mascot Roo · 吉祥物</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin: 16px 0 8px;">
         袋鼠是 Roo.Cash 唯一的決定——不是熊、不是貓、不是抽象的方塊，就是一隻袋鼠。原因很簡單：袋鼠把最珍貴的東西放在育兒袋裡保護著，同時用穩健有力的步伐向前躍進。<strong style="color: var(--ink);">這就是我們對使用者財務安全感的承諾</strong>。
@@ -3757,7 +3765,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         以下是六個視覺方向草案，每一種都有自己的個性。最終由插畫家定稿，但這些方向會幫助我們先決定<strong style="color: var(--ink);">「Roo 應該長什麼脾氣」</strong>。
       </p>
 
-      <div class="subhead"><span class="dash"></span>Six Directions Explored · 六個方向</div>
+      <div class="subhead">Six Directions Explored · 六個方向</div>
 
       <div class="dir-grid">
         <!-- DIR.01 GEOMETRIC -->
@@ -3940,7 +3948,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         <strong>方向收斂建議：</strong>DIR.03 純線稿 + DIR.04 手繪筆觸是最強的兩個方向。一個給 UI / 教學使用（線稿，乾淨），一個給情境敘事使用（手繪，有溫度）。兩者並存，依場景切換，比鎖定單一風格更靈活。剩下的 v1 IDLE / POINTING / CHEERING / THINKING 四姿勢，最終會以選定方向重繪。
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>v1 Pose Set · 四個基本姿勢</div>
+      <div class="subhead h-section">v1 Pose Set · 四個基本姿勢</div>
 
       <p style="font-family: var(--font-mono); font-size: 12px; color: var(--ink-quiet); letter-spacing: 0.04em; margin: 16px 0;">— v1 placeholder direction · final art TBD by illustrator</p>
 
@@ -4075,7 +4083,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Illustration · 插畫</div>
+      <div class="subhead h-section">Illustration · 插畫</div>
       <div class="callout">
         插畫只在說故事的時候出現——空狀態、活動頁、教學流程。<strong>單線 navy 線稿</strong>為主，必要時 green 作為單色強調，不用漸層、不用陰影、不用三色以上。情境取材自台灣日常：機車、便當、夜市、發票、捷運悠遊卡——<strong>不要矽谷感的男女握手插圖。</strong>
       </div>
@@ -4091,13 +4099,13 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Visual Language · 視覺語言</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Nine</div>
+      <div class="chapter-eyebrow">Chapter Nine</div>
       <h2 class="chapter-title">會動的、會講話的，<em>都要</em> 克制。</h2>
       <div class="chapter-deck">
         <p>這一章是把所有「會動的、會講話的」視覺元素，整理成一套可以反覆使用的工具。<strong>核心原則只有一句：克制。</strong>這是一個金融產品，使用者要的是清楚，不是炫技。</p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Photography · 攝影</div>
+      <div class="subhead h-section">Photography · 攝影</div>
 
       <div class="tile-grid cols-2 with-frame">
         <div class="tile">
@@ -4114,7 +4122,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Data Visualization · 資料圖表</div>
+      <div class="subhead h-section">Data Visualization · 資料圖表</div>
 
       <div class="viz-frame">
         <div class="viz-head">
@@ -4156,7 +4164,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         <strong>圖表規矩：一張圖只有一個重點。</strong>用 orange 標出「最划算」「最快」「最低」。其餘資料維持 navy 或 grey。每張圖都要有 ※ 開頭的小字說明資料來源與時間。軸線：1px navy。背景格線：盡量不畫；如果一定要，用 grey-20。圖例：放圖標題下方，不要塞圖內。
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Key Visual · 主視覺結構</div>
+      <div class="subhead h-section">Key Visual · 主視覺結構</div>
 
       <div class="tile-grid cols-3 with-frame">
         <div class="tile">
@@ -4179,7 +4187,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Motion · 動態</div>
+      <div class="subhead h-section">Motion · 動態</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
         Roo.Cash 的動態語言只有一個原則：<strong style="color: var(--void-text);">克制</strong>。我們相信使用者的時間，所以不用 motion 來炫技、不用動畫拖延任務。<strong style="color: var(--void-text);">200–250ms ease-out</strong>，淡入加上小幅位移，就是 Roo.Cash 的動態語言。
@@ -4206,7 +4214,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Live Specimens · 把動畫做給你看</div>
+      <div class="subhead h-section">Live Specimens · 把動畫做給你看</div>
 
       <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
         以下六個是 Roo.Cash 實際在用的所有動畫——hover、滑入、即時、慶祝。<strong style="color: var(--void-text);">點擊或滑過</strong>就能看到實際表現。再多就過頭了。
@@ -4232,7 +4240,7 @@ section.chapter.dark em { color: var(--nroo-water); }
           <div class="motion-spec-stage">
             <div class="demo-card">
               <div class="demo-card-h">A 銀行 個人信貸</div>
-              <div class="demo-card-p">年利率最低 <span style="color:var(--roo-sun); font-family:var(--font-mono); font-weight:700;">2.05%</span> 起 · 5 分鐘核貸</div>
+              <div class="demo-card-p">年利率最低 <span style="color:var(--roo-spark); font-family:var(--font-mono); font-weight:700;">2.05%</span> 起 · 5 分鐘核貸</div>
             </div>
           </div>
           <div class="motion-spec-foot">
@@ -4325,7 +4333,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Don'ts · 我們從不這樣動</div>
+      <div class="subhead h-section">Don'ts · 我們從不這樣動</div>
 
       <div class="dodont">
         <div class="col-dont" style="border-right: none; width: 100%;">
@@ -4350,13 +4358,13 @@ section.chapter.dark em { color: var(--nroo-water); }
       <div class="meta">Applications &amp; Assets · 應用</div>
     </aside>
     <div class="chapter-body">
-      <div class="chapter-eyebrow">— Chapter Ten</div>
+      <div class="chapter-eyebrow">Chapter Ten</div>
       <h2 class="chapter-title">從一張卡片<em>到</em> 一張海報，<em>這樣放就對。</em></h2>
       <div class="chapter-deck">
         <p>把前面九章的規矩整合起來，看看實際應用在常見的觸點上會是什麼樣子。<strong>這裡示範的是基本款，照這個邏輯往外延伸都可以。</strong></p>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Live Product Surfaces · 實際介面</div>
+      <div class="subhead h-section">Live Product Surfaces · 實際介面</div>
 
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin-bottom: 24px;">
         以下三個介面都是品牌規範實際運作起來的樣子。<strong style="color: var(--ink);">這不是行銷示意圖——這就是產品本身。</strong>
@@ -4446,7 +4454,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>By Surface · 各觸點規矩</div>
+      <div class="subhead h-section">By Surface · 各觸點規矩</div>
 
       <div class="tile-grid cols-3 with-frame">
         <div class="tile">
@@ -4487,7 +4495,7 @@ section.chapter.dark em { color: var(--nroo-water); }
         </div>
       </div>
 
-      <div class="subhead h-section"><span class="dash"></span>Assets Library · 素材庫</div>
+      <div class="subhead h-section">Assets Library · 素材庫</div>
 
       <div class="tile-grid cols-3 with-frame">
         <div class="tile">

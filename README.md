@@ -23,7 +23,7 @@ No build step. Open the file directly from disk and it works.
 
 ```
 index.html                       # the guideline (10 chapters, 繁體中文)
-styles/colors_and_type.css       # design system tokens (navy/green/orange/cream)
+styles/colors_and_type.css       # design system tokens (Trust/Steady/Pulse/Spark/Clear)
 fonts/NotoSansTC-VariableFont_wght.ttf
 assets/logos/                    # roo-cash dark/white, gogolook white
 CLAUDE.md                        # project conventions for AI collaborators
