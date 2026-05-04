@@ -856,35 +856,46 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
 }
 .dodont .col-do { border-right: 1px solid var(--hair); }
 .dodont .col-head {
-  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-  letter-spacing: 0.16em;
+  font-family: var(--font-mono); font-size: 18px; font-weight: 700;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  padding-bottom: 16px;
-  margin-bottom: 20px;
+  padding-bottom: 18px;
+  margin-bottom: 24px;
   border-bottom: 1px solid var(--hair);
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: 12px;
+}
+.dodont .col-head .glyph {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  font-family: var(--font-mono); font-size: 18px; font-weight: 700;
+  line-height: 1;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 .col-do .col-head { color: var(--roo-pulse-deep); }
 .col-dont .col-head { color: var(--roo-spark-deep); }
 .dodont .item {
   font-size: 14px; line-height: 1.75;
-  padding: 10px 0 10px 22px;
+  padding: 12px 0 12px 32px;
   position: relative;
   color: var(--ink-soft);
   border-bottom: 1px solid var(--hair);
 }
 .dodont .item:last-child { border-bottom: none; }
 .col-do .item::before {
-  content: '+';
+  content: '✓';
   position: absolute; left: 0; top: 12px;
-  font-family: var(--font-mono); font-weight: 500;
-  color: var(--nroo-green-120);
+  font-family: var(--font-mono); font-weight: 700;
+  font-size: 18px; line-height: 1.6;
+  color: var(--roo-pulse-deep);
 }
 .col-dont .item::before {
-  content: '×';
+  content: '✕';
   position: absolute; left: 0; top: 12px;
-  font-family: var(--font-mono); font-weight: 500;
-  color: var(--nroo-orange-120);
+  font-family: var(--font-mono); font-weight: 700;
+  font-size: 18px; line-height: 1.6;
+  color: var(--roo-spark-deep);
 }
 
 /* ─── PALETTE MOSAIC ─── */
@@ -3246,7 +3257,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 
       <div class="dodont">
         <div class="col-do">
-          <div class="col-head"><span>+</span> ROO.CASH 會說</div>
+          <div class="col-head"><span class="glyph">✓</span> ROO.CASH 會說</div>
           <div class="item">「你目前的信用卡組合，每月大概少拿了 $800 回饋。想看看怎麼調整嗎？」</div>
           <div class="item">「這兩個方案各有優缺點，讓我幫你拆解。」</div>
           <div class="item">「急用錢的時候，最重要的是看清楚利率跟還款條件。我幫你整理好了。」</div>
@@ -3254,7 +3265,7 @@ section.chapter.dark em { color: var(--nroo-water); }
           <div class="item">「這週你進步了 3%，離你想要的生活又更近一步。」</div>
         </div>
         <div class="col-dont">
-          <div class="col-head"><span>×</span> ROO.CASH 絕不會說</div>
+          <div class="col-head"><span class="glyph">✕</span> ROO.CASH 絕不會說</div>
           <div class="item">「限時優惠！最強神卡不辦就虧大了！」</div>
           <div class="item">「只要三步驟，你也能成為理財達人！」</div>
           <div class="item">「加入我們，打造你的被動收入人生！」</div>
@@ -3330,14 +3341,14 @@ section.chapter.dark em { color: var(--nroo-water); }
 
       <div class="dodont">
         <div class="col-do">
-          <div class="col-head"><span>+</span> 可以這樣做</div>
+          <div class="col-head"><span class="glyph">✓</span> 可以這樣做</div>
           <div class="item">最小尺寸：橫式不小於 <span class="mono" style="font-weight:700;">96px</span> 寬。再小，字標讀不出來。</div>
           <div class="item">安全留白：以袋鼠 logomark 高度的 <span class="mono" style="font-weight:700;">50%</span> 為基準，四周都留出來。</div>
           <div class="item">合作 logo 並列：用 <span class="mono" style="font-weight:700;">1px</span> navy 分隔線，兩側留白等距。</div>
           <div class="item">放在攝影背景上：選對比夠的區域，必要時加 navy 50% 半透明蒙版。</div>
         </div>
         <div class="col-dont">
-          <div class="col-head"><span>×</span> 絕對不要</div>
+          <div class="col-head"><span class="glyph">✕</span> 絕對不要</div>
           <div class="item">換顏色：別把袋鼠塗成 orange，也別漸層化。</div>
           <div class="item">變形或旋轉：不要拉長、不要傾斜、不要彎曲。</div>
           <div class="item">加陰影或 3D：扁平就是扁平，不要立體化。</div>
@@ -3668,7 +3679,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 
       <div class="dodont">
         <div class="col-do">
-          <div class="col-head"><span>+</span> 對的做法</div>
+          <div class="col-head"><span class="glyph">✓</span> 對的做法</div>
           <div class="item">中文標題用宋體 500，給份量。</div>
           <div class="item">中文內文用黑體 400，行高 1.75。</div>
           <div class="item">數字穿插時換成 Roboto Condensed 並上 orange 色。</div>
@@ -3676,7 +3687,7 @@ section.chapter.dark em { color: var(--nroo-water); }
           <div class="item">所有標籤、ID、eyebrow 用 Roboto Condensed UPPERCASE。</div>
         </div>
         <div class="col-dont">
-          <div class="col-head"><span>×</span> 錯的做法</div>
+          <div class="col-head"><span class="glyph">✕</span> 錯的做法</div>
           <div class="item">中文標題用黑體 700——少了報導感的份量。</div>
           <div class="item">中文內文用宋體——閱讀疲勞，宋體只用在標題層。</div>
           <div class="item">數字維持中文字體——失去 mono 的清晰對齊。</div>
@@ -4068,14 +4079,14 @@ section.chapter.dark em { color: var(--nroo-water); }
 
       <div class="dodont">
         <div class="col-do">
-          <div class="col-head"><span>+</span> Roo 可以這樣用</div>
+          <div class="col-head"><span class="glyph">✓</span> Roo 可以這樣用</div>
           <div class="item">空狀態、首次體驗、教學提示。</div>
           <div class="item">完成里程碑時的慶祝動畫（小幅，250ms 內）。</div>
           <div class="item">最小尺寸 48px，最大不超過 240px。</div>
           <div class="item">永遠在 cream 或白色背景上。深色背景時，外輪廓改為白色。</div>
         </div>
         <div class="col-dont">
-          <div class="col-head"><span>×</span> Roo 絕對不</div>
+          <div class="col-head"><span class="glyph">✕</span> Roo 絕對不</div>
           <div class="item">旋轉超過 15°、被拉長、被壓扁。</div>
           <div class="item">在功能性 UI 裡取代圖標（icon 跟 mascot 是兩件事）。</div>
           <div class="item">變成 emoji 風（眼睛變愛心、貼貼紙）。</div>
@@ -4337,7 +4348,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 
       <div class="dodont">
         <div class="col-dont" style="border-right: none; width: 100%;">
-          <div class="col-head"><span>×</span> 絕對不要這些</div>
+          <div class="col-head"><span class="glyph">✕</span> 絕對不要這些</div>
           <div class="item">Parallax 視差捲動——金融資料不該被裝飾移動。</div>
           <div class="item">全螢幕影片背景——影響閱讀、佔頻寬。</div>
           <div class="item">Hero 自動輪播——使用者沒同意你就在切。</div>
