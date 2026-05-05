@@ -2366,6 +2366,28 @@ section.chapter.dark em { color: var(--nroo-water); }
 /* Hero card (if any) and glow panels */
 .demo-card { border-radius: 12px; }
 
+/* ─── BUTTON GROUP SPACING · 4px between adjacent CTAs ─── */
+.hero-actions,
+.tp-actions,
+.gate-form > .gate-input-wrap + .gate-error + .gate-submit { display: flex; gap: 4px; }
+.hero-actions { gap: 4px; flex-wrap: wrap; }
+.tp-actions { gap: 4px; }
+/* Adjacent sibling buttons anywhere else default to 4px margin-left */
+.btn-glow + .btn-glow,
+.btn-glow + .btn-ghost,
+.btn-glow + .btn-off,
+.btn-ghost + .btn-glow,
+.btn-ghost + .btn-ghost,
+.btn-ghost + .btn-off,
+.btn-off + .btn-glow,
+.btn-off + .btn-ghost,
+.btn-off + .btn-off,
+.demo-cta + .demo-cta,
+.demo-cta + .btn-ghost,
+.btn-ghost + .demo-cta,
+.tp-cta + .tp-ghost,
+.tp-ghost + .tp-cta { margin-left: 4px; }
+
 /* ─── BUTTON SYSTEM · pill-shaped ─── */
 /* Three states across all buttons:
    .btn-glow    Primary  · Pulse fill, Trust text, glow halo
@@ -4661,7 +4683,7 @@ section.chapter.dark .tile-foot .avatar,
               <span>年利率 <span class="v">2.05%</span></span>
               <span>核貸 <span class="v">5 min</span></span>
             </div>
-            <div style="margin-top: 20px; display: flex; gap: 8px;">
+            <div style="margin-top: 20px; display: flex; gap: 4px;">
               <a href="#" class="btn-glow" style="font-size: 13px; padding: 8px 14px;">立即申請</a>
               <a href="#" class="btn-ghost" style="font-size: 13px; padding: 8px 14px;">看詳情</a>
             </div>
@@ -4817,7 +4839,7 @@ section.chapter.dark .tile-foot .avatar,
         </div>
         <div class="motion-spec" style="grid-column: span 3;">
           <div class="motion-spec-head"><span><span class="id">BTN.04</span> States Together · 三個狀態並列</span><span>系統</span></div>
-          <div class="motion-spec-stage" style="gap: 14px; flex-wrap: wrap; flex-direction: row;">
+          <div class="motion-spec-stage" style="gap: 4px; flex-wrap: wrap; flex-direction: row;">
             <button type="button" class="btn-glow">Primary 主要</button>
             <button type="button" class="btn-ghost">Secondary 次要</button>
             <button type="button" class="btn-off" disabled aria-disabled="true">Off · 無法執行</button>
