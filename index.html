@@ -1522,15 +1522,25 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
 
 /* ─── CALLOUT ─── */
 .callout {
-  border-left: 2px solid var(--nroo-green-120);
-  padding: 16px 0 16px 24px;
+  border-left: 3px solid var(--roo-pulse);
+  background: #1A3742;  /* T-80 — slightly darker than chapter Trust surface */
+  padding: 20px 24px;
   margin: 32px 0;
   font-family: var(--font-serif);
   font-weight: 400; font-style: italic;
   font-size: 18px; line-height: 1.6;
-  color: var(--ink);
+  color: var(--void-text);  /* always light text on T-80 bg */
   max-width: 760px;
 }
+.callout strong { color: var(--void-text); font-style: normal; font-weight: 700; }
+.callout em { font-style: italic; color: var(--roo-pulse); }
+/* Light chapters: same T-80 dark inset, light text reads against it */
+section.chapter:not(.dark) .callout,
+.hero .callout {
+  background: #1A3742;
+  color: var(--void-text);
+}
+section.chapter:not(.dark) .callout strong { color: var(--void-text); }
 .callout strong { font-family: var(--font-cjk); font-style: normal; font-weight: 700; }
 
 /* ─── TAGS ─── */
@@ -2094,6 +2104,134 @@ section.chapter.dark em { color: var(--nroo-water); }
   50% { opacity: 1; transform: scale(1.2); }
 }
 
+/* ─── EASING CURVES (chapter 11 · Motion) ─── */
+.curve-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  border: 1px solid var(--void-line-strong);
+  border-radius: 16px; overflow: hidden;
+  margin: 24px 0;
+}
+.curve-cell {
+  border-right: 1px solid var(--void-line);
+  padding: 0;
+  display: flex; flex-direction: column;
+  background: rgba(255, 255, 255, 0.02);
+}
+.curve-cell:last-child { border-right: none; }
+.curve-cell-head {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--void-line);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--void-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.curve-cell-head .id { color: var(--roo-pulse); font-weight: 700; }
+.curve-graph-wrap {
+  padding: 32px 28px 8px;
+  background:
+    radial-gradient(circle at 1px 1px, var(--void-line) 1px, transparent 0);
+  background-size: 16px 16px;
+  background-color: rgba(0,0,0,0.18);
+  flex: 1;
+}
+.curve-graph {
+  width: 100%; height: 200px;
+  display: block;
+}
+.curve-graph .curve-axis {
+  stroke: var(--void-line-strong);
+  stroke-width: 1;
+  fill: none;
+}
+.curve-graph .curve-grid-line {
+  stroke: var(--void-line);
+  stroke-width: 1;
+  stroke-dasharray: 2 4;
+  fill: none;
+}
+.curve-graph .curve-path {
+  stroke: var(--roo-pulse);
+  stroke-width: 2;
+  fill: none;
+  filter: drop-shadow(0 0 6px rgba(37, 201, 186, 0.5));
+}
+.curve-graph .curve-control {
+  stroke: var(--void-quiet);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  fill: none;
+}
+.curve-graph .curve-handle {
+  fill: var(--roo-pulse);
+  stroke: var(--void-text);
+  stroke-width: 1;
+}
+.curve-graph .curve-dot {
+  fill: var(--roo-spark);
+  filter: drop-shadow(0 0 8px rgba(255, 96, 26, 0.7));
+}
+.curve-graph .axis-label {
+  font-family: var(--font-mono); font-size: 13px;
+  fill: var(--void-quiet);
+  letter-spacing: 0.04em;
+}
+.curve-cell-foot {
+  padding: 14px 20px;
+  border-top: 1px solid var(--void-line);
+  display: grid; grid-template-columns: 70px 1fr;
+  gap: 6px 12px;
+  font-family: var(--font-mono); font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.curve-cell-foot .k { color: var(--void-quiet); text-transform: uppercase; }
+.curve-cell-foot .v { color: var(--void-text); font-weight: 500; }
+
+/* Linear demo bar that paces with the curve */
+.tempo-bar-row {
+  display: grid; grid-template-columns: 90px 1fr 70px;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px dotted var(--void-line);
+}
+.tempo-bar-row:last-child { border-bottom: none; }
+.tempo-bar-row .lbl {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--void-text);
+  letter-spacing: 0.04em;
+}
+.tempo-bar-row .track {
+  position: relative;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.tempo-bar-row .track .fill {
+  position: absolute;
+  inset: 0;
+  background: var(--roo-pulse);
+  border-radius: 999px;
+  transform-origin: left center;
+  animation: tempoFill var(--dur, 220ms) cubic-bezier(0, 0, 0.2, 1) infinite alternate;
+}
+.tempo-bar-row .ms {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--roo-pulse);
+  text-align: right;
+}
+@keyframes tempoFill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (max-width: 1080px) {
+  .curve-grid { grid-template-columns: 1fr; }
+  .curve-cell { border-right: none; border-bottom: 1px solid var(--void-line); }
+  .curve-cell:last-child { border-bottom: none; }
+}
+
 /* ─── SPACING / RADIUS / PADDING SPEC PANELS (chapter 11) ─── */
 .spec-panels {
   display: grid;
@@ -2205,74 +2343,100 @@ section.chapter.dark em { color: var(--nroo-water); }
 
 /* ─── THEME DEMO (chapter 11 · Theme section) ─── */
 .theme-demo {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 24px;
-  align-items: stretch;
-  border: 1px solid var(--void-line-strong);
-  border-radius: 16px;
-  overflow: hidden;
   margin: 24px 0;
+  display: flex; flex-direction: column;
+  gap: 16px;
 }
-.theme-toggle-col {
-  background: rgba(255, 255, 255, 0.02);
-  padding: 28px 24px;
-  display: flex; flex-direction: column; gap: 18px;
-  border-right: 1px solid var(--void-line);
-  min-width: 220px;
-}
-.theme-toggle-label {
-  font-family: var(--font-mono);
-  font-size: 13px; font-weight: 500;
-  color: var(--void-quiet);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
+
+/* 50/50 split pill toggle with sliding indicator */
 .theme-switch {
-  display: inline-flex;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 999px;
-  padding: 4px;
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%; max-width: 480px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--void-line-strong);
+  border-radius: 999px;
+  padding: 6px;
+  isolation: isolate;
+}
+.theme-switch::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: 6px;
+  width: calc(50% - 6px);
+  height: calc(100% - 12px);
+  background: var(--roo-pulse);
+  border-radius: 999px;
+  box-shadow: var(--glow-green);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+.theme-switch[data-mode="light"]::before {
+  transform: translateX(100%);
 }
 .theme-switch button {
-  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
-  letter-spacing: 0.08em;
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono); font-size: 14px; font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  padding: 8px 18px;
+  padding: 14px 20px;
   background: transparent;
   border: none;
   color: var(--void-soft);
   cursor: pointer;
   border-radius: 999px;
-  transition: all 0.2s ease-out;
-  z-index: 1;
+  transition: color 0.2s ease-out;
 }
-.theme-switch button.active {
-  background: var(--roo-pulse);
-  color: var(--roo-trust);
-  box-shadow: var(--glow-green);
+.theme-switch button.active { color: var(--roo-trust); }
+.theme-switch button:not(.active):hover { color: var(--void-text); }
+
+.theme-toggle-meta {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--void-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
 }
-.theme-toggle-help {
-  font-family: var(--font-cjk);
-  font-size: 13px; line-height: 1.75;
-  color: var(--void-soft);
-  margin-top: 8px;
-}
-.theme-toggle-help strong { color: var(--void-text); font-weight: 700; }
+
+/* Hero-sized preview block */
 .theme-preview {
-  padding: 32px;
-  transition: background 0.3s ease-out, color 0.3s ease-out;
+  padding: 80px 64px;
+  min-height: 480px;
+  transition: background 0.32s ease-out, color 0.32s ease-out;
   background: var(--roo-trust);
   color: var(--roo-clear);
   display: flex; flex-direction: column;
-  gap: 16px;
+  justify-content: center;
+  gap: 24px;
+  border: 1px solid var(--void-line-strong);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.theme-preview::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(37, 201, 186, 0.08), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(255, 96, 26, 0.05), transparent 65%);
+  pointer-events: none;
+  transition: opacity 0.32s ease-out;
 }
 .theme-preview.is-light {
   background: var(--roo-clear);
   color: var(--roo-trust);
+  border-color: rgba(2, 28, 38, 0.16);
 }
+.theme-preview.is-light::before {
+  background:
+    radial-gradient(ellipse 60% 50% at 100% 0%, rgba(37, 201, 186, 0.10), transparent 60%),
+    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(255, 96, 26, 0.05), transparent 65%);
+}
+.theme-preview > * { position: relative; z-index: 1; }
+
 .theme-preview .tp-eyebrow {
   font-family: var(--font-mono); font-size: 13px; font-weight: 500;
   color: var(--roo-pulse);
@@ -2282,9 +2446,10 @@ section.chapter.dark em { color: var(--nroo-water); }
 .theme-preview.is-light .tp-eyebrow { color: var(--roo-pulse-deep); }
 .theme-preview .tp-h {
   font-family: var(--font-cjk); font-weight: 800;
-  font-size: 28px;
-  line-height: 1.1;
+  font-size: clamp(36px, 4.4vw, 56px);
+  line-height: 1.05;
   letter-spacing: -0.04em;
+  max-width: 16ch;
 }
 .theme-preview .tp-h em {
   font-style: normal; font-weight: 200;
@@ -2293,21 +2458,22 @@ section.chapter.dark em { color: var(--nroo-water); }
 }
 .theme-preview.is-light .tp-h em { color: var(--roo-pulse-deep); }
 .theme-preview .tp-body {
-  font-size: 14px; line-height: 1.75;
+  font-family: var(--font-cjk);
+  font-size: 16px; line-height: 1.85;
   opacity: 0.85;
-  max-width: 520px;
+  max-width: 560px;
 }
 .theme-preview .tp-body .num {
   font-family: var(--font-mono); font-weight: 700;
   color: var(--roo-spark);
 }
 .theme-preview.is-light .tp-body .num { color: var(--roo-spark-deep); }
-.theme-preview .tp-actions { display: flex; gap: 12px; margin-top: 8px; }
+.theme-preview .tp-actions { display: flex; gap: 4px; margin-top: 12px; }
 .theme-preview .tp-cta {
   font-family: var(--font-mono); font-size: 13px; font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 12px 22px;
+  padding: 14px 26px;
   border-radius: 999px;
   background: var(--roo-pulse); color: var(--roo-trust);
   border: 1px solid var(--roo-pulse);
@@ -2318,7 +2484,7 @@ section.chapter.dark em { color: var(--nroo-water); }
   font-family: var(--font-mono); font-size: 13px; font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 12px 22px;
+  padding: 14px 26px;
   border-radius: 999px;
   background: transparent;
   color: inherit;
@@ -2326,9 +2492,34 @@ section.chapter.dark em { color: var(--nroo-water); }
   cursor: pointer;
 }
 
+.theme-rules {
+  font-family: var(--font-cjk);
+  font-size: 13px; line-height: 1.85;
+  color: var(--void-soft);
+  margin-top: 8px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.theme-rules .r {
+  padding: 14px 16px;
+  border: 1px solid var(--void-line);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+}
+.theme-rules .r strong {
+  color: var(--roo-pulse); font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.10em;
+  text-transform: uppercase;
+  display: block; margin-bottom: 6px;
+}
+
 @media (max-width: 1080px) {
-  .theme-demo { grid-template-columns: 1fr; }
-  .theme-toggle-col { border-right: none; border-bottom: 1px solid var(--void-line); }
+  .theme-preview { padding: 56px 32px; min-height: 360px; }
+  .theme-rules { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .theme-preview { padding: 40px 24px; min-height: 280px; }
+  .theme-rules { grid-template-columns: 1fr; }
+  .theme-switch button { font-size: 13px; padding: 12px 16px; letter-spacing: 0.10em; }
 }
 
 /* ─── PANEL RADIUS · global rounded corners ─── */
@@ -2353,12 +2544,14 @@ section.chapter.dark em { color: var(--nroo-water); }
 .mascot-gallery,
 .icon-grid-frame,
 .logo-frame,
-.callout,
 .promise-block,
 .gate-card {
   border-radius: 16px;
   overflow: hidden;
 }
+/* Callouts stay sharp — the Pulse hairline on the left is the brand mark,
+   pairing with rounded corners would soften it too much. */
+.callout { border-radius: 0; }
 /* Inner inputs and gate prefix block need their own pill-ish radius */
 .gate-input-wrap { border-radius: 999px; overflow: hidden; }
 /* The gate card overrides — keep card outer rounded */
@@ -5260,8 +5453,8 @@ section.chapter.dark .tile-foot .avatar,
         </div>
       </div>
 
-      <div class="callout" style="background: rgba(37, 201, 186, 0.06); border-left: 2px solid var(--roo-pulse); padding: 18px 24px; margin: 32px 0; border-radius: 0 12px 12px 0; color: var(--void-text); font-size: 14px; line-height: 1.85;">
-        <strong style="color: var(--roo-pulse);">通用原則：</strong>同一個元件在整個產品裡用同一個 padding。如果你發現自己想為一張卡片寫「特殊」的 padding 值，先問：是不是這張卡的<em style="font-style: normal; color: var(--roo-pulse);">類別</em>不對？換對的元件，padding 自動就對了。
+      <div class="callout">
+        <strong>通用原則：</strong>同一個元件在整個產品裡用同一個 padding。如果你發現自己想為一張卡片寫「特殊」的 padding 值，先問：是不是這張卡的<em>類別</em>不對？換對的元件，padding 自動就對了。
       </div>
 
       <!-- THEME · 主題切換 -->
@@ -5270,35 +5463,34 @@ section.chapter.dark .tile-foot .avatar,
         Roo.Cash 同時支援深色與淺色介面。<strong style="color: var(--void-text);">預設跟隨使用者的系統偏好</strong>（macOS / iOS / Android 的 prefers-color-scheme），<strong style="color: var(--void-text);">使用者可以在設定裡手動切換</strong>。我們<strong style="color: var(--void-text);">不依時間自動切換</strong>——使用者的選擇優先。
       </p>
       <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
-        試試切換右側的開關，看看同一個元件在兩個模式下的樣子。
+        試試切換下方開關，看看同一個元件在兩個模式下的樣子。
       </p>
 
       <div class="theme-demo">
-        <div class="theme-toggle-col">
-          <div class="theme-toggle-label">— Mode</div>
-          <div class="theme-switch" role="tablist" aria-label="Theme switch">
-            <button type="button" id="themeDark" class="active" role="tab" aria-selected="true">Dark</button>
-            <button type="button" id="themeLight" role="tab" aria-selected="false">Light</button>
-          </div>
-          <div class="theme-toggle-help">
-            <strong>規矩：</strong><br/>
-            · 預設 = 系統偏好<br/>
-            · 使用者切換後記住偏好<br/>
-            · 不自動切換（不依時間）<br/>
-            · CTA Pulse 在兩個模式都用同一個亮色<br/>
-            · 數字 Spark 在淺色模式用 deep 變體（AA）
-          </div>
+        <div class="theme-toggle-meta">
+          <span>Mode · 切換主題</span>
+          <span id="themeModeLabel">Dark</span>
+        </div>
+        <div class="theme-switch" id="themeSwitch" data-mode="dark" role="tablist" aria-label="Theme switch">
+          <button type="button" id="themeDark" class="active" role="tab" aria-selected="true">Dark</button>
+          <button type="button" id="themeLight" role="tab" aria-selected="false">Light</button>
         </div>
         <div class="theme-preview" id="themePreview">
-          <div class="tp-eyebrow">— Recommendation</div>
-          <div class="tp-h">A 銀行<br/>個人信貸方案<em>，最划算。</em></div>
+          <div class="tp-eyebrow">Live Preview · 同一個元件在兩個模式</div>
+          <div class="tp-h">A 銀行 個人信貸<em>，最划算。</em></div>
           <div class="tp-body">
-            根據你的信用紀錄，年利率最低 <span class="num">2.05%</span>，最快 <span class="num">5</span> 分鐘核貸。已幫 <span class="num">120,000+</span> 位使用者媒合。
+            根據你的信用紀錄，年利率最低 <span class="num">2.05%</span>，最快 <span class="num">5</span> 分鐘核貸。已陪伴 <span class="num">120,000+</span> 位使用者，找到適合自己的方案。
           </div>
           <div class="tp-actions">
             <button type="button" class="tp-cta">立即申請</button>
             <button type="button" class="tp-ghost">看詳情</button>
           </div>
+        </div>
+        <div class="theme-rules">
+          <div class="r"><strong>Default · 預設</strong>跟隨系統 prefers-color-scheme</div>
+          <div class="r"><strong>Persist · 記住</strong>使用者切換後寫入 localStorage</div>
+          <div class="r"><strong>CTA Pulse</strong>兩個模式都用同一個亮色 #25C9BA</div>
+          <div class="r"><strong>Spark Number</strong>深色 #FF601A · 淺色 #B23A14（AA）</div>
         </div>
       </div>
 
@@ -5343,6 +5535,141 @@ section.chapter.dark .tile-foot .avatar,
           <div class="tile-title">不彈、不彈性、不彈簧</div>
           <p class="tile-body">Spring physics、cubic bounce、elastic ease——金融服務不需要這些。我們是顧問，不是嘉年華。</p>
           <div class="tile-foot"><span>EASE</span><span>ease-out only</span></div>
+        </div>
+      </div>
+
+      <div class="subhead h-section">Easing Curves · 緩動曲線</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
+        Roo.Cash 只用三條曲線。<strong style="color: var(--void-text);">ease-out</strong> 是 95% 的場合（進場、CTA、卡片）；<strong style="color: var(--void-text);">linear</strong> 用於不間斷的常駐脈動（live dot）；<strong style="color: var(--void-text);">cubic-out</strong> 用於數字 count-up，給尾段一點減速。<strong style="color: var(--void-text);">沒有任何 ease-in</strong>——使用者點下去要立刻有反應，不能拖。
+      </p>
+
+      <div class="curve-grid">
+        <div class="curve-cell">
+          <div class="curve-cell-head"><span><span class="id">EZ.01</span> Ease Out</span><span>預設</span></div>
+          <div class="curve-graph-wrap">
+            <svg class="curve-graph" viewBox="0 0 240 200" data-duration="900" preserveAspectRatio="none" aria-hidden="true">
+              <!-- grid -->
+              <line class="curve-grid-line" x1="20" y1="50"  x2="220" y2="50"/>
+              <line class="curve-grid-line" x1="20" y1="100" x2="220" y2="100"/>
+              <line class="curve-grid-line" x1="20" y1="150" x2="220" y2="150"/>
+              <line class="curve-grid-line" x1="70"  y1="20" x2="70"  y2="180"/>
+              <line class="curve-grid-line" x1="120" y1="20" x2="120" y2="180"/>
+              <line class="curve-grid-line" x1="170" y1="20" x2="170" y2="180"/>
+              <!-- axes -->
+              <line class="curve-axis" x1="20" y1="180" x2="220" y2="180"/>
+              <line class="curve-axis" x1="20" y1="20"  x2="20"  y2="180"/>
+              <!-- labels -->
+              <text class="axis-label" x="20"  y="196">0</text>
+              <text class="axis-label" x="208" y="196">t</text>
+              <text class="axis-label" x="6"   y="26"  text-anchor="end" transform="rotate(-90 12 22)">v</text>
+              <!-- ease-out: cubic-bezier(0, 0, 0.2, 1) → SVG cubic from (20,180) to (220,20) -->
+              <path class="curve-control" d="M20 180 L60 180 M220 20 L100 20"/>
+              <circle class="curve-handle" cx="60"  cy="180" r="3"/>
+              <circle class="curve-handle" cx="100" cy="20"  r="3"/>
+              <path class="curve-path" d="M20 180 C60 180, 100 20, 220 20"/>
+              <circle class="curve-dot" cx="20" cy="180" r="6"/>
+            </svg>
+          </div>
+          <div class="curve-cell-foot">
+            <span class="k">CSS</span><span class="v">cubic-bezier(0, 0, 0.2, 1)</span>
+            <span class="k">Duration</span><span class="v">200–250ms</span>
+            <span class="k">Use</span><span class="v">99% 場合 · 進場 · CTA · hover</span>
+          </div>
+        </div>
+
+        <div class="curve-cell">
+          <div class="curve-cell-head"><span><span class="id">EZ.02</span> Linear</span><span>常駐</span></div>
+          <div class="curve-graph-wrap">
+            <svg class="curve-graph" viewBox="0 0 240 200" data-duration="1400" preserveAspectRatio="none" aria-hidden="true">
+              <line class="curve-grid-line" x1="20" y1="50"  x2="220" y2="50"/>
+              <line class="curve-grid-line" x1="20" y1="100" x2="220" y2="100"/>
+              <line class="curve-grid-line" x1="20" y1="150" x2="220" y2="150"/>
+              <line class="curve-grid-line" x1="70"  y1="20" x2="70"  y2="180"/>
+              <line class="curve-grid-line" x1="120" y1="20" x2="120" y2="180"/>
+              <line class="curve-grid-line" x1="170" y1="20" x2="170" y2="180"/>
+              <line class="curve-axis" x1="20" y1="180" x2="220" y2="180"/>
+              <line class="curve-axis" x1="20" y1="20"  x2="20"  y2="180"/>
+              <text class="axis-label" x="20"  y="196">0</text>
+              <text class="axis-label" x="208" y="196">t</text>
+              <text class="axis-label" x="6"   y="26"  text-anchor="end" transform="rotate(-90 12 22)">v</text>
+              <!-- straight line -->
+              <path class="curve-path" d="M20 180 L220 20"/>
+              <circle class="curve-dot" cx="20" cy="180" r="6"/>
+            </svg>
+          </div>
+          <div class="curve-cell-foot">
+            <span class="k">CSS</span><span class="v">linear</span>
+            <span class="k">Duration</span><span class="v">2s loop</span>
+            <span class="k">Use</span><span class="v">live dot · 不間斷的脈動</span>
+          </div>
+        </div>
+
+        <div class="curve-cell">
+          <div class="curve-cell-head"><span><span class="id">EZ.03</span> Cubic Out</span><span>數字</span></div>
+          <div class="curve-graph-wrap">
+            <svg class="curve-graph" viewBox="0 0 240 200" data-duration="1400" preserveAspectRatio="none" aria-hidden="true">
+              <line class="curve-grid-line" x1="20" y1="50"  x2="220" y2="50"/>
+              <line class="curve-grid-line" x1="20" y1="100" x2="220" y2="100"/>
+              <line class="curve-grid-line" x1="20" y1="150" x2="220" y2="150"/>
+              <line class="curve-grid-line" x1="70"  y1="20" x2="70"  y2="180"/>
+              <line class="curve-grid-line" x1="120" y1="20" x2="120" y2="180"/>
+              <line class="curve-grid-line" x1="170" y1="20" x2="170" y2="180"/>
+              <line class="curve-axis" x1="20" y1="180" x2="220" y2="180"/>
+              <line class="curve-axis" x1="20" y1="20"  x2="20"  y2="180"/>
+              <text class="axis-label" x="20"  y="196">0</text>
+              <text class="axis-label" x="208" y="196">t</text>
+              <text class="axis-label" x="6"   y="26"  text-anchor="end" transform="rotate(-90 12 22)">v</text>
+              <!-- cubic-out: cubic-bezier(0.16, 1, 0.3, 1) -->
+              <path class="curve-control" d="M20 180 L52 20 M220 20 L160 20"/>
+              <circle class="curve-handle" cx="52"  cy="20" r="3"/>
+              <circle class="curve-handle" cx="160" cy="20" r="3"/>
+              <path class="curve-path" d="M20 180 C52 20, 160 20, 220 20"/>
+              <circle class="curve-dot" cx="20" cy="180" r="6"/>
+            </svg>
+          </div>
+          <div class="curve-cell-foot">
+            <span class="k">CSS</span><span class="v">cubic-bezier(0.16, 1, 0.3, 1)</span>
+            <span class="k">Duration</span><span class="v">1400ms</span>
+            <span class="k">Use</span><span class="v">count-up · 大數字滑入</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="subhead h-section">Tempo · 時長對照</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 16px;">
+        所有過場時長都在這個範圍。<strong style="color: var(--void-text);">看下面的進度條同步動，就能感受 200ms 跟 700ms 的差別</strong>。
+      </p>
+
+      <div style="border: 1px solid var(--void-line-strong); border-radius: 16px; padding: 28px; background: rgba(255,255,255,0.02);">
+        <div class="tempo-bar-row">
+          <div class="lbl">Hover · CTA</div>
+          <div class="track"><div class="fill" style="--dur: 220ms;"></div></div>
+          <div class="ms">220ms</div>
+        </div>
+        <div class="tempo-bar-row">
+          <div class="lbl">Hover · Card</div>
+          <div class="track"><div class="fill" style="--dur: 250ms;"></div></div>
+          <div class="ms">250ms</div>
+        </div>
+        <div class="tempo-bar-row">
+          <div class="lbl">Theme switch</div>
+          <div class="track"><div class="fill" style="--dur: 320ms;"></div></div>
+          <div class="ms">320ms</div>
+        </div>
+        <div class="tempo-bar-row">
+          <div class="lbl">Cheer · Roo</div>
+          <div class="track"><div class="fill" style="--dur: 500ms;"></div></div>
+          <div class="ms">500ms</div>
+        </div>
+        <div class="tempo-bar-row">
+          <div class="lbl">Fade-up · Scroll</div>
+          <div class="track"><div class="fill" style="--dur: 700ms;"></div></div>
+          <div class="ms">700ms</div>
+        </div>
+        <div class="tempo-bar-row">
+          <div class="lbl">Count-up · Number</div>
+          <div class="track"><div class="fill" style="--dur: 1400ms;"></div></div>
+          <div class="ms">1400ms</div>
         </div>
       </div>
 
@@ -5474,12 +5801,16 @@ section.chapter.dark .tile-foot .avatar,
 <script>
 // Chapter 11 · Theme demo (self-contained — does not affect rest of page)
 (function() {
+  const switchEl = document.getElementById('themeSwitch');
   const dark = document.getElementById('themeDark');
   const light = document.getElementById('themeLight');
   const preview = document.getElementById('themePreview');
-  if (!dark || !light || !preview) return;
+  const label = document.getElementById('themeModeLabel');
+  if (!switchEl || !dark || !light || !preview) return;
 
   const apply = (mode) => {
+    switchEl.setAttribute('data-mode', mode);
+    if (label) label.textContent = mode === 'light' ? 'Light' : 'Dark';
     if (mode === 'light') {
       preview.classList.add('is-light');
       light.classList.add('active');
@@ -5496,6 +5827,42 @@ section.chapter.dark .tile-foot .avatar,
   };
   dark.addEventListener('click', () => apply('dark'));
   light.addEventListener('click', () => apply('light'));
+})();
+
+// Chapter 11 · Motion easing curves — animated dot tracing the bezier
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const curves = document.querySelectorAll('.curve-graph');
+  if (!curves.length) return;
+
+  curves.forEach(svg => {
+    const dot = svg.querySelector('.curve-dot');
+    const path = svg.querySelector('.curve-path');
+    if (!dot || !path) return;
+    const length = path.getTotalLength();
+    const duration = parseInt(svg.dataset.duration || '900', 10);
+    const restMs = 1100;
+
+    let start = null;
+    const tick = (now) => {
+      if (!start) start = now;
+      const elapsed = now - start;
+      const cycle = duration + restMs;
+      const t = (elapsed % cycle) / duration;
+      if (t <= 1) {
+        const pt = path.getPointAtLength(length * t);
+        dot.setAttribute('cx', pt.x);
+        dot.setAttribute('cy', pt.y);
+      } else {
+        // hold at end during rest
+        const pt = path.getPointAtLength(length);
+        dot.setAttribute('cx', pt.x);
+        dot.setAttribute('cy', pt.y);
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
 })();
 </script>
 
