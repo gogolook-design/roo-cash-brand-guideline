@@ -1566,7 +1566,8 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
 }
-.colophon img { height: 28px; margin-bottom: 28px; }
+.colophon img { width: 100%; max-width: 360px; height: auto; margin-bottom: 28px; display: block; }
+@media (max-width: 720px) { .colophon img { max-width: 220px; } }
 .colophon p {
   font-size: 13px; line-height: 1.85;
   color: rgba(255,255,255,0.55);
@@ -1919,7 +1920,7 @@ section.chapter.dark::before {
   inset: 0;
   background:
     radial-gradient(ellipse 60% 40% at 100% 0%, rgba(0, 224, 160, 0.08), transparent 60%),
-    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(216, 68, 33, 0.06), transparent 60%);
+    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(255, 96, 26, 0.06), transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -4245,165 +4246,6 @@ section.chapter.dark .tile-foot .avatar,
         </div>
       </div>
 
-      <div class="subhead h-section">Motion · 動態</div>
-
-      <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
-        Roo.Cash 的動態語言只有一個原則：<strong style="color: var(--void-text);">克制</strong>。我們相信使用者的時間，所以不用 motion 來炫技、不用動畫拖延任務。<strong style="color: var(--void-text);">200–250ms ease-out</strong>，淡入加上小幅位移，就是 Roo.Cash 的動態語言。
-      </p>
-
-      <div class="tile-grid cols-3 with-frame" style="margin-bottom: 32px;">
-        <div class="tile">
-          <div class="tile-head"><span class="id">M.PR.01</span><span>Tempo · 節奏</span></div>
-          <div class="tile-title">200–250ms · ease-out</div>
-          <p class="tile-body">所有過場、hover、focus 都在這個區間。再短，使用者還沒看到；再長，就在浪費時間。</p>
-          <div class="tile-foot"><span>DURATION</span><span>200–250ms</span></div>
-        </div>
-        <div class="tile">
-          <div class="tile-head"><span class="id">M.PR.02</span><span>Vocabulary · 語彙</span></div>
-          <div class="tile-title">淡入 + 小幅位移</div>
-          <p class="tile-body">opacity 0 → 1，translateY 12–24px → 0。這就是 Roo.Cash 全部的入場動畫詞彙。</p>
-          <div class="tile-foot"><span>TRANSFORM</span><span>fade + translate</span></div>
-        </div>
-        <div class="tile">
-          <div class="tile-head"><span class="id">M.PR.03</span><span>Discipline · 紀律</span></div>
-          <div class="tile-title">不彈、不彈性、不彈簧</div>
-          <p class="tile-body">Spring physics、cubic bounce、elastic ease——金融服務不需要這些。我們是顧問，不是嘉年華。</p>
-          <div class="tile-foot"><span>EASE</span><span>ease-out only</span></div>
-        </div>
-      </div>
-
-      <div class="subhead h-section">Live Specimens · 把動畫做給你看</div>
-
-      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
-        以下六個是 Roo.Cash 實際在用的所有動畫——hover、滑入、即時、慶祝。<strong style="color: var(--void-text);">點擊或滑過</strong>就能看到實際表現。再多就過頭了。
-      </p>
-
-      <div class="motion-grid">
-        <!-- SPEC.01 CTA hover -->
-        <div class="motion-spec">
-          <div class="motion-spec-head"><span><span class="id">SPEC.01</span> Hover · CTA</span><span>互動</span></div>
-          <div class="motion-spec-stage">
-            <button type="button" class="demo-cta">立即比較 →</button>
-          </div>
-          <div class="motion-spec-foot">
-            <span class="k">Trigger</span><span class="v">:hover</span>
-            <span class="k">Duration</span><span class="v">220ms ease-out</span>
-            <span class="k">Transform</span><span class="v">translateY(-1px) + glow ↑</span>
-          </div>
-        </div>
-
-        <!-- SPEC.02 Card hover -->
-        <div class="motion-spec">
-          <div class="motion-spec-head"><span><span class="id">SPEC.02</span> Hover · Card</span><span>互動</span></div>
-          <div class="motion-spec-stage">
-            <div class="demo-card">
-              <div class="demo-card-h">A 銀行 個人信貸</div>
-              <div class="demo-card-p">年利率最低 <span style="color:var(--roo-spark); font-family:var(--font-mono); font-weight:700;">2.05%</span> 起 · 5 分鐘核貸</div>
-            </div>
-          </div>
-          <div class="motion-spec-foot">
-            <span class="k">Trigger</span><span class="v">:hover</span>
-            <span class="k">Duration</span><span class="v">250ms ease-out</span>
-            <span class="k">Transform</span><span class="v">translateY(-2px) + shadow lift</span>
-          </div>
-        </div>
-
-        <!-- SPEC.03 Pulse -->
-        <div class="motion-spec">
-          <div class="motion-spec-head"><span><span class="id">SPEC.03</span> Live · Pulse</span><span>常駐</span></div>
-          <div class="motion-spec-stage">
-            <div class="demo-pulse">
-              <span class="demo-pulse-dot"></span>
-              <span>Live · 即時更新</span>
-            </div>
-          </div>
-          <div class="motion-spec-foot">
-            <span class="k">Trigger</span><span class="v">always-on</span>
-            <span class="k">Duration</span><span class="v">2s loop · ease-out</span>
-            <span class="k">Use</span><span class="v">即時資料 · AI 思考中</span>
-          </div>
-        </div>
-
-        <!-- SPEC.04 Count-up -->
-        <div class="motion-spec">
-          <div class="motion-spec-head"><span><span class="id">SPEC.04</span> Live · Count-up</span><span>進場</span></div>
-          <div class="motion-spec-stage">
-            <button type="button" class="motion-spec-replay" data-replay="counter" aria-label="重播 count-up 動畫">↻</button>
-            <div style="text-align:center;">
-              <div class="demo-counter" data-target="120000" data-suffix="+">0</div>
-              <div class="demo-counter-cap">媒合人次</div>
-            </div>
-          </div>
-          <div class="motion-spec-foot">
-            <span class="k">Trigger</span><span class="v">scroll-into-view</span>
-            <span class="k">Duration</span><span class="v">1400ms cubic ease-out</span>
-            <span class="k">Use</span><span class="v">統計數字 · 大型數字</span>
-          </div>
-        </div>
-
-        <!-- SPEC.05 Fade-up -->
-        <div class="motion-spec">
-          <div class="motion-spec-head"><span><span class="id">SPEC.05</span> Scroll · Fade-up</span><span>進場</span></div>
-          <div class="motion-spec-stage">
-            <button type="button" class="motion-spec-replay" data-replay="reveal" aria-label="重播 fade-up 動畫">↻</button>
-            <div class="demo-reveal" id="demoReveal">
-              理財建議的<br/><em>下一個世代</em>
-            </div>
-          </div>
-          <div class="motion-spec-foot">
-            <span class="k">Trigger</span><span class="v">scroll-into-view</span>
-            <span class="k">Duration</span><span class="v">700ms ease-out</span>
-            <span class="k">Transform</span><span class="v">opacity 0→1 · translateY 24→0</span>
-          </div>
-        </div>
-
-        <!-- SPEC.06 Roo cheer -->
-        <div class="motion-spec">
-          <div class="motion-spec-head"><span><span class="id">SPEC.06</span> Cheer · Roo</span><span>慶祝</span></div>
-          <div class="motion-spec-stage">
-            <button type="button" class="motion-spec-replay" data-replay="cheer" aria-label="重播 Roo 慶祝動畫">↻</button>
-            <div class="demo-cheer" id="demoCheer">
-              <svg width="64" height="76" viewBox="0 0 120 140" fill="none" aria-hidden="true">
-                <ellipse cx="60" cy="132" rx="30" ry="3.5" fill="#000" opacity=".3"/>
-                <path d="M28 110 Q12 100 16 80" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-                <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#F2F6F8" stroke-width="2.2" fill="#021C26" stroke-linejoin="round"/>
-                <ellipse cx="60" cy="80" rx="14" ry="9" fill="#25C9BA"/>
-                <path d="M40 122 Q36 130 44 132" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="#021C26"/>
-                <path d="M80 122 Q84 130 76 132" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="#021C26"/>
-                <path d="M60 14 Q42 14 42 34 Q42 50 60 52 Q78 50 78 34 Q78 14 60 14 Z" stroke="#F2F6F8" stroke-width="2.2" fill="#021C26"/>
-                <path d="M48 18 Q42 4 50 0" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-                <path d="M72 18 Q78 4 70 0" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-                <path d="M50 32 Q53 28 56 32" stroke="#F2F6F8" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M64 32 Q67 28 70 32" stroke="#F2F6F8" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M52 42 Q60 50 68 42" stroke="#F2F6F8" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M30 70 L18 50" stroke="#F2F6F8" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M90 70 L102 50" stroke="#F2F6F8" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M14 42 L18 50 L22 42" stroke="#FF601A" stroke-width="2" stroke-linecap="round" fill="none"/>
-                <path d="M98 42 L102 50 L106 42" stroke="#FF601A" stroke-width="2" stroke-linecap="round" fill="none"/>
-              </svg>
-            </div>
-          </div>
-          <div class="motion-spec-foot">
-            <span class="k">Trigger</span><span class="v">success milestone</span>
-            <span class="k">Duration</span><span class="v">500ms ease-out</span>
-            <span class="k">Use</span><span class="v">完成里程碑 · 還款達成</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="subhead h-section">Don'ts · 我們從不這樣動</div>
-
-      <div class="dodont">
-        <div class="col-dont" style="border-right: none; width: 100%;">
-          <div class="col-head"><span class="glyph">✕</span> 絕對不要這些</div>
-          <div class="item">Parallax 視差捲動——金融資料不該被裝飾移動。</div>
-          <div class="item">全螢幕影片背景——影響閱讀、佔頻寬。</div>
-          <div class="item">Hero 自動輪播——使用者沒同意你就在切。</div>
-          <div class="item">Spring 彈跳、彈性、撒花慶祝動畫——這是金融服務，不是遊戲。</div>
-          <div class="item">Typing animation 假打字效果——AI 不需要假裝在思考。</div>
-          <div class="item">Loading spinner 超過 2 秒——超過就改用 skeleton 或進度條，給使用者真實的時間感。</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -4649,13 +4491,13 @@ section.chapter.dark .tile-foot .avatar,
       </ul>
     </div>
     <div>
-      <h5>Colophon</h5>
+      <h5>Example Site Pages</h5>
       <ul>
-        <li><span class="marker">DSP</span>Noto Sans TC · 思源黑體</li>
-        <li><span class="marker">SET</span>Noto Sans TC · 思源黑體</li>
-        
-        <li><span class="marker">NUM</span>Roboto Condensed Bold</li>
-        <li><span class="marker">UI</span>Roboto Condensed Regular</li>
+        <li><span class="marker">01</span>Roo Homepage</li>
+        <li><span class="marker">02</span>Product Listing</li>
+        <li><span class="marker">03</span>Article Page</li>
+        <li><span class="marker">04</span>Comparison Page</li>
+        <li><span class="marker">05</span>Campaign Page</li>
       </ul>
     </div>
   </div>
