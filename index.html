@@ -1576,8 +1576,13 @@ section.chapter:not(.dark) .callout strong { color: var(--void-text); }
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
 }
-.colophon img { width: 100%; max-width: 360px; height: auto; margin-bottom: 28px; display: block; }
-@media (max-width: 720px) { .colophon img { max-width: 220px; } }
+.colophon img {
+  width: 100%; max-width: 320px; height: auto;
+  margin: -12px 0 8px 0;       /* pull up + tighter gap below */
+  display: block;
+  margin-left: 0; margin-right: auto;  /* explicit left-align */
+}
+@media (max-width: 720px) { .colophon img { max-width: 220px; margin-top: 0; } }
 .colophon p {
   font-size: 13px; line-height: 1.85;
   color: rgba(255,255,255,0.55);
@@ -5549,14 +5554,14 @@ section.chapter.dark .tile-foot .avatar,
           <div class="curve-graph-wrap">
             <svg class="curve-graph" viewBox="0 0 240 200" data-duration="900" preserveAspectRatio="none" aria-hidden="true">
               <!-- grid -->
-              <line class="curve-grid-line" x1="20" y1="50"  x2="220" y2="50"/>
-              <line class="curve-grid-line" x1="20" y1="100" x2="220" y2="100"/>
-              <line class="curve-grid-line" x1="20" y1="150" x2="220" y2="150"/>
+              <line class="curve-grid-line" x1="0" y1="50"  x2="240" y2="50"/>
+              <line class="curve-grid-line" x1="0" y1="100" x2="240" y2="100"/>
+              <line class="curve-grid-line" x1="0" y1="150" x2="240" y2="150"/>
               <line class="curve-grid-line" x1="70"  y1="20" x2="70"  y2="180"/>
               <line class="curve-grid-line" x1="120" y1="20" x2="120" y2="180"/>
               <line class="curve-grid-line" x1="170" y1="20" x2="170" y2="180"/>
               <!-- axes -->
-              <line class="curve-axis" x1="20" y1="180" x2="220" y2="180"/>
+              <line class="curve-axis" x1="0" y1="180" x2="240" y2="180"/>
               <line class="curve-axis" x1="20" y1="20"  x2="20"  y2="180"/>
               <!-- labels -->
               <text class="axis-label" x="20"  y="196">0</text>
@@ -5581,13 +5586,13 @@ section.chapter.dark .tile-foot .avatar,
           <div class="curve-cell-head"><span><span class="id">EZ.02</span> Linear</span><span>常駐</span></div>
           <div class="curve-graph-wrap">
             <svg class="curve-graph" viewBox="0 0 240 200" data-duration="1400" preserveAspectRatio="none" aria-hidden="true">
-              <line class="curve-grid-line" x1="20" y1="50"  x2="220" y2="50"/>
-              <line class="curve-grid-line" x1="20" y1="100" x2="220" y2="100"/>
-              <line class="curve-grid-line" x1="20" y1="150" x2="220" y2="150"/>
+              <line class="curve-grid-line" x1="0" y1="50"  x2="240" y2="50"/>
+              <line class="curve-grid-line" x1="0" y1="100" x2="240" y2="100"/>
+              <line class="curve-grid-line" x1="0" y1="150" x2="240" y2="150"/>
               <line class="curve-grid-line" x1="70"  y1="20" x2="70"  y2="180"/>
               <line class="curve-grid-line" x1="120" y1="20" x2="120" y2="180"/>
               <line class="curve-grid-line" x1="170" y1="20" x2="170" y2="180"/>
-              <line class="curve-axis" x1="20" y1="180" x2="220" y2="180"/>
+              <line class="curve-axis" x1="0" y1="180" x2="240" y2="180"/>
               <line class="curve-axis" x1="20" y1="20"  x2="20"  y2="180"/>
               <text class="axis-label" x="20"  y="196">0</text>
               <text class="axis-label" x="208" y="196">t</text>
@@ -5608,13 +5613,13 @@ section.chapter.dark .tile-foot .avatar,
           <div class="curve-cell-head"><span><span class="id">EZ.03</span> Cubic Out</span><span>數字</span></div>
           <div class="curve-graph-wrap">
             <svg class="curve-graph" viewBox="0 0 240 200" data-duration="1400" preserveAspectRatio="none" aria-hidden="true">
-              <line class="curve-grid-line" x1="20" y1="50"  x2="220" y2="50"/>
-              <line class="curve-grid-line" x1="20" y1="100" x2="220" y2="100"/>
-              <line class="curve-grid-line" x1="20" y1="150" x2="220" y2="150"/>
+              <line class="curve-grid-line" x1="0" y1="50"  x2="240" y2="50"/>
+              <line class="curve-grid-line" x1="0" y1="100" x2="240" y2="100"/>
+              <line class="curve-grid-line" x1="0" y1="150" x2="240" y2="150"/>
               <line class="curve-grid-line" x1="70"  y1="20" x2="70"  y2="180"/>
               <line class="curve-grid-line" x1="120" y1="20" x2="120" y2="180"/>
               <line class="curve-grid-line" x1="170" y1="20" x2="170" y2="180"/>
-              <line class="curve-axis" x1="20" y1="180" x2="220" y2="180"/>
+              <line class="curve-axis" x1="0" y1="180" x2="240" y2="180"/>
               <line class="curve-axis" x1="20" y1="20"  x2="20"  y2="180"/>
               <text class="axis-label" x="20"  y="196">0</text>
               <text class="axis-label" x="208" y="196">t</text>
