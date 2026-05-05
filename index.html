@@ -2094,39 +2094,244 @@ section.chapter.dark em { color: var(--nroo-water); }
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* ─── CTA GLOW ─── */
-.btn-glow {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--nroo-green-100);
-  color: var(--ink);
+/* ─── THEME DEMO (chapter 11 · Theme section) ─── */
+.theme-demo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: stretch;
+  border: 1px solid var(--void-line-strong);
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 24px 0;
+}
+.theme-toggle-col {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 18px;
+  border-right: 1px solid var(--void-line);
+  min-width: 220px;
+}
+.theme-toggle-label {
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 500;
+  color: var(--void-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.theme-switch {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  padding: 4px;
+  position: relative;
+  border: 1px solid var(--void-line-strong);
+}
+.theme-switch button {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  background: transparent;
+  border: none;
+  color: var(--void-soft);
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.2s ease-out;
+  z-index: 1;
+}
+.theme-switch button.active {
+  background: var(--roo-pulse);
+  color: var(--roo-trust);
+  box-shadow: var(--glow-green);
+}
+.theme-toggle-help {
+  font-family: var(--font-cjk);
+  font-size: 13px; line-height: 1.75;
+  color: var(--void-soft);
+  margin-top: 8px;
+}
+.theme-toggle-help strong { color: var(--void-text); font-weight: 700; }
+.theme-preview {
+  padding: 32px;
+  transition: background 0.3s ease-out, color 0.3s ease-out;
+  background: var(--roo-trust);
+  color: var(--roo-clear);
+  display: flex; flex-direction: column;
+  gap: 16px;
+}
+.theme-preview.is-light {
+  background: var(--roo-clear);
+  color: var(--roo-trust);
+}
+.theme-preview .tp-eyebrow {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--roo-pulse);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.theme-preview.is-light .tp-eyebrow { color: var(--roo-pulse-deep); }
+.theme-preview .tp-h {
+  font-family: var(--font-cjk); font-weight: 800;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+.theme-preview .tp-h em {
+  font-style: normal; font-weight: 200;
+  color: var(--roo-pulse);
+  letter-spacing: -0.02em;
+}
+.theme-preview.is-light .tp-h em { color: var(--roo-pulse-deep); }
+.theme-preview .tp-body {
+  font-size: 14px; line-height: 1.75;
+  opacity: 0.85;
+  max-width: 520px;
+}
+.theme-preview .tp-body .num {
+  font-family: var(--font-mono); font-weight: 700;
+  color: var(--roo-spark);
+}
+.theme-preview.is-light .tp-body .num { color: var(--roo-spark-deep); }
+.theme-preview .tp-actions { display: flex; gap: 12px; margin-top: 8px; }
+.theme-preview .tp-cta {
   font-family: var(--font-mono); font-size: 13px; font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 14px 22px;
-  border: 1px solid var(--nroo-green-100);
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--roo-pulse); color: var(--roo-trust);
+  border: 1px solid var(--roo-pulse);
+  box-shadow: var(--glow-green);
+  cursor: pointer;
+}
+.theme-preview .tp-ghost {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+  cursor: pointer;
+}
+
+@media (max-width: 1080px) {
+  .theme-demo { grid-template-columns: 1fr; }
+  .theme-toggle-col { border-right: none; border-bottom: 1px solid var(--void-line); }
+}
+
+/* ─── PANEL RADIUS · global rounded corners ─── */
+/* All content frames and grouped panels carry a consistent 16px radius.
+   Outer wrappers add overflow:hidden so inner edge-to-edge dividers
+   clip cleanly to the rounded silhouette. */
+.tile-grid.with-frame,
+.motion-grid,
+.dir-grid,
+.dodont,
+.specimen,
+.pm-frame,
+.viz-frame,
+.glyph-feature,
+.dual-glyph,
+.ff-palette,
+.ff-tones,
+.ff-tier-grid,
+.ff-bar,
+.alt-grid,
+.bignum,
+.mascot-gallery,
+.icon-grid-frame,
+.logo-frame,
+.callout,
+.promise-block,
+.gate-card {
+  border-radius: 16px;
+  overflow: hidden;
+}
+/* Inner inputs and gate prefix block need their own pill-ish radius */
+.gate-input-wrap { border-radius: 999px; overflow: hidden; }
+/* The gate card overrides — keep card outer rounded */
+.gate-card { border-radius: 20px; }
+/* Hero card (if any) and glow panels */
+.demo-card { border-radius: 12px; }
+
+/* ─── BUTTON SYSTEM · pill-shaped ─── */
+/* Three states across all buttons:
+   .btn-glow    Primary  · Pulse fill, Trust text, glow halo
+   .btn-ghost   Secondary · transparent, ink/void border + text
+   .btn-off     Off · 50% opacity, no hover, cursor not-allowed */
+.btn-glow,
+.btn-ghost,
+.btn-off,
+.demo-cta,
+.gate-submit,
+.mock-cta {
+  border-radius: 999px;  /* pill */
+}
+.btn-glow {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--roo-pulse);
+  color: var(--roo-trust);
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 26px;
+  border: 1px solid var(--roo-pulse);
   box-shadow: var(--glow-green);
   transition: all .2s ease-out;
   cursor: pointer;
 }
 .btn-glow:hover {
-  background: var(--nroo-green-120);
-  border-color: var(--nroo-green-120);
-  box-shadow: 0 0 36px rgba(0, 224, 160, 0.65), 0 0 1px var(--nroo-green-120);
+  background: var(--roo-pulse-d);
+  border-color: var(--roo-pulse-d);
+  box-shadow: 0 0 36px rgba(37, 201, 186, 0.65), 0 0 1px var(--roo-pulse-d);
   transform: translateY(-1px);
 }
 .btn-ghost {
   display: inline-flex; align-items: center; gap: 10px;
   background: transparent;
-  color: var(--void-text);
+  color: var(--ink);
   font-family: var(--font-mono); font-size: 13px; font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 14px 22px;
-  border: 1px solid var(--void-line-strong);
+  padding: 14px 26px;
+  border: 1px solid var(--ink);
   transition: all .2s ease-out;
   cursor: pointer;
 }
-.btn-ghost:hover { background: rgba(255,255,255,0.04); border-color: var(--nroo-green-100); color: var(--nroo-green-100); }
+.btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+section.chapter.dark .btn-ghost,
+.hero .btn-ghost { color: var(--void-text); border-color: var(--void-line-strong); }
+section.chapter.dark .btn-ghost:hover,
+.hero .btn-ghost:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: var(--roo-pulse);
+  color: var(--roo-pulse);
+}
+.btn-off {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(2, 28, 38, 0.06);
+  color: var(--ink-quiet);
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 26px;
+  border: 1px solid rgba(2, 28, 38, 0.10);
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.7;
+}
+section.chapter.dark .btn-off,
+.hero .btn-off {
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(242, 246, 248, 0.30);
+  border-color: rgba(255, 255, 255, 0.08);
+}
 
 /* ─── PRODUCT MOCK CHROME (replaces brochure mocks) ─── */
 .product-mocks {
@@ -4501,6 +4706,19 @@ section.chapter.dark .tile-foot .avatar,
             <span class="k">Use</span><span class="v">卡片 · mock UI · 表單尾</span>
           </div>
         </div>
+        <div class="motion-spec" style="grid-column: span 3;">
+          <div class="motion-spec-head"><span><span class="id">BTN.04</span> States Together · 三個狀態並列</span><span>系統</span></div>
+          <div class="motion-spec-stage" style="gap: 14px; flex-wrap: wrap; flex-direction: row;">
+            <button type="button" class="btn-glow">Primary 主要</button>
+            <button type="button" class="btn-ghost">Secondary 次要</button>
+            <button type="button" class="btn-off" disabled aria-disabled="true">Off · 無法執行</button>
+          </div>
+          <div class="motion-spec-foot">
+            <span class="k">Primary</span><span class="v">Pulse fill · Trust text · Glow</span>
+            <span class="k">Secondary</span><span class="v">Transparent · Ink border · Hover invert</span>
+            <span class="k">Off</span><span class="v">Muted · cursor not-allowed · 0.7 opacity</span>
+          </div>
+        </div>
       </div>
 
       <!-- INPUT -->
@@ -4743,6 +4961,61 @@ section.chapter.dark .tile-foot .avatar,
         <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.92); color: var(--roo-trust);"><span class="t-lbl">SP–80</span><span class="t-hex">80px</span></div>
       </div>
 
+      <!-- THEME · 主題切換 -->
+      <div class="subhead h-section">Theme · 深色 / 淺色模式</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 8px;">
+        Roo.Cash 同時支援深色與淺色介面。<strong style="color: var(--void-text);">預設跟隨使用者的系統偏好</strong>（macOS / iOS / Android 的 prefers-color-scheme），<strong style="color: var(--void-text);">使用者可以在設定裡手動切換</strong>。我們<strong style="color: var(--void-text);">不依時間自動切換</strong>——使用者的選擇優先。
+      </p>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
+        試試切換右側的開關，看看同一個元件在兩個模式下的樣子。
+      </p>
+
+      <div class="theme-demo">
+        <div class="theme-toggle-col">
+          <div class="theme-toggle-label">— Mode</div>
+          <div class="theme-switch" role="tablist" aria-label="Theme switch">
+            <button type="button" id="themeDark" class="active" role="tab" aria-selected="true">Dark</button>
+            <button type="button" id="themeLight" role="tab" aria-selected="false">Light</button>
+          </div>
+          <div class="theme-toggle-help">
+            <strong>規矩：</strong><br/>
+            · 預設 = 系統偏好<br/>
+            · 使用者切換後記住偏好<br/>
+            · 不自動切換（不依時間）<br/>
+            · CTA Pulse 在兩個模式都用同一個亮色<br/>
+            · 數字 Spark 在淺色模式用 deep 變體（AA）
+          </div>
+        </div>
+        <div class="theme-preview" id="themePreview">
+          <div class="tp-eyebrow">— Recommendation</div>
+          <div class="tp-h">A 銀行<br/>個人信貸方案<em>，最划算。</em></div>
+          <div class="tp-body">
+            根據你的信用紀錄，年利率最低 <span class="num">2.05%</span>，最快 <span class="num">5</span> 分鐘核貸。已幫 <span class="num">120,000+</span> 位使用者媒合。
+          </div>
+          <div class="tp-actions">
+            <button type="button" class="tp-cta">立即申請</button>
+            <button type="button" class="tp-ghost">看詳情</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dodont">
+        <div class="col-do">
+          <div class="col-head"><span class="glyph">✓</span> 兩個模式都要遵守</div>
+          <div class="item">CTA、live dot、AI 訊號永遠是 Pulse 亮色（不換 deep 變體）。</div>
+          <div class="item">數字 Spark：深色模式用 #FF601A，淺色模式用 #B23A14（AA 對比）。</div>
+          <div class="item">記住使用者切換的偏好（localStorage / cookie）。</div>
+          <div class="item">所有元件都要在兩個模式都通過 WCAG AA 4.5:1 對比測試。</div>
+        </div>
+        <div class="col-dont">
+          <div class="col-head"><span class="glyph">✕</span> 絕對不要</div>
+          <div class="item">依時間自動切換——使用者沒同意你就在切。</div>
+          <div class="item">在切換時加 fade 過場超過 300ms——使用者只想要更換，不需要動畫。</div>
+          <div class="item">把深色模式做成「黑色版本」——它是另一個完整的設計，不是降級。</div>
+          <div class="item">在淺色模式還用 #FF601A 當小字——對比不足，違反 AA。</div>
+        </div>
+      </div>
+
       <!-- MOTION (relocated from chapter 09) -->
       <div class="subhead h-section">Motion · 動態</div>
       <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
@@ -4894,6 +5167,34 @@ section.chapter.dark .tile-foot .avatar,
 </main>
 
 <style>@keyframes caret { 50% { opacity: 0; } }</style>
+
+<script>
+// Chapter 11 · Theme demo (self-contained — does not affect rest of page)
+(function() {
+  const dark = document.getElementById('themeDark');
+  const light = document.getElementById('themeLight');
+  const preview = document.getElementById('themePreview');
+  if (!dark || !light || !preview) return;
+
+  const apply = (mode) => {
+    if (mode === 'light') {
+      preview.classList.add('is-light');
+      light.classList.add('active');
+      light.setAttribute('aria-selected', 'true');
+      dark.classList.remove('active');
+      dark.setAttribute('aria-selected', 'false');
+    } else {
+      preview.classList.remove('is-light');
+      dark.classList.add('active');
+      dark.setAttribute('aria-selected', 'true');
+      light.classList.remove('active');
+      light.setAttribute('aria-selected', 'false');
+    }
+  };
+  dark.addEventListener('click', () => apply('dark'));
+  light.addEventListener('click', () => apply('light'));
+})();
+</script>
 
 <!-- ─── FLOATING ROO ─── -->
 <a href="#ch08" class="float-roo" id="floatRoo" aria-label="跳到吉祥物章節 · Jump to mascot chapter" title="Roo · 跟我聊聊">
