@@ -3136,7 +3136,12 @@ section.chapter.dark .tile-foot .avatar,
   animation: pulse 2s ease-in-out infinite;
 }
 .gate-body { padding: 40px 36px 32px; text-align: left; }
-.gate-mascot { margin: 0 0 24px; display: block; }
+.gate-logo {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 0 28px;
+}
 .gate-eyebrow {
   font-family: var(--font-mono); font-size: 13px; font-weight: 500;
   color: var(--roo-pulse);
@@ -3266,20 +3271,7 @@ section.chapter.dark .tile-foot .avatar,
       <span>v1.0 · DRAFT</span>
     </div>
     <div class="gate-body">
-      <svg class="gate-mascot" width="72" height="84" viewBox="0 0 120 140" fill="none" aria-hidden="true">
-        <ellipse cx="60" cy="132" rx="34" ry="4" fill="#000" opacity=".4"/>
-        <path d="M28 110 Q12 100 16 80" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-        <path d="M34 122 Q26 100 30 78 Q34 56 60 56 Q86 56 90 78 Q94 100 86 122 Z" stroke="#F2F6F8" stroke-width="2.2" fill="#021C26" stroke-linejoin="round"/>
-        <ellipse cx="60" cy="92" rx="18" ry="11" fill="#25C9BA"/>
-        <path d="M40 122 Q36 130 44 132 L52 132" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="#021C26"/>
-        <path d="M80 122 Q84 130 76 132 L68 132" stroke="#F2F6F8" stroke-width="2.2" stroke-linecap="round" fill="#021C26"/>
-        <path d="M60 18 Q42 18 42 38 Q42 54 60 56 Q78 54 78 38 Q78 18 60 18 Z" stroke="#F2F6F8" stroke-width="2.2" fill="#021C26"/>
-        <path d="M48 22 Q42 8 50 4 Q53 12 52 22" stroke="#F2F6F8" stroke-width="2.2" stroke-linejoin="round" fill="#021C26"/>
-        <path d="M72 22 Q78 8 70 4 Q67 12 68 22" stroke="#F2F6F8" stroke-width="2.2" stroke-linejoin="round" fill="#021C26"/>
-        <path d="M60 38 Q66 40 68 46" stroke="#F2F6F8" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-        <circle cx="55" cy="36" r="1.8" fill="#F2F6F8"/>
-        <circle cx="69" cy="46" r="1.5" fill="#F2F6F8"/>
-      </svg>
+      <img class="gate-logo" src="assets/logos/roo-cash-horizontal-white.svg" alt="Roo.Cash · 袋鼠金融">
       <div class="gate-eyebrow">Brand Guideline · Issue 01</div>
       <p class="gate-sub">這是 Roo.Cash 2026 品牌指南的內部預覽。請輸入存取密碼。</p>
       <form class="gate-form" id="gateForm" autocomplete="off">
