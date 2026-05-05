@@ -2094,6 +2094,115 @@ section.chapter.dark em { color: var(--nroo-water); }
   50% { opacity: 1; transform: scale(1.2); }
 }
 
+/* ─── SPACING / RADIUS / PADDING SPEC PANELS (chapter 11) ─── */
+.spec-panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+.spec-panel {
+  border: 1px solid var(--void-line-strong);
+  border-radius: 16px;
+  padding: 28px 28px 20px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.spec-panel-h {
+  font-family: var(--font-cjk); font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--void-text);
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--void-line);
+}
+.spec-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 60px 28px;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--void-line);
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-row .key {
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 500;
+  color: var(--roo-pulse);
+  letter-spacing: 0.02em;
+}
+.spec-row .key.muted { color: var(--void-quiet); }
+.spec-row .bar-track {
+  height: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+}
+.spec-row .bar-fill {
+  height: 100%;
+  background: var(--roo-pulse);
+  border-radius: 999px;
+}
+.spec-row .val {
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 500;
+  color: var(--void-text);
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+.spec-row .swatch {
+  background: var(--roo-pulse);
+  width: 24px; height: 24px;
+  justify-self: end;
+}
+.spec-row .desc {
+  grid-column: 2 / span 3;
+  font-family: var(--font-cjk); font-size: 13px;
+  color: var(--void-soft);
+  line-height: 1.6;
+  margin-top: -8px;
+  padding-bottom: 4px;
+}
+@media (max-width: 1080px) {
+  .spec-panels { grid-template-columns: 1fr; }
+}
+
+/* Padding-use spec block — wider 3-col table */
+.pad-spec {
+  border: 1px solid var(--void-line-strong);
+  border-radius: 16px;
+  padding: 28px;
+  background: rgba(255, 255, 255, 0.02);
+  margin: 24px 0;
+}
+.pad-spec-row {
+  display: grid;
+  grid-template-columns: 130px 100px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--void-line);
+}
+.pad-spec-row:last-child { border-bottom: none; }
+.pad-spec-row .token {
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 600;
+  color: var(--roo-pulse);
+  letter-spacing: 0.02em;
+}
+.pad-spec-row .px {
+  font-family: var(--font-mono);
+  font-size: 13px; font-weight: 500;
+  color: var(--void-text);
+}
+.pad-spec-row .where {
+  font-family: var(--font-cjk);
+  font-size: 13px;
+  color: var(--void-soft);
+  line-height: 1.6;
+}
+
 /* ─── THEME DEMO (chapter 11 · Theme section) ─── */
 .theme-demo {
   display: grid;
@@ -4944,21 +5053,193 @@ section.chapter.dark .tile-foot .avatar,
         </div>
       </div>
 
-      <!-- SPACING -->
-      <div class="subhead h-section">Spacing · 間距系統</div>
+      <!-- SPACING / RADIUS -->
+      <div class="subhead h-section">Spacing &amp; Radius · 間距與圓角</div>
       <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
-        4px 是基準單位。<strong style="color: var(--void-text);">所有 padding / margin / gap 都是 4 的倍數</strong>，常用值如下。Section 之間 desktop 用 120px，mobile 用 80px。
+        4px 是基準單位。<strong style="color: var(--void-text);">所有 padding / margin / gap 都是 4 的倍數</strong>。Section 之間 desktop 用 <span style="font-family: var(--font-mono); color: var(--roo-pulse); font-weight: 700;">120px</span>，mobile 用 <span style="font-family: var(--font-mono); color: var(--roo-pulse); font-weight: 700;">80px</span>——這是品牌的呼吸節奏。
       </p>
 
-      <div class="ff-tones" style="grid-template-columns: repeat(8, 1fr);">
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.15);"><span class="t-lbl">SP–04</span><span class="t-hex">4px</span></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.20);"><span class="t-lbl">SP–08</span><span class="t-hex">8px</span></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.28);"><span class="t-lbl">SP–12</span><span class="t-hex">12px</span></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.36);"><span class="t-lbl">SP–16</span><span class="t-hex">16px</span></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.48);"><span class="t-lbl">SP–24</span><span class="t-hex">24px</span></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.60);"><span class="t-lbl">SP–32</span><span class="t-hex">32px</span></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.74);"><span class="t-lbl">SP–48</span><span class="t-hex">48px</span></div>
-        <div class="ff-tone-cell" style="background: rgba(37, 201, 186, 0.92); color: var(--roo-trust);"><span class="t-lbl">SP–80</span><span class="t-hex">80px</span></div>
+      <div class="spec-panels">
+        <!-- SPACING SCALE -->
+        <div class="spec-panel">
+          <div class="spec-panel-h">Spacing Scale · 間距級別</div>
+          <div class="spec-row">
+            <span class="key">space.0</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 1.7%;"></div></div>
+            <span class="val">4 px</span>
+            <span></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">space.1</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 3.4%;"></div></div>
+            <span class="val">8 px</span>
+            <span></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">space.2</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 5.0%;"></div></div>
+            <span class="val">12 px</span>
+            <span></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">space.3</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 6.7%;"></div></div>
+            <span class="val">16 px</span>
+            <span></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">space.4</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 10.0%;"></div></div>
+            <span class="val">24 px</span>
+            <span></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">space.5</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 13.4%;"></div></div>
+            <span class="val">32 px</span>
+            <span></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">space.6</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 20.0%;"></div></div>
+            <span class="val">48 px</span>
+            <span></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">space.7</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 33.4%;"></div></div>
+            <span class="val">80 px</span>
+            <span></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">space.8</span>
+            <div class="bar-track"><div class="bar-fill" style="width: 50.0%;"></div></div>
+            <span class="val">120 px</span>
+            <span></span>
+          </div>
+        </div>
+
+        <!-- BORDER RADIUS -->
+        <div class="spec-panel">
+          <div class="spec-panel-h">Border Radius · 圓角</div>
+          <div class="spec-row">
+            <span class="key">radius.none</span>
+            <div></div>
+            <span class="val">0 px</span>
+            <span class="swatch" style="border-radius: 0;"></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">radius.small</span>
+            <div></div>
+            <span class="val">4 px</span>
+            <span class="swatch" style="border-radius: 4px;"></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">radius.medium</span>
+            <div></div>
+            <span class="val">12 px</span>
+            <span class="swatch" style="border-radius: 12px;"></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">radius.large</span>
+            <div></div>
+            <span class="val">16 px</span>
+            <span class="swatch" style="border-radius: 16px;"></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">radius.xlarge</span>
+            <div></div>
+            <span class="val">20 px</span>
+            <span class="swatch" style="border-radius: 20px;"></span>
+          </div>
+          <div class="spec-row">
+            <span class="key">radius.pill</span>
+            <div></div>
+            <span class="val">999 px</span>
+            <span class="swatch" style="border-radius: 999px;"></span>
+          </div>
+          <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--void-line); font-family: var(--font-cjk); font-size: 13px; color: var(--void-soft); line-height: 1.7;">
+            <strong style="color: var(--void-text);">使用對應：</strong><br/>
+            <span style="font-family: var(--font-mono); color: var(--roo-pulse);">none</span> 線分隔 / <span style="font-family: var(--font-mono); color: var(--roo-pulse);">small</span> error input · marker chip /
+            <span style="font-family: var(--font-mono); color: var(--roo-pulse);">medium</span> demo card · 內文小卡 /
+            <span style="font-family: var(--font-mono); color: var(--roo-pulse);">large</span> 所有主要內容面板 ✓ /
+            <span style="font-family: var(--font-mono); color: var(--roo-pulse);">xlarge</span> Hero 卡 · gate card /
+            <span style="font-family: var(--font-mono); color: var(--roo-pulse);">pill</span> 所有 CTA · 切換器 · 輸入框
+          </div>
+        </div>
+      </div>
+
+      <!-- PADDING TOKENS -->
+      <div class="subhead h-section">Padding · 元件內距</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
+        Padding 是元件「呼吸的空間」。每一種元件用一個固定 padding token，<strong style="color: var(--void-text);">不要每張卡片都自己決定</strong>。下表是 Roo.Cash 介面實際在用的 padding 對應表。
+      </p>
+
+      <div class="pad-spec">
+        <div class="pad-spec-row" style="border-bottom: 1px solid var(--void-line-strong); padding-bottom: 12px;">
+          <span style="font-family: var(--font-mono); font-size: 13px; color: var(--void-quiet); letter-spacing: 0.12em; text-transform: uppercase;">Token</span>
+          <span style="font-family: var(--font-mono); font-size: 13px; color: var(--void-quiet); letter-spacing: 0.12em; text-transform: uppercase;">Y · X</span>
+          <span style="font-family: var(--font-mono); font-size: 13px; color: var(--void-quiet); letter-spacing: 0.12em; text-transform: uppercase;">Where it lives</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.tag</span>
+          <span class="px">4 · 10</span>
+          <span class="where">Status pill (CHOSEN, PASSED) · alt-tag · ID badge</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.chip</span>
+          <span class="px">2 · 6</span>
+          <span class="where">Inline marker (最佳, 最低) · cmp-tag · 緊縮字</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.pill</span>
+          <span class="px">6 · 12</span>
+          <span class="where">人格特質 pill · attribute chip · 中型標籤</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.input</span>
+          <span class="px">14 · 16</span>
+          <span class="where">所有文字輸入框 · 含 PWD 前綴標籤的 wrapper</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.button.compact</span>
+          <span class="px">10 · 18</span>
+          <span class="where">Compact CTA · 卡片底 mock UI · 表單尾按鈕</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.button.default</span>
+          <span class="px">14 · 26</span>
+          <span class="where">Primary &amp; Secondary &amp; Off pill button · Hero 主 CTA</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.tile.compact</span>
+          <span class="px">14 · 20</span>
+          <span class="where">Tile-grid 子卡 · motion-spec 表頭 · 卡片元資訊行</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.tile.default</span>
+          <span class="px">28 · 24</span>
+          <span class="where">Tile · alt-card · directions card · 卡片內容主體</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.frame</span>
+          <span class="px">28 · 28</span>
+          <span class="where">spec-panel · pm-frame body · viz-frame · specimen 容器</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.section</span>
+          <span class="px">100 · 32</span>
+          <span class="where">章節主體（上下 100px / 左右 32px）desktop · 64 / 24 mobile</span>
+        </div>
+        <div class="pad-spec-row">
+          <span class="token">pad.hero</span>
+          <span class="px">96 · 32</span>
+          <span class="where">Hero 主視覺 · promise-block · 重要 KV 區塊</span>
+        </div>
+      </div>
+
+      <div class="callout" style="background: rgba(37, 201, 186, 0.06); border-left: 2px solid var(--roo-pulse); padding: 18px 24px; margin: 32px 0; border-radius: 0 12px 12px 0; color: var(--void-text); font-size: 14px; line-height: 1.85;">
+        <strong style="color: var(--roo-pulse);">通用原則：</strong>同一個元件在整個產品裡用同一個 padding。如果你發現自己想為一張卡片寫「特殊」的 padding 值，先問：是不是這張卡的<em style="font-style: normal; color: var(--roo-pulse);">類別</em>不對？換對的元件，padding 自動就對了。
       </div>
 
       <!-- THEME · 主題切換 -->
