@@ -8,6 +8,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+(function() {
+  try {
+    var t = localStorage.getItem('roocash-panels-2026');
+    if (t === 'light' || t === 'dark') document.documentElement.classList.add('panels-' + t);
+  } catch (e) {}
+})();
+</script>
 <style>
 :root {
   /* Type system simplified to two faces: Noto Sans TC + Roboto Condensed */
@@ -3069,6 +3077,142 @@ section.chapter.dark .tile-foot .avatar,
 .mock-cta,
 .demo-cta { color: var(--roo-trust) !important; }
 
+/* ─── PANEL THEME OVERRIDE (chapter 11 toggle) ─── */
+/* Toggle in chapter 11 affects ONLY the cards / tiles / frames inside chapters.
+   Chapter backgrounds, side-nav, hero, footer all stay as designed.
+   Palette / tone cells in chapter 07 stay as their literal hex (they ARE the colors).
+   Implementation: redefine --ink / --paper / --void-* on each panel selector;
+   children inherit the new tokens via cascade. */
+
+/* Common panel selector list — repeated for both modes */
+html.panels-light .tile,
+html.panels-light .alt-card,
+html.panels-light .dir-tile,
+html.panels-light .motion-spec,
+html.panels-light .pose-tile,
+html.panels-light .icon-cell,
+html.panels-light .specimen,
+html.panels-light .specimen-row,
+html.panels-light .pm-frame,
+html.panels-light .viz-frame,
+html.panels-light .glyph-feature,
+html.panels-light .dual-glyph,
+html.panels-light .dual-cell,
+html.panels-light .alt-grid,
+html.panels-light .bignum,
+html.panels-light .mascot-gallery,
+html.panels-light .icon-grid-frame,
+html.panels-light .logo-frame,
+html.panels-light .promise-block,
+html.panels-light .gate-card,
+html.panels-light .spec-panel,
+html.panels-light .pad-spec,
+html.panels-light .ff-tier,
+html.panels-light .tile-grid.with-frame,
+html.panels-light .motion-grid,
+html.panels-light .dodont,
+html.panels-light .dir-grid,
+html.panels-light .curve-cell {
+  --ink: var(--roo-trust);
+  --ink-soft: rgba(2, 28, 38, 0.82);
+  --ink-quiet: rgba(2, 28, 38, 0.62);
+  --paper: var(--roo-clear);
+  --paper-2: var(--roo-clear-2);
+  --hair: rgba(2, 28, 38, 0.10);
+  --hair-strong: rgba(2, 28, 38, 0.20);
+  --void-text: var(--roo-trust);
+  --void-soft: rgba(2, 28, 38, 0.82);
+  --void-quiet: rgba(2, 28, 38, 0.62);
+  --void-line: rgba(2, 28, 38, 0.10);
+  --void-line-strong: rgba(2, 28, 38, 0.20);
+  --nroo-blue-100: var(--roo-trust);
+  background-color: #fff;
+  color: var(--roo-trust);
+  border-color: rgba(2, 28, 38, 0.12);
+}
+/* Sub-element bg fixes for panels that had translucent-on-dark fills */
+html.panels-light .motion-spec-stage { background-color: #f7f9fa; background-blend-mode: normal; }
+html.panels-light .motion-spec-head,
+html.panels-light .motion-spec-foot,
+html.panels-light .curve-cell-head,
+html.panels-light .curve-cell-foot,
+html.panels-light .pm-bar { background: transparent; border-color: rgba(2, 28, 38, 0.08); color: var(--roo-trust); }
+html.panels-light .demo-card { background: #fff; }
+html.panels-light .chat-bubble { background: #f3f6f8; border-color: rgba(2,28,38,0.10); color: var(--roo-trust); }
+html.panels-light .chat-line.user .chat-bubble { background: rgba(37, 201, 186, 0.10); border-color: rgba(37, 201, 186, 0.32); }
+/* Promise block keeps its identity as a dark-on-light slab even in light mode */
+html.panels-light .promise-block { background: var(--roo-trust); color: var(--roo-clear); --ink: var(--roo-clear); border-color: var(--roo-trust); }
+/* Callout keeps T-80 inset everywhere */
+html.panels-light .callout { background: #1A3742; color: var(--roo-clear); border-left-color: var(--roo-pulse); }
+/* Accent text on now-light panels uses deep variants for AA */
+html.panels-light .tile-head .id,
+html.panels-light .chapter-eyebrow,
+html.panels-light .col-do .col-head { color: var(--roo-pulse-deep); }
+html.panels-light .col-dont .col-head { color: var(--roo-spark-deep); }
+html.panels-light .chapter-deck .num,
+html.panels-light .list-rule .row .num,
+html.panels-light .demo-counter,
+html.panels-light .rec-bignum { color: var(--roo-spark-deep); }
+
+/* === FORCE PANELS DARK === */
+html.panels-dark .tile,
+html.panels-dark .alt-card,
+html.panels-dark .dir-tile,
+html.panels-dark .motion-spec,
+html.panels-dark .pose-tile,
+html.panels-dark .icon-cell,
+html.panels-dark .specimen,
+html.panels-dark .specimen-row,
+html.panels-dark .pm-frame,
+html.panels-dark .viz-frame,
+html.panels-dark .glyph-feature,
+html.panels-dark .dual-glyph,
+html.panels-dark .dual-cell,
+html.panels-dark .alt-grid,
+html.panels-dark .bignum,
+html.panels-dark .mascot-gallery,
+html.panels-dark .icon-grid-frame,
+html.panels-dark .logo-frame,
+html.panels-dark .promise-block,
+html.panels-dark .gate-card,
+html.panels-dark .spec-panel,
+html.panels-dark .pad-spec,
+html.panels-dark .ff-tier,
+html.panels-dark .tile-grid.with-frame,
+html.panels-dark .motion-grid,
+html.panels-dark .dodont,
+html.panels-dark .dir-grid,
+html.panels-dark .curve-cell {
+  --ink: var(--void-text);
+  --ink-soft: var(--void-soft);
+  --ink-quiet: var(--void-quiet);
+  --paper: var(--void);
+  --paper-2: var(--void-2);
+  --hair: var(--void-line);
+  --hair-strong: var(--void-line-strong);
+  --nroo-blue-100: var(--void-text);
+  background-color: rgba(2, 28, 38, 0.92);
+  color: var(--void-text);
+  border-color: var(--void-line-strong);
+}
+html.panels-dark .motion-spec-stage { background-color: rgba(0, 0, 0, 0.24); }
+html.panels-dark .motion-spec-head,
+html.panels-dark .motion-spec-foot,
+html.panels-dark .curve-cell-head,
+html.panels-dark .curve-cell-foot,
+html.panels-dark .pm-bar { background: transparent; border-color: var(--void-line); color: var(--void-quiet); }
+html.panels-dark .demo-card { background: rgba(255,255,255,0.04); border-color: var(--void-line-strong); color: var(--void-text); }
+html.panels-dark .chat-bubble { background: rgba(255,255,255,0.04); border-color: var(--void-line); color: var(--void-text); }
+html.panels-dark .chat-line.user .chat-bubble { background: rgba(37, 201, 186, 0.08); border-color: rgba(37, 201, 186, 0.24); }
+html.panels-dark .tile-head .id,
+html.panels-dark .chapter-eyebrow,
+html.panels-dark .col-do .col-head { color: var(--roo-pulse); }
+html.panels-dark .col-dont .col-head { color: var(--roo-spark); }
+html.panels-dark .chapter-deck .num,
+html.panels-dark .list-rule .row .num,
+html.panels-dark .demo-counter,
+html.panels-dark .rec-bignum { color: var(--roo-spark); }
+
 /* Print */
 @media print {
   .site-header, .progress-bar, .float-roo, .side-nav { display: none; }
@@ -5855,31 +5999,46 @@ section.chapter.dark .tile-foot .avatar,
 <style>@keyframes caret { 50% { opacity: 0; } }</style>
 
 <script>
-// Chapter 11 · Theme demo (self-contained — does not affect rest of page)
+// Chapter 11 · Theme toggle — affects PANELS only (chapter backgrounds untouched)
 (function() {
+  const KEY = 'roocash-panels-2026';
+  const html = document.documentElement;
   const switchEl = document.getElementById('themeSwitch');
   const dark = document.getElementById('themeDark');
   const light = document.getElementById('themeLight');
   const preview = document.getElementById('themePreview');
   const label = document.getElementById('themeModeLabel');
-  if (!switchEl || !dark || !light || !preview) return;
+
+  const applyClass = (mode) => {
+    html.classList.remove('panels-light', 'panels-dark');
+    if (mode === 'light') html.classList.add('panels-light');
+    if (mode === 'dark')  html.classList.add('panels-dark');
+  };
+
+  const saved = (() => { try { return localStorage.getItem(KEY); } catch (e) { return null; }})();
+  if (saved === 'light' || saved === 'dark') applyClass(saved);
+
+  if (!switchEl || !dark || !light) return;
+
+  const initialMode = saved === 'light' ? 'light' : 'dark';
+  switchEl.setAttribute('data-mode', initialMode);
+  if (label) label.textContent = initialMode === 'light' ? 'Light' : 'Dark';
+  if (initialMode === 'light' && preview) preview.classList.add('is-light');
+  if (initialMode === 'light') {
+    light.classList.add('active'); light.setAttribute('aria-selected', 'true');
+    dark.classList.remove('active'); dark.setAttribute('aria-selected', 'false');
+  }
 
   const apply = (mode) => {
+    applyClass(mode);
+    try { localStorage.setItem(KEY, mode); } catch (e) {}
     switchEl.setAttribute('data-mode', mode);
     if (label) label.textContent = mode === 'light' ? 'Light' : 'Dark';
-    if (mode === 'light') {
-      preview.classList.add('is-light');
-      light.classList.add('active');
-      light.setAttribute('aria-selected', 'true');
-      dark.classList.remove('active');
-      dark.setAttribute('aria-selected', 'false');
-    } else {
-      preview.classList.remove('is-light');
-      dark.classList.add('active');
-      dark.setAttribute('aria-selected', 'true');
-      light.classList.remove('active');
-      light.setAttribute('aria-selected', 'false');
-    }
+    if (preview) preview.classList.toggle('is-light', mode === 'light');
+    light.classList.toggle('active', mode === 'light');
+    light.setAttribute('aria-selected', String(mode === 'light'));
+    dark.classList.toggle('active', mode === 'dark');
+    dark.setAttribute('aria-selected', String(mode === 'dark'));
   };
   dark.addEventListener('click', () => apply('dark'));
   light.addEventListener('click', () => apply('light'));
