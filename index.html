@@ -2220,7 +2220,7 @@ section.chapter.dark em { color: var(--nroo-water); }
   background: var(--roo-pulse);
   border-radius: 999px;
   transform-origin: left center;
-  animation: tempoFill var(--dur, 220ms) cubic-bezier(0, 0, 0.2, 1) infinite alternate;
+  animation: tempoFill var(--dur, 220ms) cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
 }
 .tempo-bar-row .ms {
   font-family: var(--font-mono); font-size: 13px; font-weight: 500;
@@ -2972,7 +2972,7 @@ section.chapter.dark .btn-off,
   position: absolute; inset: -8px;
   border-radius: 50%;
   border: 1px solid var(--roo-pulse);
-  animation: pulseRing 2s ease-out infinite;
+  animation: pulseRing 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
 }
 @keyframes pulseRing {
   0% { transform: scale(0.7); opacity: 1; }
@@ -5517,7 +5517,7 @@ section.chapter.dark .tile-foot .avatar,
       <div class="tile-grid cols-3 with-frame" style="margin-bottom: 32px;">
         <div class="tile">
           <div class="tile-head"><span class="id">M.PR.01</span><span>Tempo · 節奏</span></div>
-          <div class="tile-title">200–250ms · ease-out</div>
+          <div class="tile-title">200–250ms · ease-in-out</div>
           <p class="tile-body">所有過場、hover、focus 都在這個區間。再短，使用者還沒看到；再長，就在浪費時間。</p>
           <div class="tile-foot"><span>DURATION</span><span>200–250ms</span></div>
         </div>
@@ -5531,18 +5531,18 @@ section.chapter.dark .tile-foot .avatar,
           <div class="tile-head"><span class="id">M.PR.03</span><span>Discipline · 紀律</span></div>
           <div class="tile-title">不彈、不彈性、不彈簧</div>
           <p class="tile-body">Spring physics、cubic bounce、elastic ease——金融服務不需要這些。我們是顧問，不是嘉年華。</p>
-          <div class="tile-foot"><span>EASE</span><span>ease-out only</span></div>
+          <div class="tile-foot"><span>EASE</span><span>ease-in-out default</span></div>
         </div>
       </div>
 
       <div class="subhead h-section">Easing Curves · 緩動曲線</div>
       <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
-        Roo.Cash 只用三條曲線。<strong style="color: var(--void-text);">ease-out</strong> 是 95% 的場合（進場、CTA、卡片）；<strong style="color: var(--void-text);">linear</strong> 用於不間斷的常駐脈動（live dot）；<strong style="color: var(--void-text);">cubic-out</strong> 用於數字 count-up，給尾段一點減速。<strong style="color: var(--void-text);">沒有任何 ease-in</strong>——使用者點下去要立刻有反應，不能拖。
+        Roo.Cash 只用三條曲線。<strong style="color: var(--void-text);">ease-in-out</strong> 是 95% 的場合（預設、進場、CTA、卡片，兩端都有減速比較自然）；<strong style="color: var(--void-text);">ease-out-quad</strong> 用於連續的呼吸脈動（live dot），溫和但不像 linear 那麼機械；<strong style="color: var(--void-text);">cubic-out</strong> 用於數字 count-up，尾段強烈減速給大數字一個重落地的感覺。
       </p>
 
       <div class="curve-grid">
         <div class="curve-cell">
-          <div class="curve-cell-head"><span><span class="id">EZ.01</span> Ease Out</span><span>預設</span></div>
+          <div class="curve-cell-head"><span><span class="id">EZ.01</span> Ease In Out</span><span>預設</span></div>
           <div class="curve-graph-wrap">
             <svg class="curve-graph" viewBox="0 0 240 200" data-duration="900" preserveAspectRatio="none" aria-hidden="true">
               <!-- grid -->
@@ -5559,23 +5559,23 @@ section.chapter.dark .tile-foot .avatar,
               <text class="axis-label" x="20"  y="196">0</text>
               <text class="axis-label" x="208" y="196">t</text>
               <text class="axis-label" x="6"   y="26"  text-anchor="end" transform="rotate(-90 12 22)">v</text>
-              <!-- ease-out: cubic-bezier(0, 0, 0.2, 1) → SVG cubic from (20,180) to (220,20) -->
-              <path class="curve-control" d="M20 180 L60 180 M220 20 L100 20"/>
-              <circle class="curve-handle" cx="60"  cy="180" r="3"/>
-              <circle class="curve-handle" cx="100" cy="20"  r="3"/>
-              <path class="curve-path" d="M20 180 C60 180, 100 20, 220 20"/>
+              <!-- ease-in-out: cubic-bezier(0.4, 0, 0.2, 1) → ctrl1 (100,180) ctrl2 (60,20) -->
+              <path class="curve-control" d="M20 180 L100 180 M220 20 L60 20"/>
+              <circle class="curve-handle" cx="100" cy="180" r="3"/>
+              <circle class="curve-handle" cx="60"  cy="20"  r="3"/>
+              <path class="curve-path" d="M20 180 C100 180, 60 20, 220 20"/>
               <circle class="curve-dot" cx="20" cy="180" r="6"/>
             </svg>
           </div>
           <div class="curve-cell-foot">
-            <span class="k">CSS</span><span class="v">cubic-bezier(0, 0, 0.2, 1)</span>
+            <span class="k">CSS</span><span class="v">cubic-bezier(0.4, 0, 0.2, 1)</span>
             <span class="k">Duration</span><span class="v">200–250ms</span>
-            <span class="k">Use</span><span class="v">99% 場合 · 進場 · CTA · hover</span>
+            <span class="k">Use</span><span class="v">95% 場合 · 預設 · 進場 · CTA · hover</span>
           </div>
         </div>
 
         <div class="curve-cell">
-          <div class="curve-cell-head"><span><span class="id">EZ.02</span> Linear</span><span>常駐</span></div>
+          <div class="curve-cell-head"><span><span class="id">EZ.02</span> Ease Out Quad</span><span>常駐</span></div>
           <div class="curve-graph-wrap">
             <svg class="curve-graph" viewBox="0 0 240 200" data-duration="1400" preserveAspectRatio="none" aria-hidden="true">
               <line class="curve-grid-line" x1="0" y1="50"  x2="240" y2="50"/>
@@ -5589,15 +5589,18 @@ section.chapter.dark .tile-foot .avatar,
               <text class="axis-label" x="20"  y="196">0</text>
               <text class="axis-label" x="208" y="196">t</text>
               <text class="axis-label" x="6"   y="26"  text-anchor="end" transform="rotate(-90 12 22)">v</text>
-              <!-- straight line -->
-              <path class="curve-path" d="M20 180 L220 20"/>
+              <!-- ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94) → ctrl1 (70,106) ctrl2 (110,30) -->
+              <path class="curve-control" d="M20 180 L70 106 M220 20 L110 30"/>
+              <circle class="curve-handle" cx="70"  cy="106" r="3"/>
+              <circle class="curve-handle" cx="110" cy="30"  r="3"/>
+              <path class="curve-path" d="M20 180 C70 106, 110 30, 220 20"/>
               <circle class="curve-dot" cx="20" cy="180" r="6"/>
             </svg>
           </div>
           <div class="curve-cell-foot">
-            <span class="k">CSS</span><span class="v">linear</span>
+            <span class="k">CSS</span><span class="v">cubic-bezier(0.25, 0.46, 0.45, 0.94)</span>
             <span class="k">Duration</span><span class="v">2s loop</span>
-            <span class="k">Use</span><span class="v">live dot · 不間斷的脈動</span>
+            <span class="k">Use</span><span class="v">live dot · 連續呼吸脈動</span>
           </div>
         </div>
 
@@ -5681,7 +5684,7 @@ section.chapter.dark .tile-foot .avatar,
           <div class="motion-spec-stage"><button type="button" class="demo-cta">立即比較 →</button></div>
           <div class="motion-spec-foot">
             <span class="k">Trigger</span><span class="v">:hover</span>
-            <span class="k">Duration</span><span class="v">220ms ease-out</span>
+            <span class="k">Duration</span><span class="v">220ms ease-in-out</span>
             <span class="k">Transform</span><span class="v">translateY(-1px) + glow ↑</span>
           </div>
         </div>
@@ -5695,7 +5698,7 @@ section.chapter.dark .tile-foot .avatar,
           </div>
           <div class="motion-spec-foot">
             <span class="k">Trigger</span><span class="v">:hover</span>
-            <span class="k">Duration</span><span class="v">250ms ease-out</span>
+            <span class="k">Duration</span><span class="v">250ms ease-in-out</span>
             <span class="k">Transform</span><span class="v">translateY(-2px) + shadow lift</span>
           </div>
         </div>
@@ -5709,7 +5712,7 @@ section.chapter.dark .tile-foot .avatar,
           </div>
           <div class="motion-spec-foot">
             <span class="k">Trigger</span><span class="v">always-on</span>
-            <span class="k">Duration</span><span class="v">2s loop · ease-out</span>
+            <span class="k">Duration</span><span class="v">2s loop · ease-out-quad</span>
             <span class="k">Use</span><span class="v">即時資料 · AI 思考中</span>
           </div>
         </div>
@@ -5724,7 +5727,7 @@ section.chapter.dark .tile-foot .avatar,
           </div>
           <div class="motion-spec-foot">
             <span class="k">Trigger</span><span class="v">scroll-into-view</span>
-            <span class="k">Duration</span><span class="v">1400ms cubic ease-out</span>
+            <span class="k">Duration</span><span class="v">1400ms cubic-out</span>
             <span class="k">Use</span><span class="v">統計數字 · 大型數字</span>
           </div>
         </div>
@@ -5738,7 +5741,7 @@ section.chapter.dark .tile-foot .avatar,
           </div>
           <div class="motion-spec-foot">
             <span class="k">Trigger</span><span class="v">scroll-into-view</span>
-            <span class="k">Duration</span><span class="v">700ms ease-out</span>
+            <span class="k">Duration</span><span class="v">700ms ease-in-out</span>
             <span class="k">Transform</span><span class="v">opacity 0→1 · translateY 24→0</span>
           </div>
         </div>
@@ -5769,7 +5772,7 @@ section.chapter.dark .tile-foot .avatar,
           </div>
           <div class="motion-spec-foot">
             <span class="k">Trigger</span><span class="v">success milestone</span>
-            <span class="k">Duration</span><span class="v">500ms ease-out</span>
+            <span class="k">Duration</span><span class="v">500ms ease-in-out</span>
             <span class="k">Use</span><span class="v">完成里程碑 · 還款達成</span>
           </div>
         </div>
