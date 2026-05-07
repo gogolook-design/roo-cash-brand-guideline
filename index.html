@@ -1428,7 +1428,7 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
 .icon-cell:hover { background: var(--paper-2); }
 .icon-cell:nth-child(8n) { border-right: none; }
 .icon-cell:nth-last-child(-n+8) { border-bottom: none; }
-.icon-cell svg { stroke: var(--ink); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.icon-cell svg { fill: var(--ink); stroke: none; }
 
 /* ─── LOGO BLOCKS ─── */
 .logo-frame {
@@ -4320,25 +4320,54 @@ section.chapter.dark .tile-foot .avatar,
       <div class="chapter-eyebrow">Chapter Eight</div>
       <h2 class="chapter-title">圖像分三層：<em>功能</em> · <em>情緒</em> · <em>故事</em>。</h2>
       <div class="chapter-deck">
-        <p><strong>圖標</strong>負責功能、<strong>吉祥物 Roo</strong>負責情緒、<strong>插畫</strong>負責說故事。三者風格上必須是同一家人——一樣的線條、一樣的圓角、一樣不裝可愛。</p>
+        <p><strong>圖標</strong>負責功能、<strong>吉祥物 Roo</strong>負責情緒、<strong>插畫</strong>負責說故事。三者風格上必須是同一家人——<strong>圖標用純色填充給最強識別、Roo 用線稿給最多人味、插畫居中</strong>。一樣的圓角、一樣的克制、一樣不裝可愛。</p>
       </div>
 
-      <div class="subhead h-section">Iconography · 24×24 outline · stroke 1.5</div>
+      <div class="subhead h-section">Iconography · 24×24 solid fill</div>
+
+      <p style="font-family: var(--font-cjk); font-size: 15px; line-height: 1.85; color: var(--ink-soft); max-width: 720px; margin: 16px 0;">
+        Roo.Cash 圖標是 <strong style="color: var(--ink);">24×24 純色填充</strong>，圖形優先而非線稿。不裝飾性、不細節控——把最少的形狀做到最清楚。預設色 Trust，強調色 Pulse。
+      </p>
 
       <div class="icon-grid-frame">
         <div class="icon-meta">
-          <span>ICON · OUTLINE · 24px</span>
-          <span>Stroke 1.5–1.75 · Round caps</span>
+          <span>ICON · SOLID FILL · 24px</span>
+          <span>Geometric · Single colour · No outline</span>
         </div>
         <div class="icons">
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><line x1="3" y1="11" x2="21" y2="11"/></svg></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r=".5" fill="currentColor"/></svg></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/></svg></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></div>
-          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <!-- 1. Verified / check badge -->
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm-1.06 14.06L6 11.12l1.41-1.41 3.53 3.53 5.65-5.65L18 9l-7.06 7.06Z"/></svg></div>
+          <!-- 2. Credit card -->
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6a2 2 0 012-2h14a2 2 0 012 2v2H3V6Zm0 4h18v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8Zm3 5h6v2H6v-2Z"/></svg></div>
+          <!-- 3. Info -->
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20Zm0 15a1 1 0 110-2 1 1 0 010 2Zm1-4h-2V7h2v6Z"/></svg></div>
+          <!-- 4. Arrow right -->
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5l7 7-7 7v-4H4v-6h9V5Z"/></svg></div>
+          <!-- 5. Shield (security) -->
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4Zm-1.06 13.06L7 11.12l1.41-1.41 2.53 2.53 4.65-4.65L17 9l-6.06 6.06Z"/></svg></div>
+          <!-- 6. Trending up -->
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18l6-6 4 4 8-8V4h-4l-4 4-4-4-7 7v7Z"/></svg></div>
+          <!-- 7. Search -->
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4a7 7 0 015.42 11.42l4.58 4.58-1.41 1.41-4.58-4.58A7 7 0 1111 4Zm0 2a5 5 0 100 10 5 5 0 000-10Z"/></svg></div>
+          <!-- 8. User -->
+          <div class="icon-cell"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 100-8 4 4 0 000 8Zm-8 9c0-3.31 3.58-6 8-6s8 2.69 8 6v1H4v-1Z"/></svg></div>
+        </div>
+      </div>
+
+      <div class="dodont">
+        <div class="col-do">
+          <div class="col-head"><span class="glyph">✓</span> 圖標規矩</div>
+          <div class="item">24×24 grid · 單色填充 · 形狀優先。</div>
+          <div class="item">預設 fill 為 Trust（深色背景則為 Clear）。強調用 Pulse。</div>
+          <div class="item">複合圖示用 even-odd fill rule 製造負空間，不畫白線。</div>
+          <div class="item">最小尺寸 16px、最大 32px——再大就要換成插畫。</div>
+        </div>
+        <div class="col-dont">
+          <div class="col-head"><span class="glyph">✕</span> 絕對不要</div>
+          <div class="item">線稿 outline、stroke + fill 並用、混搭風格。</div>
+          <div class="item">兩個顏色填充——圖標永遠是單色。</div>
+          <div class="item">加陰影、漸層、3D 效果——扁平就是扁平。</div>
+          <div class="item">過度細節（眼睛、表情、紋理）——那是插畫的事。</div>
         </div>
       </div>
 
@@ -4946,7 +4975,7 @@ section.chapter.dark .tile-foot .avatar,
         <div class="tile">
           <div class="tile-head"><span class="id">A.04</span><span>下載</span></div>
           <div class="tile-title">圖標庫</div>
-          <p class="tile-body">24×24 SVG outline · 1.5–1.75px stroke · navy / green 兩個變體。生產用請從 Figma <span class="mono">/Icons</span> 取真實檔案。</p>
+          <p class="tile-body">24×24 SVG · 純色填充 · Trust / Pulse 兩個變體。生產用請從 Figma <span class="mono">/Icons</span> 取真實檔案。</p>
           <div class="tile-foot"><span>SVG · 320KB</span><span>↓ Download</span></div>
         </div>
         <div class="tile">
