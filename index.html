@@ -8,14 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script>
-(function() {
-  try {
-    var t = localStorage.getItem('roocash-theme-2026');
-    if (t === 'light' || t === 'dark') document.documentElement.classList.add('theme-' + t);
-  } catch (e) {}
-})();
-</script>
 <style>
 :root {
   /* Type system simplified to two faces: Noto Sans TC + Roboto Condensed */
@@ -3077,101 +3069,6 @@ section.chapter.dark .tile-foot .avatar,
 .mock-cta,
 .demo-cta { color: var(--roo-trust) !important; }
 
-/* ─── GLOBAL THEME OVERRIDE (chapter 11 toggle) ─── */
-/* Default behaviour preserved: each chapter follows its own dark/.dark class.
-   When user picks a mode, html.theme-{light|dark} forces every surface. */
-
-/* === FORCED LIGHT MODE === */
-html.theme-light body { background: var(--paper); }
-
-html.theme-light .hero,
-html.theme-light .stat-band,
-html.theme-light section.chapter.dark,
-html.theme-light .colophon {
-  background: var(--paper);
-  color: var(--ink);
-  --ink: var(--roo-trust);
-  --ink-soft: rgba(2, 28, 38, 0.82);
-  --ink-quiet: rgba(2, 28, 38, 0.62);
-  --paper: var(--roo-clear);
-  --paper-2: var(--roo-clear-2);
-  --hair: rgba(2, 28, 38, 0.12);
-  --hair-strong: rgba(2, 28, 38, 0.22);
-  --void-text: var(--roo-trust);
-  --void-soft: rgba(2, 28, 38, 0.82);
-  --void-quiet: rgba(2, 28, 38, 0.62);
-  --void-line: rgba(2, 28, 38, 0.10);
-  --void-line-strong: rgba(2, 28, 38, 0.20);
-  --nroo-blue-100: var(--roo-trust);
-  border-color: rgba(2, 28, 38, 0.10);
-}
-html.theme-light .hero::before,
-html.theme-light section.chapter.dark::before,
-html.theme-light .stat-band::before { display: none; }
-
-html.theme-light .colophon { border-top: 1px solid var(--hair); }
-html.theme-light .colophon::before { background: var(--roo-pulse-deep); }
-html.theme-light .colophon-meta { border-top-color: rgba(2, 28, 38, 0.12); }
-
-/* Dark logos appear, white logos hide */
-html.theme-light .logo-on-dark { display: none !important; }
-html.theme-light .logo-on-light { display: block !important; }
-
-/* CTAs / accent text on light surfaces switch to deep variants for AA */
-html.theme-light .chapter-eyebrow,
-html.theme-light .tile-head .id,
-html.theme-light .col-do .col-head { color: var(--roo-pulse-deep); }
-html.theme-light .col-dont .col-head { color: var(--roo-spark-deep); }
-
-/* === FORCED DARK MODE === */
-html.theme-dark body { background: var(--void); color: var(--void-text); }
-
-html.theme-dark section.chapter:not(.dark),
-html.theme-dark .side-nav {
-  background: var(--void);
-  color: var(--void-text);
-  --ink: var(--void-text);
-  --ink-soft: var(--void-soft);
-  --ink-quiet: var(--void-quiet);
-  --paper: var(--void);
-  --paper-2: var(--void-2);
-  --hair: var(--void-line);
-  --hair-strong: var(--void-line-strong);
-  --nroo-blue-100: var(--void-text);
-}
-
-html.theme-dark section.chapter:not(.dark) { position: relative; overflow: hidden; }
-html.theme-dark section.chapter:not(.dark)::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(37, 201, 186, 0.06), transparent 60%),
-    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(255, 96, 26, 0.04), transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-html.theme-dark section.chapter:not(.dark) .chapter-inner { position: relative; z-index: 1; }
-
-/* Side-nav in dark mode */
-html.theme-dark .side-nav { border-right-color: var(--void-line-strong); }
-html.theme-dark .side-nav-list a:hover { background: rgba(255,255,255,0.04); }
-html.theme-dark .side-nav-list a.active { background: rgba(255,255,255,0.06); border-left-color: var(--roo-pulse); }
-html.theme-dark .side-nav-list a:hover .nm,
-html.theme-dark .side-nav-list a.active .nm { color: var(--roo-pulse); }
-html.theme-dark .side-nav-foot a.dl { background: var(--roo-pulse); color: var(--roo-trust); border-color: var(--roo-pulse); }
-
-/* Accent text on dark uses bright variants */
-html.theme-dark .chapter-eyebrow,
-html.theme-dark .tile-head .id,
-html.theme-dark .col-do .col-head { color: var(--roo-pulse); }
-html.theme-dark .col-dont .col-head { color: var(--roo-spark); }
-html.theme-dark .chapter-deck .num,
-html.theme-dark .list-rule .row .num { color: var(--roo-spark); }
-
-/* Logos: white shows, dark hides */
-html.theme-dark .logo-on-light { display: none !important; }
-html.theme-dark .logo-on-dark { display: block !important; }
-
 /* Print */
 @media print {
   .site-header, .progress-bar, .float-roo, .side-nav { display: none; }
@@ -3434,10 +3331,7 @@ html.theme-dark .logo-on-dark { display: block !important; }
 <!-- ─── SIDE NAV (desktop) ─── -->
 <nav class="side-nav" id="sideNav" aria-label="目錄 · Chapter contents">
   <div class="side-nav-head">
-    <a href="#top">
-      <img class="logo-on-light" src="assets/logos/roo-cash-horizontal-dark.svg" alt="Roo.Cash">
-      <img class="logo-on-dark" src="assets/logos/roo-cash-horizontal-white.svg" alt="Roo.Cash" style="display: none;">
-    </a>
+    <a href="#top"><img src="assets/logos/roo-cash-horizontal-dark.svg" alt="Roo.Cash"></a>
     <div class="meta">
       <div class="row"><span>Issue</span><span class="v">01</span></div>
       <div class="row"><span>Edition</span><span class="v">Spring 2026</span></div>
@@ -5622,7 +5516,7 @@ html.theme-dark .logo-on-dark { display: block !important; }
         Roo.Cash 同時支援深色與淺色介面。<strong style="color: var(--void-text);">預設跟隨使用者的系統偏好</strong>（macOS / iOS / Android 的 prefers-color-scheme），<strong style="color: var(--void-text);">使用者可以在設定裡手動切換</strong>。我們<strong style="color: var(--void-text);">不依時間自動切換</strong>——使用者的選擇優先。
       </p>
       <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
-        試試切換下方開關——<strong style="color: var(--void-text);">會影響整頁</strong>。你的選擇會被記住（localStorage），下次回來會記得你選的模式。
+        試試切換下方開關，看看同一個元件在兩個模式下的樣子。
       </p>
 
       <div class="theme-demo">
@@ -5961,48 +5855,31 @@ html.theme-dark .logo-on-dark { display: block !important; }
 <style>@keyframes caret { 50% { opacity: 0; } }</style>
 
 <script>
-// Chapter 11 · Theme toggle — applies to the WHOLE page, persists in localStorage
+// Chapter 11 · Theme demo (self-contained — does not affect rest of page)
 (function() {
-  const KEY = 'roocash-theme-2026';
-  const html = document.documentElement;
   const switchEl = document.getElementById('themeSwitch');
   const dark = document.getElementById('themeDark');
   const light = document.getElementById('themeLight');
   const preview = document.getElementById('themePreview');
   const label = document.getElementById('themeModeLabel');
-
-  const applyClass = (mode) => {
-    html.classList.remove('theme-light', 'theme-dark');
-    if (mode === 'light') html.classList.add('theme-light');
-    if (mode === 'dark')  html.classList.add('theme-dark');
-  };
-
-  // Restore saved preference on load (before paint via inline script in <head> if needed)
-  const saved = (() => { try { return localStorage.getItem(KEY); } catch (e) { return null; }})();
-  if (saved === 'light' || saved === 'dark') applyClass(saved);
-
-  if (!switchEl || !dark || !light) return;
-
-  // Sync switch UI to current state
-  const initialMode = saved === 'light' ? 'light' : 'dark';
-  switchEl.setAttribute('data-mode', initialMode);
-  if (label) label.textContent = initialMode === 'light' ? 'Light' : 'Dark';
-  if (initialMode === 'light') {
-    light.classList.add('active'); light.setAttribute('aria-selected', 'true');
-    dark.classList.remove('active'); dark.setAttribute('aria-selected', 'false');
-    if (preview) preview.classList.add('is-light');
-  }
+  if (!switchEl || !dark || !light || !preview) return;
 
   const apply = (mode) => {
-    applyClass(mode);
-    try { localStorage.setItem(KEY, mode); } catch (e) {}
     switchEl.setAttribute('data-mode', mode);
     if (label) label.textContent = mode === 'light' ? 'Light' : 'Dark';
-    if (preview) preview.classList.toggle('is-light', mode === 'light');
-    light.classList.toggle('active', mode === 'light');
-    light.setAttribute('aria-selected', String(mode === 'light'));
-    dark.classList.toggle('active', mode === 'dark');
-    dark.setAttribute('aria-selected', String(mode === 'dark'));
+    if (mode === 'light') {
+      preview.classList.add('is-light');
+      light.classList.add('active');
+      light.setAttribute('aria-selected', 'true');
+      dark.classList.remove('active');
+      dark.setAttribute('aria-selected', 'false');
+    } else {
+      preview.classList.remove('is-light');
+      dark.classList.add('active');
+      dark.setAttribute('aria-selected', 'true');
+      light.classList.remove('active');
+      light.setAttribute('aria-selected', 'false');
+    }
   };
   dark.addEventListener('click', () => apply('dark'));
   light.addEventListener('click', () => apply('light'));
@@ -6067,8 +5944,7 @@ html.theme-dark .logo-on-dark { display: block !important; }
 <footer class="colophon">
   <div class="colophon-inner">
     <div>
-      <img class="logo-on-dark" src="assets/logos/roo-cash-horizontal-white.svg" alt="Roo.Cash">
-      <img class="logo-on-light" src="assets/logos/roo-cash-horizontal-dark.svg" alt="Roo.Cash" style="display: none;">
+      <img src="assets/logos/roo-cash-horizontal-white.svg" alt="Roo.Cash">
       <p>Roo.Cash 袋鼠金融，是 Gogolook 旗下的個人理財媒合服務。我們把信用卡、個人貸款、保險、儲蓄與信用建立等產品，整合在一個地方，幫助你做出更安心的金錢決定。</p>
     </div>
     <div>
