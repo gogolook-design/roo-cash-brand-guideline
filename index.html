@@ -3125,24 +3125,85 @@ html.panels-light .curve-cell {
   --void-line: rgba(2, 28, 38, 0.10);
   --void-line-strong: rgba(2, 28, 38, 0.20);
   --nroo-blue-100: var(--roo-trust);
-  background-color: #fff;
-  color: var(--roo-trust);
-  border-color: rgba(2, 28, 38, 0.12);
+  background-color: #fff !important;
+  color: var(--roo-trust) !important;
+  border-color: rgba(2, 28, 38, 0.12) !important;
 }
 /* Sub-element bg fixes for panels that had translucent-on-dark fills */
-html.panels-light .motion-spec-stage { background-color: #f7f9fa; background-blend-mode: normal; }
+html.panels-light .motion-spec-stage { background-color: #f7f9fa !important; background-blend-mode: normal; }
 html.panels-light .motion-spec-head,
 html.panels-light .motion-spec-foot,
 html.panels-light .curve-cell-head,
 html.panels-light .curve-cell-foot,
-html.panels-light .pm-bar { background: transparent; border-color: rgba(2, 28, 38, 0.08); color: var(--roo-trust); }
-html.panels-light .demo-card { background: #fff; }
-html.panels-light .chat-bubble { background: #f3f6f8; border-color: rgba(2,28,38,0.10); color: var(--roo-trust); }
-html.panels-light .chat-line.user .chat-bubble { background: rgba(37, 201, 186, 0.10); border-color: rgba(37, 201, 186, 0.32); }
+html.panels-light .pm-bar { background: transparent !important; border-color: rgba(2, 28, 38, 0.08) !important; color: var(--roo-trust) !important; }
+html.panels-light .demo-card { background: #fff !important; }
+html.panels-light .chat-bubble { background: #f3f6f8 !important; border-color: rgba(2,28,38,0.10) !important; color: var(--roo-trust) !important; }
+html.panels-light .chat-line.user .chat-bubble { background: rgba(37, 201, 186, 0.10) !important; border-color: rgba(37, 201, 186, 0.32) !important; }
+/* Viz-frame internals — fight the section.chapter.dark cascade */
+html.panels-light .viz-head h3,
+html.panels-light .viz-bar-row .name,
+html.panels-light .viz-bar-row .num { color: var(--roo-trust) !important; }
+html.panels-light .viz-head .meta,
+html.panels-light .viz-source { color: var(--ink-quiet) !important; }
+html.panels-light .viz-bar-row { border-bottom-color: rgba(2, 28, 38, 0.10) !important; }
+html.panels-light .viz-bar-row .bar-track { background: rgba(2, 28, 38, 0.08) !important; }
+html.panels-light .viz-bar-row .bar-fill:not(.highlight) { background: var(--roo-trust) !important; }
+/* Specimen + glyph + dual + alt + dodont — same fight */
+html.panels-light .specimen-row .label,
+html.panels-light .specimen-row .meta,
+html.panels-light .alt-h,
+html.panels-light .alt-desc,
+html.panels-light .dual-meta,
+html.panels-light .dual-foot .df-key,
+html.panels-light .glyph-feature .gm-row,
+html.panels-light .glyph-feature .gm-row .gm-key,
+html.panels-light .dodont .item { color: var(--ink-soft) !important; }
+html.panels-light .specimen-row .label .name,
+html.panels-light .alt-desc strong,
+html.panels-light .dual-foot .df-val,
+html.panels-light .glyph-feature .glyph,
+html.panels-light .glyph-feature .gm-row .gm-val { color: var(--roo-trust) !important; }
+/* Tile internals on dark chapter need to flip too */
+html.panels-light .tile-title,
+html.panels-light .ff-tier-row .nm,
+html.panels-light .ff-tier-row .pc,
+html.panels-light .ff-tier-pct,
+html.panels-light .ff-tier-tag,
+html.panels-light .ff-tier-desc,
+html.panels-light .ff-tier-row .hx,
+html.panels-light .pad-spec-row .px,
+html.panels-light .pad-spec-row .where { color: var(--roo-trust) !important; }
+html.panels-light .tile-body,
+html.panels-light .pad-spec-row .where { color: var(--ink-soft) !important; }
+html.panels-light .tile-foot,
+html.panels-light .tile-head { color: var(--ink-quiet) !important; border-color: rgba(2, 28, 38, 0.10) !important; }
+/* Borders on inner panels in dark chapter — flip */
+html.panels-light .specimen-row,
+html.panels-light .specimen,
+html.panels-light .dual-cell,
+html.panels-light .dual-meta,
+html.panels-light .dual-foot,
+html.panels-light .alt-card,
+html.panels-light .alt-stack,
+html.panels-light .alt-h,
+html.panels-light .pad-spec-row,
+html.panels-light .ff-tier,
+html.panels-light .ff-tier-head,
+html.panels-light .ff-tier-list,
+html.panels-light .ff-tier-row,
+html.panels-light .tile-grid > *,
+html.panels-light .tile-grid.with-frame,
+html.panels-light .motion-spec,
+html.panels-light .motion-grid,
+html.panels-light .curve-cell,
+html.panels-light .curve-grid { border-color: rgba(2, 28, 38, 0.10) !important; }
 /* Promise block keeps its identity as a dark-on-light slab even in light mode */
-html.panels-light .promise-block { background: var(--roo-trust); color: var(--roo-clear); --ink: var(--roo-clear); border-color: var(--roo-trust); }
+html.panels-light .promise-block { background: var(--roo-trust) !important; color: var(--roo-clear) !important; --ink: var(--roo-clear); border-color: var(--roo-trust) !important; }
+html.panels-light .promise-block .promise-h,
+html.panels-light .promise-block .promise-sub,
+html.panels-light .promise-block .promise-meta { color: var(--roo-clear) !important; }
 /* Callout keeps T-80 inset everywhere */
-html.panels-light .callout { background: #1A3742; color: var(--roo-clear); border-left-color: var(--roo-pulse); }
+html.panels-light .callout { background: #1A3742 !important; color: var(--roo-clear) !important; border-left-color: var(--roo-pulse) !important; }
 /* Accent text on now-light panels uses deep variants for AA */
 html.panels-light .tile-head .id,
 html.panels-light .chapter-eyebrow,
@@ -3190,19 +3251,73 @@ html.panels-dark .curve-cell {
   --hair: var(--void-line);
   --hair-strong: var(--void-line-strong);
   --nroo-blue-100: var(--void-text);
-  background-color: rgba(2, 28, 38, 0.92);
-  color: var(--void-text);
-  border-color: var(--void-line-strong);
+  background-color: rgba(2, 28, 38, 0.92) !important;
+  color: var(--void-text) !important;
+  border-color: var(--void-line-strong) !important;
 }
-html.panels-dark .motion-spec-stage { background-color: rgba(0, 0, 0, 0.24); }
+html.panels-dark .motion-spec-stage { background-color: rgba(0, 0, 0, 0.24) !important; }
 html.panels-dark .motion-spec-head,
 html.panels-dark .motion-spec-foot,
 html.panels-dark .curve-cell-head,
 html.panels-dark .curve-cell-foot,
-html.panels-dark .pm-bar { background: transparent; border-color: var(--void-line); color: var(--void-quiet); }
-html.panels-dark .demo-card { background: rgba(255,255,255,0.04); border-color: var(--void-line-strong); color: var(--void-text); }
-html.panels-dark .chat-bubble { background: rgba(255,255,255,0.04); border-color: var(--void-line); color: var(--void-text); }
-html.panels-dark .chat-line.user .chat-bubble { background: rgba(37, 201, 186, 0.08); border-color: rgba(37, 201, 186, 0.24); }
+html.panels-dark .pm-bar { background: transparent !important; border-color: var(--void-line) !important; color: var(--void-quiet) !important; }
+html.panels-dark .demo-card { background: rgba(255,255,255,0.04) !important; border-color: var(--void-line-strong) !important; color: var(--void-text) !important; }
+html.panels-dark .chat-bubble { background: rgba(255,255,255,0.04) !important; border-color: var(--void-line) !important; color: var(--void-text) !important; }
+html.panels-dark .chat-line.user .chat-bubble { background: rgba(37, 201, 186, 0.08) !important; border-color: rgba(37, 201, 186, 0.24) !important; }
+/* Viz / specimen / tile / glyph internals — fight default + dark cascade */
+html.panels-dark .viz-head h3,
+html.panels-dark .viz-bar-row .name,
+html.panels-dark .viz-bar-row .num,
+html.panels-dark .specimen-row .label .name,
+html.panels-dark .alt-desc strong,
+html.panels-dark .dual-foot .df-val,
+html.panels-dark .glyph-feature .glyph,
+html.panels-dark .glyph-feature .gm-row .gm-val,
+html.panels-dark .tile-title,
+html.panels-dark .ff-tier-row .nm,
+html.panels-dark .ff-tier-row .pc,
+html.panels-dark .ff-tier-pct,
+html.panels-dark .ff-tier-tag,
+html.panels-dark .pad-spec-row .px { color: var(--void-text) !important; }
+html.panels-dark .viz-head .meta,
+html.panels-dark .viz-source,
+html.panels-dark .specimen-row .label,
+html.panels-dark .specimen-row .meta,
+html.panels-dark .alt-h,
+html.panels-dark .alt-desc,
+html.panels-dark .dual-meta,
+html.panels-dark .dual-foot .df-key,
+html.panels-dark .glyph-feature .gm-row,
+html.panels-dark .glyph-feature .gm-row .gm-key,
+html.panels-dark .dodont .item,
+html.panels-dark .tile-body,
+html.panels-dark .ff-tier-row .hx,
+html.panels-dark .ff-tier-desc,
+html.panels-dark .pad-spec-row .where { color: var(--void-soft) !important; }
+html.panels-dark .tile-foot,
+html.panels-dark .tile-head { color: var(--void-quiet) !important; border-color: var(--void-line) !important; }
+html.panels-dark .viz-bar-row { border-bottom-color: var(--void-line) !important; }
+html.panels-dark .viz-bar-row .bar-track { background: rgba(255,255,255,0.10) !important; }
+html.panels-dark .viz-bar-row .bar-fill:not(.highlight) { background: var(--void-text) !important; }
+html.panels-dark .specimen-row,
+html.panels-dark .specimen,
+html.panels-dark .dual-cell,
+html.panels-dark .dual-meta,
+html.panels-dark .dual-foot,
+html.panels-dark .alt-card,
+html.panels-dark .alt-stack,
+html.panels-dark .alt-h,
+html.panels-dark .pad-spec-row,
+html.panels-dark .ff-tier,
+html.panels-dark .ff-tier-head,
+html.panels-dark .ff-tier-list,
+html.panels-dark .ff-tier-row,
+html.panels-dark .tile-grid > *,
+html.panels-dark .tile-grid.with-frame,
+html.panels-dark .motion-spec,
+html.panels-dark .motion-grid,
+html.panels-dark .curve-cell,
+html.panels-dark .curve-grid { border-color: var(--void-line) !important; }
 html.panels-dark .tile-head .id,
 html.panels-dark .chapter-eyebrow,
 html.panels-dark .col-do .col-head { color: var(--roo-pulse); }
