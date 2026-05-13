@@ -252,6 +252,37 @@ a { color: inherit; text-decoration: none; }
   transition: background .2s;
 }
 .side-nav-foot a.dl:hover { background: var(--nroo-green-120); }
+.sound-toggle-nav {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  background: transparent;
+  border: 1px solid var(--hair-strong);
+  border-radius: 999px;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 0.2s ease-out, color 0.2s ease-out;
+}
+.sound-toggle-nav .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--nroo-green-120);
+  flex-shrink: 0;
+  transition: background 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.sound-toggle-nav .lbl { flex: 1; text-align: left; }
+.sound-toggle-nav .state {
+  font-weight: 700;
+  color: var(--nroo-green-120);
+  transition: color 0.2s ease-out;
+}
+.sound-toggle-nav:hover { border-color: var(--ink); color: var(--ink); }
+.sound-toggle-nav[aria-pressed="false"] .dot { background: rgba(2, 28, 38, 0.22); box-shadow: none; }
+.sound-toggle-nav[aria-pressed="false"] .state { color: var(--ink-quiet); }
+.sound-toggle-nav[aria-pressed="true"] .dot { box-shadow: 0 0 8px rgba(37, 201, 186, 0.6); }
 .side-nav-foot .credit {
   font-family: var(--font-mono); font-size: 13px; font-weight: 500;
   color: var(--ink-quiet);
@@ -3732,6 +3763,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
       gate.classList.add('unlocked');
       document.body.style.overflow = '';
       errorEl.textContent = '';
+      window.dispatchEvent(new CustomEvent('roocash:gate-unlocked'));
     } else {
       errorEl.textContent = '密碼不對，再試試。';
       input.classList.add('error');
@@ -3771,6 +3803,11 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
     <li><a href="#ch11" data-chapter="ch11"><span class="nm">11.</span><span class="ti">UI · 介面系統</span></a></li>
   </ul>
   <div class="side-nav-foot">
+    <button type="button" class="sound-toggle-nav" data-sound-toggle aria-pressed="true">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="lbl">Sound</span>
+      <span class="state">ON</span>
+    </button>
     <a href="#ch10" class="dl">Download ↓</a>
     <div class="credit">ROO.CASH · 袋鼠金融</div>
   </div>
@@ -6316,13 +6353,13 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 
       <div class="subhead">Sound Candidates · 聲音候選</div>
       <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 16px;">
-        聲音<strong style="color: var(--void-text);">預設關閉</strong>，使用者明確開啟才會發出。所有聲音都用 Web Audio API 合成——沒有外部音檔，<strong style="color: var(--void-text);">音色屬於品牌</strong>。
+        聲音<strong style="color: var(--void-text);">預設開啟</strong>。可以在左側 nav 或下面開關隨時關閉。所有聲音都用 Web Audio API 合成——沒有外部音檔，<strong style="color: var(--void-text);">音色屬於品牌</strong>。
       </p>
 
       <div class="sound-toggle-row">
         <span class="label">Sound · 音效</span>
-        <span class="help">預設關閉</span>
-        <button type="button" class="sound-pill" id="soundPill" aria-pressed="false">OFF</button>
+        <span class="help">和 nav 同步</span>
+        <button type="button" class="sound-pill" id="soundPill" data-sound-toggle aria-pressed="true">ON</button>
       </div>
 
       <div class="lab-grid">
@@ -6494,9 +6531,16 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
   }
 
   // === SOUND · Web Audio API synthesizers ===
+  // Global state: default ON, persists in localStorage.
+  // All [data-sound-toggle] elements stay in sync.
   let audioCtx = null;
-  let soundOn = false;
-  const soundPill = document.getElementById('soundPill');
+  const SOUND_KEY = 'roocash-sound-2026';
+  let soundOn = (() => {
+    try {
+      const s = localStorage.getItem(SOUND_KEY);
+      return s === null ? true : s === 'on';   // default ON
+    } catch (e) { return true; }
+  })();
 
   const ensureCtx = () => {
     if (!audioCtx) {
@@ -6507,15 +6551,33 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
     return audioCtx;
   };
 
-  if (soundPill) {
-    soundPill.addEventListener('click', () => {
-      soundOn = !soundOn;
-      soundPill.classList.toggle('on', soundOn);
-      soundPill.setAttribute('aria-pressed', String(soundOn));
-      soundPill.textContent = soundOn ? 'ON' : 'OFF';
-      if (soundOn) ensureCtx(); // pre-warm audio context
+  const syncToggleUI = () => {
+    document.querySelectorAll('[data-sound-toggle]').forEach(el => {
+      el.classList.toggle('on', soundOn);
+      el.setAttribute('aria-pressed', String(soundOn));
+      const stateEl = el.querySelector('.state');
+      if (stateEl) stateEl.textContent = soundOn ? 'ON' : 'OFF';
+      else if (!el.querySelector('.lbl')) el.textContent = soundOn ? 'ON' : 'OFF';
     });
-  }
+  };
+
+  const setSound = (val) => {
+    soundOn = val;
+    try { localStorage.setItem(SOUND_KEY, val ? 'on' : 'off'); } catch (e) {}
+    syncToggleUI();
+    if (soundOn) ensureCtx();
+  };
+
+  // Initial sync on load
+  syncToggleUI();
+
+  // Wire ALL sound-toggle controls (nav + lab pill)
+  document.querySelectorAll('[data-sound-toggle]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setSound(!soundOn);
+    });
+  });
 
   const flashVis = (id) => {
     const el = document.getElementById(id);
@@ -6677,6 +6739,27 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
     });
     flashVis('sndChimeVis');
   }
+
+  // === GLOBAL CLICK SOUND ROUTING ===
+  // Most CTAs play Tick. A few special clicks override to Swoosh or Chime.
+  const TICK_SEL = '.btn-glow, .btn-ghost, .btn-off, .demo-cta, .gate-submit, .mock-cta, .tp-cta, .tp-ghost, .header-cta, .side-nav-foot a.dl, button[type="submit"]';
+  document.addEventListener('click', (e) => {
+    // Sound toggle handles itself
+    if (e.target.closest('[data-sound-toggle]')) return;
+    // Lab demo buttons play their own sound — skip global tick
+    if (e.target.closest('.lab-replay')) return;
+    // Theme switch → Swoosh (replaces tick)
+    if (e.target.closest('#themeDark, #themeLight')) { playSwoosh(); return; }
+    // Roo cheer SPEC + floating mascot → Chime
+    if (e.target.closest('[data-replay="cheer"]')) { playChime(); return; }
+    if (e.target.closest('.float-roo')) { playChime(); return; }
+    // Default: tick for any matched CTA
+    if (e.target.closest(TICK_SEL)) playTick();
+  });
+
+  // Gate password success → Chime
+  // (the gate's own submit handler runs first; we hook a window event)
+  window.addEventListener('roocash:gate-unlocked', () => playChime());
 
   // Wire replay buttons
   document.querySelectorAll('.lab-replay').forEach(btn => {
