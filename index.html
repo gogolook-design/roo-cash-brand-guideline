@@ -6400,50 +6400,8 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
         </div>
       </div>
 
-      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin: 32px 0 16px;">
-        以上三個是<strong style="color: var(--void-text);">溫和派</strong>。下面再多三個<strong style="color: var(--void-text);">數位 / 未來派</strong>的選項，更貼近「AI 原生」的氣質。
-      </p>
-
-      <div class="lab-grid">
-        <!-- SND.04 Bleep -->
-        <div class="lab-cell">
-          <div class="lab-cell-head"><span><span class="id">SND.04</span> Bleep</span><span>digital</span></div>
-          <div class="lab-stage">
-            <div class="lab-sound-vis" id="sndBleepVis">◉</div>
-            <button type="button" class="lab-replay" data-sound="bleep">▶ Play</button>
-          </div>
-          <div class="lab-cell-foot">
-            <strong>FM 方波 · 階梯式跳音 120ms。</strong>適合：AI 回應確認、資料同步完成、即時數據刷新。R2-D2 風但克制。
-          </div>
-        </div>
-
-        <!-- SND.05 Glitch -->
-        <div class="lab-cell">
-          <div class="lab-cell-head"><span><span class="id">SND.05</span> Glitch</span><span>processing</span></div>
-          <div class="lab-stage">
-            <div class="lab-sound-vis" id="sndGlitchVis">⌁</div>
-            <button type="button" class="lab-replay" data-sound="glitch">▶ Play</button>
-          </div>
-          <div class="lab-cell-foot">
-            <strong>Sample-and-hold 隨機跳頻 200ms。</strong>適合：AI 計算中、loading、cyberpunk 系按鈕互動。骯髒但短促。
-          </div>
-        </div>
-
-        <!-- SND.06 Neural -->
-        <div class="lab-cell">
-          <div class="lab-cell-head"><span><span class="id">SND.06</span> Neural</span><span>ambient</span></div>
-          <div class="lab-stage">
-            <div class="lab-sound-vis" id="sndNeuralVis">⌬</div>
-            <button type="button" class="lab-replay" data-sound="neural">▶ Play</button>
-          </div>
-          <div class="lab-cell-foot">
-            <strong>純五度 + 八度疊加正弦 600ms。</strong>適合：系統就緒、AI 開始對話、進入新章節。乾淨的未來感和弦。
-          </div>
-        </div>
-      </div>
-
       <div class="callout">
-        <strong>下一步：</strong>三個動畫加六個聲音都是<em>沙盒裡的草案</em>。挑你喜歡的告訴我，我把它們從這裡搬到適合的場景（Hero、CTA、theme toggle、Roo cheer 等等），<em>取代</em>目前還在用的舊動畫。
+        <strong>已採用：</strong>溫和派三聲音（Tick / Swoosh / Chime）已經串到產品互動：CTA 點擊 → Tick、主題切換 → Swoosh、Roo 慶祝與登入成功 → Chime。可以從左側 nav 的開關隨時關掉。
       </div>
     </div>
   </div>
@@ -6631,94 +6589,6 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
     flashVis('sndSwooshVis');
   }
 
-  // SND.04 · Bleep — FM stepped chirp (digital data confirm)
-  function playBleep() {
-    if (!soundOn) return;
-    const ctx = ensureCtx();
-    if (!ctx) return;
-    const t0 = ctx.currentTime;
-    // Lowered ~one octave (was 880–1760, now 440–880).
-    // Smooth glide between anchor frequencies instead of discrete steps.
-    const stepDur = 0.030;
-    const total = stepDur * 4;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = 'square';
-    osc.frequency.setValueAtTime(440, t0);
-    osc.frequency.exponentialRampToValueAtTime(660, t0 + stepDur);
-    osc.frequency.exponentialRampToValueAtTime(550, t0 + stepDur * 2);
-    osc.frequency.exponentialRampToValueAtTime(880, t0 + stepDur * 3);
-    gain.gain.setValueAtTime(0, t0);
-    gain.gain.linearRampToValueAtTime(0.06, t0 + 0.005);     // lower peak (was 0.10)
-    gain.gain.setValueAtTime(0.06, t0 + total - 0.02);
-    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + total + 0.04);
-    osc.connect(gain).connect(ctx.destination);
-    osc.start(t0); osc.stop(t0 + total + 0.06);
-    flashVis('sndBleepVis');
-  }
-
-  // SND.05 · Glitch — sample-and-hold random frequency jumps
-  function playGlitch() {
-    if (!soundOn) return;
-    const ctx = ensureCtx();
-    if (!ctx) return;
-    const t0 = ctx.currentTime;
-    // 8 random frequency hops with hold
-    const osc = ctx.createOscillator();
-    const filter = ctx.createBiquadFilter();
-    const gain = ctx.createGain();
-    osc.type = 'sawtooth';
-    filter.type = 'lowpass';
-    filter.Q.value = 8;
-    filter.frequency.value = 1800;
-    const hops = 8;
-    const hopDur = 0.025;
-    for (let i = 0; i < hops; i++) {
-      // Pseudo-S&H: jump between random freqs in a pentatonic-ish set
-      const choices = [220, 330, 440, 660, 880, 1320];
-      const f = choices[Math.floor(Math.random() * choices.length)];
-      osc.frequency.setValueAtTime(f, t0 + i * hopDur);
-    }
-    const total = hops * hopDur;
-    gain.gain.setValueAtTime(0, t0);
-    gain.gain.linearRampToValueAtTime(0.10, t0 + 0.01);
-    gain.gain.setValueAtTime(0.10, t0 + total - 0.03);
-    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + total + 0.05);
-    osc.connect(filter).connect(gain).connect(ctx.destination);
-    osc.start(t0); osc.stop(t0 + total + 0.08);
-    flashVis('sndGlitchVis');
-  }
-
-  // SND.06 · Neural — stacked sines, perfect fifth + octave (futuristic chord)
-  function playNeural() {
-    if (!soundOn) return;
-    const ctx = ensureCtx();
-    if (!ctx) return;
-    const t0 = ctx.currentTime;
-    const base = 392; // G4
-    const partials = [
-      { f: base,        amp: 0.10 },           // root
-      { f: base * 1.5,  amp: 0.08 },           // perfect fifth (D5)
-      { f: base * 2.0,  amp: 0.06 },           // octave
-      { f: base * 2.005,amp: 0.05 },           // detuned octave for shimmer
-      { f: base * 3.0,  amp: 0.03 }            // perfect fifth above octave
-    ];
-    const dur = 0.6;
-    partials.forEach(p => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = p.f;
-      gain.gain.setValueAtTime(0, t0);
-      gain.gain.linearRampToValueAtTime(p.amp, t0 + 0.04);   // soft attack
-      gain.gain.setValueAtTime(p.amp, t0 + 0.15);
-      gain.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
-      osc.connect(gain).connect(ctx.destination);
-      osc.start(t0); osc.stop(t0 + dur + 0.05);
-    });
-    flashVis('sndNeuralVis');
-  }
-
   // SND.03 · Chime — two-note major-third bell
   function playChime() {
     if (!soundOn) return;
@@ -6771,9 +6641,6 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
       if (sound === 'tick') playTick();
       if (sound === 'swoosh') playSwoosh();
       if (sound === 'chime') playChime();
-      if (sound === 'bleep') playBleep();
-      if (sound === 'glitch') playGlitch();
-      if (sound === 'neural') playNeural();
     });
   });
 
