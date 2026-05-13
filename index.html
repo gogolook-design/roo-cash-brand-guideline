@@ -3076,6 +3076,166 @@ section.chapter.dark .tile-foot .avatar,
 .mock-cta,
 .demo-cta { color: var(--roo-trust) !important; }
 
+/* ─── LAB · animation & sound experiments (chapter 11) ─── */
+.lab-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  border: 1px solid var(--void-line-strong);
+  border-radius: 16px; overflow: hidden;
+  margin: 24px 0;
+}
+.lab-cell {
+  border-right: 1px solid var(--void-line);
+  background: rgba(255,255,255,0.02);
+  display: flex; flex-direction: column;
+  min-height: 280px;
+}
+.lab-cell:nth-child(3n) { border-right: none; }
+.lab-cell-head {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--void-line);
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--void-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.lab-cell-head .id { color: var(--roo-pulse); font-weight: 700; }
+.lab-stage {
+  flex: 1;
+  padding: 32px 24px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 14px;
+  position: relative;
+  background:
+    radial-gradient(circle at 1px 1px, var(--void-line) 1px, transparent 0);
+  background-size: 16px 16px;
+  background-color: rgba(0,0,0,0.18);
+}
+.lab-cell-foot {
+  padding: 12px 20px;
+  border-top: 1px solid var(--void-line);
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--void-soft);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+.lab-cell-foot strong { color: var(--void-text); font-weight: 600; }
+
+.lab-replay {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--void-line-strong);
+  color: var(--void-text);
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.lab-replay:hover { background: var(--roo-pulse); color: var(--roo-trust); border-color: var(--roo-pulse); }
+
+/* Scramble demo */
+.lab-scramble {
+  font-family: var(--font-numeric); font-weight: 700;
+  font-size: 56px; line-height: 1;
+  color: var(--roo-spark);
+  letter-spacing: -0.03em;
+}
+
+/* Magnetic CTA */
+.lab-magnetic {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 14px 26px;
+  background: var(--roo-pulse); color: var(--roo-trust);
+  border: 1px solid var(--roo-pulse);
+  border-radius: 999px;
+  box-shadow: var(--glow-green);
+  cursor: pointer;
+  transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 220ms ease-out;
+  will-change: transform;
+}
+
+/* Stagger reveal */
+.lab-stagger {
+  display: flex; flex-direction: column; gap: 8px;
+  width: 100%; max-width: 240px;
+  text-align: center;
+}
+.lab-stagger > * {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.lab-stagger.playing > *:nth-child(1) { transition-delay: 0ms;   opacity: 1; transform: none; }
+.lab-stagger.playing > *:nth-child(2) { transition-delay: 120ms; opacity: 1; transform: none; }
+.lab-stagger.playing > *:nth-child(3) { transition-delay: 240ms; opacity: 1; transform: none; }
+.lab-stagger .l1 { font-family: var(--font-mono); font-size: 13px; color: var(--roo-pulse); letter-spacing: 0.16em; text-transform: uppercase; }
+.lab-stagger .l2 { font-family: var(--font-cjk); font-weight: 800; font-size: 28px; color: var(--void-text); letter-spacing: -0.03em; line-height: 1.05; }
+.lab-stagger .l3 { font-family: var(--font-mono); font-size: 13px; color: var(--void-soft); }
+
+/* Sound toggle row */
+.sound-toggle-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 20px;
+  margin: 24px 0 16px;
+  border: 1px solid var(--void-line-strong);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.02);
+  max-width: 460px;
+}
+.sound-toggle-row .label {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  color: var(--void-text);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  flex: 1;
+}
+.sound-toggle-row .help {
+  font-family: var(--font-cjk); font-size: 13px;
+  color: var(--void-soft);
+}
+.sound-pill {
+  background: rgba(255,255,255,0.06);
+  color: var(--void-quiet);
+  border: 1px solid var(--void-line-strong);
+  font-family: var(--font-mono); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.10em;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+.sound-pill.on { background: var(--roo-pulse); color: var(--roo-trust); border-color: var(--roo-pulse); box-shadow: var(--glow-green); }
+
+@keyframes labChimeBubble {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+.lab-sound-vis {
+  position: relative;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--void-line-strong);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--void-text);
+  font-family: var(--font-mono); font-size: 22px; font-weight: 700;
+}
+.lab-sound-vis.firing::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--roo-pulse);
+  animation: labChimeBubble 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@media (max-width: 1080px) {
+  .lab-grid { grid-template-columns: 1fr; }
+  .lab-cell { border-right: none; border-bottom: 1px solid var(--void-line); }
+  .lab-cell:last-child { border-bottom: none; }
+}
+
 /* ─── PANEL THEME OVERRIDE (chapter 11 toggle) ─── */
 /* Toggle in chapter 11 affects ONLY the cards / tiles / frames inside chapters.
    Chapter backgrounds, side-nav, hero, footer all stay as designed.
@@ -6104,6 +6264,108 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
           <div class="item">Loading spinner 超過 2 秒——超過就改用 skeleton 或進度條，給使用者真實的時間感。</div>
         </div>
       </div>
+
+      <!-- LAB · ANIMATION + SOUND EXPERIMENTS -->
+      <div class="subhead h-section">Lab · 動畫與聲音實驗</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
+        這裡是<strong style="color: var(--void-text);">沙盒區</strong>——還沒進入品牌規範的動畫與聲音實驗。<strong style="color: var(--void-text);">點下面的開關就能體驗</strong>，等決定了哪些要進產品再做最後實作。
+      </p>
+
+      <div class="subhead">Animation Candidates · 動畫候選</div>
+      <div class="lab-grid">
+        <!-- LAB.01 Number scramble -->
+        <div class="lab-cell">
+          <div class="lab-cell-head"><span><span class="id">LAB.01</span> Scramble</span><span>數字</span></div>
+          <div class="lab-stage">
+            <div class="lab-scramble" id="labScramble" data-target="2.05" data-suffix="%">2.05%</div>
+            <button type="button" class="lab-replay" data-lab="scramble">▶ Play</button>
+          </div>
+          <div class="lab-cell-foot">
+            <strong>數字隨機亂跳後落定。</strong>適合：即時利率、AI 計算結果、loading 中的數字佔位。
+          </div>
+        </div>
+
+        <!-- LAB.02 Magnetic CTA -->
+        <div class="lab-cell">
+          <div class="lab-cell-head"><span><span class="id">LAB.02</span> Magnetic</span><span>互動</span></div>
+          <div class="lab-stage">
+            <button type="button" class="lab-magnetic" id="labMagnetic">滑鼠靠近</button>
+            <div style="font-family: var(--font-mono); font-size: 13px; color: var(--void-quiet); letter-spacing: 0.06em;">↑ 把游標移到附近</div>
+          </div>
+          <div class="lab-cell-foot">
+            <strong>CTA 隨游標微傾。</strong>適合：Hero 主 CTA、Roo 助手的主要動作按鈕。
+          </div>
+        </div>
+
+        <!-- LAB.03 Stagger reveal -->
+        <div class="lab-cell">
+          <div class="lab-cell-head"><span><span class="id">LAB.03</span> Stagger</span><span>進場</span></div>
+          <div class="lab-stage">
+            <div class="lab-stagger" id="labStagger">
+              <div class="l1">Roo · Live</div>
+              <div class="l2">2.05% 最低利率</div>
+              <div class="l3">5 分鐘核貸</div>
+            </div>
+            <button type="button" class="lab-replay" data-lab="stagger">▶ Play</button>
+          </div>
+          <div class="lab-cell-foot">
+            <strong>三層內容 120ms 錯峰淡入。</strong>適合：Hero 入場、章節首頁、AI 回答揭示。
+          </div>
+        </div>
+      </div>
+
+      <div class="subhead">Sound Candidates · 聲音候選</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 16px;">
+        聲音<strong style="color: var(--void-text);">預設關閉</strong>，使用者明確開啟才會發出。所有聲音都用 Web Audio API 合成——沒有外部音檔，<strong style="color: var(--void-text);">音色屬於品牌</strong>。
+      </p>
+
+      <div class="sound-toggle-row">
+        <span class="label">Sound · 音效</span>
+        <span class="help">預設關閉</span>
+        <button type="button" class="sound-pill" id="soundPill" aria-pressed="false">OFF</button>
+      </div>
+
+      <div class="lab-grid">
+        <!-- SND.01 Tick -->
+        <div class="lab-cell">
+          <div class="lab-cell-head"><span><span class="id">SND.01</span> Tick</span><span>click</span></div>
+          <div class="lab-stage">
+            <div class="lab-sound-vis" id="sndTickVis">▾</div>
+            <button type="button" class="lab-replay" data-sound="tick">▶ Play</button>
+          </div>
+          <div class="lab-cell-foot">
+            <strong>40ms 短脈衝。</strong>適合：按鈕點擊、選單切換、tick 確認。乾、短、不擾人。
+          </div>
+        </div>
+
+        <!-- SND.02 Swoosh -->
+        <div class="lab-cell">
+          <div class="lab-cell-head"><span><span class="id">SND.02</span> Swoosh</span><span>transition</span></div>
+          <div class="lab-stage">
+            <div class="lab-sound-vis" id="sndSwooshVis">~</div>
+            <button type="button" class="lab-replay" data-sound="swoosh">▶ Play</button>
+          </div>
+          <div class="lab-cell-foot">
+            <strong>200ms 頻率下掃。</strong>適合：主題切換、面板切換、頁面轉場。低調但有方向感。
+          </div>
+        </div>
+
+        <!-- SND.03 Chime -->
+        <div class="lab-cell">
+          <div class="lab-cell-head"><span><span class="id">SND.03</span> Chime</span><span>success</span></div>
+          <div class="lab-stage">
+            <div class="lab-sound-vis" id="sndChimeVis">♪</div>
+            <button type="button" class="lab-replay" data-sound="chime">▶ Play</button>
+          </div>
+          <div class="lab-cell-foot">
+            <strong>兩音大三度 600ms。</strong>適合：申辦成功、目標達成、Roo 慶祝。柔、暖、不慶功式。
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>下一步：</strong>三個動畫加三個聲音都是<em>沙盒裡的草案</em>。挑你喜歡的告訴我，我把它們從這裡搬到適合的場景（Hero、CTA、theme toggle、Roo cheer 等等），<em>取代</em>目前還在用的舊動畫。
+      </div>
     </div>
   </div>
 </section>
@@ -6113,6 +6375,201 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <style>@keyframes caret { 50% { opacity: 0; } }</style>
 
 <script>
+// Chapter 11 · LAB · Animation + Sound experiments
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // === ANIMATION 1 · Number scramble ===
+  const scrambleEl = document.getElementById('labScramble');
+  function playScramble() {
+    if (!scrambleEl) return;
+    const target = parseFloat(scrambleEl.dataset.target);
+    const suffix = scrambleEl.dataset.suffix || '';
+    const totalMs = 1000;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / totalMs);
+      if (t < 0.85) {
+        // scramble random digits
+        const fake = (Math.random() * 9.99).toFixed(2);
+        scrambleEl.textContent = fake + suffix;
+        requestAnimationFrame(tick);
+      } else {
+        scrambleEl.textContent = target.toFixed(2) + suffix;
+      }
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // === ANIMATION 2 · Magnetic CTA ===
+  const mag = document.getElementById('labMagnetic');
+  if (mag) {
+    let raf = null;
+    const onMove = (e) => {
+      const r = mag.getBoundingClientRect();
+      const cx = r.left + r.width / 2;
+      const cy = r.top + r.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const dist = Math.hypot(dx, dy);
+      const radius = 140;
+      if (dist < radius) {
+        const pull = (1 - dist / radius) * 14;
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          mag.style.transform = `translate(${(dx / dist) * pull}px, ${(dy / dist) * pull}px)`;
+        });
+      } else {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => { mag.style.transform = ''; });
+      }
+    };
+    const onLeave = () => { mag.style.transform = ''; };
+    // Attach to nearest .lab-stage parent
+    const stage = mag.closest('.lab-stage');
+    if (stage) {
+      stage.addEventListener('mousemove', onMove);
+      stage.addEventListener('mouseleave', onLeave);
+    }
+  }
+
+  // === ANIMATION 3 · Stagger reveal ===
+  const staggerEl = document.getElementById('labStagger');
+  function playStagger() {
+    if (!staggerEl) return;
+    staggerEl.classList.remove('playing');
+    void staggerEl.offsetWidth;
+    staggerEl.classList.add('playing');
+  }
+  if (staggerEl) {
+    // Auto-play once when it scrolls into view
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { playStagger(); obs.unobserve(e.target); }});
+      }, { threshold: 0.4 });
+      obs.observe(staggerEl);
+    } else { playStagger(); }
+  }
+
+  // === SOUND · Web Audio API synthesizers ===
+  let audioCtx = null;
+  let soundOn = false;
+  const soundPill = document.getElementById('soundPill');
+
+  const ensureCtx = () => {
+    if (!audioCtx) {
+      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch (e) { return null; }
+    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    return audioCtx;
+  };
+
+  if (soundPill) {
+    soundPill.addEventListener('click', () => {
+      soundOn = !soundOn;
+      soundPill.classList.toggle('on', soundOn);
+      soundPill.setAttribute('aria-pressed', String(soundOn));
+      soundPill.textContent = soundOn ? 'ON' : 'OFF';
+      if (soundOn) ensureCtx(); // pre-warm audio context
+    });
+  }
+
+  const flashVis = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('firing');
+    void el.offsetWidth;
+    el.classList.add('firing');
+  };
+
+  // SND.01 · Tick — short pulse with snappy envelope
+  function playTick() {
+    if (!soundOn) return;
+    const ctx = ensureCtx();
+    if (!ctx) return;
+    const t0 = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(900, t0);
+    osc.frequency.exponentialRampToValueAtTime(420, t0 + 0.04);
+    gain.gain.setValueAtTime(0, t0);
+    gain.gain.linearRampToValueAtTime(0.10, t0 + 0.005);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.05);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(t0); osc.stop(t0 + 0.08);
+    flashVis('sndTickVis');
+  }
+
+  // SND.02 · Swoosh — filtered noise sweep
+  function playSwoosh() {
+    if (!soundOn) return;
+    const ctx = ensureCtx();
+    if (!ctx) return;
+    const t0 = ctx.currentTime;
+    const buf = ctx.createBuffer(1, ctx.sampleRate * 0.25, ctx.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * 0.5;
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.Q.value = 6;
+    filter.frequency.setValueAtTime(2400, t0);
+    filter.frequency.exponentialRampToValueAtTime(420, t0 + 0.25);
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.0001, t0);
+    gain.gain.linearRampToValueAtTime(0.18, t0 + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 0.25);
+    src.connect(filter).connect(gain).connect(ctx.destination);
+    src.start(t0); src.stop(t0 + 0.3);
+    flashVis('sndSwooshVis');
+  }
+
+  // SND.03 · Chime — two-note major-third bell
+  function playChime() {
+    if (!soundOn) return;
+    const ctx = ensureCtx();
+    if (!ctx) return;
+    const t0 = ctx.currentTime;
+    const notes = [[523.25, t0], [659.25, t0 + 0.10]]; // C5 → E5
+    notes.forEach(([f, when]) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = f;
+      gain.gain.setValueAtTime(0, when);
+      gain.gain.linearRampToValueAtTime(0.16, when + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, when + 0.6);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(when); osc.stop(when + 0.65);
+    });
+    flashVis('sndChimeVis');
+  }
+
+  // Wire replay buttons
+  document.querySelectorAll('.lab-replay').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lab = btn.dataset.lab;
+      const sound = btn.dataset.sound;
+      if (lab === 'scramble') playScramble();
+      if (lab === 'stagger') playStagger();
+      if (sound === 'tick') playTick();
+      if (sound === 'swoosh') playSwoosh();
+      if (sound === 'chime') playChime();
+    });
+  });
+
+  // Auto-play scramble on first scroll into view
+  if (scrambleEl && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { playScramble(); obs.unobserve(e.target); }});
+    }, { threshold: 0.5 });
+    obs.observe(scrambleEl);
+  }
+})();
+
 // Chapter 11 · Theme toggle — affects PANELS only (chapter backgrounds untouched)
 (function() {
   const KEY = 'roocash-panels-2026';
