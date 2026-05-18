@@ -3107,6 +3107,197 @@ section.chapter.dark .tile-foot .avatar,
 .mock-cta,
 .demo-cta { color: var(--roo-trust) !important; }
 
+/* ─── CHAPTER 12 · CODE REFERENCE (engineering merge) ─── */
+.code-table {
+  border: 1px solid var(--void-line-strong);
+  border-radius: 16px; overflow: hidden;
+  margin: 24px 0;
+  background: rgba(255,255,255,0.02);
+}
+.code-table-row {
+  display: grid;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--void-line);
+  align-items: center;
+}
+.code-table-row:last-child { border-bottom: none; }
+.code-table-row.head {
+  background: rgba(255,255,255,0.04);
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  color: var(--void-quiet);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 20px;
+}
+.code-table.type-table .code-table-row { grid-template-columns: 1fr 110px 130px 1fr; }
+.code-table.color-primary .code-table-row { grid-template-columns: 28px 1fr 110px 1fr 1fr; }
+.code-table.color-family .code-table-row { grid-template-columns: 140px 1fr; }
+.code-table.btn-table .code-table-row { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+.code-table .ct-class,
+.code-table .ct-token,
+.code-table .ct-hex,
+.code-table .ct-variant {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--roo-pulse);
+  letter-spacing: 0.02em;
+}
+.code-table .ct-meta,
+.code-table .ct-use {
+  font-family: var(--font-cjk); font-size: 13px;
+  color: var(--void-soft);
+  line-height: 1.6;
+}
+.code-table .ct-meta strong { color: var(--void-text); font-weight: 600; }
+.code-table .ct-sample {
+  font-family: var(--font-cjk);
+  color: var(--void-text);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.code-table .ct-sw {
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22);
+}
+.code-table .ct-was {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--void-quiet);
+  letter-spacing: 0.02em;
+}
+.code-table .ct-was s { opacity: 0.7; }
+
+/* Legacy tonal family row */
+.code-family-name {
+  font-family: var(--font-mono);
+  font-size: 14px; font-weight: 700;
+  color: var(--void-text);
+  letter-spacing: 0.04em;
+}
+.code-family-name .role {
+  display: block;
+  font-family: var(--font-cjk); font-weight: 400;
+  font-size: 13px;
+  color: var(--void-quiet);
+  letter-spacing: 0;
+  margin-top: 4px;
+}
+.code-tonal-strip {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 4px;
+}
+.code-tonal-cell {
+  height: 56px;
+  border-radius: 6px;
+  padding: 6px 8px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+}
+.code-tonal-cell .step { letter-spacing: 0.04em; }
+.code-tonal-cell .hex { font-size: 13px; opacity: 0.75; }
+
+/* Button reference card */
+.btn-ref-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1px solid var(--void-line-strong);
+  border-radius: 16px; overflow: hidden;
+  margin: 24px 0;
+}
+.btn-ref-cell {
+  border-right: 1px solid var(--void-line);
+  border-bottom: 1px solid var(--void-line);
+  padding: 24px;
+  display: flex; flex-direction: column;
+  gap: 16px;
+  background: rgba(255,255,255,0.02);
+}
+.btn-ref-cell:nth-child(2n) { border-right: none; }
+.btn-ref-cell:nth-last-child(-n+2) { border-bottom: none; }
+.btn-ref-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 12px;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  color: var(--void-quiet);
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+.btn-ref-head .id { color: var(--roo-pulse); font-weight: 700; }
+.btn-ref-stage {
+  padding: 24px;
+  background: rgba(0,0,0,0.18);
+  border-radius: 12px;
+  background-image: radial-gradient(circle at 1px 1px, var(--void-line) 1px, transparent 0);
+  background-size: 16px 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-ref-meta {
+  display: grid; grid-template-columns: 90px 1fr;
+  gap: 4px 12px;
+  font-family: var(--font-mono); font-size: 13px;
+}
+.btn-ref-meta .k { color: var(--void-quiet); text-transform: uppercase; letter-spacing: 0.08em; }
+.btn-ref-meta .v { color: var(--void-text); font-weight: 500; }
+
+/* Apply button (Spark variant) — new for ch12 */
+.btn-apply {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--roo-spark); color: #fff;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 26px;
+  border: 1px solid var(--roo-spark);
+  border-radius: 999px;
+  box-shadow: var(--glow-orange);
+  cursor: pointer;
+  transition: all .2s ease-out;
+}
+.btn-apply:hover { background: #C13200; border-color: #C13200; transform: translateY(-1px); }
+.btn-apply-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255, 96, 26, 0.10); color: var(--roo-spark);
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 26px;
+  border: 1px solid var(--roo-spark);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.btn-tertiary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.06); color: var(--void-text);
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 26px;
+  border: 1px solid var(--void-line-strong);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.btn-link {
+  background: none; border: none;
+  color: var(--roo-pulse);
+  font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: underline; text-underline-offset: 4px;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 1080px) {
+  .code-table.type-table .code-table-row { grid-template-columns: 1fr 1fr; gap: 6px; }
+  .code-table.color-primary .code-table-row { grid-template-columns: 28px 1fr 1fr; }
+  .code-table.color-family .code-table-row { grid-template-columns: 1fr; gap: 12px; }
+  .btn-ref-grid { grid-template-columns: 1fr; }
+  .btn-ref-cell { border-right: none; border-bottom: 1px solid var(--void-line); }
+  .btn-ref-cell:last-child { border-bottom: none; }
+}
+
 /* ─── LAB · animation & sound experiments (chapter 11) ─── */
 .lab-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
@@ -3801,6 +3992,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
     <li><a href="#ch09" data-chapter="ch09"><span class="nm">09.</span><span class="ti">視覺語言</span></a></li>
     <li><a href="#ch10" data-chapter="ch10"><span class="nm">10.</span><span class="ti">應用與素材庫</span></a></li>
     <li><a href="#ch11" data-chapter="ch11"><span class="nm">11.</span><span class="ti">UI · 介面系統</span></a></li>
+    <li><a href="#ch12" data-chapter="ch12"><span class="nm">12.</span><span class="ti">工程實作 · Code</span></a></li>
   </ul>
   <div class="side-nav-foot">
     <button type="button" class="sound-toggle-nav" data-sound-toggle aria-pressed="true">
@@ -3890,7 +4082,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter" id="ch01">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">01<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">01<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Brand Story · 品牌故事</div>
     </aside>
     <div class="chapter-body">
@@ -3996,7 +4188,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter dark" id="ch02">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">02<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">02<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Mission · 使命 · 定位 · 服務</div>
     </aside>
     <div class="chapter-body">
@@ -4042,7 +4234,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter" id="ch03">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">03<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">03<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Audience · 受眾 · 核心價值</div>
     </aside>
     <div class="chapter-body">
@@ -4121,7 +4313,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter dark" id="ch04">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">04<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">04<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Personality · 品牌人格</div>
     </aside>
     <div class="chapter-body">
@@ -4190,7 +4382,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter" id="ch05">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">05<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">05<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Voice · 語調 · 文案</div>
     </aside>
     <div class="chapter-body">
@@ -4331,7 +4523,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter alt" id="ch06">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">06<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">06<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Logo System · 標誌系統</div>
     </aside>
     <div class="chapter-body">
@@ -4403,7 +4595,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter dark" id="ch07">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">07<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">07<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Color &amp; Type · 色彩 · 字體</div>
     </aside>
     <div class="chapter-body">
@@ -4768,7 +4960,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter alt" id="ch08">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">08<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">08<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Icon · Mascot · Illustration</div>
     </aside>
     <div class="chapter-body">
@@ -5165,7 +5357,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter dark" id="ch09">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">09<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">09<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Visual Language · 視覺語言</div>
     </aside>
     <div class="chapter-body">
@@ -5292,7 +5484,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter alt" id="ch10">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">10<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">10<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">Applications &amp; Assets · 應用</div>
     </aside>
     <div class="chapter-body">
@@ -5485,7 +5677,7 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 <section class="chapter dark" id="ch11">
   <div class="chapter-inner">
     <aside class="chapter-folio sticky-folio">
-      <div class="num">11<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">11</span></div>
+      <div class="num">11<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
       <div class="meta">UI · 介面系統</div>
     </aside>
     <div class="chapter-body">
@@ -6402,6 +6594,348 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 
       <div class="callout">
         <strong>已採用：</strong>溫和派三聲音（Tick / Swoosh / Chime）已經串到產品互動：CTA 點擊 → Tick、主題切換 → Swoosh、Roo 慶祝與登入成功 → Chime。可以從左側 nav 的開關隨時關掉。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 12 工程實作 · Code Reference ─── -->
+<section class="chapter dark" id="ch12">
+  <div class="chapter-inner">
+    <aside class="chapter-folio sticky-folio">
+      <div class="num">12<span class="slash">/</span><span style="font-size:0.4em; color: var(--ink-quiet);">12</span></div>
+      <div class="meta">工程實作 · Code Reference</div>
+    </aside>
+    <div class="chapter-body">
+      <div class="chapter-eyebrow">Chapter Twelve</div>
+      <h2 class="chapter-title">把規範變成可以 <em>import</em> 的東西。</h2>
+      <div class="chapter-deck">
+        <p>前面 11 章是品牌的「<strong>應該怎樣</strong>」。這一章是「<strong>實際上叫什麼名字</strong>」——產品工程師打開 codebase 時，要找到的 class、token、component 名字。</p>
+        <p>策略是<strong>策展式合併（Curated Merge）</strong>：新品牌規範是 Primary（主規範），現有 codebase 的 NRoo* tokens 是 Secondary（保留為實作層、語意狀態色）。<strong>不丟、不重寫、清楚分層。</strong></p>
+      </div>
+
+      <!-- ─── 12.A · TYPOGRAPHY ─── -->
+      <div class="subhead h-section">Typography · 文字 class 對照</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
+        codebase 的 <code style="font-family: var(--font-mono); color: var(--roo-pulse); font-size: 13px;">tailwind.config.js</code> 已經定義了 9 個 utility class。新品牌的 5 個 role 直接<strong style="color: var(--void-text);">映射</strong>到這些 class，外加 2 個新 thin class（給 Display 預設用）。
+      </p>
+
+      <div class="code-table type-table">
+        <div class="code-table-row head">
+          <span>UTILITY CLASS</span><span>SIZE / WEIGHT</span><span>BRAND ROLE</span><span>SAMPLE</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.h1-thin <span style="color: var(--roo-spark); margin-left: 4px; font-size: 13px;">NEW</span></span>
+          <span class="ct-meta">32 / 200<br/><strong>md → 24px</strong></span>
+          <span class="ct-meta">Display · <strong>預設</strong></span>
+          <span class="ct-sample" style="font-weight: 200; font-size: 22px; letter-spacing: -0.03em;">理財建議的下一個世代</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.h2-thin <span style="color: var(--roo-spark); margin-left: 4px; font-size: 13px;">NEW</span></span>
+          <span class="ct-meta">40 / 200</span>
+          <span class="ct-meta">Display · 預設大字</span>
+          <span class="ct-sample" style="font-weight: 200; font-size: 24px; letter-spacing: -0.03em;">每一筆金錢決定</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.h1-bold</span>
+          <span class="ct-meta">32 / 700<br/><strong>md → 24px</strong></span>
+          <span class="ct-meta">Display · 強調（疊 Pulse 色）</span>
+          <span class="ct-sample" style="font-weight: 800; font-size: 22px; color: var(--roo-pulse); letter-spacing: -0.04em;">下一個世代</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.h2-bold</span>
+          <span class="ct-meta">40 / 800</span>
+          <span class="ct-meta">Display · 強調大字</span>
+          <span class="ct-sample" style="font-weight: 800; font-size: 24px; color: var(--roo-pulse); letter-spacing: -0.04em;">下一個世代</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.h4-bold</span>
+          <span class="ct-meta">24 / 700</span>
+          <span class="ct-meta">卡片標題</span>
+          <span class="ct-sample" style="font-weight: 700; font-size: 18px;">A 銀行 個人信貸</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.h5-bold</span>
+          <span class="ct-meta">20 / 700</span>
+          <span class="ct-meta">小標題</span>
+          <span class="ct-sample" style="font-weight: 700; font-size: 16px;">熱門推薦</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.h6-bold</span>
+          <span class="ct-meta">18 / 700</span>
+          <span class="ct-meta">區塊標題</span>
+          <span class="ct-sample" style="font-weight: 700; font-size: 15px;">為你精選</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.b1-regular</span>
+          <span class="ct-meta">16 / 400</span>
+          <span class="ct-meta">Body · 預設內文</span>
+          <span class="ct-sample" style="font-weight: 400; font-size: 15px;">這是 Roo.Cash 的標準內文</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.b1-medium</span>
+          <span class="ct-meta">16 / 500</span>
+          <span class="ct-meta">Body · 微強調</span>
+          <span class="ct-sample" style="font-weight: 500; font-size: 15px;">已陪伴 120,000+ 位使用者</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.b2-regular</span>
+          <span class="ct-meta">14 / 400</span>
+          <span class="ct-meta">次級內文</span>
+          <span class="ct-sample" style="font-weight: 400; font-size: 14px;">卡片描述、說明段落</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.b2-medium</span>
+          <span class="ct-meta">14 / 500</span>
+          <span class="ct-meta">次級內文強調</span>
+          <span class="ct-sample" style="font-weight: 500; font-size: 14px;">5 分鐘核貸</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.c1-medium</span>
+          <span class="ct-meta">13 / 500</span>
+          <span class="ct-meta">Label · 標籤主用</span>
+          <span class="ct-sample" style="font-family: var(--font-mono); font-weight: 500; font-size: 13px; letter-spacing: 0.10em; text-transform: uppercase;">CHAPTER 12</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-class">.c1-bold</span>
+          <span class="ct-meta">13 / 700</span>
+          <span class="ct-meta">Label · 標題小字</span>
+          <span class="ct-sample" style="font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.10em; text-transform: uppercase;">LIVE INDEX</span>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>淘汰：</strong>legacy <code style="font-family: var(--font-mono);">.h1-regular</code> / <code style="font-family: var(--font-mono);">.h3-regular</code> / <code style="font-family: var(--font-mono);">.b1-bold</code> / <code style="font-family: var(--font-mono);">.b2-bold</code> 不再用——他們的場景被新的 thin / 重新分配的 weight 取代。<em>新增：</em><code style="font-family: var(--font-mono); color: var(--roo-pulse);">.h1-thin</code> 與 <code style="font-family: var(--font-mono); color: var(--roo-pulse);">.h2-thin</code>，給新品牌的 Display 預設用。
+      </div>
+
+      <!-- ─── 12.B · COLOR ─── -->
+      <div class="subhead h-section">Color · 兩層色彩系統</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 8px;">
+        <strong style="color: var(--void-text);">Primary（5 色 · 新品牌）</strong>是設計師看的 spec，<strong style="color: var(--void-text);">Secondary（NRoo* 七大色族 · 既有 codebase）</strong>是工程師看的 utility。Primary 值已重新對應到 NRoo*-100/120 上，舊 hex 直接取代。
+      </p>
+
+      <div class="subhead">Primary · 5 個品牌主色</div>
+      <div class="code-table color-primary">
+        <div class="code-table-row head">
+          <span></span><span>BRAND NAME</span><span>HEX</span><span>MAPS TO LEGACY</span><span>USE</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-sw" style="background: #021C26;"></span>
+          <span class="ct-token">Roo Trust</span>
+          <span class="ct-meta"><strong>#021C26</strong></span>
+          <span class="ct-was"><code style="font-family: var(--font-mono);">NRooBlue-100</code><br/><s>was #112858</s></span>
+          <span class="ct-use">主介面 · 標題 · 文字</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-sw" style="background: #074058;"></span>
+          <span class="ct-token">Roo Steady</span>
+          <span class="ct-meta"><strong>#074058</strong></span>
+          <span class="ct-was"><code style="font-family: var(--font-mono);">NRooBlue-95</code></span>
+          <span class="ct-use">深度 · 支援表面</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-sw" style="background: #25C9BA;"></span>
+          <span class="ct-token">Roo Pulse</span>
+          <span class="ct-meta"><strong>#25C9BA</strong></span>
+          <span class="ct-was"><code style="font-family: var(--font-mono);">NRooGreen-100</code><br/><s>was #00E0A0</s></span>
+          <span class="ct-use">CTA · AI · 即時</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-sw" style="background: #FF601A;"></span>
+          <span class="ct-token">Roo Spark</span>
+          <span class="ct-meta"><strong>#FF601A</strong></span>
+          <span class="ct-was"><code style="font-family: var(--font-mono);">NRooOrange-120</code><br/><s>was #D84421</s></span>
+          <span class="ct-use">數字 · 申辦 CTA · 警示</span>
+        </div>
+        <div class="code-table-row">
+          <span class="ct-sw" style="background: #F2F6F8;"></span>
+          <span class="ct-token">Roo Clear</span>
+          <span class="ct-meta"><strong>#F2F6F8</strong></span>
+          <span class="ct-was"><code style="font-family: var(--font-mono);">NRooGrey-10</code><br/><s>was #F8F8F8</s></span>
+          <span class="ct-use">頁面底色</span>
+        </div>
+      </div>
+
+      <div class="subhead">Secondary · 既有 NRoo* token 全保留</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 16px;">
+        所有 legacy tonal scale 都繼續存在，工程師可以直接用。<strong style="color: var(--void-text);">Blue / Green / Orange / Grey</strong> 是 Primary 4 個品牌色的完整 tonal 系統（-5 到 -150 不等）。<strong style="color: var(--void-text);">Red / Yellow / Purple</strong> 是<em>純語意色</em>——錯誤、警告、特殊促銷。新品牌不在這三色裡延伸表達，但保留它們在系統狀態的用途。
+      </p>
+
+      <div class="code-table color-family">
+        <div class="code-table-row">
+          <div class="code-family-name">NRooBlue<span class="role">→ Trust tonal scale · 13 steps · -5 到 -150</span></div>
+          <div class="code-tonal-strip">
+            <div class="code-tonal-cell" style="background: #F3FAFF; color: #021C26;"><span class="step">-5</span><span class="hex">#F3FAFF</span></div>
+            <div class="code-tonal-cell" style="background: #DCF0FF; color: #021C26;"><span class="step">-10</span><span class="hex">#DCF0FF</span></div>
+            <div class="code-tonal-cell" style="background: #52A5FF; color: #021C26;"><span class="step">-40</span><span class="hex">#52A5FF</span></div>
+            <div class="code-tonal-cell" style="background: #2567B7; color: #fff;"><span class="step">-80</span><span class="hex">#2567B7</span></div>
+            <div class="code-tonal-cell" style="background: #021C26; color: #fff;"><span class="step">-100 ★</span><span class="hex">#021C26</span></div>
+          </div>
+        </div>
+        <div class="code-table-row">
+          <div class="code-family-name">NRooGreen<span class="role">→ Pulse tonal scale · 7 steps · -10 到 -140</span></div>
+          <div class="code-tonal-strip">
+            <div class="code-tonal-cell" style="background: #E6FFF2; color: #021C26;"><span class="step">-10</span><span class="hex">#E6FFF2</span></div>
+            <div class="code-tonal-cell" style="background: #ADF2D7; color: #021C26;"><span class="step">-40</span><span class="hex">#ADF2D7</span></div>
+            <div class="code-tonal-cell" style="background: #25C9BA; color: #021C26;"><span class="step">-100 ★</span><span class="hex">#25C9BA</span></div>
+            <div class="code-tonal-cell" style="background: #14A571; color: #fff;"><span class="step">-120</span><span class="hex">#14A571</span></div>
+            <div class="code-tonal-cell" style="background: #1D724F; color: #fff;"><span class="step">-140</span><span class="hex">#1D724F</span></div>
+          </div>
+        </div>
+        <div class="code-table-row">
+          <div class="code-family-name">NRooGrey<span class="role">→ Frost tonal scale · 9 steps · -0 到 -140</span></div>
+          <div class="code-tonal-strip">
+            <div class="code-tonal-cell" style="background: #FFFFFF; color: #021C26; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.22);"><span class="step">-0</span><span class="hex">#FFFFFF</span></div>
+            <div class="code-tonal-cell" style="background: #F2F6F8; color: #021C26;"><span class="step">-10 ★</span><span class="hex">#F2F6F8</span></div>
+            <div class="code-tonal-cell" style="background: #CBCCCA; color: #021C26;"><span class="step">-60</span><span class="hex">#CBCCCA</span></div>
+            <div class="code-tonal-cell" style="background: #989998; color: #fff;"><span class="step">-100</span><span class="hex">#989998</span></div>
+            <div class="code-tonal-cell" style="background: #666666; color: #fff;"><span class="step">-140</span><span class="hex">#666666</span></div>
+          </div>
+        </div>
+        <div class="code-table-row">
+          <div class="code-family-name">NRooOrange<span class="role">→ Spark tonal scale · 8 steps · -10 到 -140</span></div>
+          <div class="code-tonal-strip">
+            <div class="code-tonal-cell" style="background: #FFD5C7; color: #021C26;"><span class="step">-10</span><span class="hex">#FFD5C7</span></div>
+            <div class="code-tonal-cell" style="background: #F29079; color: #021C26;"><span class="step">-60</span><span class="hex">#F29079</span></div>
+            <div class="code-tonal-cell" style="background: #F75231; color: #fff;"><span class="step">-100</span><span class="hex">#F75231</span></div>
+            <div class="code-tonal-cell" style="background: #FF601A; color: #fff;"><span class="step">-120 ★</span><span class="hex">#FF601A</span></div>
+            <div class="code-tonal-cell" style="background: #C13200; color: #fff;"><span class="step">-140</span><span class="hex">#C13200</span></div>
+          </div>
+        </div>
+        <div class="code-table-row">
+          <div class="code-family-name">NRooRed<span class="role">純語意色 · Alert / Danger · 5 steps</span></div>
+          <div class="code-tonal-strip">
+            <div class="code-tonal-cell" style="background: #F26666; color: #fff;"><span class="step">-60</span><span class="hex">#F26666</span></div>
+            <div class="code-tonal-cell" style="background: #F24E4E; color: #fff;"><span class="step">-80</span><span class="hex">#F24E4E</span></div>
+            <div class="code-tonal-cell" style="background: #F43131; color: #fff;"><span class="step">-100</span><span class="hex">#F43131</span></div>
+            <div class="code-tonal-cell" style="background: #D31E1A; color: #fff;"><span class="step">-120</span><span class="hex">#D31E1A</span></div>
+            <div class="code-tonal-cell" style="background: #BF0900; color: #fff;"><span class="step">-140</span><span class="hex">#BF0900</span></div>
+          </div>
+        </div>
+        <div class="code-table-row">
+          <div class="code-family-name">NRooYellow<span class="role">純語意色 · Notice / Warning · 6 steps</span></div>
+          <div class="code-tonal-strip">
+            <div class="code-tonal-cell" style="background: #FFEEC2; color: #021C26;"><span class="step">-40</span><span class="hex">#FFEEC2</span></div>
+            <div class="code-tonal-cell" style="background: #FFD066; color: #021C26;"><span class="step">-80</span><span class="hex">#FFD066</span></div>
+            <div class="code-tonal-cell" style="background: #FFB522; color: #021C26;"><span class="step">-100</span><span class="hex">#FFB522</span></div>
+            <div class="code-tonal-cell" style="background: #F49416; color: #021C26;"><span class="step">-120</span><span class="hex">#F49416</span></div>
+            <div class="code-tonal-cell" style="background: #CC7900; color: #fff;"><span class="step">-140</span><span class="hex">#CC7900</span></div>
+          </div>
+        </div>
+        <div class="code-table-row">
+          <div class="code-family-name">NRooPurple<span class="role">純語意色 · 特殊促銷 / Roo Points · 8 steps</span></div>
+          <div class="code-tonal-strip">
+            <div class="code-tonal-cell" style="background: #EBEBFF; color: #021C26;"><span class="step">-10</span><span class="hex">#EBEBFF</span></div>
+            <div class="code-tonal-cell" style="background: #C2C2FF; color: #021C26;"><span class="step">-60</span><span class="hex">#C2C2FF</span></div>
+            <div class="code-tonal-cell" style="background: #8C8CF9; color: #fff;"><span class="step">-100</span><span class="hex">#8C8CF9</span></div>
+            <div class="code-tonal-cell" style="background: #7070F2; color: #fff;"><span class="step">-120</span><span class="hex">#7070F2</span></div>
+            <div class="code-tonal-cell" style="background: #5B55E0; color: #fff;"><span class="step">-140</span><span class="hex">#5B55E0</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>讀法：</strong>畫面用的時候，先在 Primary 5 色裡找。如果是<em>系統狀態</em>（錯誤、警告、disabled），找 Secondary 的 Red / Yellow / Grey。<em>促銷 / 點數</em>找 Purple。<strong>避免</strong>把 Secondary 當品牌主色用——那是 Primary 的工作。
+      </div>
+
+      <!-- ─── 12.C · BUTTONS ─── -->
+      <div class="subhead h-section">Buttons · RooButton 11 → 8 variants</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
+        從 codebase 的 11 個 variant 收斂成 8 個。<strong style="color: var(--void-text);">每一個都保留一個明確 intent</strong>——不是「綠的」「藍的」「紫的」這種顏色描述，而是「主要動作」「申辦」「次要」這種<em>目的描述</em>。
+      </p>
+
+      <div class="btn-ref-grid">
+        <div class="btn-ref-cell">
+          <div class="btn-ref-head"><span><span class="id">BTN.01</span> Primary</span><span>variant='primary'</span></div>
+          <div class="btn-ref-stage"><button type="button" class="btn-glow">立即比較</button></div>
+          <div class="btn-ref-meta">
+            <span class="k">Was</span><span class="v">primary</span>
+            <span class="k">Color</span><span class="v">Pulse #25C9BA · Trust 文字</span>
+            <span class="k">Use</span><span class="v">每頁唯一最重要動作</span>
+          </div>
+        </div>
+
+        <div class="btn-ref-cell">
+          <div class="btn-ref-head"><span><span class="id">BTN.02</span> Apply</span><span>variant='apply'</span></div>
+          <div class="btn-ref-stage"><button type="button" class="btn-apply">立即申辦</button></div>
+          <div class="btn-ref-meta">
+            <span class="k">Was</span><span class="v">apply</span>
+            <span class="k">Color</span><span class="v">Spark #FF601A · 白字</span>
+            <span class="k">Use</span><span class="v">申辦類動作 · Save / Submit / Apply Now</span>
+          </div>
+        </div>
+
+        <div class="btn-ref-cell">
+          <div class="btn-ref-head"><span><span class="id">BTN.03</span> Secondary</span><span>variant='secondary'</span></div>
+          <div class="btn-ref-stage"><button type="button" class="btn-ghost">看詳情</button></div>
+          <div class="btn-ref-meta">
+            <span class="k">Was</span><span class="v">secondary-1 + secondary-outline</span>
+            <span class="k">Color</span><span class="v">透明 · Trust 邊框 · Trust 文字</span>
+            <span class="k">Use</span><span class="v">並列於 Primary · 替代動作</span>
+          </div>
+        </div>
+
+        <div class="btn-ref-cell">
+          <div class="btn-ref-head"><span><span class="id">BTN.04</span> Apply Secondary</span><span>variant='apply-secondary'</span></div>
+          <div class="btn-ref-stage"><button type="button" class="btn-apply-secondary">了解申辦</button></div>
+          <div class="btn-ref-meta">
+            <span class="k">Was</span><span class="v">secondary-3</span>
+            <span class="k">Color</span><span class="v">Spark 邊框 + 文字 · 淡 Spark 底</span>
+            <span class="k">Use</span><span class="v">申辦情境的次要動作</span>
+          </div>
+        </div>
+
+        <div class="btn-ref-cell">
+          <div class="btn-ref-head"><span><span class="id">BTN.05</span> Tertiary</span><span>variant='tertiary'</span></div>
+          <div class="btn-ref-stage"><button type="button" class="btn-tertiary">取消</button></div>
+          <div class="btn-ref-meta">
+            <span class="k">Was</span><span class="v">tertiary + ghost + secondary-2</span>
+            <span class="k">Color</span><span class="v">淡灰底 · Trust 文字</span>
+            <span class="k">Use</span><span class="v">最低層級動作 · 取消 / 略過</span>
+          </div>
+        </div>
+
+        <div class="btn-ref-cell">
+          <div class="btn-ref-head"><span><span class="id">BTN.06</span> Disabled</span><span>variant='primary' disabled</span></div>
+          <div class="btn-ref-stage"><button type="button" class="btn-off" disabled>送出中</button></div>
+          <div class="btn-ref-meta">
+            <span class="k">Was</span><span class="v">（內建在所有 variant）</span>
+            <span class="k">Color</span><span class="v">muted · pointer-events: none</span>
+            <span class="k">Use</span><span class="v">表單未填完 / 處理中 / 暫不可用</span>
+          </div>
+        </div>
+
+        <div class="btn-ref-cell">
+          <div class="btn-ref-head"><span><span class="id">BTN.07</span> Link</span><span>variant='link'</span></div>
+          <div class="btn-ref-stage"><button type="button" class="btn-link">查看全部 →</button></div>
+          <div class="btn-ref-meta">
+            <span class="k">Was</span><span class="v">link</span>
+            <span class="k">Color</span><span class="v">Pulse · 底線</span>
+            <span class="k">Use</span><span class="v">內文裡的動作字 · 查看更多</span>
+          </div>
+        </div>
+
+        <div class="btn-ref-cell">
+          <div class="btn-ref-head"><span><span class="id">BTN.08</span> Link Reverse</span><span>variant='link-outline'</span></div>
+          <div class="btn-ref-stage" style="background-color: var(--roo-trust);"><button type="button" class="btn-link" style="color: var(--roo-pulse);">查看全部 →</button></div>
+          <div class="btn-ref-meta">
+            <span class="k">Was</span><span class="v">link-outline</span>
+            <span class="k">Color</span><span class="v">深色背景上的 Pulse · 底線</span>
+            <span class="k">Use</span><span class="v">深色 hero / dark CTA 區內的次要連結</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>變更摘要：</strong><br/>
+        ✓ <code style="font-family: var(--font-mono);">apply</code> 留下來——申辦 CTA 是真實的 intent，不該被吃進 primary。<br/>
+        ✓ <code style="font-family: var(--font-mono);">secondary-2</code> 紫色按鈕<em>淘汰</em>——色彩系統不再用紫做主色。如果要做特殊促銷按鈕，用 Tertiary 加上 Purple 文字。<br/>
+        ✓ <code style="font-family: var(--font-mono);">secondary-outline-blue</code> 收進 Secondary——同一個 variant，不再做 quiet 變形。<br/>
+        ✓ <code style="font-family: var(--font-mono);">ghost</code> 收進 Tertiary——「最低層級」一個 variant 就夠。
+      </div>
+
+      <div class="callout" style="margin-top: 16px;">
+        <strong>實作備註：</strong>所有 variant 名字是 <em>建議</em>。實際 PR 時可以保留現有的 11 個 variant，但每一個都應該<em>標註</em>它對應的 brand intent（在 component prop comment 裡，或在 Storybook 描述裡），並且<em>不再新增</em>不在這 8 個 intent 之內的 variant。
       </div>
     </div>
   </div>
