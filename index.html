@@ -684,15 +684,28 @@ section.chapter.dark .chapter-deck .num,
   font-family: var(--font-mono); font-size: 13px; font-weight: 500;
   color: var(--ink-quiet);
   text-transform: uppercase; letter-spacing: 0.16em;
-  display: flex; align-items: baseline; gap: 12px;
+  display: flex; align-items: center; gap: 16px;
   margin: 56px 0 20px;
 }
 .subhead .dash { width: 24px; height: 1px; background: var(--ink-quiet); }
+/* Section header pattern: label followed by horizontal line to the right */
 .subhead.h-section {
   margin-top: 64px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--ink);
+  margin-bottom: 24px;
+  padding-bottom: 0;
+  border-bottom: none;
+  color: var(--ink);
 }
+.subhead.h-section::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--hair-strong);
+}
+section.chapter.dark .subhead.h-section,
+.hero .subhead.h-section { color: var(--void-text); }
+section.chapter.dark .subhead.h-section::after,
+.hero .subhead.h-section::after { background: var(--void-line-strong); }
 
 /* ─── SPECIMEN TILE (the brand element of this design) ─── */
 .tile-grid { display: grid; gap: 0; }
@@ -1989,7 +2002,6 @@ section.chapter.dark .chapter-folio .num { color: var(--void-text); }
 section.chapter.dark .chapter-folio .meta { color: var(--void-quiet); border-top-color: var(--void-line); }
 section.chapter.dark .subhead { color: var(--void-quiet); }
 section.chapter.dark .subhead .dash { background: var(--void-line-strong); }
-section.chapter.dark .subhead.h-section { border-bottom-color: var(--void-line-strong); }
 section.chapter.dark .tile-grid > * { border-color: var(--void-line); }
 section.chapter.dark .tile-grid.with-frame { border-color: var(--void-line); }
 section.chapter.dark .tile { background: rgba(255,255,255,0.02); }
@@ -6278,6 +6290,42 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
 
       <div class="callout" style="margin-top: 16px;">
         <strong>分隔線規矩 · pad.divider：</strong>任何<em>內文 / 段落 / body 文字</em>上下接 hairline 分隔線時，<strong style="color: var(--void-text);">至少留 24px 空隙</strong>。讓眼睛清楚知道：「這段文字結束了，下面是新的層級。」<br/>已套用於：<code style="font-family: var(--font-mono); color: var(--roo-pulse);">.tile-body</code> · <code style="font-family: var(--font-mono); color: var(--roo-pulse);">.alt-stack</code> · <code style="font-family: var(--font-mono); color: var(--roo-pulse);">.dir-meta</code> · <code style="font-family: var(--font-mono); color: var(--roo-pulse);">.curve-graph-wrap</code>。
+      </div>
+
+      <!-- SECTION LABEL PATTERN -->
+      <div class="subhead h-section">Section Label · 區塊標籤與分隔線</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 24px;">
+        每一個內容區塊用同一種<strong style="color: var(--void-text);">標籤 + 右側橫線</strong>的樣式作為起頭——上面這一行就是範例。<strong style="color: var(--void-text);">標籤在左、橫線往右延伸到容器邊</strong>，視覺上像在說「這裡是一段新的內容」，比起傳統「整條 underline 在標題下面」的寫法，更編輯味、更不擋路。
+      </p>
+
+      <div class="tile-grid cols-2 with-frame" style="margin-bottom: 24px;">
+        <div class="tile">
+          <div class="tile-head"><span class="id">SL.01</span><span>Default · 標籤 + 線</span></div>
+          <div class="tile-title">標籤左、橫線右</div>
+          <p class="tile-body">Mono 大寫 13px label · letter-spacing 0.16em · 後接 <code style="font-family: var(--font-mono);">flex: 1</code> 的 1px hairline · gap 16px。Hairline 顏色用 <code style="font-family: var(--font-mono); color: var(--roo-pulse);">--hair-strong</code>（light）或 <code style="font-family: var(--font-mono); color: var(--roo-pulse);">--void-line-strong</code>（dark），不要更重。</p>
+          <div class="tile-foot"><span>CSS</span><span>.subhead.h-section</span></div>
+        </div>
+        <div class="tile">
+          <div class="tile-head"><span class="id">SL.02</span><span>Spacing · 上下空間</span></div>
+          <div class="tile-title">上 64 / 下 24</div>
+          <p class="tile-body">與上一段內容隔 <strong style="color: var(--void-text);">64px</strong>（給每個新區塊清楚的喘息），與標籤下方第一段內容隔 <strong style="color: var(--void-text);">24px</strong>（符合 pad.divider 規矩）。<br/>子標籤（沒有 h-section 修飾）只接 16px / 20px 比較緊。</p>
+          <div class="tile-foot"><span>MARGIN</span><span>64 · 24</span></div>
+        </div>
+      </div>
+
+      <div class="dodont">
+        <div class="col-do">
+          <div class="col-head"><span class="glyph">✓</span> 寫對的方式</div>
+          <div class="item">直接用 <code style="font-family: var(--font-mono);">&lt;div class="subhead h-section"&gt;</code>，標籤文字裝進去就好，橫線自動。</div>
+          <div class="item">label 永遠用 mono 大寫、letter-spacing 0.16em，跟所有 micro-label 同一個 voice。</div>
+          <div class="item">需要 sub-section（小一級）時去掉 <code style="font-family: var(--font-mono);">h-section</code> 修飾——保留 flex 容器但沒有橫線。</div>
+        </div>
+        <div class="col-dont">
+          <div class="col-head"><span class="glyph">✕</span> 絕對不要</div>
+          <div class="item">用 <code style="font-family: var(--font-mono);">border-bottom</code> 把標題畫上整條 underline——那是舊版的寫法，已淘汰。</div>
+          <div class="item">把 hairline 換成粗線或彩色線——它應該幾乎隱身，只引導眼睛。</div>
+          <div class="item">標籤前面再加一條短橫線（『—』）——h-section 已經有橫線在右，不需要對稱。</div>
+        </div>
       </div>
 
       <!-- THEME · 主題切換 -->
