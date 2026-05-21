@@ -1,0 +1,16 @@
+{
+  "model": "imagen-4.0-fast-generate-001",
+  "unit_cost_usd": 0.02,
+  "budget_cap_usd": 30.0,
+  "soft_stop_usd": 25.0,
+  "generations": [
+    {
+      "file": "p1_s1.png",
+      "status": "ok",
+      "bytes": 892516,
+      "cost_usd": 0.02,
+      "cumulative_usd": 0.02
+    }
+  ],
+  "total_cost_usd": 0.02
+}
