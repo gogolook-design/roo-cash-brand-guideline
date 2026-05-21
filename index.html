@@ -1161,7 +1161,7 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
   border-bottom: 1px solid var(--hair);
 }
 .alt-stack {
-  padding: 12px 0;
+  padding: 12px 0 24px;   /* 24px below content before divider */
   border-bottom: 1px solid var(--hair);
   min-height: 100px;
 }
@@ -1218,7 +1218,7 @@ section.chapter.dark .list-rule .row .num { color: var(--roo-spark); }
   border-bottom: 1px solid var(--hair);
 }
 .dir-meta {
-  padding: 18px 20px 16px;
+  padding: 18px 20px 24px;   /* 24px below copy before .dir-foot divider */
 }
 .dir-meta .name {
   font-family: var(--font-serif-cjk);
@@ -2173,7 +2173,7 @@ section.chapter.dark em { color: var(--nroo-water); }
 }
 .curve-cell-head .id { color: var(--roo-pulse); font-weight: 700; }
 .curve-graph-wrap {
-  padding: 32px 28px 8px;
+  padding: 32px 28px 24px;   /* 24px below graph before curve-cell-foot */
   background:
     radial-gradient(circle at 1px 1px, var(--void-line) 1px, transparent 0);
   background-size: 16px 16px;
@@ -6265,10 +6265,19 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
           <span class="px">96 · 32</span>
           <span class="where">Hero 主視覺 · promise-block · 重要 KV 區塊</span>
         </div>
+        <div class="pad-spec-row" style="background: rgba(37, 201, 186, 0.04);">
+          <span class="token">pad.divider</span>
+          <span class="px">24 · —</span>
+          <span class="where"><strong style="color: var(--void-text);">內文上方與下方接 hairline 分隔線時的最少空隙</strong>。tile-body 接 tile-foot 的 border-top、dir-meta 接 dir-foot、alt-stack 內容到 border-bottom、subhead 接 section 內容——全部至少 24px。</span>
+        </div>
       </div>
 
       <div class="callout">
         <strong>通用原則：</strong>同一個元件在整個產品裡用同一個 padding。如果你發現自己想為一張卡片寫「特殊」的 padding 值，先問：是不是這張卡的<em>類別</em>不對？換對的元件，padding 自動就對了。
+      </div>
+
+      <div class="callout" style="margin-top: 16px;">
+        <strong>分隔線規矩 · pad.divider：</strong>任何<em>內文 / 段落 / body 文字</em>上下接 hairline 分隔線時，<strong style="color: var(--void-text);">至少留 24px 空隙</strong>。讓眼睛清楚知道：「這段文字結束了，下面是新的層級。」<br/>已套用於：<code style="font-family: var(--font-mono); color: var(--roo-pulse);">.tile-body</code> · <code style="font-family: var(--font-mono); color: var(--roo-pulse);">.alt-stack</code> · <code style="font-family: var(--font-mono); color: var(--roo-pulse);">.dir-meta</code> · <code style="font-family: var(--font-mono); color: var(--roo-pulse);">.curve-graph-wrap</code>。
       </div>
 
       <!-- THEME · 主題切換 -->
