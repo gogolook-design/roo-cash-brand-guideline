@@ -3107,6 +3107,119 @@ section.chapter.dark .tile-foot .avatar,
 .mock-cta,
 .demo-cta { color: var(--roo-trust) !important; }
 
+/* ─── CHAPTER 12 · COLOR OVERVIEW (at-a-glance) ─── */
+.color-overview {
+  border: 1px solid var(--void-line-strong);
+  border-radius: 16px; overflow: hidden;
+  margin: 24px 0 32px;
+}
+.overview-section + .overview-section { border-top: 1px solid var(--void-line); }
+.overview-section-head {
+  padding: 14px 24px;
+  font-family: var(--font-mono); font-size: 13px; font-weight: 700;
+  color: var(--void-text);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--void-line);
+}
+.overview-section-head .count {
+  font-weight: 500; color: var(--void-quiet); letter-spacing: 0.08em;
+}
+
+/* Primary 5-cell grid */
+.overview-primary-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+.overview-primary-cell {
+  padding: 28px 20px;
+  min-height: 180px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  font-family: var(--font-mono);
+  position: relative;
+}
+.overview-primary-cell:last-child { border-right: none; }
+.overview-primary-cell .ovp-role {
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  opacity: 0.7;
+}
+.overview-primary-cell .ovp-name {
+  font-family: var(--font-cjk);
+  font-weight: 800; font-size: 22px;
+  letter-spacing: -0.02em;
+  margin-top: 8px;
+}
+.overview-primary-cell .ovp-hex {
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.04em;
+  margin-top: 14px;
+  opacity: 0.85;
+}
+
+/* Secondary family row */
+.overview-family-row {
+  display: grid; grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--void-line);
+  align-items: center;
+}
+.overview-family-row:last-child { border-bottom: none; }
+.overview-family-label {
+  font-family: var(--font-mono);
+  font-size: 14px; font-weight: 700;
+  color: var(--void-text);
+  letter-spacing: 0.04em;
+}
+.overview-family-label .sub {
+  display: block;
+  font-family: var(--font-cjk); font-weight: 400;
+  font-size: 13px;
+  color: var(--void-quiet);
+  letter-spacing: 0;
+  margin-top: 4px;
+}
+.overview-shades {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+  gap: 4px;
+}
+.overview-shade {
+  height: 56px;
+  border-radius: 4px;
+  padding: 8px 10px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  position: relative;
+}
+.overview-shade .ovs-step {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.overview-shade .ovs-hex {
+  font-weight: 500;
+  font-size: 13px;
+  opacity: 0.7;
+}
+.overview-shade.is-primary::after {
+  content: '★';
+  position: absolute; top: 6px; right: 8px;
+  font-size: 13px; opacity: 0.85;
+}
+
+@media (max-width: 1080px) {
+  .overview-primary-grid { grid-template-columns: repeat(2, 1fr); }
+  .overview-primary-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .overview-primary-cell:last-child { border-bottom: none; }
+  .overview-family-row { grid-template-columns: 1fr; gap: 12px; }
+  .overview-shade { height: 48px; padding: 6px 8px; }
+}
+
 /* ─── CHAPTER 12 · CODE REFERENCE (engineering merge) ─── */
 .code-table {
   border: 1px solid var(--void-line-strong);
@@ -6713,6 +6826,171 @@ html.panels-dark .rec-bignum { color: var(--roo-spark); }
       <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 8px;">
         <strong style="color: var(--void-text);">Primary（5 色 · 新品牌）</strong>是設計師看的 spec，<strong style="color: var(--void-text);">Secondary（NRoo* 七大色族 · 既有 codebase）</strong>是工程師看的 utility。Primary 值已重新對應到 NRoo*-100/120 上，舊 hex 直接取代。
       </p>
+
+      <div class="subhead">Color System · 整體一覽</div>
+      <p style="font-family: var(--font-cjk); font-size: 14px; line-height: 1.85; color: var(--void-soft); max-width: 720px; margin-bottom: 8px;">
+        全部 70+ 色彩值，一個畫面看完。<span style="font-family: var(--font-mono); color: var(--roo-pulse); font-weight: 700;">★</span> 標記是 Primary（品牌主色），其餘是 Secondary tonal scale。
+      </p>
+
+      <div class="color-overview">
+        <!-- PRIMARY ROW -->
+        <div class="overview-section">
+          <div class="overview-section-head">
+            <span>PRIMARY · 品牌主色</span>
+            <span class="count">5 colours</span>
+          </div>
+          <div class="overview-primary-grid">
+            <div class="overview-primary-cell" style="background: #021C26; color: #F2F6F8;">
+              <div class="ovp-role">01 · Surface</div>
+              <div>
+                <div class="ovp-name">Roo Trust</div>
+                <div class="ovp-hex">#021C26</div>
+              </div>
+            </div>
+            <div class="overview-primary-cell" style="background: #074058; color: #F2F6F8;">
+              <div class="ovp-role">02 · Depth</div>
+              <div>
+                <div class="ovp-name">Roo Steady</div>
+                <div class="ovp-hex">#074058</div>
+              </div>
+            </div>
+            <div class="overview-primary-cell" style="background: #25C9BA; color: #021C26;">
+              <div class="ovp-role">03 · Action</div>
+              <div>
+                <div class="ovp-name">Roo Pulse</div>
+                <div class="ovp-hex">#25C9BA</div>
+              </div>
+            </div>
+            <div class="overview-primary-cell" style="background: #FF601A; color: #FFFFFF;">
+              <div class="ovp-role">04 · Spark</div>
+              <div>
+                <div class="ovp-name">Roo Spark</div>
+                <div class="ovp-hex">#FF601A</div>
+              </div>
+            </div>
+            <div class="overview-primary-cell" style="background: #F2F6F8; color: #021C26;">
+              <div class="ovp-role">05 · Canvas</div>
+              <div>
+                <div class="ovp-name">Roo Clear</div>
+                <div class="ovp-hex">#F2F6F8</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECONDARY: 7 FAMILIES -->
+        <div class="overview-section">
+          <div class="overview-section-head">
+            <span>SECONDARY · NRoo* tonal scales</span>
+            <span class="count">7 families · 56 shades</span>
+          </div>
+
+          <!-- NRooBlue 13 shades → Trust tonal -->
+          <div class="overview-family-row">
+            <div class="overview-family-label">NRooBlue<span class="sub">Trust tonal · 13</span></div>
+            <div class="overview-shades">
+              <div class="overview-shade" style="background: #F3FAFF; color: #021C26;"><span class="ovs-step">-5</span><span class="ovs-hex">F3FAFF</span></div>
+              <div class="overview-shade" style="background: #E8F5FF; color: #021C26;"><span class="ovs-step">-8</span><span class="ovs-hex">E8F5FF</span></div>
+              <div class="overview-shade" style="background: #DCF0FF; color: #021C26;"><span class="ovs-step">-10</span><span class="ovs-hex">DCF0FF</span></div>
+              <div class="overview-shade" style="background: #B0DAFF; color: #021C26;"><span class="ovs-step">-20</span><span class="ovs-hex">B0DAFF</span></div>
+              <div class="overview-shade" style="background: #52A5FF; color: #021C26;"><span class="ovs-step">-40</span><span class="ovs-hex">52A5FF</span></div>
+              <div class="overview-shade" style="background: #377ADB; color: #fff;"><span class="ovs-step">-60</span><span class="ovs-hex">377ADB</span></div>
+              <div class="overview-shade" style="background: #2567B7; color: #fff;"><span class="ovs-step">-80</span><span class="ovs-hex">2567B7</span></div>
+              <div class="overview-shade" style="background: #1F5099; color: #fff;"><span class="ovs-step">-90</span><span class="ovs-hex">1F5099</span></div>
+              <div class="overview-shade" style="background: #3C5078; color: #fff;"><span class="ovs-step">-95</span><span class="ovs-hex">3C5078</span></div>
+              <div class="overview-shade is-primary" style="background: #021C26; color: #fff;"><span class="ovs-step">-100</span><span class="ovs-hex">021C26</span></div>
+              <div class="overview-shade" style="background: #112549; color: #fff;"><span class="ovs-step">-120</span><span class="ovs-hex">112549</span></div>
+              <div class="overview-shade" style="background: #0D1E3D; color: #fff;"><span class="ovs-step">-140</span><span class="ovs-hex">0D1E3D</span></div>
+              <div class="overview-shade" style="background: #1C222D; color: #fff;"><span class="ovs-step">-150</span><span class="ovs-hex">1C222D</span></div>
+            </div>
+          </div>
+
+          <!-- NRooGreen 7 shades → Pulse tonal -->
+          <div class="overview-family-row">
+            <div class="overview-family-label">NRooGreen<span class="sub">Pulse tonal · 7</span></div>
+            <div class="overview-shades">
+              <div class="overview-shade" style="background: #E6FFF2; color: #021C26;"><span class="ovs-step">-10</span><span class="ovs-hex">E6FFF2</span></div>
+              <div class="overview-shade" style="background: #D5F7E9; color: #021C26;"><span class="ovs-step">-20</span><span class="ovs-hex">D5F7E9</span></div>
+              <div class="overview-shade" style="background: #ADF2D7; color: #021C26;"><span class="ovs-step">-40</span><span class="ovs-hex">ADF2D7</span></div>
+              <div class="overview-shade" style="background: #85EDC5; color: #021C26;"><span class="ovs-step">-60</span><span class="ovs-hex">85EDC5</span></div>
+              <div class="overview-shade is-primary" style="background: #25C9BA; color: #021C26;"><span class="ovs-step">-100</span><span class="ovs-hex">25C9BA</span></div>
+              <div class="overview-shade" style="background: #14A571; color: #fff;"><span class="ovs-step">-120</span><span class="ovs-hex">14A571</span></div>
+              <div class="overview-shade" style="background: #1D724F; color: #fff;"><span class="ovs-step">-140</span><span class="ovs-hex">1D724F</span></div>
+            </div>
+          </div>
+
+          <!-- NRooGrey 9 shades → Clear tonal -->
+          <div class="overview-family-row">
+            <div class="overview-family-label">NRooGrey<span class="sub">Clear tonal · 9</span></div>
+            <div class="overview-shades">
+              <div class="overview-shade" style="background: #FFFFFF; color: #021C26; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);"><span class="ovs-step">-0</span><span class="ovs-hex">FFFFFF</span></div>
+              <div class="overview-shade is-primary" style="background: #F2F6F8; color: #021C26;"><span class="ovs-step">-10</span><span class="ovs-hex">F2F6F8</span></div>
+              <div class="overview-shade" style="background: #F2F2F2; color: #021C26;"><span class="ovs-step">-20</span><span class="ovs-hex">F2F2F2</span></div>
+              <div class="overview-shade" style="background: #E5E5E5; color: #021C26;"><span class="ovs-step">-40</span><span class="ovs-hex">E5E5E5</span></div>
+              <div class="overview-shade" style="background: #CBCCCA; color: #021C26;"><span class="ovs-step">-60</span><span class="ovs-hex">CBCCCA</span></div>
+              <div class="overview-shade" style="background: #A8A8A8; color: #021C26;"><span class="ovs-step">-80</span><span class="ovs-hex">A8A8A8</span></div>
+              <div class="overview-shade" style="background: #989998; color: #fff;"><span class="ovs-step">-100</span><span class="ovs-hex">989998</span></div>
+              <div class="overview-shade" style="background: #777776; color: #fff;"><span class="ovs-step">-120</span><span class="ovs-hex">777776</span></div>
+              <div class="overview-shade" style="background: #666666; color: #fff;"><span class="ovs-step">-140</span><span class="ovs-hex">666666</span></div>
+            </div>
+          </div>
+
+          <!-- NRooOrange 8 shades → Spark tonal -->
+          <div class="overview-family-row">
+            <div class="overview-family-label">NRooOrange<span class="sub">Spark tonal · 8</span></div>
+            <div class="overview-shades">
+              <div class="overview-shade" style="background: #FFD5C7; color: #021C26;"><span class="ovs-step">-10</span><span class="ovs-hex">FFD5C7</span></div>
+              <div class="overview-shade" style="background: #FFBFAE; color: #021C26;"><span class="ovs-step">-20</span><span class="ovs-hex">FFBFAE</span></div>
+              <div class="overview-shade" style="background: #F7A794; color: #021C26;"><span class="ovs-step">-40</span><span class="ovs-hex">F7A794</span></div>
+              <div class="overview-shade" style="background: #F29079; color: #021C26;"><span class="ovs-step">-60</span><span class="ovs-hex">F29079</span></div>
+              <div class="overview-shade" style="background: #EF6C48; color: #fff;"><span class="ovs-step">-80</span><span class="ovs-hex">EF6C48</span></div>
+              <div class="overview-shade" style="background: #F75231; color: #fff;"><span class="ovs-step">-100</span><span class="ovs-hex">F75231</span></div>
+              <div class="overview-shade is-primary" style="background: #FF601A; color: #fff;"><span class="ovs-step">-120</span><span class="ovs-hex">FF601A</span></div>
+              <div class="overview-shade" style="background: #C13200; color: #fff;"><span class="ovs-step">-140</span><span class="ovs-hex">C13200</span></div>
+            </div>
+          </div>
+
+          <!-- NRooRed 5 -->
+          <div class="overview-family-row">
+            <div class="overview-family-label">NRooRed<span class="sub">Alert · 5</span></div>
+            <div class="overview-shades">
+              <div class="overview-shade" style="background: #F26666; color: #fff;"><span class="ovs-step">-60</span><span class="ovs-hex">F26666</span></div>
+              <div class="overview-shade" style="background: #F24E4E; color: #fff;"><span class="ovs-step">-80</span><span class="ovs-hex">F24E4E</span></div>
+              <div class="overview-shade" style="background: #F43131; color: #fff;"><span class="ovs-step">-100</span><span class="ovs-hex">F43131</span></div>
+              <div class="overview-shade" style="background: #D31E1A; color: #fff;"><span class="ovs-step">-120</span><span class="ovs-hex">D31E1A</span></div>
+              <div class="overview-shade" style="background: #BF0900; color: #fff;"><span class="ovs-step">-140</span><span class="ovs-hex">BF0900</span></div>
+            </div>
+          </div>
+
+          <!-- NRooYellow 6 -->
+          <div class="overview-family-row">
+            <div class="overview-family-label">NRooYellow<span class="sub">Warning · 6</span></div>
+            <div class="overview-shades">
+              <div class="overview-shade" style="background: #FFEEC2; color: #021C26;"><span class="ovs-step">-40</span><span class="ovs-hex">FFEEC2</span></div>
+              <div class="overview-shade" style="background: #FFE8A8; color: #021C26;"><span class="ovs-step">-60</span><span class="ovs-hex">FFE8A8</span></div>
+              <div class="overview-shade" style="background: #FFD066; color: #021C26;"><span class="ovs-step">-80</span><span class="ovs-hex">FFD066</span></div>
+              <div class="overview-shade" style="background: #FFB522; color: #021C26;"><span class="ovs-step">-100</span><span class="ovs-hex">FFB522</span></div>
+              <div class="overview-shade" style="background: #F49416; color: #021C26;"><span class="ovs-step">-120</span><span class="ovs-hex">F49416</span></div>
+              <div class="overview-shade" style="background: #CC7900; color: #fff;"><span class="ovs-step">-140</span><span class="ovs-hex">CC7900</span></div>
+            </div>
+          </div>
+
+          <!-- NRooPurple 8 -->
+          <div class="overview-family-row">
+            <div class="overview-family-label">NRooPurple<span class="sub">Promo · 8</span></div>
+            <div class="overview-shades">
+              <div class="overview-shade" style="background: #EBEBFF; color: #021C26;"><span class="ovs-step">-10</span><span class="ovs-hex">EBEBFF</span></div>
+              <div class="overview-shade" style="background: #E1E1FF; color: #021C26;"><span class="ovs-step">-20</span><span class="ovs-hex">E1E1FF</span></div>
+              <div class="overview-shade" style="background: #D4D4FF; color: #021C26;"><span class="ovs-step">-40</span><span class="ovs-hex">D4D4FF</span></div>
+              <div class="overview-shade" style="background: #C2C2FF; color: #021C26;"><span class="ovs-step">-60</span><span class="ovs-hex">C2C2FF</span></div>
+              <div class="overview-shade" style="background: #B3B3FF; color: #021C26;"><span class="ovs-step">-80</span><span class="ovs-hex">B3B3FF</span></div>
+              <div class="overview-shade" style="background: #8C8CF9; color: #fff;"><span class="ovs-step">-100</span><span class="ovs-hex">8C8CF9</span></div>
+              <div class="overview-shade" style="background: #7070F2; color: #fff;"><span class="ovs-step">-120</span><span class="ovs-hex">7070F2</span></div>
+              <div class="overview-shade" style="background: #5B55E0; color: #fff;"><span class="ovs-step">-140</span><span class="ovs-hex">5B55E0</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="subhead">Primary · 5 個品牌主色</div>
       <div class="code-table color-primary">
