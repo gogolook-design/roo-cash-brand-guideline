@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roo.Cash · 吉祥物概念探索 v1</title>
+<link rel="stylesheet" href="styles/colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Align with index.html 2026 palette so this page reads as part of the same system. */
+    --roo-trust:   #021C26;
+    --roo-steady:  #074058;
+    --roo-pulse:   #25C9BA;
+    --roo-spark:   #FF601A;
+    --roo-clear:   #F2F6F8;
+    --roo-clear-2: #E5EBEF;
+
+    --nroo-blue-100:   var(--roo-trust);
+    --nroo-blue-95:    var(--roo-steady);
+    --nroo-green-100:  var(--roo-pulse);
+    --nroo-green-120:  #1AA396;
+    --nroo-orange-120: var(--roo-spark);
+    --nroo-grey-10:    var(--roo-clear);
+    --nroo-grey-20:    var(--roo-clear-2);
+
+    --ink:        var(--roo-trust);
+    --ink-soft:   rgba(2, 28, 38, 0.82);
+    --ink-quiet:  rgba(2, 28, 38, 0.62);
+    --paper:      var(--nroo-grey-10);
+    --paper-2:    var(--nroo-grey-20);
+    --hair:       rgba(2, 28, 38, 0.12);
+
+    --font-mono:    'Roboto Condensed', ui-monospace, sans-serif;
+    --font-numeric: 'Roboto Condensed', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  body {
+    font-family: var(--font-cjk);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    height: 72px;
+    background: rgba(242, 246, 248, 0.9);
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--hair);
+    display: flex; align-items: center;
+  }
+  .site-header .inner {
+    max-width: 1760px; width: 100%; margin: 0 auto;
+    padding: 0 32px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .brand-wordmark {
+    font-family: var(--font-cjk); font-weight: 700; font-size: 18px;
+    letter-spacing: 0.01em; color: var(--ink);
+  }
+  .breadcrumb {
+    font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+    color: var(--ink-quiet);
+    padding-left: 16px;
+    border-left: 1px solid var(--hair);
+    letter-spacing: 0.04em;
+  }
+  .header-note {
+    margin-left: auto;
+    font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+    color: var(--ink-quiet);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .header-note .x { color: var(--nroo-green-120); padding: 0 4px; }
+
+  /* ─── BAND / SHELL ─── */
+  .band { padding: 120px 0; }
+  .shell { max-width: 1760px; margin: 0 auto; padding: 0 32px; }
+
+  .band-cream { background: var(--paper); }
+  .band-white { background: #FFFFFF; }
+
+  .chapter-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--nroo-green-120);
+    margin-bottom: 24px;
+  }
+
+  .h1-display {
+    font-family: var(--font-cjk);
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 32px;
+  }
+  .lede {
+    font-family: var(--font-cjk);
+    font-size: 18px; font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 760px;
+  }
+
+  /* ─── LEGEND ROWS ─── */
+  .legend-title {
+    font-family: var(--font-mono);
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-quiet);
+    margin-bottom: 24px;
+  }
+  .legend-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .legend-card {
+    background: #FFFFFF;
+    border: 1px solid var(--hair);
+    border-radius: 16px;
+    padding: 24px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .legend-badge {
+    width: 36px; height: 36px;
+    border-radius: 999px;
+    background: var(--nroo-green-100);
+    color: var(--roo-trust);
+    font-family: var(--font-mono);
+    font-weight: 700; font-size: 13px;
+    display: inline-flex; align-items: center; justify-content: center;
+    letter-spacing: 0.04em;
+    margin-bottom: 4px;
+  }
+  .legend-name {
+    font-family: var(--font-cjk);
+    font-weight: 700; font-size: 18px;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+  .legend-sub {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 500;
+    color: var(--ink-quiet);
+    letter-spacing: 0.04em;
+  }
+  .legend-trait {
+    font-family: var(--font-cjk);
+    font-size: 14px; line-height: 1.7;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+  .legend-fields {
+    display: flex; flex-direction: column; gap: 14px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--hair);
+  }
+  .legend-field { display: flex; flex-direction: column; gap: 4px; }
+  .legend-field-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--nroo-green-120);
+  }
+  .legend-field-value {
+    font-family: var(--font-cjk);
+    font-size: 13px; line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .legend-card--p { align-self: stretch; }
+
+  .legend-block + .legend-block { margin-top: 64px; }
+
+  /* ─── PERSONALITY BLOCKS ─── */
+  .p-block { margin-top: 160px; padding-top: 32px; border-top: 1px solid var(--hair); }
+  .p-block:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+
+  .p-profile {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 48px 56px;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 56px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,0.04);
+    border: 1px solid var(--hair);
+  }
+  .p-profile-lead { display: flex; flex-direction: column; gap: 8px; }
+  .p-profile-lead .row-num {
+    font-family: var(--font-numeric);
+    font-weight: 700;
+    font-size: 88px;
+    line-height: 1;
+    color: var(--nroo-orange-120);
+    margin-bottom: 8px;
+  }
+  .p-name {
+    font-family: var(--font-cjk);
+    font-weight: 700; font-size: 30px;
+    line-height: 1.25; color: var(--ink);
+  }
+  .p-en {
+    font-family: var(--font-mono);
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; color: var(--ink-quiet);
+    margin-top: 2px;
+  }
+  .p-tagline {
+    font-family: var(--font-cjk);
+    font-size: 17px; line-height: 1.75;
+    color: var(--ink);
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--nroo-green-100);
+  }
+
+  .p-profile-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 40px;
+    align-content: start;
+  }
+  .p-field { display: flex; flex-direction: column; gap: 6px; }
+  .p-field-label {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--nroo-green-120);
+  }
+  .p-field-value {
+    font-family: var(--font-cjk);
+    font-size: 14px; line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .p-images {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+  }
+
+  .cell {
+    background: var(--roo-clear);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    border: 1px solid var(--hair);
+  }
+  .cell-image {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: var(--roo-clear);
+    overflow: hidden;
+  }
+  .cell-image img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.35s ease;
+  }
+  .cell:hover .cell-image img { transform: scale(1.04); }
+  .cell-image a { display: block; width: 100%; height: 100%; }
+  .cell-placeholder {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        var(--paper) 0px, var(--paper) 12px,
+        var(--paper-2) 12px, var(--paper-2) 24px
+      );
+    font-family: var(--font-mono);
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--ink-quiet);
+  }
+  .cell-caption {
+    padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--roo-clear);
+    border-top: 1px solid var(--hair);
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(37, 201, 186, 0.14);
+    color: var(--nroo-green-120);
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 6px 10px;
+    border-radius: 999px;
+  }
+  .coord {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 500;
+    color: var(--ink-quiet);
+    letter-spacing: 0.08em;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer-band {
+    background: var(--paper);
+    padding: 64px 0;
+    border-top: 1px solid var(--hair);
+  }
+  .footer-band .rule {
+    width: 64px; height: 2px;
+    background: var(--nroo-orange-120);
+    margin-bottom: 24px;
+  }
+  .footer-note {
+    font-family: var(--font-cjk);
+    font-size: 15px; font-weight: 500;
+    line-height: 1.75;
+    color: var(--ink-soft);
+  }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 960px) {
+    .band { padding: 80px 0; }
+    .shell { padding: 0 20px; }
+    .h1-display { font-size: 36px; }
+    .legend-row { grid-template-columns: 1fr; }
+    .p-profile { grid-template-columns: 1fr; gap: 32px; padding: 32px; }
+    .p-profile-meta { grid-template-columns: 1fr; gap: 20px; }
+    .p-images { grid-template-columns: repeat(2, 1fr); }
+    .grid-head { display: none; }
+    .row-label {
+      padding: 16px 0 8px;
+      border-top: 1px solid var(--hair);
+    }
+    .row-num { font-size: 44px; }
+    .site-header .inner { padding: 0 20px; gap: 12px; }
+    .breadcrumb { display: none; }
+    .header-note { font-size: 11px; }
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    .site-header { position: static; box-shadow: none; background: #fff; }
+    .band { padding: 40px 0; page-break-inside: avoid; }
+    .cell { box-shadow: none; border: 1px solid #ccc; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <span class="brand-wordmark">Roo.Cash</span>
+    <span class="breadcrumb">吉祥物概念探索 / Mascot Concepts v1</span>
+    <span class="header-note">10 個性 <span class="x">×</span> 10 風格 <span class="x">=</span> 100 個方向</span>
+  </div>
+</header>
+
+<!-- ─── INTRO BAND ─── -->
+<section class="band band-cream">
+  <div class="shell">
+    <div class="chapter-eyebrow">CHAPTER 08.5</div>
+    <h1 class="h1-display">先決定他是誰，再決定他長什麼樣</h1>
+    <p class="lede">
+      在交給插畫家之前，我們先讓十種個性方向和十種視覺風格全部攤開來。同一隻袋鼠，當他是鄰家學長、精明小幫手、沉穩守護者、樂觀夥伴、聰明顧問，或是嬤嬤的智慧、夜市好朋友、數據怪才、文青夥伴、冒險家，氣質完全不一樣；同一個個性，畫成寫實 3D、扁平向量、手繪筆觸、純線稿、水彩、凹版印刷、貼紙、黏土、動漫或像素藝術，留給人的印象也會差很多。這 100 個方向不是要全部留下來，而是讓你一眼看到每一條岔路，再決定要走哪一條。
+    </p>
+  </div>
+</section>
+
+<!-- ─── LEGENDS ─── -->
+<section class="band band-white">
+  <div class="shell">
+
+    <div class="legend-block">
+      <div class="legend-title">個性方向 / Personality Directions</div>
+      <div class="legend-row">
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P1</span>
+          <div class="legend-name">鄰家學長</div>
+          <div class="legend-sub">The Helpful Senior</div>
+          <div class="legend-trait">大你三屆的學長，自己剛搞懂理財，很樂意分享筆記。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">25–28 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">親切、實在、略帶書卷氣。不會炫耀，但你問他什麼他都查過。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">信任感最強，最適合金融場景的嚴肅性。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">可能略顯保守、不夠有記憶點。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「我上次算過喔...」「這個我踩過坑，跟你說...」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">中性配色，可能戴細框眼鏡或夾本記事本；姿態收斂、肩膀放鬆。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P2</span>
+          <div class="legend-name">精明小幫手</div>
+          <div class="legend-sub">The Sharp Sidekick</div>
+          <div class="legend-trait">永遠在你口袋裡的小搭檔，眼睛很亮，看到好康會先提醒你。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">18–22 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">機靈、好奇、反應快。像哆啦A夢但專管錢。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">互動感最強，最適合 app 內 micro-moments（通知、提示、找好康）。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">太活潑可能稀釋專業感。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「欸欸這家利率變了！」「你有發現嗎？這月多花了 12%」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">眼睛大、表情豐富、姿態前傾；可以加放大鏡、小本子之類道具。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P3</span>
+          <div class="legend-name">沉穩守護者</div>
+          <div class="legend-sub">The Calm Guardian</div>
+          <div class="legend-trait">把你的錢當自己家小孩看的那位。話不多，但你知道他在。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">30–35 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">穩重、低調、可靠。袋鼠育兒袋的象徵被放到最大。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">最契合「財務安全感」這個品牌承諾。最適合 onboarding、保障、客服等信任場景。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">可能太成熟，少了 Roo 該有的親切感與輕巧。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「放心，我幫你看著。」「這筆我幫你記下來了。」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">姿態挺拔但不僵硬；表情柔和；色調可能偏深、偏 Trust navy。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P4</span>
+          <div class="legend-name">樂觀夥伴</div>
+          <div class="legend-sub">The Cheerful Buddy</div>
+          <div class="legend-trait">你存到第一桶金時最開心的不是你，是他。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">22–26 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">溫暖、樂觀、會慶祝你的每個小進步。情緒給得出來。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">最適合里程碑、成就、慶祝時刻。情感連結最強。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">在嚴肅理財建議場景可能顯得太輕。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「太可以了！這個月你多存了 NT$1,200！」「沒事的，下個月再來。」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">嘴角上揚預設、姿態有彈性、肢體語言開放；Pulse mint 出現頻率高。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P5</span>
+          <div class="legend-name">聰明顧問</div>
+          <div class="legend-sub">The Quietly-Clever Advisor</div>
+          <div class="legend-trait">看起來不多話，但每次開口都剛好點到關鍵。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">28–32 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">內斂、有想法、有點「AI brain in a friendly body」的氣質。智識感比 P1 更明顯。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">最適合 AI 推薦、分析、比較場景。把「AI 但有溫度」這件事具象化。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">可能略顯距離感，需要靠視覺暖化。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「依你最近三個月的花費，我建議...」「這兩家差 0.3%，看你重視什麼。」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">姿態冷靜，眼神專注；可能配個微光暈或細節（耳機、平板）暗示 AI；表情克制但不冷。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P6</span>
+          <div class="legend-name">嬤嬤的智慧</div>
+          <div class="legend-sub">The Wise Auntie</div>
+          <div class="legend-trait">阿嬤教過你的事，現在剛好用上。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">55–65 人類等價（記憶感）</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">慈祥、有耐心、看得遠。古早味的智慧加上現代的應用。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">最有溫度與歷史感，最適合「世代傳承」「人生階段」場景。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">對年輕族群可能略顯距離。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「以前阿嬤都說...」「省下來的就是賺到的。」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">編織披肩、小錢包、戴老花眼鏡；色調偏暖、姿態溫和。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P7</span>
+          <div class="legend-name">夜市好朋友</div>
+          <div class="legend-sub">The Night Market Friend</div>
+          <div class="legend-trait">帶你穿小巷子找到真正划算的那個朋友。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">23–28 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">接地氣、會殺價、講話直爽。台灣味滿滿。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">最有在地感與生活感，最適合「省錢」「優惠」「日常」場景。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">可能太隨意，不適合嚴肅理財建議。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「這家便宜啦！」「老闆，這個算我便宜一點！」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">T 恤＋棒球帽、手拿珍奶或雞排小道具；表情自信微笑、姿態放鬆。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P8</span>
+          <div class="legend-name">數據怪才</div>
+          <div class="legend-sub">The Data Geek</div>
+          <div class="legend-trait">算給你看的人。看似怪，其實對得很精。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">26–30 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">古怪、認真、迷戀數字。有點宅但你信他的算式。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">最適合「數據比較」「精算」「報表」場景，差異化記憶點強。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">對偏感性的使用者可能不夠親近。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「等等，我算一下喔...」「這個年化報酬 4.2%，比那家高 0.8%。」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">厚框眼鏡、計算機、頭髮微亂、姿態前傾在看數字；眼神專注。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P9</span>
+          <div class="legend-name">文青夥伴</div>
+          <div class="legend-sub">The Indie Aesthete</div>
+          <div class="legend-trait">把存錢當美感生活一部分，安靜又有想法的朋友。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">24–30 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">內斂、有品味、慢生活。把理財變成一種美學選擇。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">最適合「生活方式」「儀式感」「永續理財」場景，差異化最明顯。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">可能太小眾，不一定是大眾共鳴點。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「不用多，剛剛好就好。」「這份預算我畫過 mind map 了。」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">毛帽＋帆布托特包、手繪筆記本、咖啡杯；姿態安靜、表情若有所思。</span></div>
+          </div>
+        </div>
+        <div class="legend-card legend-card--p">
+          <span class="legend-badge">P10</span>
+          <div class="legend-name">冒險家</div>
+          <div class="legend-sub">The Money Explorer</div>
+          <div class="legend-trait">把世界當教室、把錢當地圖，邊看邊學的那種人。</div>
+          <div class="legend-fields">
+            <div class="legend-field"><span class="legend-field-label">Age Feel 年齡感</span><span class="legend-field-value">27–33 人類等價</span></div>
+            <div class="legend-field"><span class="legend-field-label">Vibe 氣質</span><span class="legend-field-value">好奇、開放、樂於試新東西。理財是探索而非責任。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Strength 優勢</span><span class="legend-field-value">最適合「投資入門」「理財旅程」「新興市場」場景，敘事感最強。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Risk 風險</span><span class="legend-field-value">可能讓保守族群覺得太冒險。</span></div>
+            <div class="legend-field"><span class="legend-field-label">Voice Cues 口頭禪</span><span class="legend-field-value">「來試試這個？」「等等，這條路通到哪裡？」</span></div>
+            <div class="legend-field"><span class="legend-field-label">Visual Implication 視覺暗示</span><span class="legend-field-value">探險夾克、小指南針、地圖捲、背包；姿態前傾、眼神發亮。</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend-block">
+      <div class="legend-title">視覺風格 / Visual Styles</div>
+      <div class="legend-row">
+        <div class="legend-card">
+          <span class="legend-badge">S1</span>
+          <div class="legend-name">寫實 3D</div>
+          <div class="legend-sub">Hyperrealistic 3D</div>
+          <div class="legend-trait">電影級 CGI 渲染、毛髮細節、柔光，最像實體角色。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S2</span>
+          <div class="legend-name">扁平向量</div>
+          <div class="legend-sub">Flat Vector</div>
+          <div class="legend-trait">Brand-safe，介面、文宣最容易直接拿來用。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S3</span>
+          <div class="legend-name">手繪筆觸</div>
+          <div class="legend-sub">Brushy Hand-drawn</div>
+          <div class="legend-trait">溫暖、有人味、適合敘事與品牌故事。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S4</span>
+          <div class="legend-name">純線稿</div>
+          <div class="legend-sub">Pure Line Art</div>
+          <div class="legend-trait">UI、教學圖示最乾淨，最容易做動態。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S5</span>
+          <div class="legend-name">水彩</div>
+          <div class="legend-sub">Soft Watercolor</div>
+          <div class="legend-trait">渲染、暈染的質感，柔軟、慢、有故事感。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S6</span>
+          <div class="legend-name">凹版印刷</div>
+          <div class="legend-sub">Risograph</div>
+          <div class="legend-trait">2–3 色疊印、輕微錯位、顆粒紋理，獨立雜誌感。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S7</span>
+          <div class="legend-name">貼紙風</div>
+          <div class="legend-sub">Sticker</div>
+          <div class="legend-trait">粗白邊描邊、扁平鮮色、適合通訊軟體貼圖。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S8</span>
+          <div class="legend-name">黏土動畫</div>
+          <div class="legend-sub">Claymation</div>
+          <div class="legend-trait">手捏黏土塑形質感，溫暖手作感最強。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S9</span>
+          <div class="legend-name">動漫風</div>
+          <div class="legend-sub">Anime</div>
+          <div class="legend-trait">日系賽璐璐上色、表情清晰、青年向最易共鳴。</div>
+        </div>
+        <div class="legend-card">
+          <span class="legend-badge">S10</span>
+          <div class="legend-name">像素藝術</div>
+          <div class="legend-sub">Pixel Art</div>
+          <div class="legend-trait">16-bit 復古遊戲精靈，記憶點與懷舊感最強。</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── 5 × 5 GRID ─── -->
+<section class="band band-cream">
+  <div class="shell">
+    <div class="legend-title" style="margin-bottom: 32px;">100 個方向 / 10 × 10 Concept Matrix</div>
+
+            <!-- ── P1 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">01</div>
+          <div class="p-name">鄰家學長</div>
+          <div class="p-en">P1 · The Helpful Senior</div>
+          <p class="p-tagline">大你三屆的學長，自己剛搞懂理財，很樂意分享筆記。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">25–28 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">親切、實在、略帶書卷氣。不會炫耀，但你問他什麼他都查過。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">信任感最強，最適合金融場景的嚴肅性。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">可能略顯保守、不夠有記憶點。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「我上次算過喔...」「這個我踩過坑，跟你說...」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">中性配色，可能戴細框眼鏡或夾本記事本；姿態收斂、肩膀放鬆。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s1.png" alt="P1 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P1·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s2.png" alt="P1 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P1·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s3.png" alt="P1 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P1·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s4.png" alt="P1 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P1·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s5.png" alt="P1 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P1·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s6.png" alt="P1 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P1·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s7.png" alt="P1 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P1·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s8.png" alt="P1 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P1·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s9.png" alt="P1 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P1·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p1_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p1_s10.png" alt="P1 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P1 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P1·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P2 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">02</div>
+          <div class="p-name">精明小幫手</div>
+          <div class="p-en">P2 · The Sharp Sidekick</div>
+          <p class="p-tagline">永遠在你口袋裡的小搭檔，眼睛很亮，看到好康會先提醒你。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">18–22 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">機靈、好奇、反應快。像哆啦A夢但專管錢。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">互動感最強，最適合 app 內 micro-moments（通知、提示、找好康）。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">太活潑可能稀釋專業感。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「欸欸這家利率變了！」「你有發現嗎？這月多花了 12%」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">眼睛大、表情豐富、姿態前傾；可以加放大鏡、小本子之類道具。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s1.png" alt="P2 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P2·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s2.png" alt="P2 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P2·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s3.png" alt="P2 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P2·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s4.png" alt="P2 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P2·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s5.png" alt="P2 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P2·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s6.png" alt="P2 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P2·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s7.png" alt="P2 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P2·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s8.png" alt="P2 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P2·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s9.png" alt="P2 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P2·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p2_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p2_s10.png" alt="P2 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P2 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P2·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P3 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">03</div>
+          <div class="p-name">沉穩守護者</div>
+          <div class="p-en">P3 · The Calm Guardian</div>
+          <p class="p-tagline">把你的錢當自己家小孩看的那位。話不多，但你知道他在。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">30–35 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">穩重、低調、可靠。袋鼠育兒袋的象徵被放到最大。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">最契合「財務安全感」這個品牌承諾。最適合 onboarding、保障、客服等信任場景。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">可能太成熟，少了 Roo 該有的親切感與輕巧。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「放心，我幫你看著。」「這筆我幫你記下來了。」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">姿態挺拔但不僵硬；表情柔和；色調可能偏深、偏 Trust navy。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s1.png" alt="P3 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P3·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s2.png" alt="P3 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P3·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s3.png" alt="P3 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P3·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s4.png" alt="P3 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P3·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s5.png" alt="P3 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P3·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s6.png" alt="P3 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P3·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s7.png" alt="P3 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P3·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s8.png" alt="P3 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P3·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s9.png" alt="P3 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P3·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p3_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p3_s10.png" alt="P3 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P3 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P3·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P4 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">04</div>
+          <div class="p-name">樂觀夥伴</div>
+          <div class="p-en">P4 · The Cheerful Buddy</div>
+          <p class="p-tagline">你存到第一桶金時最開心的不是你，是他。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">22–26 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">溫暖、樂觀、會慶祝你的每個小進步。情緒給得出來。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">最適合里程碑、成就、慶祝時刻。情感連結最強。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">在嚴肅理財建議場景可能顯得太輕。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「太可以了！這個月你多存了 NT$1,200！」「沒事的，下個月再來。」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">嘴角上揚預設、姿態有彈性、肢體語言開放；Pulse mint 出現頻率高。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s1.png" alt="P4 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P4·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s2.png" alt="P4 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P4·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s3.png" alt="P4 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P4·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s4.png" alt="P4 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P4·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s5.png" alt="P4 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P4·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s6.png" alt="P4 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P4·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s7.png" alt="P4 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P4·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s8.png" alt="P4 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P4·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s9.png" alt="P4 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P4·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p4_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p4_s10.png" alt="P4 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P4 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P4·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P5 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">05</div>
+          <div class="p-name">聰明顧問</div>
+          <div class="p-en">P5 · The Quietly-Clever Advisor</div>
+          <p class="p-tagline">看起來不多話，但每次開口都剛好點到關鍵。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">28–32 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">內斂、有想法、有點「AI brain in a friendly body」的氣質。智識感比 P1 更明顯。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">最適合 AI 推薦、分析、比較場景。把「AI 但有溫度」這件事具象化。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">可能略顯距離感，需要靠視覺暖化。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「依你最近三個月的花費，我建議...」「這兩家差 0.3%，看你重視什麼。」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">姿態冷靜，眼神專注；可能配個微光暈或細節（耳機、平板）暗示 AI；表情克制但不冷。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s1.png" alt="P5 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P5·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s2.png" alt="P5 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P5·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s3.png" alt="P5 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P5·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s4.png" alt="P5 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P5·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s5.png" alt="P5 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P5·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s6.png" alt="P5 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P5·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s7.png" alt="P5 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P5·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s8.png" alt="P5 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P5·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s9.png" alt="P5 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P5·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p5_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p5_s10.png" alt="P5 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P5 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P5·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P6 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">06</div>
+          <div class="p-name">嬤嬤的智慧</div>
+          <div class="p-en">P6 · The Wise Auntie</div>
+          <p class="p-tagline">阿嬤教過你的事，現在剛好用上。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">55–65 人類等價（記憶感）</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">慈祥、有耐心、看得遠。古早味的智慧加上現代的應用。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">最有溫度與歷史感，最適合「世代傳承」「人生階段」場景。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">對年輕族群可能略顯距離。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「以前阿嬤都說...」「省下來的就是賺到的。」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">編織披肩、小錢包、戴老花眼鏡；色調偏暖、姿態溫和。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s1.png" alt="P6 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P6·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s2.png" alt="P6 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P6·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s3.png" alt="P6 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P6·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s4.png" alt="P6 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P6·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s5.png" alt="P6 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P6·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s6.png" alt="P6 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P6·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s7.png" alt="P6 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P6·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s8.png" alt="P6 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P6·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s9.png" alt="P6 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P6·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p6_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p6_s10.png" alt="P6 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P6 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P6·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P7 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">07</div>
+          <div class="p-name">夜市好朋友</div>
+          <div class="p-en">P7 · The Night Market Friend</div>
+          <p class="p-tagline">帶你穿小巷子找到真正划算的那個朋友。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">23–28 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">接地氣、會殺價、講話直爽。台灣味滿滿。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">最有在地感與生活感，最適合「省錢」「優惠」「日常」場景。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">可能太隨意，不適合嚴肅理財建議。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「這家便宜啦！」「老闆，這個算我便宜一點！」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">T 恤＋棒球帽、手拿珍奶或雞排小道具；表情自信微笑、姿態放鬆。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s1.png" alt="P7 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P7·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s2.png" alt="P7 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P7·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s3.png" alt="P7 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P7·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s4.png" alt="P7 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P7·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s5.png" alt="P7 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P7·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s6.png" alt="P7 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P7·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s7.png" alt="P7 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P7·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s8.png" alt="P7 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P7·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s9.png" alt="P7 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P7·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p7_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p7_s10.png" alt="P7 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P7 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P7·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P8 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">08</div>
+          <div class="p-name">數據怪才</div>
+          <div class="p-en">P8 · The Data Geek</div>
+          <p class="p-tagline">算給你看的人。看似怪，其實對得很精。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">26–30 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">古怪、認真、迷戀數字。有點宅但你信他的算式。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">最適合「數據比較」「精算」「報表」場景，差異化記憶點強。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">對偏感性的使用者可能不夠親近。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「等等，我算一下喔...」「這個年化報酬 4.2%，比那家高 0.8%。」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">厚框眼鏡、計算機、頭髮微亂、姿態前傾在看數字；眼神專注。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s1.png" alt="P8 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P8·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s2.png" alt="P8 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P8·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s3.png" alt="P8 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P8·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s4.png" alt="P8 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P8·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s5.png" alt="P8 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P8·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s6.png" alt="P8 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P8·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s7.png" alt="P8 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P8·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s8.png" alt="P8 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P8·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s9.png" alt="P8 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P8·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p8_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p8_s10.png" alt="P8 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P8 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P8·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P9 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">09</div>
+          <div class="p-name">文青夥伴</div>
+          <div class="p-en">P9 · The Indie Aesthete</div>
+          <p class="p-tagline">把存錢當美感生活一部分，安靜又有想法的朋友。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">24–30 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">內斂、有品味、慢生活。把理財變成一種美學選擇。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">最適合「生活方式」「儀式感」「永續理財」場景，差異化最明顯。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">可能太小眾，不一定是大眾共鳴點。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「不用多，剛剛好就好。」「這份預算我畫過 mind map 了。」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">毛帽＋帆布托特包、手繪筆記本、咖啡杯；姿態安靜、表情若有所思。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s1.png" alt="P9 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P9·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s2.png" alt="P9 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P9·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s3.png" alt="P9 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P9·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s4.png" alt="P9 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P9·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s5.png" alt="P9 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P9·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s6.png" alt="P9 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P9·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s7.png" alt="P9 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P9·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s8.png" alt="P9 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P9·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s9.png" alt="P9 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P9·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p9_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p9_s10.png" alt="P9 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P9 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P9·S10</span></div></div>
+      </div>
+    </div>
+
+    <!-- ── P10 ── -->
+    <div class="p-block">
+      <div class="p-profile">
+        <div class="p-profile-lead">
+          <div class="row-num">10</div>
+          <div class="p-name">冒險家</div>
+          <div class="p-en">P10 · The Money Explorer</div>
+          <p class="p-tagline">把世界當教室、把錢當地圖，邊看邊學的那種人。</p>
+        </div>
+        <div class="p-profile-meta">
+          <div class="p-field"><span class="p-field-label">Age Feel 年齡感</span><span class="p-field-value">27–33 人類等價</span></div>
+          <div class="p-field"><span class="p-field-label">Vibe 氣質</span><span class="p-field-value">好奇、開放、樂於試新東西。理財是探索而非責任。</span></div>
+          <div class="p-field"><span class="p-field-label">Strength 優勢</span><span class="p-field-value">最適合「投資入門」「理財旅程」「新興市場」場景，敘事感最強。</span></div>
+          <div class="p-field"><span class="p-field-label">Risk 風險</span><span class="p-field-value">可能讓保守族群覺得太冒險。</span></div>
+          <div class="p-field"><span class="p-field-label">Voice Cues 口頭禪</span><span class="p-field-value">「來試試這個？」「等等，這條路通到哪裡？」</span></div>
+          <div class="p-field"><span class="p-field-label">Visual Implication 視覺暗示</span><span class="p-field-value">探險夾克、小指南針、地圖捲、背包；姿態前傾、眼神發亮。</span></div>
+        </div>
+      </div>
+      <div class="p-images">
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s1.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s1.png" alt="P10 寫實 3D" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S1</div></div><div class="cell-caption"><span class="chip">S1 · 寫實 3D</span><span class="coord">P10·S1</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s2.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s2.png" alt="P10 扁平向量" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S2</div></div><div class="cell-caption"><span class="chip">S2 · 扁平向量</span><span class="coord">P10·S2</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s3.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s3.png" alt="P10 手繪筆觸" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S3</div></div><div class="cell-caption"><span class="chip">S3 · 手繪筆觸</span><span class="coord">P10·S3</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s4.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s4.png" alt="P10 純線稿" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S4</div></div><div class="cell-caption"><span class="chip">S4 · 純線稿</span><span class="coord">P10·S4</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s5.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s5.png" alt="P10 水彩" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S5</div></div><div class="cell-caption"><span class="chip">S5 · 水彩</span><span class="coord">P10·S5</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s6.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s6.png" alt="P10 凹版印刷" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S6</div></div><div class="cell-caption"><span class="chip">S6 · 凹版印刷</span><span class="coord">P10·S6</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s7.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s7.png" alt="P10 貼紙風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S7</div></div><div class="cell-caption"><span class="chip">S7 · 貼紙風</span><span class="coord">P10·S7</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s8.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s8.png" alt="P10 黏土動畫" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S8</div></div><div class="cell-caption"><span class="chip">S8 · 黏土動畫</span><span class="coord">P10·S8</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s9.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s9.png" alt="P10 動漫風" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S9</div></div><div class="cell-caption"><span class="chip">S9 · 動漫風</span><span class="coord">P10·S9</span></div></div>
+        <div class="cell"><div class="cell-image"><a href="assets/mascot/concepts/p10_s10.png" target="_blank" rel="noopener"><img src="assets/mascot/concepts/p10_s10.png" alt="P10 像素藝術" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"></a><div class="cell-placeholder" style="display:none;">P10 · S10</div></div><div class="cell-caption"><span class="chip">S10 · 像素藝術</span><span class="coord">P10·S10</span></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer-band">
+  <div class="shell">
+    <div class="rule"></div>
+    <p class="footer-note">v2 探索版 · 100 個方向（10 個性 × 10 風格）· 由 Google Imagen 產生 · 等待 Jason 收斂</p>
+  </div>
+</footer>
+
+</body>
+</html>
